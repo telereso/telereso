@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RemoteTextView">
+        <attr name="android:text" />
+        <attr name="android:title" />
+    </declare-styleable>
+
+    <declare-styleable name="RemoteEditText">
+        <attr name="android:text" />
+        <attr name="android:hint" />
+    </declare-styleable>
+
+    <declare-styleable name="RemoteButton">
+        <attr name="android:text" />
+    </declare-styleable>
+
+    <declare-styleable name="RemoteBottomNavigationView">
+        <attr name="android:title" />
+    </declare-styleable>
+</resources>
