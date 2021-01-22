@@ -52,7 +52,7 @@ open class RemoteNavigationView @JvmOverloads constructor(
         try {
             parser = context.resources.getLayout(resId)
             val attrs = Xml.asAttributeSet(parser)
-            parseMenu(parser, attrs, menu)
+            parseMenu(context,parser, attrs, menu)
         } catch (e: XmlPullParserException) {
             throw  InflateException("Error inflating menu XML", e)
         } catch (e: IOException) {

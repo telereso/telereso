@@ -1,13 +1,29 @@
 package io.telereso.android
 
 import android.content.Context
-import android.content.res.TypedArray
+import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.util.DisplayMetrics.*
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.appcompat.R
+import androidx.appcompat.app.AppCompatViewInflater
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
@@ -17,42 +33,123 @@ fun View.getStringKey(@StringRes id: Int): String {
     return context.resources.getResourceEntryName(id)
 }
 
+fun View.getKeyName(@IdRes id: Int): String {
+    return context.resources.getResourceEntryName(id)
+}
+
+fun View.getLocal(): String {
+    return Telereso.getLocal(context)
+}
+
 fun View.getRemoteString(@StringRes id: Int): String {
     val key = getStringKey(id)
     val default = context.getString(id)
-    return Telereso.getRemoteStringOrDefault(key, default)
+    return Telereso.getRemoteStringOrDefault(getLocal(), key, default)
+}
+
+fun MenuItem.setRemoteDrawable(context: Context, resId: Int) {
+    if (resId == 0) return
+    val key = context.getKeyName(resId)
+    val url = Telereso.getRemoteImage(key)
+    val default = AppCompatResources.getDrawable(context, resId)
+    icon = default
+    if (!url.isNullOrBlank())
+        Glide.with(context).load(url).addListener(object : RequestListener<Drawable> {
+            override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
+                Log.e(TAG_DRAWABLES, "failed to load key:$key with url:$url")
+                return false
+            }
+
+            override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                resource?.let { icon = resource }
+                return false
+            }
+
+        }).submit()
+}
+
+fun MenuItem.setActionView(context: Context, resId: Int) {
+    actionView = Telereso.getActionView(context, resId)
+}
+
+fun ImageView.setRemoteImageResource(resId: Int) {
+    val key = getKeyName(resId)
+    val url = Telereso.getRemoteImage(key)
+    val default = AppCompatResources.getDrawable(context, resId)
+    if (url.isNullOrBlank())
+        setImageDrawable(default)
+    else
+        Glide.with(this).load(url).addListener(object : RequestListener<Drawable> {
+            override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
+                Log.e(TAG_DRAWABLES, "failed to load key:$key with url:$url")
+                return false
+            }
+
+            override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                return false
+            }
+
+        }).placeholder(default).into(this)
 }
 
 fun Context.getStringKey(@StringRes id: Int): String {
     return resources.getResourceEntryName(id)
 }
 
+fun Context.getKeyName(@IdRes id: Int): String {
+    return resources.getResourceEntryName(id)
+}
+
+fun Context.getLocal(): String {
+    return Telereso.getLocal(this)
+}
+
 fun Context.getRemoteString(@StringRes id: Int): String {
     val key = getStringKey(id)
     val default = getString(id)
-    return Telereso.getRemoteStringOrDefault(key, default)
+    return Telereso.getRemoteStringOrDefault(getLocal(), key, default)
 }
 
 fun Context.getRemoteString(@StringRes id: Int, vararg formatArgs: Any?): String {
     val key = getStringKey(id)
     val default = getString(id)
-    return Telereso.getRemoteStringOrDefault(key, default, *formatArgs)
+    return Telereso.getRemoteStringOrDefaultFormat(getLocal(), key, default, *formatArgs)
+}
+
+fun Context.getDpiKey(): String {
+    return resources.getDpiKey()
+}
+
+fun Resources.getDpiKey(): String {
+    return when (displayMetrics.densityDpi) {
+        DENSITY_LOW -> "ldpi"
+        DENSITY_MEDIUM -> "mdpi"
+        DENSITY_TV, DENSITY_HIGH -> "hdpi"
+        DENSITY_260, DENSITY_280, DENSITY_300, DENSITY_XHIGH -> "xhdpi"
+        DENSITY_340, DENSITY_360, DENSITY_400, DENSITY_420, DENSITY_440, DENSITY_XXHIGH -> "xxhdpi"
+        DENSITY_560, DENSITY_XXXHIGH -> "xxxhdpi"
+        else -> "xhdpi"
+    }
 }
 
 fun Fragment.getStringKey(@StringRes id: Int): String {
     return resources.getResourceEntryName(id)
 }
 
+fun Fragment.getLocal(): String {
+    return Telereso.getLocal(context)
+}
+
 fun Fragment.getRemoteString(@StringRes id: Int): String {
     val key = getStringKey(id)
     val default = getString(id)
-    return Telereso.getRemoteStringOrDefault(key, default)
+    return Telereso.getRemoteStringOrDefault(getLocal(), key, default)
 }
 
 fun Fragment.getRemoteString(@StringRes id: Int, vararg formatArgs: Any?): String {
     val key = getStringKey(id)
     val default = getString(id)
-    return Telereso.getRemoteStringOrDefault(key, default, *formatArgs)
+    return Telereso.getRemoteStringOrDefaultFormat(getLocal(), key, default, *formatArgs)
 }
 
 
@@ -61,7 +158,8 @@ fun Fragment.getRemoteString(@StringRes id: Int, vararg formatArgs: Any?): Strin
  * call this recursively.
  */
 @Throws(XmlPullParserException::class, IOException::class)
-fun View.parseMenu(
+fun parseMenu(
+        context: Context,
         parser: XmlPullParser,
         attrs: AttributeSet,
         menu: Menu
@@ -117,12 +215,10 @@ fun View.parseMenu(
                                 .apply {
                                     val id = getResourceId(R.styleable.MenuItem_android_id, 0)
                                     if (id != 0)
-                                        menu.findItem(id)?.title = getRemoteString(
-                                                getResourceId(
-                                                        R.styleable.MenuItem_android_title,
-                                                        0
-                                                )
-                                        )
+                                        menu.findItem(id)?.apply {
+                                            title = context.getRemoteString(getResourceId(R.styleable.MenuItem_android_title, 0))
+                                            setRemoteDrawable(context, getResourceId(R.styleable.MenuItem_android_icon, 0))
+                                        }
                                 }
                     }
                     "menu" -> {

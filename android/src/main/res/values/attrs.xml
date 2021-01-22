@@ -17,4 +17,9 @@
     <declare-styleable name="RemoteBottomNavigationView">
         <attr name="android:title" />
     </declare-styleable>
+
+    <declare-styleable name="RemoteFloatingActionButton">
+        <attr name="srcCompat" />
+        <attr name="android:src" />
+    </declare-styleable>
 </resources>
