@@ -6,6 +6,7 @@ import android.content.res.XmlResourceParser
 import android.util.Log
 import android.util.Xml
 import android.view.*
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.IdRes
 import androidx.annotation.MenuRes
@@ -224,6 +225,11 @@ object Telereso {
                 resources.configuration.locale.language.toString()
             }
         } ?: defaultLocal
+    }
+
+    @JvmStatic
+    fun setRemoteImageResource(imageView: ImageView, resId: Int) {
+        imageView.setRemoteImageResource(resId)
     }
 
     fun getRemoteImage(key: String): String? {

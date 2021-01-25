@@ -1,0 +1,36 @@
+<idea-plugin>
+    <id>io.telereso.plugin</id>
+    <name>Telereso</name>
+    <vendor>JetBrains</vendor>
+
+    <!-- Product and plugin compatibility requirements -->
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="io.telereso.plugin.services.TeleresoApplicationService"/>
+        <projectService serviceImplementation="io.telereso.plugin.services.TeleresoProjectService"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="io.telereso.plugin.linsteners.TeleresoProjectManagerListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </applicationListeners>
+    <actions>
+        <group id="io.telereso.plugin.actions.GroupedActions"
+               text="Telereso" description="Convert resources into json format"
+               popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <action id="org.intellij.sdk.action.GroupPopDialogAction"
+                    class="io.telereso.plugin.actions.ExportStringsAsJsonAction"
+                    text="Export Json Strings" description="Export all strings resource xml file into json format">
+            </action>
+        </group>
+        <action id="io.telereso.plugin.actions.ExportStringsXmlAsJsonAction"
+                class="io.telereso.plugin.actions.ExportStringsXmlAsJsonAction" text="Export Json">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Paste"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="meta alt J"/>
+        </action>
+
+    </actions>
+</idea-plugin>

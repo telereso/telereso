@@ -1,0 +1,39 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'io.telereso'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId 'io.telereso'
+                artifactId 'android'
+                name 'Telereso'
+                description 'An android library.'
+                url 'https://github.com/cuttlesoft/android-library-example'
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'ahna92'
+                        name 'Ahmed Alnaami'
+                        email 'ahmed.alnaami92@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection 'https://github.com/ahna92/Telereso.git'
+                    developerConnection 'https://github.com/ahna92/Telereso.git'
+                    url 'https://github.com/ahna92/Telereso.git'
+                }
+            }
+        }
+    }
+}
