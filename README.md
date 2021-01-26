@@ -24,13 +24,13 @@ then just add `Telereso` dependency to your project
 <tr>
 <td><img src="doc/gradle.png" alt="Gradle"/></td>
 <td>
-    <pre>implementation "io.telereso:telereso:0.0.2"</pre>
+    <pre>implementation "io.telereso:telereso:0.0.3"</pre>
     </td>
 </tr>
 <tr>
 <td><img src="doc/gradle.png" alt="Gradle"/> (Kotlin DSL)</td>
 <td>
-    <pre>implementation("io.telereso:telereso:0.0.2")</pre>
+    <pre>implementation("io.telereso:telereso:0.0.3")</pre>
     </td>
 </tr>
 </table>
