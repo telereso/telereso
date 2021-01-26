@@ -10,11 +10,11 @@ Table of contents:
 ## Installation
 
 `Telereso` depends on firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource
-mangement\
+mangement<br>
 And [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) for realtime changes (_optional_)
 
 All you need to get started is make sure your project has setup
-firebase ([check docs](https://firebase.google.com/docs/guides)) \
+firebase ([check docs](https://firebase.google.com/docs/guides)) <br>
 then just add `Telereso` dependency to your project
 
 ### Gradle/maven dependency
@@ -42,16 +42,16 @@ This section will show how to set up firebase remote config to be used with `Tel
 
 #### Steps
 * Open [Firebase console](https://console.firebase.google.com/) then select Remote Config Dashboard
-* Add new param called "strings_en" <br><br>
-  ![img.png](doc/add_param.png)<br><br>
+* Add new param called `strings` <br><br>
+  ![img.png](doc/add_strings.png)<br><br>
   
 * Add a json containing key/value params representing your strings resource's key name (same key name found in the strings.xml), and it's value <br><br>![img.png](doc/param_value.png)<br><br>
-* Add to group strings (this is optional but good practice) ![img.png](doc/add_group.png) 
+* Add to `Strings` group  (this is optional but good practice) <br><br>![img.png](doc/add_group.png) <br><br>
 * Save and publish 
 
 #### Localization
 `Telereso` supports localization using local after the strings prefix `strings_<local>`<br>
-To support other languages just add more params each containting a json with same keys(as in the en version) but translated value <br>
+To support other languages just add more params each containing a json with same keys (as in the strings version) but with a translated value <br>
 ex: `strings_fr,strings_ar...etc`
 
 _Android developers_ it will be the same local you add to your values dir `values-fr,values-ar...etc`
@@ -63,9 +63,9 @@ _Notice we are using `_` instead of `-` due to remote config limitations_
 #### Steps
 
 * Open [Firebase console](https://console.firebase.google.com/) then select Remote Config Dashboard
-* Add new param called "drawable_xxxhdpi"
+* Add new param called `drawable`
 * Add a json containing key/value params representing your drawable resource's key name (same key name found in the drawable dir), and it's value will be a url of your remote image <br><br>![img.png](doc/add_drawable.png)<br><br>
-* Add to group drawable (this is optional but good practice) <br><br>![img.png](doc/add_group.png)<br><br>
+* Add to `Drawable` group  (this is optional but good practice) <br><br>![add_group](doc/add_group.png)<br><br>
 * Save and publish
 
 #### Android Screens support
@@ -74,22 +74,27 @@ ex: `drawable_hdpi,drawable_xhdpi`
 
 _Notice we are using `_` instead of `-` due to remote config limitations_
 
+
+### Final Result
+
+![final_result](doc/final_result.png)
+
 ## Usage
 
-There are different scenarios to work with `Telereso` ,\
+There are different scenarios to work with `Telereso` ,<br>
 Wither you are starting a fresh new application, or an already in production application with large code base
 
 ### Android
 
 #### Initialization
 
-Initialization will not make api calls it just to set up resources,\
-If your app has a splash screen it would be a perfect place to do this, or on your custom application class\
-The `init` function has a call back you can listen to,\
+Initialization will not make api calls it just to set up resources,<br>
+If your app has a splash screen it would be a perfect place to do this, or on your custom application class<br>
+The `init` function has a call back you can listen to,<br>
 Or you could use the suspended version `suspendedInit` if you're a coroutines' lover!.
 
-Skipping the Initialization will not cause crashes, but the app will not be able to use the remove version of the
-resources,\
+Skipping the Initialization will not cause crashes, but the app will not be able to use the remote version of the
+resources,<br>
 So it is a way to disable remote functionality.
 
 _Kotlin_
@@ -148,9 +153,9 @@ public class SplashActivity extends Activity {
 #### Add `RemoteViewInflater`
 
 This inflater will make sure all the android application views that display strings or images have the remote
-functionality,\
-The inflater will detect if you're setting the text in the xml directly like `andriod:text=@stirngs/user_name`\
-And use the remote version if it's found or default back to the original value\
+functionality,<br>
+The inflater will detect if you're setting the text in the xml directly like `andriod:text=@stirngs/user_name`<br>
+And use the remote version if it's found or default back to the original value<br>
 
 The inflater handles the following views :
 
@@ -197,10 +202,10 @@ if your activity uses a custom theme add `RemoteViewInflater` to that theme
 #### Dynamic Resources
 
 Sometimes we set the resrouces programmatically depending on a view state like so
-`title = getString(R.strings.title_home)`,\
+`title = getString(R.strings.title_home)`,<br>
 In this case we can use the Remote version of the function `getString()`
 which is
-`getRemoteString()`\
+`getRemoteString()`<br>
 This will make sure to use the remote version of the resource if found or default it to the original value
 
 *Strings*
@@ -233,13 +238,13 @@ Telereso.setRemoteImageResource(imageView,R.id.icon);
 
 #### Dynamic Resources || (out of the box)
 
-If you have a large code base and have a lot of `getString()` and `setImageResource`, \
-And replacing them with a remote version is not an option,\
-You can override the activity's context with a `RemoteWrapperContext`\
+If you have a large code base and have a lot of `getString()` and `setImageResource`, <br>
+And replacing them with a remote version is not an option,<br>
+You can override the activity's context with a `RemoteWrapperContext`<br>
 That will take care of the changes for you without any code changes.
 
 **Important note** if your app supports both portrait and land scape you need to handle the configuration changes
-manually,\
+manually,<br>
 Later versions of `Telereso` will address this issue
 
 
@@ -265,7 +270,7 @@ public class MainActivity extends Activity {
 ```
 #### Realtime Changes 
 
-Who does love to see his changes happing in real time ?\
+Who does love to see his changes happing in real time ?<br>
 `Telereso` support this optional implantation with some extra steps.
 
 
@@ -291,7 +296,7 @@ Here are tables to help you use the library.
 |--------|-----------|
 |`Telereso.init(Context,finishCallback)`|setup resources to be used,finishCallback will be called as soon resources are ready, also will fetchAndActivate Remote config but will not block the init (finishCallback will be called before the fetch finishes)|
 |`Telereso.getRemoteString(Context, R.string.<string_id>)`|return remote string or original value|
-|`TeleresosetRemoteImageResource(ImageView,R.string.<res_id>)`|set remote image resource or the original value|
+|`Teleresoset.getRemoteImageResource(ImageView,R.string.<res_id>)`|set remote image resource or the original value|
 
 ## Getting Help
 

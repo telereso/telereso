@@ -8,11 +8,8 @@ import android.util.Xml
 import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.annotation.IdRes
-import androidx.annotation.MenuRes
 import androidx.annotation.StringRes
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.RemoteMessage
 import com.google.firebase.messaging.ktx.messaging
@@ -25,15 +22,17 @@ import java.io.IOException
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-const val TAG = "Telereso"
-const val TAG_STRINGS = "${TAG}_strings"
-const val TAG_DRAWABLES = "${TAG}_drawable"
+internal const val TAG = "Telereso"
+internal const val TAG_STRINGS = "${TAG}_strings"
+internal const val TAG_DRAWABLES = "${TAG}_drawable"
+private const val STRINGS = "strings"
+private const val DRAWABLE = "drawable"
 
 object Telereso {
-    private var defaultLocal = "en"
     private val listenersList = hashSetOf<RemoteChanges>()
     private val stringsMap = HashMap<String, JSONObject>()
-    private var drawableMap = JSONObject()
+    private var drawableMap = HashMap<String, JSONObject>()
+    private val densityList = listOf("ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
 
     @JvmStatic
     @JvmOverloads
@@ -41,11 +40,9 @@ object Telereso {
             context: Context,
             finishSetup: () -> Unit = {}
     ) {
-        val defaultLocal: String? = null
         val remoteChanges: RemoteChanges? = null
         val listenToRemoteChanges = true
         Log.d(TAG, "initializing...")
-        defaultLocal?.let { this.defaultLocal = it }
         if (listenToRemoteChanges)
             Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings {
                 minimumFetchIntervalInSeconds = 0
@@ -64,17 +61,15 @@ object Telereso {
                 initMaps(context)
             }
 
-            finishSetup?.invoke()
+            finishSetup()
         }
 
     }
 
     suspend fun suspendInit(context: Context) {
-        val defaultLocal: String? = null
         val remoteChanges: RemoteChanges? = null
         val listenToRemoteChanges = true
         Log.d(TAG, "initializing...")
-        defaultLocal?.let { this.defaultLocal = it }
         if (listenToRemoteChanges)
             Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings {
                 minimumFetchIntervalInSeconds = 0
@@ -91,9 +86,9 @@ object Telereso {
 
     private suspend fun initMaps(context: Context) {
         withContext(context = Dispatchers.IO) {
-//strings
 
-            val defaultId = getStringKey(defaultLocal)
+            //  strings
+            val defaultId = STRINGS
             var default = Firebase.remoteConfig.getString(defaultId)
             if (default.isBlank()) {
                 default = "{}"
@@ -105,31 +100,47 @@ object Telereso {
 
             val deviceLocal = getLocal(context)
             val deviceId = getStringKey(deviceLocal)
-            if (deviceLocal != defaultLocal) {
-                var local = Firebase.remoteConfig.getString(deviceId)
-                if (local.isBlank()) {
-                    local = "{}"
-                    Log.e(TAG, "the device local $deviceId was not found in remote config")
-                } else {
-                    Log.d(TAG, "device local $deviceId was setup")
-                }
-                stringsMap[deviceId] = JSONObject(local)
+            var local = Firebase.remoteConfig.getString(deviceId)
+            if (local.isBlank()) {
+                local = "{}"
+                Log.e(TAG, "the device local $deviceId was not found in remote config")
+            } else {
+                Log.d(TAG, "device local $deviceId was setup")
             }
+            stringsMap[deviceId] = JSONObject(local)
+
 
             //drawables
-
-            var drawables = Firebase.remoteConfig.getString(getDrawableKey(context.getDpiKey()))
-            if (drawables.isNullOrBlank()) {
-                drawables = "{}"
+            var defaultDrawables = Firebase.remoteConfig.getString(DRAWABLE)
+            if (defaultDrawables.isBlank()) {
+                defaultDrawables = "{}"
             }
-            drawableMap = JSONObject(drawables)
+            drawableMap[DRAWABLE] = JSONObject(defaultDrawables)
 
-            drawableMap.keys().forEach {
+            drawableMap[DRAWABLE]?.keys()?.forEach {
                 try {
                     Glide.with(context).load(it).timeout(200).submit().get()
                 } catch (t: Throwable) {
                 }
             }
+
+
+            getSupportedDensities(context).forEach { deviceDensity ->
+                val deviceDrawableId = getDrawableKey(deviceDensity)
+                var deviceDrawables = Firebase.remoteConfig.getString(deviceDrawableId)
+                if (deviceDrawables.isBlank()) {
+                    deviceDrawables = "{}"
+                }
+                drawableMap[deviceDrawableId] = JSONObject(deviceDrawables)
+
+                drawableMap[deviceDrawableId]?.keys()?.forEach {
+                    try {
+                        Glide.with(context).load(it).timeout(1000).submit()
+                    } catch (t: Throwable) {
+                    }
+                }
+            }
+
         }
     }
 
@@ -178,7 +189,7 @@ object Telereso {
         val value = getStringValue(local, key, default)
         Log.d(TAG_STRINGS, "local:$local key:$key default:$default value:$value")
         if (value.isBlank()) {
-            Log.e(TAG, "$key was empty in ${getStringKey(local)} and ${getStringKey(defaultLocal)} and local strings")
+            Log.e(TAG, "$key was empty in ${getStringKey(local)} and $STRINGS and local strings")
             GlobalScope.launch(Dispatchers.Default) {
                 HashSet(listenersList).forEach { l -> l.onResourceNotFound(key) }
             }
@@ -196,7 +207,7 @@ object Telereso {
         var value = getStringValue(local, key, default)
         Log.d(TAG_STRINGS, "local:$local key:$key default:$default value:$value")
         if (value.isBlank()) {
-            Log.e(TAG, "$key was empty in ${getStringKey(local)} and ${getStringKey(defaultLocal)} and local strings")
+            Log.e(TAG, "$key was empty in ${getStringKey(local)} and $STRINGS and local strings")
             GlobalScope.launch(Dispatchers.Default) {
                 HashSet(listenersList).forEach { l -> l.onResourceNotFound(key) }
             }
@@ -214,7 +225,7 @@ object Telereso {
     }
 
     private fun getStringValue(local: String, key: String, default: String?): String {
-        val defaultId = getStringKey(defaultLocal)
+        val defaultId = STRINGS
         val localId = getStringKey(local)
         var value = stringsMap[localId]?.optString(key, "") ?: ""
         if (value.isBlank()) {
@@ -228,24 +239,20 @@ object Telereso {
         return value
     }
 
-    internal fun getLocal(context: Context?): String {
-        return context?.let {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                context.resources.configuration.locales[0].language.toString()
-            } else {
-                context.resources.configuration.locale.language.toString()
-            }
-        } ?: defaultLocal
+    internal fun getLocal(context: Context): String {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            context.resources.configuration.locales[0].language.toString()
+        } else {
+            context.resources.configuration.locale.language.toString()
+        }
     }
 
-    internal fun getLocal(resources: Resources?): String {
-        return resources?.let {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                resources.configuration.locales[0].language.toString()
-            } else {
-                resources.configuration.locale.language.toString()
-            }
-        } ?: defaultLocal
+    internal fun getLocal(resources: Resources): String {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            resources.configuration.locales[0].language.toString()
+        } else {
+            resources.configuration.locale.language.toString()
+        }
     }
 
     @JvmStatic
@@ -253,19 +260,28 @@ object Telereso {
         imageView.setRemoteImageResource(resId)
     }
 
-    fun getRemoteImage(key: String): String? {
-        val url = drawableMap.optString(key)
+    fun getRemoteImage(context: Context, key: String): String? {
+        var url: String? = null
+        getSupportedDensities(context).forEach {
+            val deviceDrawableId = getDrawableKey(it)
+            url = drawableMap[deviceDrawableId]?.optString(key)
+            if (!url.isNullOrBlank())
+                return url
+        }
+        if (url.isNullOrBlank()) {
+            url = drawableMap[DRAWABLE]?.optString(key)
+        }
         if (url.isNullOrBlank())
             Log.w(TAG_DRAWABLES, "drawable $key was not found in remote drawable")
         return url
     }
 
     private fun getStringKey(id: String): String {
-        return "strings_$id"
+        return "${STRINGS}_$id"
     }
 
     private fun getDrawableKey(id: String): String {
-        return "drawable_$id"
+        return "${DRAWABLE}_$id"
 
     }
 
@@ -293,6 +309,12 @@ object Telereso {
 
     internal fun getActionView(context: Context, resId: Int): View {
         return LayoutInflater.from(context).inflate(resId, LinearLayout(context), false)
+    }
+
+    private fun getSupportedDensities(context: Context): List<String> {
+        val supportedDensityList = densityList.takeWhile { it != context.getDpiKey() }.toMutableList()
+        supportedDensityList.add(context.getDpiKey())
+        return supportedDensityList.reversed()
     }
 
 }

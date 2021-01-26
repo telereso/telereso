@@ -6,20 +6,16 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.DisplayMetrics.*
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.appcompat.R
-import androidx.appcompat.app.AppCompatViewInflater
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
@@ -50,7 +46,7 @@ fun View.getRemoteString(@StringRes id: Int): String {
 fun MenuItem.setRemoteDrawable(context: Context, resId: Int) {
     if (resId == 0) return
     val key = context.getKeyName(resId)
-    val url = Telereso.getRemoteImage(key)
+    val url = Telereso.getRemoteImage(context, key)
     val default = AppCompatResources.getDrawable(context, resId)
     icon = default
     if (!url.isNullOrBlank())
@@ -74,7 +70,7 @@ fun MenuItem.setActionView(context: Context, resId: Int) {
 
 fun ImageView.setRemoteImageResource(resId: Int) {
     val key = getKeyName(resId)
-    val url = Telereso.getRemoteImage(key)
+    val url = Telereso.getRemoteImage(context, key)
     val default = AppCompatResources.getDrawable(context, resId)
     if (url.isNullOrBlank())
         setImageDrawable(default)
@@ -132,25 +128,6 @@ fun Resources.getDpiKey(): String {
     }
 }
 
-fun Fragment.getStringKey(@StringRes id: Int): String {
-    return resources.getResourceEntryName(id)
-}
-
-fun Fragment.getLocal(): String {
-    return Telereso.getLocal(context)
-}
-
-fun Fragment.getRemoteString(@StringRes id: Int): String {
-    val key = getStringKey(id)
-    val default = getString(id)
-    return Telereso.getRemoteStringOrDefault(getLocal(), key, default)
-}
-
-fun Fragment.getRemoteString(@StringRes id: Int, vararg formatArgs: Any?): String {
-    val key = getStringKey(id)
-    val default = getString(id)
-    return Telereso.getRemoteStringOrDefaultFormat(getLocal(), key, default, *formatArgs)
-}
 
 
 /**
