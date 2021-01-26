@@ -1,6 +1,6 @@
 ![Banner](doc/banner.svg)
 
-[![jitpack](https://jitpack.io/v/ahna92/telereso.svg)](https://jitpack.io/#ahna92/telereso)
+[![jitpack](https://jitpack.io/v/telereso/telereso.svg)](https://jitpack.io/#telereso/telereso)
 
 Table of contents:
 
@@ -24,13 +24,13 @@ then just add `Telereso` dependency to your project
 <tr>
 <td><img src="doc/gradle.png" alt="Gradle"/></td>
 <td>
-    <pre>implementation "com.github.ahna92:telereso:0.0.2"</pre>
+    <pre>implementation "io.telereso:telereso:0.0.2"</pre>
     </td>
 </tr>
 <tr>
 <td><img src="doc/gradle.png" alt="Gradle"/> (Kotlin DSL)</td>
 <td>
-    <pre>implementation("com.github.ahna92:telereso:0.0.2")</pre>
+    <pre>implementation("io.telereso:telereso:0.0.2")</pre>
     </td>
 </tr>
 </table>
@@ -302,8 +302,8 @@ Here are tables to help you use the library.
 
 To report bugs, please use the GitHub project.
 
-* Project Page: [https://github.com/ahna92/telereso](https://github.com/ahna92/telereso)
-* Reporting Bugs: [https://github.com/ahna92/telereso/issues](https://github.com/ahna92/telereso/issues)
+* Project Page: [https://github.com/telereso/telereso](https://github.com/telereso/telereso)
+* Reporting Bugs: [https://github.com/telereso/telereso/issues](https://github.com/telereso/telereso/issues)
 
 ## Logo Credit
 
