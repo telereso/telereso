@@ -39,13 +39,14 @@ object Telereso {
     @JvmOverloads
     fun init(
             context: Context,
-            defaultLocal: String? = null,
-            remoteChanges: RemoteChanges? = null,
-            finishSetup: (() -> Unit?)? = null
+            finishSetup: () -> Unit = {}
     ) {
+        val defaultLocal: String? = null
+        val remoteChanges: RemoteChanges? = null
+        val listenToRemoteChanges = true
         Log.d(TAG, "initializing...")
         defaultLocal?.let { this.defaultLocal = it }
-        if (BuildConfig.DEBUG)
+        if (listenToRemoteChanges)
             Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings {
                 minimumFetchIntervalInSeconds = 0
             })
@@ -65,6 +66,26 @@ object Telereso {
 
             finishSetup?.invoke()
         }
+
+    }
+
+    suspend fun suspendInit(context: Context) {
+        val defaultLocal: String? = null
+        val remoteChanges: RemoteChanges? = null
+        val listenToRemoteChanges = true
+        Log.d(TAG, "initializing...")
+        defaultLocal?.let { this.defaultLocal = it }
+        if (listenToRemoteChanges)
+            Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings {
+                minimumFetchIntervalInSeconds = 0
+            })
+        remoteChanges?.let { addChangeListener(it) }
+
+        fetchResource()
+
+        initMaps(context)
+
+        Log.d(TAG, "initialized!")
 
     }
 
