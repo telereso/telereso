@@ -1,0 +1,26 @@
+buildscript {
+    ext.kotlin_version = "1.4.20"
+    repositories {
+        maven { url 'https://jitpack.io' }
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.1'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.4'
+
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        jcenter()
+        maven {
+            url "https://s3.amazonaws.com/repo.commonsware.com"
+        }
+        google()
+    }
+}
