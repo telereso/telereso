@@ -1,6 +1,8 @@
 #!/bin/bash
 
-./gradlew prepareConfigFile
+rm -rf _config.yml
+
+./gradlew prepareReadMe prepareConfigFile
 
 cp _config.yml website/_config.yml
 cp README.md website/temp-index.md

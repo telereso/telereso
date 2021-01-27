@@ -31,7 +31,7 @@ task clean(type: Delete) {
 }
 
 task prepareReadMe(type: Copy) {
-    println("Android version : "+ props.getProperty("versionName_"))
+    println("prepareReadMe Android version : "+ props.getProperty("versionName_"))
     from 'README-template.md'
     into "./"
     rename { file -> 'README.md' }
@@ -39,7 +39,7 @@ task prepareReadMe(type: Copy) {
 }
 
 task prepareConfigFile(type: Copy) {
-    println("Android version : "+ props.getProperty("versionName_"))
+    println("prepareConfigFile Android version : "+ props.getProperty("versionName_"))
     from '_config-template.yml'
     into "./"
     rename { file -> '_config.yml' }
