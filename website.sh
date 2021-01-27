@@ -1,5 +1,8 @@
 #!/bin/bash
 
+./gradlew prepareConfigFile
+
+cp _config.yml website/_config.yml
 cp README.md website/temp-index.md
 
 rm -rf website/doc
@@ -17,4 +20,15 @@ rm -rf index.md
 
 rm -rf temp-index.md
 
-bundle exec jekyll serve
+bundle exec jekyll clean
+
+if [[ "$1" == "prod" ]]; then
+  bundle exec jekyll build
+  bucket=gs://telereso.io
+  gsutil -m cp -r _site/* "${bucket}"
+
+else
+  bundle exec jekyll serve
+fi
+
+

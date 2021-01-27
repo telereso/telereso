@@ -30,10 +30,18 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-task copy(type: Copy) {
+task prepareReadMe(type: Copy) {
     println("Android version : "+ props.getProperty("versionName_"))
     from 'README-template.md'
     into "./"
     rename { file -> 'README.md' }
+    expand(project: project, version: props.getProperty("versionName_"))
+}
+
+task prepareConfigFile(type: Copy) {
+    println("Android version : "+ props.getProperty("versionName_"))
+    from '_config-template.yml'
+    into "./"
+    rename { file -> '_config.yml' }
     expand(project: project, version: props.getProperty("versionName_"))
 }
