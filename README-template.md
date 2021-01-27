@@ -10,7 +10,7 @@ Table of contents:
  
 ## Installation
 
-`Telereso` depends on firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource
+`Telereso` depends on Firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource
 management<br>
 And [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) for realtime changes (_optional_)
 
@@ -100,6 +100,8 @@ _This can be used for icons as well_
 ## Samples & Examples 
 Nothing feels better than a snippet of code ready to be copied!
 Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Samples)
+
+* [Android](https://github.com/telereso/telereso/tree/master/Samples/android)
 
 ## Usage
 
