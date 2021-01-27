@@ -11,7 +11,7 @@ Table of contents:
 ## Installation
 
 `Telereso` depends on firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource
-mangement<br>
+management<br>
 And [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) for realtime changes (_optional_)
 
 All you need to get started is make sure your project has setup
@@ -79,6 +79,27 @@ _Notice we are using `_` instead of `-` due to remote config limitations_
 ### Final Result
 
 ![final_result](doc/final_result.png)
+
+### Conditional Resources
+Remote Config provide conditions to be applied to your params (strings,drawables),<br>
+This will add another layer of dynamic delivery,
+so if you would like new versions to have specific resources,<br> or segment of users that clicked a button,<br>
+Or strings and icons to be shown on specific days (Holidays 🎊🥳🎉!)...etc <br><br>
+You can see how `Telereso` will help avoid multiple app releases.
+<br><br>
+![img.png](doc/conditions_res.png)
+
+
+### A/B Testing
+One of the great feature about Remote config is the out of the box [A/B testing](https://firebase.google.com/docs/ab-testing) <br>
+Since all our resources are indexed as params we could easily create experiments. <br>
+The following example show how we can test Drawer titles and see which one achieve higher conversion <br><br>
+![img.png](doc/ab_testing.png)
+_This can be used for icons as well_
+
+## Samples & Examples 
+Nothing feels better than a snippet of code ready to be copied!
+Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Samples)
 
 ## Usage
 
@@ -273,8 +294,6 @@ public class MainActivity extends Activity {
 
 Who does love to see his changes happing in real time ?<br>
 `Telereso` support this optional implantation with some extra steps.
-
-
 
 ## Telereso API
 
