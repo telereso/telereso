@@ -3,6 +3,10 @@ plugins {
     id 'kotlin-android'
 }
 
+
+def props = new Properties()
+file("gradle.properties").withInputStream { props.load(it) }
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -11,7 +15,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
-        versionName "0.0.3"
+        versionName props.getProperty("versionName_")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

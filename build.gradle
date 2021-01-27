@@ -1,3 +1,6 @@
+def props = new Properties()
+file("android/gradle.properties").withInputStream { props.load(it) }
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = "1.4.20"
@@ -25,4 +28,12 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+task copy(type: Copy) {
+    println("Android version : "+ props.getProperty("versionName_"))
+    from 'README-template.md'
+    into "./"
+    rename { file -> 'README.md' }
+    expand(project: project, version: props.getProperty("versionName_"))
 }
