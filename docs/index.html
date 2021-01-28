@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Telereso</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Telereso" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Telereso" />
+<script type="application/ld+json">
+{"url":"/","headline":"Telereso","@type":"WebSite","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <title>Telereso | Control your application resources</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f38b1c">
+    <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.4">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/style.css?v=0.0.4">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+
+    <style>
+        .main-content > ul:first-of-type {
+            list-style-position: inside;
+        }
+
+        .main-content ul {
+            list-style-type: circle;
+        }
+
+        .charitytext {
+            font-family: 'Slabo 27px', serif;
+            font-size: 30px;
+        }
+
+        .helpmasha {
+            padding: 15px;
+            display: flex;
+        }
+
+        .helpmasha > .centered {
+            font-size: 35px;
+            display: inline-block;
+            margin: auto;
+        }
+
+        .helpmasha img {
+            margin-right: 5px;
+        }
+
+        .page-header {
+            padding-bottom: 10px;
+        }
+
+        .main-content {
+            padding-top: 0;
+        }
+
+        .idea {
+            color: white;
+            background: #0086B3;
+            padding: 23px 5px 10px 10px;
+            width: 100%;
+            /*display: none;*/
+        }
+
+        .idea .input {
+            display: block;
+            height: 0;
+            overflow-y: hidden;
+        }
+
+        .idea .input.show {
+            display: flex;
+            height: auto;
+            overflow-y: auto;
+            justify-content: center;
+        }
+
+        .idea .input textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .idea a {
+           color: rgba(255, 255, 255, 0.9);
+        }
+
+        .idea .input textarea {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 0.3rem;
+            transition: height 0.5s ease;
+            resize: none;
+            height: 70px;
+            width: 30em;
+            overflow: hidden;
+            padding: 10px;
+            outline: none;
+        }
+
+        .btn.selected {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3)
+        }
+
+        .idea .input.show textarea:focus {
+            height: 50vh;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .idea.focused .input.show textarea {
+            height: 50vh;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .idea .input textarea.writing {
+            border-color: rgba(0, 255, 0, 0.7)
+        }
+
+        .idea .input textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .idea .input textarea::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+        }
+
+        .idea .input textarea::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .idea .input textarea::scrollbar-thumb:window-inactive {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .idea .bar {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 42em) {
+            .idea .bar {
+                flex-direction: column;
+            }
+
+            .idea .input textarea {
+                width: calc(100% - 20px);
+            }
+        }
+
+        .idea .header {
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+        }
+
+        .idea .header small {
+            font-weight: 100;
+        }
+
+    </style>
+</head>
+<body>
+<section class="page-header">
+    <h1 class="project-name"><a href="/">Telereso</a></h1>
+    <h2 class="project-tagline">Control your application resources</h2>
+    
+    <a href="https://github.com/telereso/telereso.git" class="btn"><span style="vertical-align: middle">View on GitHub</span></a> </br>
+    
+</section>
+
+<section class="main-content">
+    <p><img src="doc/banner.svg" alt="Banner" /></p>
+
+<p><a href="https://jitpack.io/#telereso/telereso"><img src="https://jitpack.io/v/telereso/telereso.svg" alt="jitpack" /></a></p>
+
+<p>Table of contents:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#installation" id="markdown-toc-installation">Installation</a>    <ul>
+      <li><a href="#gradlemaven-dependency" id="markdown-toc-gradlemaven-dependency">Gradle/maven dependency</a></li>
+    </ul>
+  </li>
+  <li><a href="#firebase" id="markdown-toc-firebase">Firebase</a>    <ul>
+      <li><a href="#strings" id="markdown-toc-strings">Strings</a>        <ul>
+          <li><a href="#steps" id="markdown-toc-steps">Steps</a></li>
+          <li><a href="#localization" id="markdown-toc-localization">Localization</a></li>
+        </ul>
+      </li>
+      <li><a href="#drawable" id="markdown-toc-drawable">Drawable</a>        <ul>
+          <li><a href="#steps-1" id="markdown-toc-steps-1">Steps</a></li>
+          <li><a href="#android-screens-support" id="markdown-toc-android-screens-support">Android Screens support</a></li>
+        </ul>
+      </li>
+      <li><a href="#final-result" id="markdown-toc-final-result">Final Result</a></li>
+      <li><a href="#conditional-resources" id="markdown-toc-conditional-resources">Conditional Resources</a></li>
+      <li><a href="#ab-testing" id="markdown-toc-ab-testing">A/B Testing</a></li>
+    </ul>
+  </li>
+  <li><a href="#samples--examples" id="markdown-toc-samples--examples">Samples &amp; Examples</a></li>
+  <li><a href="#usage" id="markdown-toc-usage">Usage</a>    <ul>
+      <li><a href="#android" id="markdown-toc-android">Android</a>        <ul>
+          <li><a href="#initialization" id="markdown-toc-initialization">Initialization</a></li>
+          <li><a href="#add-remoteviewinflater" id="markdown-toc-add-remoteviewinflater">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code></a></li>
+          <li><a href="#dynamic-resources" id="markdown-toc-dynamic-resources">Dynamic Resources</a></li>
+          <li><a href="#dynamic-resources--out-of-the-box" id="markdown-toc-dynamic-resources--out-of-the-box">Dynamic Resources || (out of the box)</a></li>
+          <li><a href="#realtime-changes" id="markdown-toc-realtime-changes">Realtime Changes</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#telereso-api" id="markdown-toc-telereso-api">Telereso API</a>    <ul>
+      <li><a href="#kotlin" id="markdown-toc-kotlin">Kotlin</a></li>
+      <li><a href="#java" id="markdown-toc-java">Java</a></li>
+    </ul>
+  </li>
+  <li><a href="#getting-help" id="markdown-toc-getting-help">Getting Help</a></li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Telereso</code> depends on Firebase to use <a href="https://firebase.google.com/docs/remote-config/">Remote Config</a> for resource
+management<br />
+And <a href="https://firebase.google.com/docs/cloud-messaging">Cloud Messaging</a> for realtime changes (<em>optional</em>)</p>
+
+<p>All you need to get started is make sure your project has setup
+firebase (<a href="https://firebase.google.com/docs/guides">check docs</a>) <br />
+then just add <code class="language-plaintext highlighter-rouge">Telereso</code> dependency to your project</p>
+
+<h3 id="gradlemaven-dependency">Gradle/maven dependency</h3>
+
+<table>
+<thead><tr><th>Approach</th><th>Instruction</th></tr></thead>
+<tr>
+<td><img src="doc/gradle.png" alt="Gradle" /></td>
+<td>
+    <pre>implementation "io.telereso:telereso:0.0.4"</pre>
+    </td>
+</tr>
+<tr>
+<td><img src="doc/gradle.png" alt="Gradle" /> (Kotlin DSL)</td>
+<td>
+    <pre>implementation("io.telereso:telereso:0.0.4")</pre>
+    </td>
+</tr>
+</table>
+
+<h2 id="firebase">Firebase</h2>
+<p>This section will show how to set up firebase remote config to be used with <code class="language-plaintext highlighter-rouge">Telereso</code></p>
+
+<h3 id="strings">Strings</h3>
+
+<h4 id="steps">Steps</h4>
+<ul>
+  <li>Open <a href="https://console.firebase.google.com/">Firebase console</a> then select Remote Config Dashboard</li>
+  <li>
+    <p>Add new param called <code class="language-plaintext highlighter-rouge">strings</code> <br /><br />
+<img src="doc/add_strings.png" alt="img.png" /><br /><br /></p>
+  </li>
+  <li>Add a json containing key/value params representing your strings resource’s key name (same key name found in the strings.xml), and it’s value <br /><br /><img src="doc/param_value.png" alt="img.png" /><br /><br /></li>
+  <li>Add to <code class="language-plaintext highlighter-rouge">Strings</code> group  (this is optional but good practice) <br /><br /><img src="doc/add_group.png" alt="img.png" /> <br /><br /></li>
+  <li>Save and publish</li>
+</ul>
+
+<h4 id="localization">Localization</h4>
+<p><code class="language-plaintext highlighter-rouge">Telereso</code> supports localization using local after the strings prefix <code class="language-plaintext highlighter-rouge">strings_&lt;local&gt;</code><br />
+To support other languages just add more params each containing a json with same keys (as in the strings version) but with a translated value <br />
+ex: <code class="language-plaintext highlighter-rouge">strings_fr,strings_ar...etc</code></p>
+
+<p><em>Android developers</em> it will be the same local you add to your values dir <code class="language-plaintext highlighter-rouge">values-fr,values-ar...etc</code></p>
+
+<p><em>Notice we are using <code class="language-plaintext highlighter-rouge">_</code> instead of <code class="language-plaintext highlighter-rouge">-</code> due to remote config limitations</em></p>
+
+<h3 id="drawable">Drawable</h3>
+
+<h4 id="steps-1">Steps</h4>
+
+<ul>
+  <li>Open <a href="https://console.firebase.google.com/">Firebase console</a> then select Remote Config Dashboard</li>
+  <li>Add new param called <code class="language-plaintext highlighter-rouge">drawable</code></li>
+  <li>Add a json containing key/value params representing your drawable resource’s key name (same key name found in the drawable dir), and it’s value will be a url of your remote image <br /><br /><img src="doc/add_drawable.png" alt="img.png" /><br /><br /></li>
+  <li>Add to <code class="language-plaintext highlighter-rouge">Drawable</code> group  (this is optional but good practice) <br /><br /><img src="doc/add_group.png" alt="add_group" /><br /><br /></li>
+  <li>Save and publish</li>
+</ul>
+
+<h4 id="android-screens-support">Android Screens support</h4>
+<p>To support multiple screens sizes for android add the same sizes used with drawable dirs <br />
+ex: <code class="language-plaintext highlighter-rouge">drawable_hdpi,drawable_xhdpi</code></p>
+
+<p><em>Notice we are using <code class="language-plaintext highlighter-rouge">_</code> instead of <code class="language-plaintext highlighter-rouge">-</code> due to remote config limitations</em></p>
+
+<h3 id="final-result">Final Result</h3>
+
+<p><img src="doc/final_result.png" alt="final_result" /></p>
+
+<h3 id="conditional-resources">Conditional Resources</h3>
+<p>Remote Config provide conditions to be applied to your params (strings,drawables),<br />
+This will add another layer of dynamic delivery,
+so if you would like new versions to have specific resources,<br /> or segment of users that clicked a button,<br />
+Or strings and icons to be shown on specific days (Holidays 🎊🥳🎉!)…etc <br /><br />
+You can see how <code class="language-plaintext highlighter-rouge">Telereso</code> will help avoid multiple app releases.
+<br /><br />
+<img src="doc/conditions_res.png" alt="img.png" /></p>
+
+<h3 id="ab-testing">A/B Testing</h3>
+<p>One of the great feature about Remote config is the out of the box <a href="https://firebase.google.com/docs/ab-testing">A/B testing</a> <br />
+Since all our resources are indexed as params we could easily create experiments. <br />
+The following example show how we can test Drawer titles and see which one achieve higher conversion <br /><br />
+<img src="doc/ab_testing.png" alt="img.png" />
+<em>This can be used for icons as well</em></p>
+
+<h2 id="samples--examples">Samples &amp; Examples</h2>
+<p>Nothing feels better than a snippet of code ready to be copied!
+Check samples in this <a href="https://github.com/telereso/telereso/tree/master/Samples">repo</a></p>
+
+<ul>
+  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/android">Android</a></li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<p>There are different scenarios to work with <code class="language-plaintext highlighter-rouge">Telereso</code> ,<br />
+Wither you are starting a fresh new application, or an already in production application with large code base</p>
+
+<h3 id="android">Android</h3>
+
+<h4 id="initialization">Initialization</h4>
+
+<p>Initialization will not make api calls it just to set up resources,<br />
+If your app has a splash screen it would be a perfect place to do this, or on your custom application class<br />
+The <code class="language-plaintext highlighter-rouge">init</code> function has a call back you can listen to,<br />
+Or you could use the suspended version <code class="language-plaintext highlighter-rouge">suspendedInit</code> if you’re a coroutines’ lover!.</p>
+
+<p>Skipping the Initialization will not cause crashes, but the app will not be able to use the remote version of the
+resources,<br />
+So it is a way to disable remote functionality.</p>
+
+<p><em>Kotlin</em></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//application</span>
+<span class="kd">class</span> <span class="nc">MyApplication</span> <span class="p">:</span> <span class="nc">Application</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">()</span>
+        <span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">SplashActivity</span> <span class="p">:</span> <span class="nc">Activity</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// start MainActivity and finish()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//application</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="kd">extends</span> <span class="nc">Application</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+        <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SplashActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="c1">// start MainActivity and finish()</span>
+            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="add-remoteviewinflater">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code></h4>
+
+<p>This inflater will make sure all the android application views that display strings or images have the remote
+functionality,<br />
+The inflater will detect if you’re setting the text in the xml directly like <code class="language-plaintext highlighter-rouge">andriod:text=@stirngs/user_name</code><br />
+And use the remote version if it’s found or default back to the original value<br /></p>
+
+<p>The inflater handles the following views :</p>
+
+<ul>
+  <li>TextView</li>
+  <li>EditText</li>
+  <li>ImageView</li>
+  <li>Button</li>
+  <li>ImageButton</li>
+  <li>FloatingActionButton</li>
+  <li>BottomNavigationView</li>
+  <li>NavigationView</li>
+</ul>
+
+<p>you can use the inflater with <code class="language-plaintext highlighter-rouge">App Theme</code> or <code class="language-plaintext highlighter-rouge">Activity Theme</code></p>
+
+<p><em>App Theme</em></p>
+
+<p>If your activities Does not use their own custom theme , add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code> directly to the app theme as
+the <code class="language-plaintext highlighter-rouge">viewInflaterClass</code></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">"AppTheme"</span> <span class="na">parent=</span><span class="s">"Theme.AppCompat.Light.NoActionBar"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"colorPrimary"</span><span class="nt">&gt;</span>@color/style_color_primary<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"colorPrimaryDark"</span><span class="nt">&gt;</span>@color/style_color_primary_dark<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"colorAccent"</span><span class="nt">&gt;</span>@color/style_color_accent<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"colorControlHighlight"</span><span class="nt">&gt;</span>@color/fab_color_pressed<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"viewInflaterClass"</span><span class="nt">&gt;</span>io.telereso.android.RemoteViewInflater<span class="nt">&lt;/item&gt;</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<p><em>Activity Theme</em></p>
+
+<p>if your activity uses a custom theme add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code> to that theme</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">"AppTheme.TransparentActivity"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"android:windowBackground"</span><span class="nt">&gt;</span>@android:color/transparent<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"android:windowIsTranslucent"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"viewInflaterClass"</span><span class="nt">&gt;</span>io.telereso.android.RemoteViewInflater<span class="nt">&lt;/item&gt;</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<h4 id="dynamic-resources">Dynamic Resources</h4>
+
+<p>Sometimes we set the resrouces programmatically depending on a view state like so
+<code class="language-plaintext highlighter-rouge">title = getString(R.strings.title_home)</code>,<br />
+In this case we can use the Remote version of the function <code class="language-plaintext highlighter-rouge">getString()</code>
+which is
+<code class="language-plaintext highlighter-rouge">getRemoteString()</code><br />
+This will make sure to use the remote version of the resource if found or default it to the original value</p>
+
+<p><em>Strings</em></p>
+
+<p><em>Kotlin</em></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titleTextView</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="nf">getRemoteString</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">strings</span><span class="p">.</span><span class="n">title_home</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titleTextView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="nc">Telereso</span><span class="o">.</span><span class="na">getRemoteString</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">strings</span><span class="o">.</span><span class="na">title_home</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p><em>Drawables</em></p>
+
+<p><em>kotlin</em></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">imageView</span><span class="p">.</span><span class="nf">setRemoteImageResource</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">icon</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Telereso</span><span class="o">.</span><span class="na">setRemoteImageResource</span><span class="o">(</span><span class="n">imageView</span><span class="o">,</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">icon</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="dynamic-resources--out-of-the-box">Dynamic Resources || (out of the box)</h4>
+
+<p>If you have a large code base and have a lot of <code class="language-plaintext highlighter-rouge">getString()</code> and <code class="language-plaintext highlighter-rouge">setImageResource</code>, <br />
+And replacing them with a remote version is not an option,<br />
+You can override the activity’s context with a <code class="language-plaintext highlighter-rouge">RemoteWrapperContext</code><br />
+That will take care of the changes for you without any code changes.</p>
+
+<p><strong>Important note</strong> if your app supports both portrait and land scape you need to handle the configuration changes
+manually,<br />
+Later versions of <code class="language-plaintext highlighter-rouge">Telereso</code> will address this issue</p>
+
+<p>Add the following to all your activities or your <code class="language-plaintext highlighter-rouge">BaseActivity</code></p>
+
+<p><em>Kotlin</em></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="nc">Activity</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">attachBaseContext</span><span class="p">(</span><span class="n">newBase</span><span class="p">:</span> <span class="nc">Context</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">attachBaseContext</span><span class="p">(</span><span class="nc">RemoteContextWrapper</span><span class="p">(</span><span class="n">newBase</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><em>Java</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">attachBaseContext</span><span class="o">(</span><span class="nc">Context</span> <span class="n">newBase</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">attachBaseContext</span><span class="o">(</span><span class="k">new</span> <span class="nc">RemoteContextWrapper</span><span class="o">(</span><span class="n">newBase</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h4 id="realtime-changes">Realtime Changes</h4>
+
+<p>Who does love to see his changes happing in real time ?<br />
+<code class="language-plaintext highlighter-rouge">Telereso</code> support this optional implantation with some extra steps.</p>
+
+<h2 id="telereso-api">Telereso API</h2>
+
+<p>Here are tables to help you use the library.</p>
+
+<h3 id="kotlin">Kotlin</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">init(Context,finishCallback)</code></td>
+      <td>setup resources to be used,finishCallback will be called as soon resources are ready, also will fetchAndActivate Remote config but will not block the init (finishCallback will be called before the fetch finishes)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">suspendedInit(Context,finishCallback)</code></td>
+      <td>used inside other suspended functions or coroutines, it will fetchAndActivate Remote config then setup resources)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Context.getRemoteString(R.string.&lt;string_id&gt;)</code></td>
+      <td>return remote string or original value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">View.getRemoteString(R.string.&lt;string_id&gt;)</code></td>
+      <td>return remote string or original value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">View.getRemoteString(R.string.&lt;string_id&gt;)</code></td>
+      <td>return remote string or original value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ImageView.setRemoteImageResource(R.string.&lt;res_id&gt;)</code></td>
+      <td>set remote image resource or the original value</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="java">Java</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Telereso.init(Context,finishCallback)</code></td>
+      <td>setup resources to be used,finishCallback will be called as soon resources are ready, also will fetchAndActivate Remote config but will not block the init (finishCallback will be called before the fetch finishes)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Telereso.getRemoteString(Context, R.string.&lt;string_id&gt;)</code></td>
+      <td>return remote string or original value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Teleresoset.getRemoteImageResource(ImageView,R.string.&lt;res_id&gt;)</code></td>
+      <td>set remote image resource or the original value</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="getting-help">Getting Help</h2>
+
+<p>To report bugs, please use the GitHub project.</p>
+
+<ul>
+  <li>Project Page: <a href="https://github.com/telereso/telereso">https://github.com/telereso/telereso</a></li>
+  <li>Reporting Bugs: <a href="https://github.com/telereso/telereso/issues">https://github.com/telereso/telereso/issues</a></li>
+</ul>
+
+</section>
+
+
+</body>
+</html>

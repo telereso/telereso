@@ -1,6 +1,6 @@
 theme: jekyll-theme-cayman
 markdown: kramdown
-destination: docs
+destination: ../docs
 github:
     repository_url: https://github.com/telereso/telereso.git
 

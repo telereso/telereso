@@ -17,4 +17,5 @@ _site/*
 temp-index.md
 _config.yml
 index.md
-.sass-cache/*
+website/.sass-cache/*
+

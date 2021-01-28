@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Telereso</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Telereso" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Telereso" />
+<script type="application/ld+json">
+{"url":"/index-data.yml","headline":"Telereso","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <title>Telereso | Control your application resources</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f38b1c">
+    <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.4">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/style.css?v=0.0.4">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+
+    <style>
+        .main-content > ul:first-of-type {
+            list-style-position: inside;
+        }
+
+        .main-content ul {
+            list-style-type: circle;
+        }
+
+        .charitytext {
+            font-family: 'Slabo 27px', serif;
+            font-size: 30px;
+        }
+
+        .helpmasha {
+            padding: 15px;
+            display: flex;
+        }
+
+        .helpmasha > .centered {
+            font-size: 35px;
+            display: inline-block;
+            margin: auto;
+        }
+
+        .helpmasha img {
+            margin-right: 5px;
+        }
+
+        .page-header {
+            padding-bottom: 10px;
+        }
+
+        .main-content {
+            padding-top: 0;
+        }
+
+        .idea {
+            color: white;
+            background: #0086B3;
+            padding: 23px 5px 10px 10px;
+            width: 100%;
+            /*display: none;*/
+        }
+
+        .idea .input {
+            display: block;
+            height: 0;
+            overflow-y: hidden;
+        }
+
+        .idea .input.show {
+            display: flex;
+            height: auto;
+            overflow-y: auto;
+            justify-content: center;
+        }
+
+        .idea .input textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .idea a {
+           color: rgba(255, 255, 255, 0.9);
+        }
+
+        .idea .input textarea {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 0.3rem;
+            transition: height 0.5s ease;
+            resize: none;
+            height: 70px;
+            width: 30em;
+            overflow: hidden;
+            padding: 10px;
+            outline: none;
+        }
+
+        .btn.selected {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3)
+        }
+
+        .idea .input.show textarea:focus {
+            height: 50vh;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .idea.focused .input.show textarea {
+            height: 50vh;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .idea .input textarea.writing {
+            border-color: rgba(0, 255, 0, 0.7)
+        }
+
+        .idea .input textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .idea .input textarea::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+        }
+
+        .idea .input textarea::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .idea .input textarea::scrollbar-thumb:window-inactive {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .idea .bar {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 42em) {
+            .idea .bar {
+                flex-direction: column;
+            }
+
+            .idea .input textarea {
+                width: calc(100% - 20px);
+            }
+        }
+
+        .idea .header {
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+        }
+
+        .idea .header small {
+            font-weight: 100;
+        }
+
+    </style>
+</head>
+<body>
+<section class="page-header">
+    <h1 class="project-name"><a href="/">Telereso</a></h1>
+    <h2 class="project-tagline">Control your application resources</h2>
+    
+    <a href="https://github.com/telereso/telereso.git" class="btn"><span style="vertical-align: middle">View on GitHub</span></a> </br>
+    
+</section>
+
+<section class="main-content">
+    
+</section>
+
+
+</body>
+</html>
