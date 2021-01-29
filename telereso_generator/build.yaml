@@ -1,0 +1,24 @@
+targets:
+    $default:
+        builders:
+            telereso_generator|telereso:
+                enabled: true
+
+builders:
+  telereso:
+      target: ":telereso_generator"
+      import: "package:telereso_generator/builder.dart"
+      builder_factories: ["remoteLocalizationBuilder"]
+      build_extensions: {"intl_en.arb":["remote_localization.telereso.dart"]}
+      auto_apply: dependents
+      build_to: source
+      applies_builders: ["source_gen|combining_builder"]
+
+#  telereso:
+#      target: ":telereso_generator"
+#      import: "package:telereso_generator/builder.dart"
+#      builder_factories: ["remoteLocalization"]
+#      build_extensions: {".dart":[".remote_localization.g.part"]}
+#      auto_apply: dependents
+#      build_to: cache
+#      applies_builders: ["source_gen|combining_builder"]
