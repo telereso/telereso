@@ -7,6 +7,7 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/.idea/shelf/*
 .DS_Store
 /build
 /captures
@@ -19,4 +20,6 @@ _config.yml
 index.md
 website/.sass-cache/*
 website/doc
+docs/CNAME
+docs/_config.yml
 

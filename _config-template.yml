@@ -5,7 +5,7 @@ github:
     repository_url: https://github.com/telereso/telereso.git
 
 build_revision: ${version}
-
+google_analytics: G-V8S2X6JQZM
 plugins:
   - jekyll-feed
   - jekyll-sitemap
