@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1-alpha] 
 
-* TODO: Describe initial release.
+* Remote Strings support
+* Minimal localization support
+* Int localization support

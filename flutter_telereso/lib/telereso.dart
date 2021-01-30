@@ -19,6 +19,8 @@ class Telereso {
   Set<Function> _remoteChangeListeners = Set();
   String defaultLocal = "en";
 
+  bool stringLogEnabled = true;
+
   init() async {
     print("$TAG: Initializing....");
     supportedLocals = [defaultLocal];

@@ -49,9 +49,18 @@ class RemoteLocalizationBuilder extends Builder {
     // Static member to have a simple access to the delegate from the MaterialApp
     sourceBuilder.writeln("static const delegate = BasicRemoteLocalizationsDelegate();");
 
+    // factory from
+
+    sourceBuilder.writeln("static $className from(GalleryLocalizations local) {");
+
+    sourceBuilder
+        .writeln("return RemoteLocalizationsDefault(BasicRemoteLocalizations(localeName: local.localeName), local);");
+
+    sourceBuilder.writeln("}");
+
+
     //factory
     sourceBuilder.writeln("static $className of(BuildContext context) {");
-
 
 
     sourceBuilder.writeln(
@@ -116,7 +125,8 @@ class RemoteLocalizationBuilder extends Builder {
 
     sourceBuilder.writeln(
         "extension $className(GalleryLocalizations default)  on RemoteLocalizations{");
-    // factory
+
+    // factory of
 
     sourceBuilder.writeln("static $className on of(BuildContext context) {");
 

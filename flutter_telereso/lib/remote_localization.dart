@@ -11,9 +11,13 @@ import 'src/constants.dart';
 class BasicRemoteLocalizations {
   RemoteConfig _remoteConfig;
   final Locale locale;
+  String localeName;
   Map<String, Map<String, dynamic>> _stringsMap = Map();
 
-  BasicRemoteLocalizations(this.locale) {
+  BasicRemoteLocalizations({this.localeName, this.locale}) {
+    if (locale != null) {
+      this.localeName = locale.languageCode;
+    }
     Telereso.instance.addRemoteChangeListener(() {
       load();
     });
@@ -29,10 +33,10 @@ class BasicRemoteLocalizations {
   Future<bool> load() async {
     _remoteConfig = await Telereso.instance.remoteConfig;
 
-    final localId = _getStringsId(locale);
+    final localId = _getStringsId(localeName);
 
     if (_remoteConfig == null) {
-      print("$TAG_STRINGS: remoteConfig was null");
+      log("$TAG_STRINGS: remoteConfig was null");
       _stringsMap[STRINGS] = {};
       _stringsMap[localId] = {};
     }
@@ -40,10 +44,10 @@ class BasicRemoteLocalizations {
     // Load the language JSON file from the "lang" folder
     String defaultJson = _remoteConfig.getString(STRINGS);
     if (defaultJson.isEmpty) {
-      print("$TAG_STRINGS: default $STRINGS was empty");
+      log("$TAG_STRINGS: default $STRINGS was empty");
       defaultJson = "{}";
     } else {
-      print("$TAG_STRINGS: default $STRINGS initialized");
+      log("$TAG_STRINGS: default $STRINGS initialized");
     }
 
     _stringsMap[STRINGS] = json.decode(defaultJson);
@@ -51,10 +55,10 @@ class BasicRemoteLocalizations {
     String localJson = _remoteConfig.getString(localId);
 
     if (localJson.isEmpty) {
-      print("$TAG_STRINGS: local $localId was empty");
+      log("$TAG_STRINGS: local $localId was empty");
       localJson = "{}";
     } else {
-      print("$TAG_STRINGS: local $localId initialized");
+      log("$TAG_STRINGS: local $localId initialized");
     }
     _stringsMap[localId] = json.decode(localJson);
 
@@ -62,17 +66,17 @@ class BasicRemoteLocalizations {
   }
 
   String getRemoteValue(String key) {
-    final localId = _getStringsId(locale);
+    final localId = _getStringsId(localeName);
     var value = _stringsMap[localId][key];
 
     if (value == null || value.isEmpty) {
-      print("$TAG_STRINGS: $key not found in $localId");
+      log("$TAG_STRINGS: $key not found in $localId");
       //   recordException(
       //       Exception("no translation for $key in ${locale.languageCode}"));
       value = _stringsMap[STRINGS][key];
     }
     if (value == null || value.isEmpty) {
-      print("$TAG_STRINGS: $key not found in $STRINGS");
+      log("$TAG_STRINGS: $key not found in $STRINGS");
       // recordException(
       //     Exception("no translation for $key at defualt $defaultLocal}"));
       return null;
@@ -89,7 +93,7 @@ class BasicRemoteLocalizations {
       return null;
     }
 
-    print("$TAG_STRINGS: key $key value: $value");
+    log("$TAG_STRINGS: key $key value: $value");
     if (args == null) {
       return value;
     }
@@ -100,23 +104,22 @@ class BasicRemoteLocalizations {
     var value = getRemoteValue(key);
 
     if (value == null || value.isEmpty) {
-      print("$TAG_STRINGS: $key will be using default $def");
       value = def;
     }
 
-    print("$TAG_STRINGS: key $key value: $value default: $def");
+    log("$TAG_STRINGS: key $key value: $value default: $def");
     if (args == null) {
       return value;
     }
     return sprintf(value, args);
   }
 
-  String _getStringsId(Locale locale) {
-    return "${STRINGS}_${locale.languageCode}";
+  String _getStringsId(String locale) {
+    return "${STRINGS}_${locale}";
   }
 
-  String _getDrawableId(Locale locale) {
-    return "${DRAWABLE}_${locale.languageCode}";
+  String _getDrawableId(String locale) {
+    return "${DRAWABLE}_${locale}";
   }
 }
 
@@ -130,7 +133,7 @@ class BasicRemoteLocalizationsDelegate
 
   @override
   Future<BasicRemoteLocalizations> load(Locale locale) async {
-    var localizations = BasicRemoteLocalizations(locale);
+    var localizations = BasicRemoteLocalizations(locale: locale);
     await localizations.load();
     return localizations;
   }
@@ -146,5 +149,12 @@ extension DefaultMap<K, V> on Map<K, V> {
     } else {
       return defaultValue;
     }
+  }
+}
+
+
+log(String log) {
+  if (Telereso.instance.stringLogEnabled) {
+    print(log);
   }
 }
