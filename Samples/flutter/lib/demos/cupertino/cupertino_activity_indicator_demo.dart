@@ -4,6 +4,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN cupertinoActivityIndicatorDemo
 
@@ -16,7 +17,7 @@ class CupertinoProgressIndicatorDemo extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         automaticallyImplyLeading: false,
         middle: Text(
-          GalleryLocalizations.of(context).demoCupertinoActivityIndicatorTitle,
+          RemoteLocalizationsDefault.of(context).demoCupertinoActivityIndicatorTitle,
         ),
       ),
       child: const Center(

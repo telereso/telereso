@@ -345,7 +345,7 @@ class _BackdropState extends State<Backdrop>
       actions: [
         IconButton(
           icon: const Icon(Icons.search),
-          tooltip: GalleryLocalizations.of(context).shrineTooltipSearch,
+          tooltip: RemoteLocalizationsDefault.of(context).shrineTooltipSearch,
           onPressed: () {},
         ),
         IconButton(

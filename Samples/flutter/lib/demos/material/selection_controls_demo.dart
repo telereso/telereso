@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 enum SelectionControlsDemoType {
   checkbox,
@@ -20,12 +21,12 @@ class SelectionControlsDemo extends StatelessWidget {
   String _title(BuildContext context) {
     switch (type) {
       case SelectionControlsDemoType.checkbox:
-        return GalleryLocalizations.of(context)
+        return RemoteLocalizationsDefault.of(context)
             .demoSelectionControlsCheckboxTitle;
       case SelectionControlsDemoType.radio:
-        return GalleryLocalizations.of(context).demoSelectionControlsRadioTitle;
+        return RemoteLocalizationsDefault.of(context).demoSelectionControlsRadioTitle;
       case SelectionControlsDemoType.switches:
-        return GalleryLocalizations.of(context)
+        return RemoteLocalizationsDefault.of(context)
             .demoSelectionControlsSwitchTitle;
     }
     return '';
@@ -205,7 +206,7 @@ class _SwitchDemoState extends State<_SwitchDemo> with RestorationMixin {
       child: Semantics(
         container: true,
         label:
-            GalleryLocalizations.of(context).demoSelectionControlsSwitchTitle,
+            RemoteLocalizationsDefault.of(context).demoSelectionControlsSwitchTitle,
         child: Switch(
           value: switchValue.value,
           onChanged: (value) {

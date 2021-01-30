@@ -10,6 +10,7 @@ import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:gallery/constants.dart';
 import 'package:gallery/data/gallery_options.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/pages/about.dart' as about;
 import 'package:gallery/pages/home.dart';
@@ -114,7 +115,7 @@ class _SettingsPageState extends State<SettingsPage> {
   LinkedHashMap<Locale, DisplayOption> _getLocaleOptions() {
     var localeOptions = LinkedHashMap.of({
       systemLocaleOption: DisplayOption(
-        GalleryLocalizations.of(context).settingsSystemDefault +
+        RemoteLocalizationsDefault.of(context).settingsSystemDefault +
             (deviceLocale != null
                 ? ' - ${_getLocaleDisplayOption(context, deviceLocale).title}'
                 : ''),
@@ -143,26 +144,26 @@ class _SettingsPageState extends State<SettingsPage> {
 
     final settingsListItems = [
       SettingsListItem<double>(
-        title: GalleryLocalizations.of(context).settingsTextScaling,
+        title: RemoteLocalizationsDefault.of(context).settingsTextScaling,
         selectedOption: options.textScaleFactor(
           context,
           useSentinel: true,
         ),
         optionsMap: LinkedHashMap.of({
           systemTextScaleFactorOption: DisplayOption(
-            GalleryLocalizations.of(context).settingsSystemDefault,
+            RemoteLocalizationsDefault.of(context).settingsSystemDefault,
           ),
           0.8: DisplayOption(
-            GalleryLocalizations.of(context).settingsTextScalingSmall,
+            RemoteLocalizationsDefault.of(context).settingsTextScalingSmall,
           ),
           1.0: DisplayOption(
-            GalleryLocalizations.of(context).settingsTextScalingNormal,
+            RemoteLocalizationsDefault.of(context).settingsTextScalingNormal,
           ),
           2.0: DisplayOption(
-            GalleryLocalizations.of(context).settingsTextScalingLarge,
+            RemoteLocalizationsDefault.of(context).settingsTextScalingLarge,
           ),
           3.0: DisplayOption(
-            GalleryLocalizations.of(context).settingsTextScalingHuge,
+            RemoteLocalizationsDefault.of(context).settingsTextScalingHuge,
           ),
         }),
         onOptionChanged: (newTextScale) => GalleryOptions.update(
@@ -173,17 +174,17 @@ class _SettingsPageState extends State<SettingsPage> {
         isExpanded: _expandedSettingId == _ExpandableSetting.textScale,
       ),
       SettingsListItem<CustomTextDirection>(
-        title: GalleryLocalizations.of(context).settingsTextDirection,
+        title: RemoteLocalizationsDefault.of(context).settingsTextDirection,
         selectedOption: options.customTextDirection,
         optionsMap: LinkedHashMap.of({
           CustomTextDirection.localeBased: DisplayOption(
-            GalleryLocalizations.of(context).settingsTextDirectionLocaleBased,
+            RemoteLocalizationsDefault.of(context).settingsTextDirectionLocaleBased,
           ),
           CustomTextDirection.ltr: DisplayOption(
-            GalleryLocalizations.of(context).settingsTextDirectionLTR,
+            RemoteLocalizationsDefault.of(context).settingsTextDirectionLTR,
           ),
           CustomTextDirection.rtl: DisplayOption(
-            GalleryLocalizations.of(context).settingsTextDirectionRTL,
+            RemoteLocalizationsDefault.of(context).settingsTextDirectionRTL,
           ),
         }),
         onOptionChanged: (newTextDirection) => GalleryOptions.update(
@@ -194,7 +195,7 @@ class _SettingsPageState extends State<SettingsPage> {
         isExpanded: _expandedSettingId == _ExpandableSetting.textDirection,
       ),
       SettingsListItem<Locale>(
-        title: GalleryLocalizations.of(context).settingsLocale,
+        title: RemoteLocalizationsDefault.of(context).settingsLocale,
         selectedOption: options.locale == deviceLocale
             ? systemLocaleOption
             : options.locale,
@@ -212,7 +213,7 @@ class _SettingsPageState extends State<SettingsPage> {
         isExpanded: _expandedSettingId == _ExpandableSetting.locale,
       ),
       SettingsListItem<TargetPlatform>(
-        title: GalleryLocalizations.of(context).settingsPlatformMechanics,
+        title: RemoteLocalizationsDefault.of(context).settingsPlatformMechanics,
         selectedOption: options.platform,
         optionsMap: LinkedHashMap.of({
           TargetPlatform.android: DisplayOption('Android'),
@@ -229,17 +230,17 @@ class _SettingsPageState extends State<SettingsPage> {
         isExpanded: _expandedSettingId == _ExpandableSetting.platform,
       ),
       SettingsListItem<ThemeMode>(
-        title: GalleryLocalizations.of(context).settingsTheme,
+        title: RemoteLocalizationsDefault.of(context).settingsTheme,
         selectedOption: options.themeMode,
         optionsMap: LinkedHashMap.of({
           ThemeMode.system: DisplayOption(
-            GalleryLocalizations.of(context).settingsSystemDefault,
+            RemoteLocalizationsDefault.of(context).settingsSystemDefault,
           ),
           ThemeMode.dark: DisplayOption(
-            GalleryLocalizations.of(context).settingsDarkTheme,
+            RemoteLocalizationsDefault.of(context).settingsDarkTheme,
           ),
           ThemeMode.light: DisplayOption(
-            GalleryLocalizations.of(context).settingsLightTheme,
+            RemoteLocalizationsDefault.of(context).settingsLightTheme,
           ),
         }),
         onOptionChanged: (newThemeMode) => GalleryOptions.update(
@@ -273,7 +274,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: ExcludeSemantics(
                   child: Header(
                     color: Theme.of(context).colorScheme.onSurface,
-                    text: GalleryLocalizations.of(context).settingsTitle,
+                    text: RemoteLocalizationsDefault.of(context).settingsTitle,
                   ),
                 ),
               ),
@@ -305,7 +306,7 @@ class SettingsAbout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _SettingsLink(
-      title: GalleryLocalizations.of(context).settingsAbout,
+      title: RemoteLocalizationsDefault.of(context).settingsAbout,
       icon: Icons.info_outline,
       onTap: () {
         about.showAboutDialog(context: context);

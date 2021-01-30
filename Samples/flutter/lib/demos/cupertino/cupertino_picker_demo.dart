@@ -4,6 +4,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:intl/intl.dart';
 
 // BEGIN cupertinoPickersDemo
@@ -62,7 +63,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         );
       },
       child: _Menu(children: [
-        Text(GalleryLocalizations.of(context).demoCupertinoPickerDate),
+        Text(RemoteLocalizationsDefault.of(context).demoCupertinoPickerDate),
         Text(
           DateFormat.yMMMMd().format(date),
           style: const TextStyle(color: CupertinoColors.inactiveGray),
@@ -91,7 +92,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
       },
       child: _Menu(
         children: [
-          Text(GalleryLocalizations.of(context).demoCupertinoPickerTime),
+          Text(RemoteLocalizationsDefault.of(context).demoCupertinoPickerTime),
           Text(
             DateFormat.jm().format(time),
             style: const TextStyle(color: CupertinoColors.inactiveGray),
@@ -121,7 +122,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
       },
       child: _Menu(
         children: [
-          Text(GalleryLocalizations.of(context).demoCupertinoPickerDateTime),
+          Text(RemoteLocalizationsDefault.of(context).demoCupertinoPickerDateTime),
           Flexible(
             child: Text(
               DateFormat.yMMMd().add_jm().format(dateTime),
@@ -152,7 +153,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
       },
       child: _Menu(
         children: [
-          Text(GalleryLocalizations.of(context).demoCupertinoPickerTimer),
+          Text(RemoteLocalizationsDefault.of(context).demoCupertinoPickerTimer),
           Text(
             '${timer.inHours}:'
             '${(timer.inMinutes % 60).toString().padLeft(2, '0')}:'

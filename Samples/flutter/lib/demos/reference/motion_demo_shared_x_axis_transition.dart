@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN sharedXAxisTransitionDemo
 
@@ -26,7 +27,7 @@ class _SharedXAxisTransitionDemoState extends State<SharedXAxisTransitionDemo> {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -95,7 +96,7 @@ class _CoursePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
 
     return ListView(
       children: [
@@ -145,7 +146,7 @@ class _CourseSwitchState extends State<_CourseSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
     final subtitle = _isCourseBundled
         ? localizations.demoSharedXAxisBundledCourseSubtitle
         : localizations.demoSharedXAxisIndividualCourseSubtitle;
@@ -168,7 +169,7 @@ class _SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
 
     return LayoutBuilder(
       builder: (context, constraints) {

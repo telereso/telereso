@@ -7,6 +7,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:gallery/data/gallery_options.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // Common constants between SlowMotionSetting and SettingsListItem.
 final settingItemBorderRadius = BorderRadius.circular(10);
@@ -45,7 +46,7 @@ class SlowMotionSetting extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        GalleryLocalizations.of(context).settingsSlowMotion,
+                        RemoteLocalizationsDefault.of(context).settingsSlowMotion,
                         style: textTheme.subtitle1.apply(
                           color: colorScheme.onSurface,
                         ),

@@ -4,6 +4,7 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -36,9 +37,9 @@ class _AboutDialog extends StatelessWidget {
 
     final name = 'Flutter Gallery'; // Don't need to localize.
     final legalese = '© 2019 The Flutter team'; // Don't need to localize.
-    final repoText = GalleryLocalizations.of(context).githubRepo(name);
+    final repoText = RemoteLocalizationsDefault.of(context).githubRepo(name);
     final seeSource =
-        GalleryLocalizations.of(context).aboutDialogDescription(repoText);
+        RemoteLocalizationsDefault.of(context).aboutDialogDescription(repoText);
     final repoLinkIndex = seeSource.indexOf(repoText);
     final repoLinkIndexEnd = repoLinkIndex + repoText.length;
     final seeSourceFirst = seeSource.substring(0, repoLinkIndex);

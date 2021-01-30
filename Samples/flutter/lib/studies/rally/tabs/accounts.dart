@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/studies/rally/charts/pie_chart.dart';
 import 'package:gallery/studies/rally/data.dart';
 import 'package:gallery/studies/rally/finance.dart';
@@ -21,7 +22,7 @@ class AccountsView extends StatelessWidget {
     return TabWithSidebar(
       restorationId: 'accounts_view',
       mainView: FinancialEntityView(
-        heroLabel: GalleryLocalizations.of(context).rallyAccountTotal,
+        heroLabel: RemoteLocalizationsDefault.of(context).rallyAccountTotal,
         heroAmount: balanceTotal,
         segments: buildSegmentsFromAccountItems(items),
         wholeAmount: balanceTotal,

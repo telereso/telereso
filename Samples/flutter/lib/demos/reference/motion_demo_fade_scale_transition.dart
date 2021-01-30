@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN fadeScaleTransitionDemo
 
@@ -65,7 +66,7 @@ class _FadeScaleTransitionDemoState extends State<FadeScaleTransitionDemo>
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -143,7 +144,7 @@ class _FadeScaleTransitionDemoState extends State<FadeScaleTransitionDemo>
 class _ExampleAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
 
     return AlertDialog(
       content: Text(localizations.demoFadeScaleAlertDialogHeader),

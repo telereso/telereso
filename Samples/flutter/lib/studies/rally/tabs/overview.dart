@@ -10,6 +10,7 @@ import 'package:flutter/rendering.dart';
 import 'package:gallery/data/gallery_options.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/layout/text_scale.dart';
 import 'package:gallery/studies/rally/colors.dart';
@@ -110,12 +111,12 @@ class _OverviewGrid extends StatelessWidget {
           Container(
             width: boxWidth,
             child: _FinancialView(
-              title: GalleryLocalizations.of(context).rallyAccounts,
+              title: RemoteLocalizationsDefault.of(context).rallyAccounts,
               total: sumAccountDataPrimaryAmount(accountDataList),
               financialItemViews:
                   buildAccountDataListViews(accountDataList, context),
               buttonSemanticsLabel:
-                  GalleryLocalizations.of(context).rallySeeAllAccounts,
+                  RemoteLocalizationsDefault.of(context).rallySeeAllAccounts,
               order: 1,
             ),
           ),
@@ -123,21 +124,21 @@ class _OverviewGrid extends StatelessWidget {
           Container(
             width: boxWidth,
             child: _FinancialView(
-              title: GalleryLocalizations.of(context).rallyBills,
+              title: RemoteLocalizationsDefault.of(context).rallyBills,
               total: sumBillDataPrimaryAmount(billDataList),
               financialItemViews: buildBillDataListViews(billDataList, context),
               buttonSemanticsLabel:
-                  GalleryLocalizations.of(context).rallySeeAllBills,
+                  RemoteLocalizationsDefault.of(context).rallySeeAllBills,
               order: 2,
             ),
           ),
           _FinancialView(
-            title: GalleryLocalizations.of(context).rallyBudgets,
+            title: RemoteLocalizationsDefault.of(context).rallyBudgets,
             total: sumBudgetDataPrimaryAmount(budgetDataList),
             financialItemViews:
                 buildBudgetDataListViews(budgetDataList, context),
             buttonSemanticsLabel:
-                GalleryLocalizations.of(context).rallySeeAllBudgets,
+                RemoteLocalizationsDefault.of(context).rallySeeAllBudgets,
             order: 3,
           ),
         ],
@@ -169,12 +170,12 @@ class _AlertsView extends StatelessWidget {
                 alignment: WrapAlignment.spaceBetween,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  Text(GalleryLocalizations.of(context).rallyAlerts),
+                  Text(RemoteLocalizationsDefault.of(context).rallyAlerts),
                   if (!isDesktop)
                     TextButton(
                       style: TextButton.styleFrom(primary: Colors.white),
                       onPressed: () {},
-                      child: Text(GalleryLocalizations.of(context).rallySeeAll),
+                      child: Text(RemoteLocalizationsDefault.of(context).rallySeeAll),
                     ),
                 ],
               ),
@@ -283,7 +284,7 @@ class _FinancialView extends StatelessWidget {
             TextButton(
               style: TextButton.styleFrom(primary: Colors.white),
               child: Text(
-                GalleryLocalizations.of(context).rallySeeAll,
+                RemoteLocalizationsDefault.of(context).rallySeeAll,
                 semanticsLabel: buttonSemanticsLabel,
               ),
               onPressed: () {},

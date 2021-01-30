@@ -49,7 +49,7 @@ class _FlyFormState extends State<FlyForm> with RestorationMixin {
         HeaderFormField(
           index: 0,
           iconData: Icons.person,
-          title: GalleryLocalizations.of(context).craneFormTravelers,
+          title: RemoteLocalizationsDefault.of(context).craneFormTravelers,
           textController: travelerController.value,
         ),
         HeaderFormField(
@@ -61,13 +61,13 @@ class _FlyFormState extends State<FlyForm> with RestorationMixin {
         HeaderFormField(
           index: 2,
           iconData: Icons.airplanemode_active,
-          title: GalleryLocalizations.of(context).craneFormDestination,
+          title: RemoteLocalizationsDefault.of(context).craneFormDestination,
           textController: destinationController.value,
         ),
         HeaderFormField(
           index: 3,
           iconData: Icons.date_range,
-          title: GalleryLocalizations.of(context).craneFormDates,
+          title: RemoteLocalizationsDefault.of(context).craneFormDates,
           textController: dateController.value,
         ),
       ],

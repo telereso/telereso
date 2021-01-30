@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:gallery/data/gallery_options.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/studies/shrine/backdrop.dart';
 import 'package:gallery/studies/shrine/category_menu_page.dart';
@@ -102,7 +103,7 @@ class _ShrineAppState extends State<ShrineApp>
       frontLayer: const ProductPage(),
       backLayer: CategoryMenuPage(onCategoryTap: () => _controller.forward()),
       frontTitle: const Text('SHRINE'),
-      backTitle: Text(GalleryLocalizations.of(context).shrineMenuCaption),
+      backTitle: Text(RemoteLocalizationsDefault.of(context).shrineMenuCaption),
       controller: _controller,
     );
   }

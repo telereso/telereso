@@ -15,6 +15,7 @@ import 'package:gallery/data/demos.dart';
 import 'package:gallery/data/gallery_options.dart';
 import 'package:gallery/feature_discovery/feature_discovery.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/pages/splash.dart';
 import 'package:gallery/themes/gallery_theme_data.dart';
@@ -195,7 +196,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         context: context,
         builder: (context) {
           return SimpleDialog(
-            title: Text(GalleryLocalizations.of(context).demoInvalidURL),
+            title: Text(RemoteLocalizationsDefault.of(context).demoInvalidURL),
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -256,8 +257,8 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         if (_hasOptions)
           IconButton(
             icon: FeatureDiscovery(
-              title: GalleryLocalizations.of(context).demoOptionsFeatureTitle,
-              description: GalleryLocalizations.of(context)
+              title: RemoteLocalizationsDefault.of(context).demoOptionsFeatureTitle,
+              description: RemoteLocalizationsDefault.of(context)
                   .demoOptionsFeatureDescription,
               showOverlay: _showFeatureHighlightForPlatform(context),
               color: colorScheme.primary,
@@ -279,12 +280,12 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
                     : iconColor,
               ),
             ),
-            tooltip: GalleryLocalizations.of(context).demoOptionsTooltip,
+            tooltip: RemoteLocalizationsDefault.of(context).demoOptionsTooltip,
             onPressed: () => _handleTap(_DemoState.options),
           ),
         IconButton(
           icon: const Icon(Icons.info),
-          tooltip: GalleryLocalizations.of(context).demoInfoTooltip,
+          tooltip: RemoteLocalizationsDefault.of(context).demoInfoTooltip,
           color: currentDemoState == _DemoState.info
               ? selectedIconColor
               : iconColor,
@@ -292,7 +293,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         ),
         IconButton(
           icon: const Icon(Icons.code),
-          tooltip: GalleryLocalizations.of(context).demoCodeTooltip,
+          tooltip: RemoteLocalizationsDefault.of(context).demoCodeTooltip,
           color: currentDemoState == _DemoState.code
               ? selectedIconColor
               : iconColor,
@@ -300,14 +301,14 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         ),
         IconButton(
           icon: const Icon(Icons.library_books),
-          tooltip: GalleryLocalizations.of(context).demoDocumentationTooltip,
+          tooltip: RemoteLocalizationsDefault.of(context).demoDocumentationTooltip,
           color: iconColor,
           onPressed: () => _showDocumentation(context),
         ),
         if (isDesktop)
           IconButton(
             icon: const Icon(Icons.fullscreen),
-            tooltip: GalleryLocalizations.of(context).demoFullscreenTooltip,
+            tooltip: RemoteLocalizationsDefault.of(context).demoFullscreenTooltip,
             color: currentDemoState == _DemoState.fullscreen
                 ? selectedIconColor
                 : iconColor,
@@ -567,7 +568,7 @@ class _DemoSectionOptions extends StatelessWidget {
                 end: 24,
               ),
               child: Text(
-                GalleryLocalizations.of(context).demoOptionsTooltip,
+                RemoteLocalizationsDefault.of(context).demoOptionsTooltip,
                 style: textTheme.headline4.apply(
                   color: colorScheme.onSurface,
                   fontSizeDelta:
@@ -777,7 +778,7 @@ class CodeDisplayPage extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            GalleryLocalizations.of(context)
+            RemoteLocalizationsDefault.of(context)
                 .demoCodeViewerCopiedToClipboardMessage,
           ),
         ),
@@ -788,7 +789,7 @@ class CodeDisplayPage extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            GalleryLocalizations.of(context)
+            RemoteLocalizationsDefault.of(context)
                 .demoCodeViewerFailedToCopyToClipboardMessage(exception),
           ),
         ),
@@ -816,7 +817,7 @@ class CodeDisplayPage extends StatelessWidget {
                   .catchError(_showSnackBarOnCopyFailure);
             },
             child: Text(
-              GalleryLocalizations.of(context).demoCodeViewerCopyAll,
+              RemoteLocalizationsDefault.of(context).demoCodeViewerCopyAll,
               style: Theme.of(context).textTheme.button.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,

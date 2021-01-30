@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 enum TabsDemoType {
   scrollable,
@@ -95,7 +96,7 @@ class __TabsScrollableDemoState extends State<_TabsScrollableDemo>
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(GalleryLocalizations.of(context).demoTabsScrollingTitle),
+        title: Text(RemoteLocalizationsDefault.of(context).demoTabsScrollingTitle),
         bottom: TabBar(
           controller: _tabController,
           isScrollable: true,

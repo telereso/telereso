@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:gallery/constants.dart';
 import 'package:gallery/data/gallery_options.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/pages/home.dart';
 import 'package:gallery/pages/settings.dart';
@@ -249,8 +250,8 @@ class _SettingsIcon extends AnimatedWidget {
 
   String _settingsSemanticLabel(bool isOpen, BuildContext context) {
     return isOpen
-        ? GalleryLocalizations.of(context).settingsButtonCloseLabel
-        : GalleryLocalizations.of(context).settingsButtonLabel;
+        ? RemoteLocalizationsDefault.of(context).settingsButtonCloseLabel
+        : RemoteLocalizationsDefault.of(context).settingsButtonLabel;
   }
 
   @override

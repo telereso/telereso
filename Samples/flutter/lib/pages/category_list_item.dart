@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:gallery/data/demos.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/pages/demo.dart';
 
@@ -217,7 +218,7 @@ class _CategoryHeader extends StatelessWidget {
                         padding: const EdgeInsetsDirectional.only(start: 8),
                         child: Text(
                           category.displayTitle(
-                            GalleryLocalizations.of(context),
+                            RemoteLocalizationsDefault.of(context),
                           ),
                           style: Theme.of(context).textTheme.headline5.apply(
                                 color: colorScheme.onSurface,

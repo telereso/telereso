@@ -456,6 +456,14 @@
   "@homeCategoryReference": {
     "description": "Category title on home screen for styles & other demos (for context, the styles demos consist of a color demo and a typography demo)."
   },
+  "homeCategoryMaterial": "MATERIAL",
+  "@homeCategoryMaterial": {
+    "description": "Category title on home screen for material."
+  },
+  "homeCategoryCupertino": "CUPERTINO",
+  "@homeCategoryCupertino": {
+    "description": "Category title on home screen for Cupertino."
+  },
   "demoInvalidURL": "Couldn't display URL:",
   "@demoInvalidURL": {
     "description": "Error message when opening the URL for a demo."

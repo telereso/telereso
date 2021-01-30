@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var carouselHeight = _carouselHeight(.7, context);
     final isDesktop = isDisplayDesktop(context);
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
     final studyDemos = studies(localizations);
     final carouselCards = <Widget>[
       _CarouselCard(
@@ -422,7 +422,7 @@ class _AnimatedHomePageState extends RemoteState<_AnimatedHomePage>
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
     final isTestMode = GalleryOptions.of(context).isTestMode;
     return Stack(
       children: [
@@ -608,7 +608,7 @@ class _DesktopCategoryHeader extends StatelessWidget {
               child: Semantics(
                 header: true,
                 child: Text(
-                  category.displayTitle(GalleryLocalizations.of(context)),
+                  category.displayTitle(RemoteLocalizationsDefault.of(context)),
                   style: Theme.of(context).textTheme.headline5.apply(
                         color: colorScheme.onSurface,
                       ),

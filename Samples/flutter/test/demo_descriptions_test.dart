@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations_en.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gallery/data/demos.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 bool _isUnique(List<String> list) {
   final covered = <String>{};
@@ -30,7 +31,7 @@ void main() {
   });
 
   test('Demo descriptions are unique and correct', () {
-    final allDemos = allGalleryDemos(GalleryLocalizationsEn());
+    final allDemos = allGalleryDemos(RemoteLocalizationsDefault.from(GalleryLocalizationsEn()));
     final allDemoDescriptions = allDemos.map((d) => d.describe).toList();
 
     expect(_isUnique(allDemoDescriptions), true);

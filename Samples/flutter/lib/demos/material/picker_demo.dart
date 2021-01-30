@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:intl/intl.dart';
 
 // BEGIN pickerDemo
@@ -34,11 +35,11 @@ class _PickerDemoState extends State<PickerDemo> {
   String get _title {
     switch (widget.type) {
       case PickerDemoType.date:
-        return GalleryLocalizations.of(context).demoDatePickerTitle;
+        return RemoteLocalizationsDefault.of(context).demoDatePickerTitle;
       case PickerDemoType.time:
-        return GalleryLocalizations.of(context).demoTimePickerTitle;
+        return RemoteLocalizationsDefault.of(context).demoTimePickerTitle;
       case PickerDemoType.range:
-        return GalleryLocalizations.of(context).demoDateRangePickerTitle;
+        return RemoteLocalizationsDefault.of(context).demoDateRangePickerTitle;
         break;
     }
     return '';
@@ -117,7 +118,7 @@ class _PickerDemoState extends State<PickerDemo> {
                   const SizedBox(height: 16),
                   ElevatedButton(
                     child: Text(
-                      GalleryLocalizations.of(context).demoPickersShowPicker,
+                      RemoteLocalizationsDefault.of(context).demoPickersShowPicker,
                     ),
                     onPressed: () {
                       switch (widget.type) {

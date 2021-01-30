@@ -6,6 +6,9 @@ final BasicRemoteLocalizations remote;
 final GalleryLocalizations local;
 RemoteLocalizationsDefault(this.remote, this.local);
 static const delegate = BasicRemoteLocalizationsDelegate();
+static RemoteLocalizationsDefault from(GalleryLocalizations local) {
+return RemoteLocalizationsDefault(BasicRemoteLocalizations(localeName: local.localeName), local);
+}
 static RemoteLocalizationsDefault of(BuildContext context) {
 return RemoteLocalizationsDefault(BasicRemoteLocalizations.of(context), GalleryLocalizations.of(context));
 }
@@ -197,6 +200,10 @@ String get craneDescription =>
 remote?.translateOrDefault('craneDescription', local.craneDescription) ?? local.craneDescription;
 String get homeCategoryReference =>
 remote?.translateOrDefault('homeCategoryReference', local.homeCategoryReference) ?? local.homeCategoryReference;
+String get homeCategoryMaterial =>
+remote?.translateOrDefault('homeCategoryMaterial', local.homeCategoryMaterial) ?? local.homeCategoryMaterial;
+String get homeCategoryCupertino =>
+remote?.translateOrDefault('homeCategoryCupertino', local.homeCategoryCupertino) ?? local.homeCategoryCupertino;
 String get demoInvalidURL =>
 remote?.translateOrDefault('demoInvalidURL', local.demoInvalidURL) ?? local.demoInvalidURL;
 String get demoOptionsTooltip =>

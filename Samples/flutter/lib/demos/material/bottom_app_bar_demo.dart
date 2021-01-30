@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN bottomAppBarDemo
 
@@ -70,30 +71,30 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(GalleryLocalizations.of(context).demoBottomAppBarTitle),
+        title: Text(RemoteLocalizationsDefault.of(context).demoBottomAppBarTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.only(bottom: 88),
         children: [
           SwitchListTile(
             title: Text(
-              GalleryLocalizations.of(context).demoFloatingButtonTitle,
+              RemoteLocalizationsDefault.of(context).demoFloatingButtonTitle,
             ),
             value: _showFab.value,
             onChanged: _onShowFabChanged,
           ),
           SwitchListTile(
-            title: Text(GalleryLocalizations.of(context).bottomAppBarNotch),
+            title: Text(RemoteLocalizationsDefault.of(context).bottomAppBarNotch),
             value: _showNotch.value,
             onChanged: _onShowNotchChanged,
           ),
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Text(GalleryLocalizations.of(context).bottomAppBarPosition),
+            child: Text(RemoteLocalizationsDefault.of(context).bottomAppBarPosition),
           ),
           RadioListTile<int>(
             title: Text(
-              GalleryLocalizations.of(context).bottomAppBarPositionDockedEnd,
+              RemoteLocalizationsDefault.of(context).bottomAppBarPositionDockedEnd,
             ),
             value: 0,
             groupValue: _currentFabLocation.value,
@@ -101,7 +102,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
           ),
           RadioListTile<int>(
             title: Text(
-              GalleryLocalizations.of(context).bottomAppBarPositionDockedCenter,
+              RemoteLocalizationsDefault.of(context).bottomAppBarPositionDockedCenter,
             ),
             value: 1,
             groupValue: _currentFabLocation.value,
@@ -109,7 +110,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
           ),
           RadioListTile<int>(
             title: Text(
-              GalleryLocalizations.of(context).bottomAppBarPositionFloatingEnd,
+              RemoteLocalizationsDefault.of(context).bottomAppBarPositionFloatingEnd,
             ),
             value: 2,
             groupValue: _currentFabLocation.value,
@@ -117,7 +118,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
           ),
           RadioListTile<int>(
             title: Text(
-              GalleryLocalizations.of(context)
+              RemoteLocalizationsDefault.of(context)
                   .bottomAppBarPositionFloatingCenter,
             ),
             value: 3,
@@ -132,7 +133,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo>
                 print('Floating action button pressed');
               },
               child: const Icon(Icons.add),
-              tooltip: GalleryLocalizations.of(context).buttonTextCreate,
+              tooltip: RemoteLocalizationsDefault.of(context).buttonTextCreate,
             )
           : null,
       floatingActionButtonLocation: _fabLocations[_currentFabLocation.value],
@@ -175,7 +176,7 @@ class _DemoBottomAppBar extends StatelessWidget {
             ),
             if (centerLocations.contains(fabLocation)) const Spacer(),
             IconButton(
-              tooltip: GalleryLocalizations.of(context).starterAppTooltipSearch,
+              tooltip: RemoteLocalizationsDefault.of(context).starterAppTooltipSearch,
               icon: const Icon(Icons.search),
               onPressed: () {
                 print('Search button pressed');
@@ -183,7 +184,7 @@ class _DemoBottomAppBar extends StatelessWidget {
             ),
             IconButton(
               tooltip:
-                  GalleryLocalizations.of(context).starterAppTooltipFavorite,
+                  RemoteLocalizationsDefault.of(context).starterAppTooltipFavorite,
               icon: const Icon(Icons.favorite),
               onPressed: () {
                 print('Favorite button pressed');

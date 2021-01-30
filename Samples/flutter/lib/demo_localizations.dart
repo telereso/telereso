@@ -3,7 +3,7 @@ import 'package:telereso/remote_localization.dart';
 
 
 class DemoLocalizations extends BasicRemoteLocalizations {
-  DemoLocalizations(this.locale) : super(locale);
+  DemoLocalizations(this.locale) : super(locale: locale);
 
   @override
   final Locale locale;

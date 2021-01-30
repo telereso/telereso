@@ -72,12 +72,12 @@ enum GalleryDemoCategory {
 extension GalleryDemoExtension on GalleryDemoCategory {
   String get name => describeEnum(this);
 
-  String displayTitle(GalleryLocalizations localizations) {
+  String displayTitle(RemoteLocalizationsDefault localizations) {
     switch (this) {
       case GalleryDemoCategory.material:
-        return 'MATERIAL';
+        return localizations.homeCategoryMaterial;
       case GalleryDemoCategory.cupertino:
-        return 'CUPERTINO';
+        return localizations.homeCategoryCupertino;
       case GalleryDemoCategory.other:
         return localizations.homeCategoryReference;
       case GalleryDemoCategory.study:
@@ -131,18 +131,18 @@ class GalleryDemoConfiguration {
   final CodeDisplayer code;
 }
 
-List<GalleryDemo> allGalleryDemos(GalleryLocalizations localizations) =>
+List<GalleryDemo> allGalleryDemos(RemoteLocalizationsDefault localizations) =>
     studies(localizations).values.toList() +
     materialDemos(localizations) +
     cupertinoDemos(localizations) +
     otherDemos(localizations);
 
 List<String> allGalleryDemoDescriptions() =>
-    allGalleryDemos(GalleryLocalizationsEn())
+    allGalleryDemos(RemoteLocalizationsDefault.from(GalleryLocalizationsEn()))
         .map((demo) => demo.describe)
         .toList();
 
-Map<String, GalleryDemo> studies(GalleryLocalizations localizations) {
+Map<String, GalleryDemo> studies(RemoteLocalizationsDefault localizations) {
   return <String, GalleryDemo>{
     'shrine': GalleryDemo(
       title: 'Shrine',
@@ -183,7 +183,7 @@ Map<String, GalleryDemo> studies(GalleryLocalizations localizations) {
   };
 }
 
-List<GalleryDemo> materialDemos(GalleryLocalizations localizations) {
+List<GalleryDemo> materialDemos(RemoteLocalizationsDefault localizations) {
   return [
     GalleryDemo(
       title: localizations.demoAppBarTitle,
@@ -781,7 +781,7 @@ List<GalleryDemo> materialDemos(GalleryLocalizations localizations) {
   ];
 }
 
-List<GalleryDemo> cupertinoDemos(GalleryLocalizations localizations) {
+List<GalleryDemo> cupertinoDemos(RemoteLocalizationsDefault localizations) {
   return [
     GalleryDemo(
       title: localizations.demoCupertinoActivityIndicatorTitle,
@@ -1027,7 +1027,7 @@ List<GalleryDemo> cupertinoDemos(GalleryLocalizations localizations) {
   ];
 }
 
-List<GalleryDemo> otherDemos(GalleryLocalizations localizations) {
+List<GalleryDemo> otherDemos(RemoteLocalizationsDefault localizations) {
   return [
     GalleryDemo(
       title: localizations.demoMotionTitle,
@@ -1137,7 +1137,7 @@ List<GalleryDemo> otherDemos(GalleryLocalizations localizations) {
 }
 
 Map<String, GalleryDemo> slugToDemo(BuildContext context) {
-  final localizations = GalleryLocalizations.of(context);
+  final localizations = RemoteLocalizationsDefault.of(context);
   return LinkedHashMap<String, GalleryDemo>.fromIterable(
     allGalleryDemos(localizations),
     key: (dynamic demo) => demo.slug as String,

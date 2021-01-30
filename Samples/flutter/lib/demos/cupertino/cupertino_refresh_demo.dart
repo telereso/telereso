@@ -7,6 +7,7 @@ import 'dart:math' show Random;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN cupertinoRefreshDemo
 
@@ -44,7 +45,7 @@ class _CupertinoRefreshControlDemoState
           CupertinoSliverNavigationBar(
             automaticallyImplyLeading: false,
             largeTitle: Text(
-              GalleryLocalizations.of(context).demoCupertinoPullToRefreshTitle,
+              RemoteLocalizationsDefault.of(context).demoCupertinoPullToRefreshTitle,
             ),
           ),
           CupertinoSliverRefreshControl(
@@ -60,7 +61,7 @@ class _CupertinoRefreshControlDemoState
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                final title = GalleryLocalizations.of(context)
+                final title = RemoteLocalizationsDefault.of(context)
                     .starterAppDrawerItem(randomList[index]);
                 return ListTile(title: Text(title));
               },

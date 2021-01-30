@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN navDrawerDemo
 
@@ -15,7 +16,7 @@ class NavDrawerDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var localization = GalleryLocalizations.of(context);
+    var localization = RemoteLocalizationsDefault.of(context);
     final drawerHeader = UserAccountsDrawerHeader(
       accountName: Text(
         localization.demoNavigationDrawerUserName,

@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN listDemo
 
@@ -23,7 +24,7 @@ class ListDemo extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(GalleryLocalizations.of(context).demoListsTitle),
+        title: Text(RemoteLocalizationsDefault.of(context).demoListsTitle),
       ),
       body: Scrollbar(
         child: ListView(
@@ -36,10 +37,10 @@ class ListDemo extends StatelessWidget {
                   child: CircleAvatar(child: Text('$index')),
                 ),
                 title: Text(
-                  GalleryLocalizations.of(context).demoBottomSheetItem(index),
+                  RemoteLocalizationsDefault.of(context).demoBottomSheetItem(index),
                 ),
                 subtitle: type == ListDemoType.twoLine
-                    ? Text(GalleryLocalizations.of(context).demoListsSecondary)
+                    ? Text(RemoteLocalizationsDefault.of(context).demoListsSecondary)
                     : null,
               ),
           ],
