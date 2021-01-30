@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 enum ButtonDemoType {
   text,
@@ -24,7 +25,7 @@ class ButtonDemo extends StatelessWidget {
       case ButtonDemoType.text:
         return GalleryLocalizations.of(context).demoTextButtonTitle;
       case ButtonDemoType.elevated:
-        return GalleryLocalizations.of(context).demoElevatedButtonTitle;
+        return RemoteLocalizationsDefault.of(context).demoElevatedButtonTitle;
       case ButtonDemoType.outlined:
         return GalleryLocalizations.of(context).demoOutlinedButtonTitle;
       case ButtonDemoType.toggle:

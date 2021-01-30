@@ -1,6 +1,6 @@
 name: telereso_generator
 version: 0.0.1
-author: Swav Kulinski<swav.kulinski@gmail.com>
+author: Ahmed Alnaami
 repository: 
 environment: 
   sdk: '>=2.0.0 <3.0.0'

@@ -56,6 +56,7 @@ import 'package:gallery/demos/reference/typography_demo.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations_en.dart'
     show GalleryLocalizationsEn;
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 const _docsBaseUrl = 'https://api.flutter.dev/flutter';
 const _docsAnimationsUrl =

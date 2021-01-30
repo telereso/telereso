@@ -5,6 +5,7 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN cupertinoButtonDemo
 
@@ -17,7 +18,7 @@ class CupertinoButtonDemo extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         automaticallyImplyLeading: false,
         middle:
-            Text(GalleryLocalizations.of(context).demoCupertinoButtonsTitle),
+            Text(RemoteLocalizationsDefault.of(context).demoCupertinoButtonsTitle),
       ),
       child: Center(
         child: Column(
@@ -25,14 +26,14 @@ class CupertinoButtonDemo extends StatelessWidget {
           children: [
             CupertinoButton(
               child: Text(
-                GalleryLocalizations.of(context).cupertinoButton,
+                RemoteLocalizationsDefault.of(context).cupertinoButton,
               ),
               onPressed: () {},
             ),
             const SizedBox(height: 16),
             CupertinoButton.filled(
               child: Text(
-                GalleryLocalizations.of(context).cupertinoButtonWithBackground,
+                RemoteLocalizationsDefault.of(context).cupertinoButtonWithBackground,
               ),
               onPressed: () {},
             ),

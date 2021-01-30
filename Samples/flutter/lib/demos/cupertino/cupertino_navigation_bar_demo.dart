@@ -5,6 +5,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN cupertinoNavigationBarDemo
 
@@ -23,7 +24,7 @@ class CupertinoNavigationBarDemo extends StatelessWidget {
         switch (settings.name) {
           case CupertinoNavigationBarDemo.homeRoute:
             return _NoAnimationCupertinoPageRoute<void>(
-              title: GalleryLocalizations.of(context)
+              title: RemoteLocalizationsDefault.of(context)
                   .demoCupertinoNavigationBarTitle,
               settings: settings,
               builder: (context) => _FirstPage(),
@@ -60,7 +61,7 @@ class _FirstPage extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  final title = GalleryLocalizations.of(context)
+                  final title = RemoteLocalizationsDefault.of(context)
                       .starterAppDrawerItem(index + 1);
                   return ListTile(
                     onTap: () {

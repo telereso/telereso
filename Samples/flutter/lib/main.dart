@@ -8,6 +8,7 @@ import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:gallery/demo_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gallery/constants.dart';
@@ -15,12 +16,14 @@ import 'package:gallery/data/gallery_options.dart';
 import 'package:gallery/pages/backdrop.dart';
 import 'package:gallery/pages/splash.dart';
 import 'package:gallery/themes/gallery_theme_data.dart';
+import 'package:telereso/telereso.dart';
 
 
 void main() {
   // GalleryLocalizationsAf();
   //  GalleryLocalizations(new L).homeCategoryReference.getRemote()
   GoogleFonts.config.allowRuntimeFetching = false;
+  Telereso.instance.init();
   runApp(const GalleryApp());
 }
 
@@ -60,7 +63,8 @@ class GalleryApp extends StatelessWidget {
               platform: GalleryOptions.of(context).platform,
             ),
             localizationsDelegates: const [
-              DemoLocalizations.delegate,
+              // DemoLocalizations.delegate,
+              RemoteLocalizationsDefault.delegate,
               ...GalleryLocalizations.localizationsDelegates,
               LocaleNamesLocalizationsDelegate()
             ],

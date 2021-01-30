@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -62,19 +63,19 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                                 icon: const Icon(Icons.keyboard_arrow_down),
                                 onPressed: () =>
                                     ExpandingBottomSheet.of(context).close(),
-                                tooltip: GalleryLocalizations.of(context)
+                                tooltip: RemoteLocalizationsDefault.of(context)
                                     .shrineTooltipCloseCart,
                               ),
                             ),
                             Text(
-                              GalleryLocalizations.of(context)
+                              RemoteLocalizationsDefault.of(context)
                                   .shrineCartPageCaption,
                               style: localTheme.textTheme.subtitle1
                                   .copyWith(fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(width: 16),
                             Text(
-                              GalleryLocalizations.of(context)
+                              RemoteLocalizationsDefault.of(context)
                                   .shrineCartItemCount(
                                 model.totalCartQuantity,
                               ),

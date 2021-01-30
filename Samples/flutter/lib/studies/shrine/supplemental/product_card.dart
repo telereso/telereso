@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -82,7 +83,7 @@ Widget _buildProductCard({
     builder: (context, child, model) {
       return Semantics(
         hint:
-            GalleryLocalizations.of(context).shrineScreenReaderProductAddToCart,
+        RemoteLocalizationsDefault.of(context).shrineScreenReaderProductAddToCart,
         child: GestureDetector(
           onTap: () {
             model.addProductToCart(product.id);

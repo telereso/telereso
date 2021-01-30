@@ -28,6 +28,8 @@ import 'package:gallery/studies/reply/app.dart';
 import 'package:gallery/studies/shrine/app.dart';
 import 'package:gallery/studies/shrine/colors.dart';
 import 'package:gallery/studies/starter/app.dart';
+import 'package:telereso/telereso.dart';
+import 'package:telereso/remote_state.dart';
 
 import '../demo_localizations.dart';
 
@@ -270,9 +272,11 @@ class _GalleryHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Header(
       color: Theme.of(context).colorScheme.primaryVariant,
-      text: DemoLocalizations.of(context).translateOrDefault(
-          'homeHeaderGallery',
-          GalleryLocalizations.of(context).homeHeaderGallery),
+      text: RemoteLocalizationsDefault.of(context).homeHeaderGallery
+      // DemoLocalizations.of(context).translateOrDefault(
+      //     'homeHeaderGallery',
+      //     RemoteLocalizationsDefault.of(context).homeHeaderGallery)
+      ,
     );
   }
 }
@@ -284,7 +288,7 @@ class _CategoriesHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Header(
       color: Theme.of(context).colorScheme.primary,
-      text: GalleryLocalizations.of(context).homeHeaderCategories,
+      text: RemoteLocalizationsDefault.of(context).homeHeaderCategories,
     );
   }
 }
@@ -330,7 +334,7 @@ class _AnimatedHomePage extends StatefulWidget {
   _AnimatedHomePageState createState() => _AnimatedHomePageState();
 }
 
-class _AnimatedHomePageState extends State<_AnimatedHomePage>
+class _AnimatedHomePageState extends RemoteState<_AnimatedHomePage>
     with RestorationMixin, SingleTickerProviderStateMixin {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
@@ -366,6 +370,8 @@ class _AnimatedHomePageState extends State<_AnimatedHomePage>
     registerForRestoration(_isOtherListExpanded, 'other_list');
   }
 
+
+
   @override
   void initState() {
     super.initState();
@@ -393,17 +399,14 @@ class _AnimatedHomePageState extends State<_AnimatedHomePage>
 
     _firebaseMessaging.configure(
       onMessage: (message) async {
-        if (await DemoLocalizations.of(context).shouldRefreshResources(message)) {
-          setState(() {});
-          return;
-        }
+        if (await Telereso.instance.handleRemoteMessage(message)) return;
         // put your normal logic
       },
       onBackgroundMessage: myBackgroundMessageHandler,
       onLaunch: (message) async {},
       onResume: (message) async {},
     );
-    _firebaseMessaging.subscribeToTopic('TELERESO_PUSH_RC');
+    Telereso.instance.subscribeToChanges();
   }
 
   @override
@@ -1197,7 +1200,7 @@ class _StudyWrapperState extends State<StudyWrapper> {
                 padding: const EdgeInsets.all(16),
                 child: Semantics(
                   sortKey: const OrdinalSortKey(0),
-                  label: GalleryLocalizations.of(context).backToGallery,
+                  label: RemoteLocalizationsDefault.of(context).backToGallery,
                   button: true,
                   enabled: true,
                   excludeSemantics: true,

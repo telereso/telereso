@@ -5,6 +5,7 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN cupertinoNavigationDemo
 
@@ -22,15 +23,15 @@ class CupertinoTabBarDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     final _tabInfo = [
       _TabInfo(
-        GalleryLocalizations.of(context).cupertinoTabBarHomeTab,
+        RemoteLocalizationsDefault.of(context).cupertinoTabBarHomeTab,
         CupertinoIcons.home,
       ),
       _TabInfo(
-        GalleryLocalizations.of(context).cupertinoTabBarChatTab,
+        RemoteLocalizationsDefault.of(context).cupertinoTabBarChatTab,
         CupertinoIcons.conversation_bubble,
       ),
       _TabInfo(
-        GalleryLocalizations.of(context).cupertinoTabBarProfileTab,
+        RemoteLocalizationsDefault.of(context).cupertinoTabBarProfileTab,
         CupertinoIcons.profile_circled,
       ),
     ];

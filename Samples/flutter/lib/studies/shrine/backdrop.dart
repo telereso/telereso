@@ -5,6 +5,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/studies/shrine/page_status.dart';
 import 'package:meta/meta.dart';
 
@@ -101,9 +102,9 @@ class _BackdropTitle extends AnimatedWidget {
               );
 
     final menuButtonTooltip = animation.isCompleted
-        ? GalleryLocalizations.of(context).shrineTooltipOpenMenu
+        ? RemoteLocalizationsDefault.of(context).shrineTooltipOpenMenu
         : animation.isDismissed
-            ? GalleryLocalizations.of(context).shrineTooltipCloseMenu
+            ? RemoteLocalizationsDefault.of(context).shrineTooltipCloseMenu
             : null;
 
     return DefaultTextStyle(
@@ -349,7 +350,7 @@ class _BackdropState extends State<Backdrop>
         ),
         IconButton(
           icon: const Icon(Icons.tune),
-          tooltip: GalleryLocalizations.of(context).shrineTooltipSettings,
+          tooltip: RemoteLocalizationsDefault.of(context).shrineTooltipSettings,
           onPressed: () {},
         ),
       ],

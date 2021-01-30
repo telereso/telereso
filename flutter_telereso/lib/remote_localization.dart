@@ -4,43 +4,57 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sprintf/sprintf.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:telereso/telereso.dart';
 
-const _STRINGS = "strings";
-const _DRAWABLE = "drawable";
+import 'src/constants.dart';
 
-abstract class RemoteLocalizations {
-  final Locale locale;
+class BasicRemoteLocalizations {
   RemoteConfig _remoteConfig;
+  final Locale locale;
   Map<String, Map<String, dynamic>> _stringsMap = Map();
 
-  RemoteLocalizations(this.locale);
-  
+  BasicRemoteLocalizations(this.locale) {
+    Telereso.instance.addRemoteChangeListener(() {
+      load();
+    });
+  }
+
   // Helper method to keep the code in the widgets concise
   // Localizations are accessed using an InheritedWidget "of" syntax
-  static RemoteLocalizations of(BuildContext context) {
-    return Localizations.of<RemoteLocalizations>(context, RemoteLocalizations);
+  static BasicRemoteLocalizations of(BuildContext context) {
+    return Localizations.of<BasicRemoteLocalizations>(
+        context, BasicRemoteLocalizations);
   }
 
   Future<bool> load() async {
-    _remoteConfig = await _setupRemoteConfig();
-    await _remoteConfig.fetch(
-        expiration: true ? Duration(seconds: 1) : Duration(hours: 12));
-    await _remoteConfig.activateFetched();
+    _remoteConfig = await Telereso.instance.remoteConfig;
 
-    // Load the language JSON file from the "lang" folder
-    String defaultJson = _remoteConfig.getString(_STRINGS);
-    if (defaultJson.isEmpty) {
-      defaultJson = "{}";
+    final localId = _getStringsId(locale);
+
+    if (_remoteConfig == null) {
+      print("$TAG_STRINGS: remoteConfig was null");
+      _stringsMap[STRINGS] = {};
+      _stringsMap[localId] = {};
     }
 
-    _stringsMap[_STRINGS] = json.decode(defaultJson);
+    // Load the language JSON file from the "lang" folder
+    String defaultJson = _remoteConfig.getString(STRINGS);
+    if (defaultJson.isEmpty) {
+      print("$TAG_STRINGS: default $STRINGS was empty");
+      defaultJson = "{}";
+    } else {
+      print("$TAG_STRINGS: default $STRINGS initialized");
+    }
 
-    var localId = _getStringsId(locale);
+    _stringsMap[STRINGS] = json.decode(defaultJson);
 
     String localJson = _remoteConfig.getString(localId);
 
     if (localJson.isEmpty) {
+      print("$TAG_STRINGS: local $localId was empty");
       localJson = "{}";
+    } else {
+      print("$TAG_STRINGS: local $localId initialized");
     }
     _stringsMap[localId] = json.decode(localJson);
 
@@ -48,14 +62,17 @@ abstract class RemoteLocalizations {
   }
 
   String getRemoteValue(String key) {
-    var value = _stringsMap[_getStringsId(locale)][key];
+    final localId = _getStringsId(locale);
+    var value = _stringsMap[localId][key];
 
     if (value == null || value.isEmpty) {
+      print("$TAG_STRINGS: $key not found in $localId");
       //   recordException(
       //       Exception("no translation for $key in ${locale.languageCode}"));
-      value = _stringsMap[_STRINGS][key];
+      value = _stringsMap[STRINGS][key];
     }
     if (value == null || value.isEmpty) {
+      print("$TAG_STRINGS: $key not found in $STRINGS");
       // recordException(
       //     Exception("no translation for $key at defualt $defaultLocal}"));
       return null;
@@ -72,6 +89,7 @@ abstract class RemoteLocalizations {
       return null;
     }
 
+    print("$TAG_STRINGS: key $key value: $value");
     if (args == null) {
       return value;
     }
@@ -82,33 +100,43 @@ abstract class RemoteLocalizations {
     var value = getRemoteValue(key);
 
     if (value == null || value.isEmpty) {
+      print("$TAG_STRINGS: $key will be using default $def");
       value = def;
     }
 
+    print("$TAG_STRINGS: key $key value: $value default: $def");
     if (args == null) {
       return value;
     }
     return sprintf(value, args);
   }
 
-  Future<RemoteConfig> _setupRemoteConfig() async {
-    final RemoteConfig remoteConfig = await RemoteConfig.instance;
-    // Allow a fetch every millisecond. Default is 12 hours.
-    remoteConfig.setConfigSettings(RemoteConfigSettings());
-    // remoteConfig.setDefaults(<String, String>{
-    //   'strings': '',
-    //   'drawable': '',
-    // });
-    return remoteConfig;
-  }
-
   String _getStringsId(Locale locale) {
-    return "${_STRINGS}_${locale.languageCode}";
+    return "${STRINGS}_${locale.languageCode}";
   }
 
   String _getDrawableId(Locale locale) {
-    return "${_DRAWABLE}_${locale.languageCode}";
+    return "${DRAWABLE}_${locale.languageCode}";
   }
+}
+
+class BasicRemoteLocalizationsDelegate
+    extends LocalizationsDelegate<BasicRemoteLocalizations> {
+  const BasicRemoteLocalizationsDelegate();
+
+  @override
+  bool isSupported(Locale locale) =>
+      Telereso.instance.supportedLocals.contains(locale.languageCode);
+
+  @override
+  Future<BasicRemoteLocalizations> load(Locale locale) async {
+    var localizations = BasicRemoteLocalizations(locale);
+    await localizations.load();
+    return localizations;
+  }
+
+  @override
+  bool shouldReload(BasicRemoteLocalizationsDelegate old) => false;
 }
 
 extension DefaultMap<K, V> on Map<K, V> {

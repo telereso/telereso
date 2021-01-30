@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/studies/crane/backlayer.dart';
 import 'package:gallery/studies/crane/header_form.dart';
 
@@ -54,7 +55,7 @@ class _FlyFormState extends State<FlyForm> with RestorationMixin {
         HeaderFormField(
           index: 1,
           iconData: Icons.place,
-          title: GalleryLocalizations.of(context).craneFormOrigin,
+          title: RemoteLocalizationsDefault.of(context).craneFormOrigin,
           textController: countryDestinationController.value,
         ),
         HeaderFormField(

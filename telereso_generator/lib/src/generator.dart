@@ -5,7 +5,7 @@ import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/dart/element/visitor.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:telereso/telereso.dart';
+import 'package:telereso/telereso_annotations.dart';
 
 
 class RemoteLocalizationGenerator extends GeneratorForAnnotation<RemoteLocal> {

@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:gallery/data/gallery_options.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 
 // BEGIN cupertinoAlertDemo
 
@@ -35,17 +36,17 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo> {
   String _title(BuildContext context) {
     switch (widget.type) {
       case AlertDemoType.alert:
-        return GalleryLocalizations.of(context).demoCupertinoAlertTitle;
+        return RemoteLocalizationsDefault.of(context).demoCupertinoAlertTitle;
       case AlertDemoType.alertTitle:
-        return GalleryLocalizations.of(context)
+        return RemoteLocalizationsDefault.of(context)
             .demoCupertinoAlertWithTitleTitle;
       case AlertDemoType.alertButtons:
-        return GalleryLocalizations.of(context).demoCupertinoAlertButtonsTitle;
+        return RemoteLocalizationsDefault.of(context).demoCupertinoAlertButtonsTitle;
       case AlertDemoType.alertButtonsOnly:
-        return GalleryLocalizations.of(context)
+        return RemoteLocalizationsDefault.of(context)
             .demoCupertinoAlertButtonsOnlyTitle;
       case AlertDemoType.actionSheet:
-        return GalleryLocalizations.of(context).demoCupertinoActionSheetTitle;
+        return RemoteLocalizationsDefault.of(context).demoCupertinoActionSheetTitle;
     }
     return '';
   }
@@ -90,20 +91,20 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo> {
         actions: [
           CupertinoDialogAction(
             child: Text(
-              GalleryLocalizations.of(context).cupertinoAlertDiscard,
+              RemoteLocalizationsDefault.of(context).cupertinoAlertDiscard,
             ),
             isDestructiveAction: true,
             onPressed: () => Navigator.of(context, rootNavigator: true).pop(
-              GalleryLocalizations.of(context).cupertinoAlertDiscard,
+              RemoteLocalizationsDefault.of(context).cupertinoAlertDiscard,
             ),
           ),
           CupertinoDialogAction(
             child: Text(
-              GalleryLocalizations.of(context).cupertinoAlertCancel,
+              RemoteLocalizationsDefault.of(context).cupertinoAlertCancel,
             ),
             isDefaultAction: true,
             onPressed: () => Navigator.of(context, rootNavigator: true).pop(
-              GalleryLocalizations.of(context).cupertinoAlertCancel,
+              RemoteLocalizationsDefault.of(context).cupertinoAlertCancel,
             ),
           ),
         ],
@@ -116,10 +117,10 @@ class _CupertinoAlertDemoState extends State<CupertinoAlertDemo> {
       context: context,
       child: CupertinoAlertDialog(
         title: Text(
-          GalleryLocalizations.of(context).cupertinoAlertLocationTitle,
+          RemoteLocalizationsDefault.of(context).cupertinoAlertLocationTitle,
         ),
         content: Text(
-          GalleryLocalizations.of(context).cupertinoAlertLocationDescription,
+          RemoteLocalizationsDefault.of(context).cupertinoAlertLocationDescription,
         ),
         actions: [
           CupertinoDialogAction(

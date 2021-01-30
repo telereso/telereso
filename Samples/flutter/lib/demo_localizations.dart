@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:telereso/remote_localization.dart';
-import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 
 
-class DemoLocalizations extends RemoteLocalizations {
+class DemoLocalizations extends BasicRemoteLocalizations {
   DemoLocalizations(this.locale) : super(locale);
 
   @override
@@ -36,18 +34,6 @@ class DemoLocalizations extends RemoteLocalizations {
     return super.translate(key, args) ??
         _localizedValues[locale.languageCode][key] ??
         '';
-  }
-
-  Future<bool> shouldRefreshResources(Map<String, dynamic> message) async {
-    if (message != null &&
-        message.isNotEmpty &&
-        message.containsKey('data') &&
-        message['data']['TELERESO_CONFIG_STATE'] != null) {
-      await load();
-      return true;
-    }
-
-    return false;
   }
 }
 

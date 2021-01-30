@@ -7,6 +7,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:gallery/data/gallery_options.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/layout/image_placeholder.dart';
 import 'package:gallery/layout/letter_spacing.dart';
@@ -124,7 +125,7 @@ class _UsernameTextField extends StatelessWidget {
           cursorColor: colorScheme.onSurface,
           decoration: InputDecoration(
             labelText:
-                GalleryLocalizations.of(context).shrineLoginUsernameLabel,
+            RemoteLocalizationsDefault.of(context).shrineLoginUsernameLabel,
             labelStyle: TextStyle(
                 letterSpacing: letterSpacingOrNone(mediumLetterSpacing)),
           ),
@@ -150,7 +151,7 @@ class _PasswordTextField extends StatelessWidget {
           obscureText: true,
           decoration: InputDecoration(
             labelText:
-                GalleryLocalizations.of(context).shrineLoginPasswordLabel,
+            RemoteLocalizationsDefault.of(context).shrineLoginPasswordLabel,
             labelStyle: TextStyle(
                 letterSpacing: letterSpacingOrNone(mediumLetterSpacing)),
           ),
@@ -187,7 +188,7 @@ class _CancelAndNextButtons extends StatelessWidget {
               child: Padding(
                 padding: buttonTextPadding,
                 child: Text(
-                  GalleryLocalizations.of(context).shrineCancelButtonCaption,
+                  RemoteLocalizationsDefault.of(context).shrineCancelButtonCaption,
                   style: TextStyle(color: colorScheme.onSurface),
                 ),
               ),
@@ -209,7 +210,7 @@ class _CancelAndNextButtons extends StatelessWidget {
               child: Padding(
                 padding: buttonTextPadding,
                 child: Text(
-                  GalleryLocalizations.of(context).shrineNextButtonCaption,
+                  RemoteLocalizationsDefault.of(context).shrineNextButtonCaption,
                   style: TextStyle(
                       letterSpacing: letterSpacingOrNone(largeLetterSpacing)),
                 ),

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:gallery/data/gallery_options.dart';
+import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/studies/reply/app.dart';
 import 'package:gallery/studies/reply/bottom_drawer.dart';
@@ -47,7 +48,7 @@ class _AdaptiveNavState extends State<AdaptiveNav> {
   Widget build(BuildContext context) {
     final isDesktop = isDisplayDesktop(context);
     final isTablet = isDisplaySmallDesktop(context);
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = RemoteLocalizationsDefault.of(context);
     final _navigationDestinations = <_Destination>[
       _Destination(
         type: MailboxPageType.inbox,

@@ -2,1548 +2,1549 @@ import 'package:flutter/widgets.dart';
 import 'package:telereso/remote_localization.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 class RemoteLocalizationsDefault {
-final RemoteLocalizations remote;
+final BasicRemoteLocalizations remote;
 final GalleryLocalizations local;
 RemoteLocalizationsDefault(this.remote, this.local);
+static const delegate = BasicRemoteLocalizationsDelegate();
 static RemoteLocalizationsDefault of(BuildContext context) {
-return RemoteLocalizationsDefault(RemoteLocalizations.of(context), GalleryLocalizations.of(context));
+return RemoteLocalizationsDefault(BasicRemoteLocalizations.of(context), GalleryLocalizations.of(context));
 }
-String githubRepo(Object repoName){return remote.translateOrDefault('githubRepo', local.githubRepo(repoName));
+String githubRepo(Object repoName){return remote?.translateOrDefault('githubRepo', local.githubRepo(repoName)) ?? local.githubRepo(repoName);
 }
-String aboutDialogDescription(Object repoLink){return remote.translateOrDefault('aboutDialogDescription', local.aboutDialogDescription(repoLink));
+String aboutDialogDescription(Object repoLink){return remote?.translateOrDefault('aboutDialogDescription', local.aboutDialogDescription(repoLink)) ?? local.aboutDialogDescription(repoLink);
 }
 String get signIn =>
-remote.translateOrDefault('signIn', local.signIn);
+remote?.translateOrDefault('signIn', local.signIn) ?? local.signIn;
 String get bannerDemoText =>
-remote.translateOrDefault('bannerDemoText', local.bannerDemoText);
+remote?.translateOrDefault('bannerDemoText', local.bannerDemoText) ?? local.bannerDemoText;
 String get bannerDemoResetText =>
-remote.translateOrDefault('bannerDemoResetText', local.bannerDemoResetText);
+remote?.translateOrDefault('bannerDemoResetText', local.bannerDemoResetText) ?? local.bannerDemoResetText;
 String get bannerDemoMultipleText =>
-remote.translateOrDefault('bannerDemoMultipleText', local.bannerDemoMultipleText);
+remote?.translateOrDefault('bannerDemoMultipleText', local.bannerDemoMultipleText) ?? local.bannerDemoMultipleText;
 String get bannerDemoLeadingText =>
-remote.translateOrDefault('bannerDemoLeadingText', local.bannerDemoLeadingText);
+remote?.translateOrDefault('bannerDemoLeadingText', local.bannerDemoLeadingText) ?? local.bannerDemoLeadingText;
 String get dismiss =>
-remote.translateOrDefault('dismiss', local.dismiss);
+remote?.translateOrDefault('dismiss', local.dismiss) ?? local.dismiss;
 String get backToGallery =>
-remote.translateOrDefault('backToGallery', local.backToGallery);
+remote?.translateOrDefault('backToGallery', local.backToGallery) ?? local.backToGallery;
 String get cardsDemoTappable =>
-remote.translateOrDefault('cardsDemoTappable', local.cardsDemoTappable);
+remote?.translateOrDefault('cardsDemoTappable', local.cardsDemoTappable) ?? local.cardsDemoTappable;
 String get cardsDemoSelectable =>
-remote.translateOrDefault('cardsDemoSelectable', local.cardsDemoSelectable);
+remote?.translateOrDefault('cardsDemoSelectable', local.cardsDemoSelectable) ?? local.cardsDemoSelectable;
 String get cardsDemoExplore =>
-remote.translateOrDefault('cardsDemoExplore', local.cardsDemoExplore);
-String cardsDemoExploreSemantics(Object destinationName){return remote.translateOrDefault('cardsDemoExploreSemantics', local.cardsDemoExploreSemantics(destinationName));
+remote?.translateOrDefault('cardsDemoExplore', local.cardsDemoExplore) ?? local.cardsDemoExplore;
+String cardsDemoExploreSemantics(Object destinationName){return remote?.translateOrDefault('cardsDemoExploreSemantics', local.cardsDemoExploreSemantics(destinationName)) ?? local.cardsDemoExploreSemantics(destinationName);
 }
-String cardsDemoShareSemantics(Object destinationName){return remote.translateOrDefault('cardsDemoShareSemantics', local.cardsDemoShareSemantics(destinationName));
+String cardsDemoShareSemantics(Object destinationName){return remote?.translateOrDefault('cardsDemoShareSemantics', local.cardsDemoShareSemantics(destinationName)) ?? local.cardsDemoShareSemantics(destinationName);
 }
 String get cardsDemoTravelDestinationTitle1 =>
-remote.translateOrDefault('cardsDemoTravelDestinationTitle1', local.cardsDemoTravelDestinationTitle1);
+remote?.translateOrDefault('cardsDemoTravelDestinationTitle1', local.cardsDemoTravelDestinationTitle1) ?? local.cardsDemoTravelDestinationTitle1;
 String get cardsDemoTravelDestinationDescription1 =>
-remote.translateOrDefault('cardsDemoTravelDestinationDescription1', local.cardsDemoTravelDestinationDescription1);
+remote?.translateOrDefault('cardsDemoTravelDestinationDescription1', local.cardsDemoTravelDestinationDescription1) ?? local.cardsDemoTravelDestinationDescription1;
 String get cardsDemoTravelDestinationCity1 =>
-remote.translateOrDefault('cardsDemoTravelDestinationCity1', local.cardsDemoTravelDestinationCity1);
+remote?.translateOrDefault('cardsDemoTravelDestinationCity1', local.cardsDemoTravelDestinationCity1) ?? local.cardsDemoTravelDestinationCity1;
 String get cardsDemoTravelDestinationLocation1 =>
-remote.translateOrDefault('cardsDemoTravelDestinationLocation1', local.cardsDemoTravelDestinationLocation1);
+remote?.translateOrDefault('cardsDemoTravelDestinationLocation1', local.cardsDemoTravelDestinationLocation1) ?? local.cardsDemoTravelDestinationLocation1;
 String get cardsDemoTravelDestinationTitle2 =>
-remote.translateOrDefault('cardsDemoTravelDestinationTitle2', local.cardsDemoTravelDestinationTitle2);
+remote?.translateOrDefault('cardsDemoTravelDestinationTitle2', local.cardsDemoTravelDestinationTitle2) ?? local.cardsDemoTravelDestinationTitle2;
 String get cardsDemoTravelDestinationDescription2 =>
-remote.translateOrDefault('cardsDemoTravelDestinationDescription2', local.cardsDemoTravelDestinationDescription2);
+remote?.translateOrDefault('cardsDemoTravelDestinationDescription2', local.cardsDemoTravelDestinationDescription2) ?? local.cardsDemoTravelDestinationDescription2;
 String get cardsDemoTravelDestinationCity2 =>
-remote.translateOrDefault('cardsDemoTravelDestinationCity2', local.cardsDemoTravelDestinationCity2);
+remote?.translateOrDefault('cardsDemoTravelDestinationCity2', local.cardsDemoTravelDestinationCity2) ?? local.cardsDemoTravelDestinationCity2;
 String get cardsDemoTravelDestinationLocation2 =>
-remote.translateOrDefault('cardsDemoTravelDestinationLocation2', local.cardsDemoTravelDestinationLocation2);
+remote?.translateOrDefault('cardsDemoTravelDestinationLocation2', local.cardsDemoTravelDestinationLocation2) ?? local.cardsDemoTravelDestinationLocation2;
 String get cardsDemoTravelDestinationTitle3 =>
-remote.translateOrDefault('cardsDemoTravelDestinationTitle3', local.cardsDemoTravelDestinationTitle3);
+remote?.translateOrDefault('cardsDemoTravelDestinationTitle3', local.cardsDemoTravelDestinationTitle3) ?? local.cardsDemoTravelDestinationTitle3;
 String get cardsDemoTravelDestinationDescription3 =>
-remote.translateOrDefault('cardsDemoTravelDestinationDescription3', local.cardsDemoTravelDestinationDescription3);
+remote?.translateOrDefault('cardsDemoTravelDestinationDescription3', local.cardsDemoTravelDestinationDescription3) ?? local.cardsDemoTravelDestinationDescription3;
 String get homeHeaderGallery =>
-remote.translateOrDefault('homeHeaderGallery', local.homeHeaderGallery);
+remote?.translateOrDefault('homeHeaderGallery', local.homeHeaderGallery) ?? local.homeHeaderGallery;
 String get homeHeaderCategories =>
-remote.translateOrDefault('homeHeaderCategories', local.homeHeaderCategories);
+remote?.translateOrDefault('homeHeaderCategories', local.homeHeaderCategories) ?? local.homeHeaderCategories;
 String get shrineDescription =>
-remote.translateOrDefault('shrineDescription', local.shrineDescription);
+remote?.translateOrDefault('shrineDescription', local.shrineDescription) ?? local.shrineDescription;
 String get fortnightlyDescription =>
-remote.translateOrDefault('fortnightlyDescription', local.fortnightlyDescription);
+remote?.translateOrDefault('fortnightlyDescription', local.fortnightlyDescription) ?? local.fortnightlyDescription;
 String get rallyDescription =>
-remote.translateOrDefault('rallyDescription', local.rallyDescription);
+remote?.translateOrDefault('rallyDescription', local.rallyDescription) ?? local.rallyDescription;
 String get replyDescription =>
-remote.translateOrDefault('replyDescription', local.replyDescription);
+remote?.translateOrDefault('replyDescription', local.replyDescription) ?? local.replyDescription;
 String get rallyAccountDataChecking =>
-remote.translateOrDefault('rallyAccountDataChecking', local.rallyAccountDataChecking);
+remote?.translateOrDefault('rallyAccountDataChecking', local.rallyAccountDataChecking) ?? local.rallyAccountDataChecking;
 String get rallyAccountDataHomeSavings =>
-remote.translateOrDefault('rallyAccountDataHomeSavings', local.rallyAccountDataHomeSavings);
+remote?.translateOrDefault('rallyAccountDataHomeSavings', local.rallyAccountDataHomeSavings) ?? local.rallyAccountDataHomeSavings;
 String get rallyAccountDataCarSavings =>
-remote.translateOrDefault('rallyAccountDataCarSavings', local.rallyAccountDataCarSavings);
+remote?.translateOrDefault('rallyAccountDataCarSavings', local.rallyAccountDataCarSavings) ?? local.rallyAccountDataCarSavings;
 String get rallyAccountDataVacation =>
-remote.translateOrDefault('rallyAccountDataVacation', local.rallyAccountDataVacation);
+remote?.translateOrDefault('rallyAccountDataVacation', local.rallyAccountDataVacation) ?? local.rallyAccountDataVacation;
 String get rallyAccountDetailDataAnnualPercentageYield =>
-remote.translateOrDefault('rallyAccountDetailDataAnnualPercentageYield', local.rallyAccountDetailDataAnnualPercentageYield);
+remote?.translateOrDefault('rallyAccountDetailDataAnnualPercentageYield', local.rallyAccountDetailDataAnnualPercentageYield) ?? local.rallyAccountDetailDataAnnualPercentageYield;
 String get rallyAccountDetailDataInterestRate =>
-remote.translateOrDefault('rallyAccountDetailDataInterestRate', local.rallyAccountDetailDataInterestRate);
+remote?.translateOrDefault('rallyAccountDetailDataInterestRate', local.rallyAccountDetailDataInterestRate) ?? local.rallyAccountDetailDataInterestRate;
 String get rallyAccountDetailDataInterestYtd =>
-remote.translateOrDefault('rallyAccountDetailDataInterestYtd', local.rallyAccountDetailDataInterestYtd);
+remote?.translateOrDefault('rallyAccountDetailDataInterestYtd', local.rallyAccountDetailDataInterestYtd) ?? local.rallyAccountDetailDataInterestYtd;
 String get rallyAccountDetailDataInterestPaidLastYear =>
-remote.translateOrDefault('rallyAccountDetailDataInterestPaidLastYear', local.rallyAccountDetailDataInterestPaidLastYear);
+remote?.translateOrDefault('rallyAccountDetailDataInterestPaidLastYear', local.rallyAccountDetailDataInterestPaidLastYear) ?? local.rallyAccountDetailDataInterestPaidLastYear;
 String get rallyAccountDetailDataNextStatement =>
-remote.translateOrDefault('rallyAccountDetailDataNextStatement', local.rallyAccountDetailDataNextStatement);
+remote?.translateOrDefault('rallyAccountDetailDataNextStatement', local.rallyAccountDetailDataNextStatement) ?? local.rallyAccountDetailDataNextStatement;
 String get rallyAccountDetailDataAccountOwner =>
-remote.translateOrDefault('rallyAccountDetailDataAccountOwner', local.rallyAccountDetailDataAccountOwner);
+remote?.translateOrDefault('rallyAccountDetailDataAccountOwner', local.rallyAccountDetailDataAccountOwner) ?? local.rallyAccountDetailDataAccountOwner;
 String get rallyBillDetailTotalAmount =>
-remote.translateOrDefault('rallyBillDetailTotalAmount', local.rallyBillDetailTotalAmount);
+remote?.translateOrDefault('rallyBillDetailTotalAmount', local.rallyBillDetailTotalAmount) ?? local.rallyBillDetailTotalAmount;
 String get rallyBillDetailAmountPaid =>
-remote.translateOrDefault('rallyBillDetailAmountPaid', local.rallyBillDetailAmountPaid);
+remote?.translateOrDefault('rallyBillDetailAmountPaid', local.rallyBillDetailAmountPaid) ?? local.rallyBillDetailAmountPaid;
 String get rallyBillDetailAmountDue =>
-remote.translateOrDefault('rallyBillDetailAmountDue', local.rallyBillDetailAmountDue);
+remote?.translateOrDefault('rallyBillDetailAmountDue', local.rallyBillDetailAmountDue) ?? local.rallyBillDetailAmountDue;
 String get rallyBudgetCategoryCoffeeShops =>
-remote.translateOrDefault('rallyBudgetCategoryCoffeeShops', local.rallyBudgetCategoryCoffeeShops);
+remote?.translateOrDefault('rallyBudgetCategoryCoffeeShops', local.rallyBudgetCategoryCoffeeShops) ?? local.rallyBudgetCategoryCoffeeShops;
 String get rallyBudgetCategoryGroceries =>
-remote.translateOrDefault('rallyBudgetCategoryGroceries', local.rallyBudgetCategoryGroceries);
+remote?.translateOrDefault('rallyBudgetCategoryGroceries', local.rallyBudgetCategoryGroceries) ?? local.rallyBudgetCategoryGroceries;
 String get rallyBudgetCategoryRestaurants =>
-remote.translateOrDefault('rallyBudgetCategoryRestaurants', local.rallyBudgetCategoryRestaurants);
+remote?.translateOrDefault('rallyBudgetCategoryRestaurants', local.rallyBudgetCategoryRestaurants) ?? local.rallyBudgetCategoryRestaurants;
 String get rallyBudgetCategoryClothing =>
-remote.translateOrDefault('rallyBudgetCategoryClothing', local.rallyBudgetCategoryClothing);
+remote?.translateOrDefault('rallyBudgetCategoryClothing', local.rallyBudgetCategoryClothing) ?? local.rallyBudgetCategoryClothing;
 String get rallyBudgetDetailTotalCap =>
-remote.translateOrDefault('rallyBudgetDetailTotalCap', local.rallyBudgetDetailTotalCap);
+remote?.translateOrDefault('rallyBudgetDetailTotalCap', local.rallyBudgetDetailTotalCap) ?? local.rallyBudgetDetailTotalCap;
 String get rallyBudgetDetailAmountUsed =>
-remote.translateOrDefault('rallyBudgetDetailAmountUsed', local.rallyBudgetDetailAmountUsed);
+remote?.translateOrDefault('rallyBudgetDetailAmountUsed', local.rallyBudgetDetailAmountUsed) ?? local.rallyBudgetDetailAmountUsed;
 String get rallyBudgetDetailAmountLeft =>
-remote.translateOrDefault('rallyBudgetDetailAmountLeft', local.rallyBudgetDetailAmountLeft);
+remote?.translateOrDefault('rallyBudgetDetailAmountLeft', local.rallyBudgetDetailAmountLeft) ?? local.rallyBudgetDetailAmountLeft;
 String get rallySettingsManageAccounts =>
-remote.translateOrDefault('rallySettingsManageAccounts', local.rallySettingsManageAccounts);
+remote?.translateOrDefault('rallySettingsManageAccounts', local.rallySettingsManageAccounts) ?? local.rallySettingsManageAccounts;
 String get rallySettingsTaxDocuments =>
-remote.translateOrDefault('rallySettingsTaxDocuments', local.rallySettingsTaxDocuments);
+remote?.translateOrDefault('rallySettingsTaxDocuments', local.rallySettingsTaxDocuments) ?? local.rallySettingsTaxDocuments;
 String get rallySettingsPasscodeAndTouchId =>
-remote.translateOrDefault('rallySettingsPasscodeAndTouchId', local.rallySettingsPasscodeAndTouchId);
+remote?.translateOrDefault('rallySettingsPasscodeAndTouchId', local.rallySettingsPasscodeAndTouchId) ?? local.rallySettingsPasscodeAndTouchId;
 String get rallySettingsNotifications =>
-remote.translateOrDefault('rallySettingsNotifications', local.rallySettingsNotifications);
+remote?.translateOrDefault('rallySettingsNotifications', local.rallySettingsNotifications) ?? local.rallySettingsNotifications;
 String get rallySettingsPersonalInformation =>
-remote.translateOrDefault('rallySettingsPersonalInformation', local.rallySettingsPersonalInformation);
+remote?.translateOrDefault('rallySettingsPersonalInformation', local.rallySettingsPersonalInformation) ?? local.rallySettingsPersonalInformation;
 String get rallySettingsPaperlessSettings =>
-remote.translateOrDefault('rallySettingsPaperlessSettings', local.rallySettingsPaperlessSettings);
+remote?.translateOrDefault('rallySettingsPaperlessSettings', local.rallySettingsPaperlessSettings) ?? local.rallySettingsPaperlessSettings;
 String get rallySettingsFindAtms =>
-remote.translateOrDefault('rallySettingsFindAtms', local.rallySettingsFindAtms);
+remote?.translateOrDefault('rallySettingsFindAtms', local.rallySettingsFindAtms) ?? local.rallySettingsFindAtms;
 String get rallySettingsHelp =>
-remote.translateOrDefault('rallySettingsHelp', local.rallySettingsHelp);
+remote?.translateOrDefault('rallySettingsHelp', local.rallySettingsHelp) ?? local.rallySettingsHelp;
 String get rallySettingsSignOut =>
-remote.translateOrDefault('rallySettingsSignOut', local.rallySettingsSignOut);
+remote?.translateOrDefault('rallySettingsSignOut', local.rallySettingsSignOut) ?? local.rallySettingsSignOut;
 String get rallyAccountTotal =>
-remote.translateOrDefault('rallyAccountTotal', local.rallyAccountTotal);
+remote?.translateOrDefault('rallyAccountTotal', local.rallyAccountTotal) ?? local.rallyAccountTotal;
 String get rallyBillsDue =>
-remote.translateOrDefault('rallyBillsDue', local.rallyBillsDue);
+remote?.translateOrDefault('rallyBillsDue', local.rallyBillsDue) ?? local.rallyBillsDue;
 String get rallyBudgetLeft =>
-remote.translateOrDefault('rallyBudgetLeft', local.rallyBudgetLeft);
+remote?.translateOrDefault('rallyBudgetLeft', local.rallyBudgetLeft) ?? local.rallyBudgetLeft;
 String get rallyAccounts =>
-remote.translateOrDefault('rallyAccounts', local.rallyAccounts);
+remote?.translateOrDefault('rallyAccounts', local.rallyAccounts) ?? local.rallyAccounts;
 String get rallyBills =>
-remote.translateOrDefault('rallyBills', local.rallyBills);
+remote?.translateOrDefault('rallyBills', local.rallyBills) ?? local.rallyBills;
 String get rallyBudgets =>
-remote.translateOrDefault('rallyBudgets', local.rallyBudgets);
+remote?.translateOrDefault('rallyBudgets', local.rallyBudgets) ?? local.rallyBudgets;
 String get rallyAlerts =>
-remote.translateOrDefault('rallyAlerts', local.rallyAlerts);
+remote?.translateOrDefault('rallyAlerts', local.rallyAlerts) ?? local.rallyAlerts;
 String get rallySeeAll =>
-remote.translateOrDefault('rallySeeAll', local.rallySeeAll);
+remote?.translateOrDefault('rallySeeAll', local.rallySeeAll) ?? local.rallySeeAll;
 String get rallyFinanceLeft =>
-remote.translateOrDefault('rallyFinanceLeft', local.rallyFinanceLeft);
+remote?.translateOrDefault('rallyFinanceLeft', local.rallyFinanceLeft) ?? local.rallyFinanceLeft;
 String get rallyTitleOverview =>
-remote.translateOrDefault('rallyTitleOverview', local.rallyTitleOverview);
+remote?.translateOrDefault('rallyTitleOverview', local.rallyTitleOverview) ?? local.rallyTitleOverview;
 String get rallyTitleAccounts =>
-remote.translateOrDefault('rallyTitleAccounts', local.rallyTitleAccounts);
+remote?.translateOrDefault('rallyTitleAccounts', local.rallyTitleAccounts) ?? local.rallyTitleAccounts;
 String get rallyTitleBills =>
-remote.translateOrDefault('rallyTitleBills', local.rallyTitleBills);
+remote?.translateOrDefault('rallyTitleBills', local.rallyTitleBills) ?? local.rallyTitleBills;
 String get rallyTitleBudgets =>
-remote.translateOrDefault('rallyTitleBudgets', local.rallyTitleBudgets);
+remote?.translateOrDefault('rallyTitleBudgets', local.rallyTitleBudgets) ?? local.rallyTitleBudgets;
 String get rallyTitleSettings =>
-remote.translateOrDefault('rallyTitleSettings', local.rallyTitleSettings);
+remote?.translateOrDefault('rallyTitleSettings', local.rallyTitleSettings) ?? local.rallyTitleSettings;
 String get rallyLoginLoginToRally =>
-remote.translateOrDefault('rallyLoginLoginToRally', local.rallyLoginLoginToRally);
+remote?.translateOrDefault('rallyLoginLoginToRally', local.rallyLoginLoginToRally) ?? local.rallyLoginLoginToRally;
 String get rallyLoginNoAccount =>
-remote.translateOrDefault('rallyLoginNoAccount', local.rallyLoginNoAccount);
+remote?.translateOrDefault('rallyLoginNoAccount', local.rallyLoginNoAccount) ?? local.rallyLoginNoAccount;
 String get rallyLoginSignUp =>
-remote.translateOrDefault('rallyLoginSignUp', local.rallyLoginSignUp);
+remote?.translateOrDefault('rallyLoginSignUp', local.rallyLoginSignUp) ?? local.rallyLoginSignUp;
 String get rallyLoginUsername =>
-remote.translateOrDefault('rallyLoginUsername', local.rallyLoginUsername);
+remote?.translateOrDefault('rallyLoginUsername', local.rallyLoginUsername) ?? local.rallyLoginUsername;
 String get rallyLoginPassword =>
-remote.translateOrDefault('rallyLoginPassword', local.rallyLoginPassword);
+remote?.translateOrDefault('rallyLoginPassword', local.rallyLoginPassword) ?? local.rallyLoginPassword;
 String get rallyLoginLabelLogin =>
-remote.translateOrDefault('rallyLoginLabelLogin', local.rallyLoginLabelLogin);
+remote?.translateOrDefault('rallyLoginLabelLogin', local.rallyLoginLabelLogin) ?? local.rallyLoginLabelLogin;
 String get rallyLoginRememberMe =>
-remote.translateOrDefault('rallyLoginRememberMe', local.rallyLoginRememberMe);
+remote?.translateOrDefault('rallyLoginRememberMe', local.rallyLoginRememberMe) ?? local.rallyLoginRememberMe;
 String get rallyLoginButtonLogin =>
-remote.translateOrDefault('rallyLoginButtonLogin', local.rallyLoginButtonLogin);
-String rallyAlertsMessageHeadsUpShopping(Object percent){return remote.translateOrDefault('rallyAlertsMessageHeadsUpShopping', local.rallyAlertsMessageHeadsUpShopping(percent));
+remote?.translateOrDefault('rallyLoginButtonLogin', local.rallyLoginButtonLogin) ?? local.rallyLoginButtonLogin;
+String rallyAlertsMessageHeadsUpShopping(Object percent){return remote?.translateOrDefault('rallyAlertsMessageHeadsUpShopping', local.rallyAlertsMessageHeadsUpShopping(percent)) ?? local.rallyAlertsMessageHeadsUpShopping(percent);
 }
-String rallyAlertsMessageSpentOnRestaurants(Object amount){return remote.translateOrDefault('rallyAlertsMessageSpentOnRestaurants', local.rallyAlertsMessageSpentOnRestaurants(amount));
+String rallyAlertsMessageSpentOnRestaurants(Object amount){return remote?.translateOrDefault('rallyAlertsMessageSpentOnRestaurants', local.rallyAlertsMessageSpentOnRestaurants(amount)) ?? local.rallyAlertsMessageSpentOnRestaurants(amount);
 }
-String rallyAlertsMessageATMFees(int amount){return remote.translateOrDefault('rallyAlertsMessageATMFees', local.rallyAlertsMessageATMFees(amount));
+String rallyAlertsMessageATMFees(int amount){return remote?.translateOrDefault('rallyAlertsMessageATMFees', local.rallyAlertsMessageATMFees(amount)) ?? local.rallyAlertsMessageATMFees(amount);
 }
-String rallyAlertsMessageCheckingAccount(Object percent){return remote.translateOrDefault('rallyAlertsMessageCheckingAccount', local.rallyAlertsMessageCheckingAccount(percent));
+String rallyAlertsMessageCheckingAccount(Object percent){return remote?.translateOrDefault('rallyAlertsMessageCheckingAccount', local.rallyAlertsMessageCheckingAccount(percent)) ?? local.rallyAlertsMessageCheckingAccount(percent);
 }
-String rallyAlertsMessageUnassignedTransactions(int count){return remote.translateOrDefault('rallyAlertsMessageUnassignedTransactions', local.rallyAlertsMessageUnassignedTransactions(count));
+String rallyAlertsMessageUnassignedTransactions(int count){return remote?.translateOrDefault('rallyAlertsMessageUnassignedTransactions', local.rallyAlertsMessageUnassignedTransactions(count)) ?? local.rallyAlertsMessageUnassignedTransactions(count);
 }
 String get rallySeeAllAccounts =>
-remote.translateOrDefault('rallySeeAllAccounts', local.rallySeeAllAccounts);
+remote?.translateOrDefault('rallySeeAllAccounts', local.rallySeeAllAccounts) ?? local.rallySeeAllAccounts;
 String get rallySeeAllBills =>
-remote.translateOrDefault('rallySeeAllBills', local.rallySeeAllBills);
+remote?.translateOrDefault('rallySeeAllBills', local.rallySeeAllBills) ?? local.rallySeeAllBills;
 String get rallySeeAllBudgets =>
-remote.translateOrDefault('rallySeeAllBudgets', local.rallySeeAllBudgets);
-String rallyAccountAmount(Object accountName,int accountNumber,Object amount){return remote.translateOrDefault('rallyAccountAmount', local.rallyAccountAmount(accountName,accountNumber,amount));
+remote?.translateOrDefault('rallySeeAllBudgets', local.rallySeeAllBudgets) ?? local.rallySeeAllBudgets;
+String rallyAccountAmount(Object accountName,int accountNumber,Object amount){return remote?.translateOrDefault('rallyAccountAmount', local.rallyAccountAmount(accountName,accountNumber,amount)) ?? local.rallyAccountAmount(accountName,accountNumber,amount);
 }
-String rallyBillAmount(Object billName,Object date,Object amount){return remote.translateOrDefault('rallyBillAmount', local.rallyBillAmount(billName,date,amount));
+String rallyBillAmount(Object billName,Object date,Object amount){return remote?.translateOrDefault('rallyBillAmount', local.rallyBillAmount(billName,date,amount)) ?? local.rallyBillAmount(billName,date,amount);
 }
-String rallyBudgetAmount(Object budgetName,Object amountUsed,Object amountTotal,Object amountLeft){return remote.translateOrDefault('rallyBudgetAmount', local.rallyBudgetAmount(budgetName,amountUsed,amountTotal,amountLeft));
+String rallyBudgetAmount(Object budgetName,Object amountUsed,Object amountTotal,Object amountLeft){return remote?.translateOrDefault('rallyBudgetAmount', local.rallyBudgetAmount(budgetName,amountUsed,amountTotal,amountLeft)) ?? local.rallyBudgetAmount(budgetName,amountUsed,amountTotal,amountLeft);
 }
 String get craneDescription =>
-remote.translateOrDefault('craneDescription', local.craneDescription);
+remote?.translateOrDefault('craneDescription', local.craneDescription) ?? local.craneDescription;
 String get homeCategoryReference =>
-remote.translateOrDefault('homeCategoryReference', local.homeCategoryReference);
+remote?.translateOrDefault('homeCategoryReference', local.homeCategoryReference) ?? local.homeCategoryReference;
 String get demoInvalidURL =>
-remote.translateOrDefault('demoInvalidURL', local.demoInvalidURL);
+remote?.translateOrDefault('demoInvalidURL', local.demoInvalidURL) ?? local.demoInvalidURL;
 String get demoOptionsTooltip =>
-remote.translateOrDefault('demoOptionsTooltip', local.demoOptionsTooltip);
+remote?.translateOrDefault('demoOptionsTooltip', local.demoOptionsTooltip) ?? local.demoOptionsTooltip;
 String get demoInfoTooltip =>
-remote.translateOrDefault('demoInfoTooltip', local.demoInfoTooltip);
+remote?.translateOrDefault('demoInfoTooltip', local.demoInfoTooltip) ?? local.demoInfoTooltip;
 String get demoCodeTooltip =>
-remote.translateOrDefault('demoCodeTooltip', local.demoCodeTooltip);
+remote?.translateOrDefault('demoCodeTooltip', local.demoCodeTooltip) ?? local.demoCodeTooltip;
 String get demoDocumentationTooltip =>
-remote.translateOrDefault('demoDocumentationTooltip', local.demoDocumentationTooltip);
+remote?.translateOrDefault('demoDocumentationTooltip', local.demoDocumentationTooltip) ?? local.demoDocumentationTooltip;
 String get demoFullscreenTooltip =>
-remote.translateOrDefault('demoFullscreenTooltip', local.demoFullscreenTooltip);
+remote?.translateOrDefault('demoFullscreenTooltip', local.demoFullscreenTooltip) ?? local.demoFullscreenTooltip;
 String get demoCodeViewerCopyAll =>
-remote.translateOrDefault('demoCodeViewerCopyAll', local.demoCodeViewerCopyAll);
+remote?.translateOrDefault('demoCodeViewerCopyAll', local.demoCodeViewerCopyAll) ?? local.demoCodeViewerCopyAll;
 String get demoCodeViewerCopiedToClipboardMessage =>
-remote.translateOrDefault('demoCodeViewerCopiedToClipboardMessage', local.demoCodeViewerCopiedToClipboardMessage);
-String demoCodeViewerFailedToCopyToClipboardMessage(Object error){return remote.translateOrDefault('demoCodeViewerFailedToCopyToClipboardMessage', local.demoCodeViewerFailedToCopyToClipboardMessage(error));
+remote?.translateOrDefault('demoCodeViewerCopiedToClipboardMessage', local.demoCodeViewerCopiedToClipboardMessage) ?? local.demoCodeViewerCopiedToClipboardMessage;
+String demoCodeViewerFailedToCopyToClipboardMessage(Object error){return remote?.translateOrDefault('demoCodeViewerFailedToCopyToClipboardMessage', local.demoCodeViewerFailedToCopyToClipboardMessage(error)) ?? local.demoCodeViewerFailedToCopyToClipboardMessage(error);
 }
 String get demoOptionsFeatureTitle =>
-remote.translateOrDefault('demoOptionsFeatureTitle', local.demoOptionsFeatureTitle);
+remote?.translateOrDefault('demoOptionsFeatureTitle', local.demoOptionsFeatureTitle) ?? local.demoOptionsFeatureTitle;
 String get demoOptionsFeatureDescription =>
-remote.translateOrDefault('demoOptionsFeatureDescription', local.demoOptionsFeatureDescription);
+remote?.translateOrDefault('demoOptionsFeatureDescription', local.demoOptionsFeatureDescription) ?? local.demoOptionsFeatureDescription;
 String get settingsTitle =>
-remote.translateOrDefault('settingsTitle', local.settingsTitle);
+remote?.translateOrDefault('settingsTitle', local.settingsTitle) ?? local.settingsTitle;
 String get settingsButtonLabel =>
-remote.translateOrDefault('settingsButtonLabel', local.settingsButtonLabel);
+remote?.translateOrDefault('settingsButtonLabel', local.settingsButtonLabel) ?? local.settingsButtonLabel;
 String get settingsButtonCloseLabel =>
-remote.translateOrDefault('settingsButtonCloseLabel', local.settingsButtonCloseLabel);
+remote?.translateOrDefault('settingsButtonCloseLabel', local.settingsButtonCloseLabel) ?? local.settingsButtonCloseLabel;
 String get settingsSystemDefault =>
-remote.translateOrDefault('settingsSystemDefault', local.settingsSystemDefault);
+remote?.translateOrDefault('settingsSystemDefault', local.settingsSystemDefault) ?? local.settingsSystemDefault;
 String get settingsTextScaling =>
-remote.translateOrDefault('settingsTextScaling', local.settingsTextScaling);
+remote?.translateOrDefault('settingsTextScaling', local.settingsTextScaling) ?? local.settingsTextScaling;
 String get settingsTextScalingSmall =>
-remote.translateOrDefault('settingsTextScalingSmall', local.settingsTextScalingSmall);
+remote?.translateOrDefault('settingsTextScalingSmall', local.settingsTextScalingSmall) ?? local.settingsTextScalingSmall;
 String get settingsTextScalingNormal =>
-remote.translateOrDefault('settingsTextScalingNormal', local.settingsTextScalingNormal);
+remote?.translateOrDefault('settingsTextScalingNormal', local.settingsTextScalingNormal) ?? local.settingsTextScalingNormal;
 String get settingsTextScalingLarge =>
-remote.translateOrDefault('settingsTextScalingLarge', local.settingsTextScalingLarge);
+remote?.translateOrDefault('settingsTextScalingLarge', local.settingsTextScalingLarge) ?? local.settingsTextScalingLarge;
 String get settingsTextScalingHuge =>
-remote.translateOrDefault('settingsTextScalingHuge', local.settingsTextScalingHuge);
+remote?.translateOrDefault('settingsTextScalingHuge', local.settingsTextScalingHuge) ?? local.settingsTextScalingHuge;
 String get settingsTextDirection =>
-remote.translateOrDefault('settingsTextDirection', local.settingsTextDirection);
+remote?.translateOrDefault('settingsTextDirection', local.settingsTextDirection) ?? local.settingsTextDirection;
 String get settingsTextDirectionLocaleBased =>
-remote.translateOrDefault('settingsTextDirectionLocaleBased', local.settingsTextDirectionLocaleBased);
+remote?.translateOrDefault('settingsTextDirectionLocaleBased', local.settingsTextDirectionLocaleBased) ?? local.settingsTextDirectionLocaleBased;
 String get settingsTextDirectionLTR =>
-remote.translateOrDefault('settingsTextDirectionLTR', local.settingsTextDirectionLTR);
+remote?.translateOrDefault('settingsTextDirectionLTR', local.settingsTextDirectionLTR) ?? local.settingsTextDirectionLTR;
 String get settingsTextDirectionRTL =>
-remote.translateOrDefault('settingsTextDirectionRTL', local.settingsTextDirectionRTL);
+remote?.translateOrDefault('settingsTextDirectionRTL', local.settingsTextDirectionRTL) ?? local.settingsTextDirectionRTL;
 String get settingsLocale =>
-remote.translateOrDefault('settingsLocale', local.settingsLocale);
+remote?.translateOrDefault('settingsLocale', local.settingsLocale) ?? local.settingsLocale;
 String get settingsPlatformMechanics =>
-remote.translateOrDefault('settingsPlatformMechanics', local.settingsPlatformMechanics);
+remote?.translateOrDefault('settingsPlatformMechanics', local.settingsPlatformMechanics) ?? local.settingsPlatformMechanics;
 String get settingsTheme =>
-remote.translateOrDefault('settingsTheme', local.settingsTheme);
+remote?.translateOrDefault('settingsTheme', local.settingsTheme) ?? local.settingsTheme;
 String get settingsDarkTheme =>
-remote.translateOrDefault('settingsDarkTheme', local.settingsDarkTheme);
+remote?.translateOrDefault('settingsDarkTheme', local.settingsDarkTheme) ?? local.settingsDarkTheme;
 String get settingsLightTheme =>
-remote.translateOrDefault('settingsLightTheme', local.settingsLightTheme);
+remote?.translateOrDefault('settingsLightTheme', local.settingsLightTheme) ?? local.settingsLightTheme;
 String get settingsSlowMotion =>
-remote.translateOrDefault('settingsSlowMotion', local.settingsSlowMotion);
+remote?.translateOrDefault('settingsSlowMotion', local.settingsSlowMotion) ?? local.settingsSlowMotion;
 String get settingsAbout =>
-remote.translateOrDefault('settingsAbout', local.settingsAbout);
+remote?.translateOrDefault('settingsAbout', local.settingsAbout) ?? local.settingsAbout;
 String get settingsFeedback =>
-remote.translateOrDefault('settingsFeedback', local.settingsFeedback);
+remote?.translateOrDefault('settingsFeedback', local.settingsFeedback) ?? local.settingsFeedback;
 String get settingsAttribution =>
-remote.translateOrDefault('settingsAttribution', local.settingsAttribution);
+remote?.translateOrDefault('settingsAttribution', local.settingsAttribution) ?? local.settingsAttribution;
 String get demoAppBarTitle =>
-remote.translateOrDefault('demoAppBarTitle', local.demoAppBarTitle);
+remote?.translateOrDefault('demoAppBarTitle', local.demoAppBarTitle) ?? local.demoAppBarTitle;
 String get demoAppBarSubtitle =>
-remote.translateOrDefault('demoAppBarSubtitle', local.demoAppBarSubtitle);
+remote?.translateOrDefault('demoAppBarSubtitle', local.demoAppBarSubtitle) ?? local.demoAppBarSubtitle;
 String get demoAppBarDescription =>
-remote.translateOrDefault('demoAppBarDescription', local.demoAppBarDescription);
+remote?.translateOrDefault('demoAppBarDescription', local.demoAppBarDescription) ?? local.demoAppBarDescription;
 String get demoBottomAppBarTitle =>
-remote.translateOrDefault('demoBottomAppBarTitle', local.demoBottomAppBarTitle);
+remote?.translateOrDefault('demoBottomAppBarTitle', local.demoBottomAppBarTitle) ?? local.demoBottomAppBarTitle;
 String get demoBottomAppBarSubtitle =>
-remote.translateOrDefault('demoBottomAppBarSubtitle', local.demoBottomAppBarSubtitle);
+remote?.translateOrDefault('demoBottomAppBarSubtitle', local.demoBottomAppBarSubtitle) ?? local.demoBottomAppBarSubtitle;
 String get demoBottomAppBarDescription =>
-remote.translateOrDefault('demoBottomAppBarDescription', local.demoBottomAppBarDescription);
+remote?.translateOrDefault('demoBottomAppBarDescription', local.demoBottomAppBarDescription) ?? local.demoBottomAppBarDescription;
 String get bottomAppBarNotch =>
-remote.translateOrDefault('bottomAppBarNotch', local.bottomAppBarNotch);
+remote?.translateOrDefault('bottomAppBarNotch', local.bottomAppBarNotch) ?? local.bottomAppBarNotch;
 String get bottomAppBarPosition =>
-remote.translateOrDefault('bottomAppBarPosition', local.bottomAppBarPosition);
+remote?.translateOrDefault('bottomAppBarPosition', local.bottomAppBarPosition) ?? local.bottomAppBarPosition;
 String get bottomAppBarPositionDockedEnd =>
-remote.translateOrDefault('bottomAppBarPositionDockedEnd', local.bottomAppBarPositionDockedEnd);
+remote?.translateOrDefault('bottomAppBarPositionDockedEnd', local.bottomAppBarPositionDockedEnd) ?? local.bottomAppBarPositionDockedEnd;
 String get bottomAppBarPositionDockedCenter =>
-remote.translateOrDefault('bottomAppBarPositionDockedCenter', local.bottomAppBarPositionDockedCenter);
+remote?.translateOrDefault('bottomAppBarPositionDockedCenter', local.bottomAppBarPositionDockedCenter) ?? local.bottomAppBarPositionDockedCenter;
 String get bottomAppBarPositionFloatingEnd =>
-remote.translateOrDefault('bottomAppBarPositionFloatingEnd', local.bottomAppBarPositionFloatingEnd);
+remote?.translateOrDefault('bottomAppBarPositionFloatingEnd', local.bottomAppBarPositionFloatingEnd) ?? local.bottomAppBarPositionFloatingEnd;
 String get bottomAppBarPositionFloatingCenter =>
-remote.translateOrDefault('bottomAppBarPositionFloatingCenter', local.bottomAppBarPositionFloatingCenter);
+remote?.translateOrDefault('bottomAppBarPositionFloatingCenter', local.bottomAppBarPositionFloatingCenter) ?? local.bottomAppBarPositionFloatingCenter;
 String get demoBannerTitle =>
-remote.translateOrDefault('demoBannerTitle', local.demoBannerTitle);
+remote?.translateOrDefault('demoBannerTitle', local.demoBannerTitle) ?? local.demoBannerTitle;
 String get demoBannerSubtitle =>
-remote.translateOrDefault('demoBannerSubtitle', local.demoBannerSubtitle);
+remote?.translateOrDefault('demoBannerSubtitle', local.demoBannerSubtitle) ?? local.demoBannerSubtitle;
 String get demoBannerDescription =>
-remote.translateOrDefault('demoBannerDescription', local.demoBannerDescription);
+remote?.translateOrDefault('demoBannerDescription', local.demoBannerDescription) ?? local.demoBannerDescription;
 String get demoBottomNavigationTitle =>
-remote.translateOrDefault('demoBottomNavigationTitle', local.demoBottomNavigationTitle);
+remote?.translateOrDefault('demoBottomNavigationTitle', local.demoBottomNavigationTitle) ?? local.demoBottomNavigationTitle;
 String get demoBottomNavigationSubtitle =>
-remote.translateOrDefault('demoBottomNavigationSubtitle', local.demoBottomNavigationSubtitle);
+remote?.translateOrDefault('demoBottomNavigationSubtitle', local.demoBottomNavigationSubtitle) ?? local.demoBottomNavigationSubtitle;
 String get demoBottomNavigationPersistentLabels =>
-remote.translateOrDefault('demoBottomNavigationPersistentLabels', local.demoBottomNavigationPersistentLabels);
+remote?.translateOrDefault('demoBottomNavigationPersistentLabels', local.demoBottomNavigationPersistentLabels) ?? local.demoBottomNavigationPersistentLabels;
 String get demoBottomNavigationSelectedLabel =>
-remote.translateOrDefault('demoBottomNavigationSelectedLabel', local.demoBottomNavigationSelectedLabel);
+remote?.translateOrDefault('demoBottomNavigationSelectedLabel', local.demoBottomNavigationSelectedLabel) ?? local.demoBottomNavigationSelectedLabel;
 String get demoBottomNavigationDescription =>
-remote.translateOrDefault('demoBottomNavigationDescription', local.demoBottomNavigationDescription);
+remote?.translateOrDefault('demoBottomNavigationDescription', local.demoBottomNavigationDescription) ?? local.demoBottomNavigationDescription;
 String get demoButtonTitle =>
-remote.translateOrDefault('demoButtonTitle', local.demoButtonTitle);
+remote?.translateOrDefault('demoButtonTitle', local.demoButtonTitle) ?? local.demoButtonTitle;
 String get demoButtonSubtitle =>
-remote.translateOrDefault('demoButtonSubtitle', local.demoButtonSubtitle);
+remote?.translateOrDefault('demoButtonSubtitle', local.demoButtonSubtitle) ?? local.demoButtonSubtitle;
 String get demoTextButtonTitle =>
-remote.translateOrDefault('demoTextButtonTitle', local.demoTextButtonTitle);
+remote?.translateOrDefault('demoTextButtonTitle', local.demoTextButtonTitle) ?? local.demoTextButtonTitle;
 String get demoTextButtonDescription =>
-remote.translateOrDefault('demoTextButtonDescription', local.demoTextButtonDescription);
+remote?.translateOrDefault('demoTextButtonDescription', local.demoTextButtonDescription) ?? local.demoTextButtonDescription;
 String get demoElevatedButtonTitle =>
-remote.translateOrDefault('demoElevatedButtonTitle', local.demoElevatedButtonTitle);
+remote?.translateOrDefault('demoElevatedButtonTitle', local.demoElevatedButtonTitle) ?? local.demoElevatedButtonTitle;
 String get demoElevatedButtonDescription =>
-remote.translateOrDefault('demoElevatedButtonDescription', local.demoElevatedButtonDescription);
+remote?.translateOrDefault('demoElevatedButtonDescription', local.demoElevatedButtonDescription) ?? local.demoElevatedButtonDescription;
 String get demoOutlinedButtonTitle =>
-remote.translateOrDefault('demoOutlinedButtonTitle', local.demoOutlinedButtonTitle);
+remote?.translateOrDefault('demoOutlinedButtonTitle', local.demoOutlinedButtonTitle) ?? local.demoOutlinedButtonTitle;
 String get demoOutlinedButtonDescription =>
-remote.translateOrDefault('demoOutlinedButtonDescription', local.demoOutlinedButtonDescription);
+remote?.translateOrDefault('demoOutlinedButtonDescription', local.demoOutlinedButtonDescription) ?? local.demoOutlinedButtonDescription;
 String get demoToggleButtonTitle =>
-remote.translateOrDefault('demoToggleButtonTitle', local.demoToggleButtonTitle);
+remote?.translateOrDefault('demoToggleButtonTitle', local.demoToggleButtonTitle) ?? local.demoToggleButtonTitle;
 String get demoToggleButtonDescription =>
-remote.translateOrDefault('demoToggleButtonDescription', local.demoToggleButtonDescription);
+remote?.translateOrDefault('demoToggleButtonDescription', local.demoToggleButtonDescription) ?? local.demoToggleButtonDescription;
 String get demoFloatingButtonTitle =>
-remote.translateOrDefault('demoFloatingButtonTitle', local.demoFloatingButtonTitle);
+remote?.translateOrDefault('demoFloatingButtonTitle', local.demoFloatingButtonTitle) ?? local.demoFloatingButtonTitle;
 String get demoFloatingButtonDescription =>
-remote.translateOrDefault('demoFloatingButtonDescription', local.demoFloatingButtonDescription);
+remote?.translateOrDefault('demoFloatingButtonDescription', local.demoFloatingButtonDescription) ?? local.demoFloatingButtonDescription;
 String get demoCardTitle =>
-remote.translateOrDefault('demoCardTitle', local.demoCardTitle);
+remote?.translateOrDefault('demoCardTitle', local.demoCardTitle) ?? local.demoCardTitle;
 String get demoCardSubtitle =>
-remote.translateOrDefault('demoCardSubtitle', local.demoCardSubtitle);
+remote?.translateOrDefault('demoCardSubtitle', local.demoCardSubtitle) ?? local.demoCardSubtitle;
 String get demoChipTitle =>
-remote.translateOrDefault('demoChipTitle', local.demoChipTitle);
+remote?.translateOrDefault('demoChipTitle', local.demoChipTitle) ?? local.demoChipTitle;
 String get demoCardDescription =>
-remote.translateOrDefault('demoCardDescription', local.demoCardDescription);
+remote?.translateOrDefault('demoCardDescription', local.demoCardDescription) ?? local.demoCardDescription;
 String get demoChipSubtitle =>
-remote.translateOrDefault('demoChipSubtitle', local.demoChipSubtitle);
+remote?.translateOrDefault('demoChipSubtitle', local.demoChipSubtitle) ?? local.demoChipSubtitle;
 String get demoActionChipTitle =>
-remote.translateOrDefault('demoActionChipTitle', local.demoActionChipTitle);
+remote?.translateOrDefault('demoActionChipTitle', local.demoActionChipTitle) ?? local.demoActionChipTitle;
 String get demoActionChipDescription =>
-remote.translateOrDefault('demoActionChipDescription', local.demoActionChipDescription);
+remote?.translateOrDefault('demoActionChipDescription', local.demoActionChipDescription) ?? local.demoActionChipDescription;
 String get demoChoiceChipTitle =>
-remote.translateOrDefault('demoChoiceChipTitle', local.demoChoiceChipTitle);
+remote?.translateOrDefault('demoChoiceChipTitle', local.demoChoiceChipTitle) ?? local.demoChoiceChipTitle;
 String get demoChoiceChipDescription =>
-remote.translateOrDefault('demoChoiceChipDescription', local.demoChoiceChipDescription);
+remote?.translateOrDefault('demoChoiceChipDescription', local.demoChoiceChipDescription) ?? local.demoChoiceChipDescription;
 String get demoFilterChipTitle =>
-remote.translateOrDefault('demoFilterChipTitle', local.demoFilterChipTitle);
+remote?.translateOrDefault('demoFilterChipTitle', local.demoFilterChipTitle) ?? local.demoFilterChipTitle;
 String get demoFilterChipDescription =>
-remote.translateOrDefault('demoFilterChipDescription', local.demoFilterChipDescription);
+remote?.translateOrDefault('demoFilterChipDescription', local.demoFilterChipDescription) ?? local.demoFilterChipDescription;
 String get demoInputChipTitle =>
-remote.translateOrDefault('demoInputChipTitle', local.demoInputChipTitle);
+remote?.translateOrDefault('demoInputChipTitle', local.demoInputChipTitle) ?? local.demoInputChipTitle;
 String get demoInputChipDescription =>
-remote.translateOrDefault('demoInputChipDescription', local.demoInputChipDescription);
+remote?.translateOrDefault('demoInputChipDescription', local.demoInputChipDescription) ?? local.demoInputChipDescription;
 String get demoDataTableTitle =>
-remote.translateOrDefault('demoDataTableTitle', local.demoDataTableTitle);
+remote?.translateOrDefault('demoDataTableTitle', local.demoDataTableTitle) ?? local.demoDataTableTitle;
 String get demoDataTableSubtitle =>
-remote.translateOrDefault('demoDataTableSubtitle', local.demoDataTableSubtitle);
+remote?.translateOrDefault('demoDataTableSubtitle', local.demoDataTableSubtitle) ?? local.demoDataTableSubtitle;
 String get demoDataTableDescription =>
-remote.translateOrDefault('demoDataTableDescription', local.demoDataTableDescription);
+remote?.translateOrDefault('demoDataTableDescription', local.demoDataTableDescription) ?? local.demoDataTableDescription;
 String get dataTableHeader =>
-remote.translateOrDefault('dataTableHeader', local.dataTableHeader);
+remote?.translateOrDefault('dataTableHeader', local.dataTableHeader) ?? local.dataTableHeader;
 String get dataTableColumnDessert =>
-remote.translateOrDefault('dataTableColumnDessert', local.dataTableColumnDessert);
+remote?.translateOrDefault('dataTableColumnDessert', local.dataTableColumnDessert) ?? local.dataTableColumnDessert;
 String get dataTableColumnCalories =>
-remote.translateOrDefault('dataTableColumnCalories', local.dataTableColumnCalories);
+remote?.translateOrDefault('dataTableColumnCalories', local.dataTableColumnCalories) ?? local.dataTableColumnCalories;
 String get dataTableColumnFat =>
-remote.translateOrDefault('dataTableColumnFat', local.dataTableColumnFat);
+remote?.translateOrDefault('dataTableColumnFat', local.dataTableColumnFat) ?? local.dataTableColumnFat;
 String get dataTableColumnCarbs =>
-remote.translateOrDefault('dataTableColumnCarbs', local.dataTableColumnCarbs);
+remote?.translateOrDefault('dataTableColumnCarbs', local.dataTableColumnCarbs) ?? local.dataTableColumnCarbs;
 String get dataTableColumnProtein =>
-remote.translateOrDefault('dataTableColumnProtein', local.dataTableColumnProtein);
+remote?.translateOrDefault('dataTableColumnProtein', local.dataTableColumnProtein) ?? local.dataTableColumnProtein;
 String get dataTableColumnSodium =>
-remote.translateOrDefault('dataTableColumnSodium', local.dataTableColumnSodium);
+remote?.translateOrDefault('dataTableColumnSodium', local.dataTableColumnSodium) ?? local.dataTableColumnSodium;
 String get dataTableColumnCalcium =>
-remote.translateOrDefault('dataTableColumnCalcium', local.dataTableColumnCalcium);
+remote?.translateOrDefault('dataTableColumnCalcium', local.dataTableColumnCalcium) ?? local.dataTableColumnCalcium;
 String get dataTableColumnIron =>
-remote.translateOrDefault('dataTableColumnIron', local.dataTableColumnIron);
+remote?.translateOrDefault('dataTableColumnIron', local.dataTableColumnIron) ?? local.dataTableColumnIron;
 String get dataTableRowFrozenYogurt =>
-remote.translateOrDefault('dataTableRowFrozenYogurt', local.dataTableRowFrozenYogurt);
+remote?.translateOrDefault('dataTableRowFrozenYogurt', local.dataTableRowFrozenYogurt) ?? local.dataTableRowFrozenYogurt;
 String get dataTableRowIceCreamSandwich =>
-remote.translateOrDefault('dataTableRowIceCreamSandwich', local.dataTableRowIceCreamSandwich);
+remote?.translateOrDefault('dataTableRowIceCreamSandwich', local.dataTableRowIceCreamSandwich) ?? local.dataTableRowIceCreamSandwich;
 String get dataTableRowEclair =>
-remote.translateOrDefault('dataTableRowEclair', local.dataTableRowEclair);
+remote?.translateOrDefault('dataTableRowEclair', local.dataTableRowEclair) ?? local.dataTableRowEclair;
 String get dataTableRowCupcake =>
-remote.translateOrDefault('dataTableRowCupcake', local.dataTableRowCupcake);
+remote?.translateOrDefault('dataTableRowCupcake', local.dataTableRowCupcake) ?? local.dataTableRowCupcake;
 String get dataTableRowGingerbread =>
-remote.translateOrDefault('dataTableRowGingerbread', local.dataTableRowGingerbread);
+remote?.translateOrDefault('dataTableRowGingerbread', local.dataTableRowGingerbread) ?? local.dataTableRowGingerbread;
 String get dataTableRowJellyBean =>
-remote.translateOrDefault('dataTableRowJellyBean', local.dataTableRowJellyBean);
+remote?.translateOrDefault('dataTableRowJellyBean', local.dataTableRowJellyBean) ?? local.dataTableRowJellyBean;
 String get dataTableRowLollipop =>
-remote.translateOrDefault('dataTableRowLollipop', local.dataTableRowLollipop);
+remote?.translateOrDefault('dataTableRowLollipop', local.dataTableRowLollipop) ?? local.dataTableRowLollipop;
 String get dataTableRowHoneycomb =>
-remote.translateOrDefault('dataTableRowHoneycomb', local.dataTableRowHoneycomb);
+remote?.translateOrDefault('dataTableRowHoneycomb', local.dataTableRowHoneycomb) ?? local.dataTableRowHoneycomb;
 String get dataTableRowDonut =>
-remote.translateOrDefault('dataTableRowDonut', local.dataTableRowDonut);
+remote?.translateOrDefault('dataTableRowDonut', local.dataTableRowDonut) ?? local.dataTableRowDonut;
 String get dataTableRowApplePie =>
-remote.translateOrDefault('dataTableRowApplePie', local.dataTableRowApplePie);
-String dataTableRowWithSugar(Object value){return remote.translateOrDefault('dataTableRowWithSugar', local.dataTableRowWithSugar(value));
+remote?.translateOrDefault('dataTableRowApplePie', local.dataTableRowApplePie) ?? local.dataTableRowApplePie;
+String dataTableRowWithSugar(Object value){return remote?.translateOrDefault('dataTableRowWithSugar', local.dataTableRowWithSugar(value)) ?? local.dataTableRowWithSugar(value);
 }
-String dataTableRowWithHoney(Object value){return remote.translateOrDefault('dataTableRowWithHoney', local.dataTableRowWithHoney(value));
+String dataTableRowWithHoney(Object value){return remote?.translateOrDefault('dataTableRowWithHoney', local.dataTableRowWithHoney(value)) ?? local.dataTableRowWithHoney(value);
 }
 String get demoDialogTitle =>
-remote.translateOrDefault('demoDialogTitle', local.demoDialogTitle);
+remote?.translateOrDefault('demoDialogTitle', local.demoDialogTitle) ?? local.demoDialogTitle;
 String get demoDialogSubtitle =>
-remote.translateOrDefault('demoDialogSubtitle', local.demoDialogSubtitle);
+remote?.translateOrDefault('demoDialogSubtitle', local.demoDialogSubtitle) ?? local.demoDialogSubtitle;
 String get demoAlertDialogTitle =>
-remote.translateOrDefault('demoAlertDialogTitle', local.demoAlertDialogTitle);
+remote?.translateOrDefault('demoAlertDialogTitle', local.demoAlertDialogTitle) ?? local.demoAlertDialogTitle;
 String get demoAlertDialogDescription =>
-remote.translateOrDefault('demoAlertDialogDescription', local.demoAlertDialogDescription);
+remote?.translateOrDefault('demoAlertDialogDescription', local.demoAlertDialogDescription) ?? local.demoAlertDialogDescription;
 String get demoAlertTitleDialogTitle =>
-remote.translateOrDefault('demoAlertTitleDialogTitle', local.demoAlertTitleDialogTitle);
+remote?.translateOrDefault('demoAlertTitleDialogTitle', local.demoAlertTitleDialogTitle) ?? local.demoAlertTitleDialogTitle;
 String get demoSimpleDialogTitle =>
-remote.translateOrDefault('demoSimpleDialogTitle', local.demoSimpleDialogTitle);
+remote?.translateOrDefault('demoSimpleDialogTitle', local.demoSimpleDialogTitle) ?? local.demoSimpleDialogTitle;
 String get demoSimpleDialogDescription =>
-remote.translateOrDefault('demoSimpleDialogDescription', local.demoSimpleDialogDescription);
+remote?.translateOrDefault('demoSimpleDialogDescription', local.demoSimpleDialogDescription) ?? local.demoSimpleDialogDescription;
 String get demoGridListsTitle =>
-remote.translateOrDefault('demoGridListsTitle', local.demoGridListsTitle);
+remote?.translateOrDefault('demoGridListsTitle', local.demoGridListsTitle) ?? local.demoGridListsTitle;
 String get demoGridListsSubtitle =>
-remote.translateOrDefault('demoGridListsSubtitle', local.demoGridListsSubtitle);
+remote?.translateOrDefault('demoGridListsSubtitle', local.demoGridListsSubtitle) ?? local.demoGridListsSubtitle;
 String get demoGridListsDescription =>
-remote.translateOrDefault('demoGridListsDescription', local.demoGridListsDescription);
+remote?.translateOrDefault('demoGridListsDescription', local.demoGridListsDescription) ?? local.demoGridListsDescription;
 String get demoGridListsImageOnlyTitle =>
-remote.translateOrDefault('demoGridListsImageOnlyTitle', local.demoGridListsImageOnlyTitle);
+remote?.translateOrDefault('demoGridListsImageOnlyTitle', local.demoGridListsImageOnlyTitle) ?? local.demoGridListsImageOnlyTitle;
 String get demoGridListsHeaderTitle =>
-remote.translateOrDefault('demoGridListsHeaderTitle', local.demoGridListsHeaderTitle);
+remote?.translateOrDefault('demoGridListsHeaderTitle', local.demoGridListsHeaderTitle) ?? local.demoGridListsHeaderTitle;
 String get demoGridListsFooterTitle =>
-remote.translateOrDefault('demoGridListsFooterTitle', local.demoGridListsFooterTitle);
+remote?.translateOrDefault('demoGridListsFooterTitle', local.demoGridListsFooterTitle) ?? local.demoGridListsFooterTitle;
 String get demoSlidersTitle =>
-remote.translateOrDefault('demoSlidersTitle', local.demoSlidersTitle);
+remote?.translateOrDefault('demoSlidersTitle', local.demoSlidersTitle) ?? local.demoSlidersTitle;
 String get demoSlidersSubtitle =>
-remote.translateOrDefault('demoSlidersSubtitle', local.demoSlidersSubtitle);
+remote?.translateOrDefault('demoSlidersSubtitle', local.demoSlidersSubtitle) ?? local.demoSlidersSubtitle;
 String get demoSlidersDescription =>
-remote.translateOrDefault('demoSlidersDescription', local.demoSlidersDescription);
+remote?.translateOrDefault('demoSlidersDescription', local.demoSlidersDescription) ?? local.demoSlidersDescription;
 String get demoRangeSlidersTitle =>
-remote.translateOrDefault('demoRangeSlidersTitle', local.demoRangeSlidersTitle);
+remote?.translateOrDefault('demoRangeSlidersTitle', local.demoRangeSlidersTitle) ?? local.demoRangeSlidersTitle;
 String get demoRangeSlidersDescription =>
-remote.translateOrDefault('demoRangeSlidersDescription', local.demoRangeSlidersDescription);
+remote?.translateOrDefault('demoRangeSlidersDescription', local.demoRangeSlidersDescription) ?? local.demoRangeSlidersDescription;
 String get demoCustomSlidersTitle =>
-remote.translateOrDefault('demoCustomSlidersTitle', local.demoCustomSlidersTitle);
+remote?.translateOrDefault('demoCustomSlidersTitle', local.demoCustomSlidersTitle) ?? local.demoCustomSlidersTitle;
 String get demoCustomSlidersDescription =>
-remote.translateOrDefault('demoCustomSlidersDescription', local.demoCustomSlidersDescription);
+remote?.translateOrDefault('demoCustomSlidersDescription', local.demoCustomSlidersDescription) ?? local.demoCustomSlidersDescription;
 String get demoSlidersContinuousWithEditableNumericalValue =>
-remote.translateOrDefault('demoSlidersContinuousWithEditableNumericalValue', local.demoSlidersContinuousWithEditableNumericalValue);
+remote?.translateOrDefault('demoSlidersContinuousWithEditableNumericalValue', local.demoSlidersContinuousWithEditableNumericalValue) ?? local.demoSlidersContinuousWithEditableNumericalValue;
 String get demoSlidersDiscrete =>
-remote.translateOrDefault('demoSlidersDiscrete', local.demoSlidersDiscrete);
+remote?.translateOrDefault('demoSlidersDiscrete', local.demoSlidersDiscrete) ?? local.demoSlidersDiscrete;
 String get demoSlidersDiscreteSliderWithCustomTheme =>
-remote.translateOrDefault('demoSlidersDiscreteSliderWithCustomTheme', local.demoSlidersDiscreteSliderWithCustomTheme);
+remote?.translateOrDefault('demoSlidersDiscreteSliderWithCustomTheme', local.demoSlidersDiscreteSliderWithCustomTheme) ?? local.demoSlidersDiscreteSliderWithCustomTheme;
 String get demoSlidersContinuousRangeSliderWithCustomTheme =>
-remote.translateOrDefault('demoSlidersContinuousRangeSliderWithCustomTheme', local.demoSlidersContinuousRangeSliderWithCustomTheme);
+remote?.translateOrDefault('demoSlidersContinuousRangeSliderWithCustomTheme', local.demoSlidersContinuousRangeSliderWithCustomTheme) ?? local.demoSlidersContinuousRangeSliderWithCustomTheme;
 String get demoSlidersContinuous =>
-remote.translateOrDefault('demoSlidersContinuous', local.demoSlidersContinuous);
+remote?.translateOrDefault('demoSlidersContinuous', local.demoSlidersContinuous) ?? local.demoSlidersContinuous;
 String get demoSlidersEditableNumericalValue =>
-remote.translateOrDefault('demoSlidersEditableNumericalValue', local.demoSlidersEditableNumericalValue);
+remote?.translateOrDefault('demoSlidersEditableNumericalValue', local.demoSlidersEditableNumericalValue) ?? local.demoSlidersEditableNumericalValue;
 String get demoMenuTitle =>
-remote.translateOrDefault('demoMenuTitle', local.demoMenuTitle);
+remote?.translateOrDefault('demoMenuTitle', local.demoMenuTitle) ?? local.demoMenuTitle;
 String get demoContextMenuTitle =>
-remote.translateOrDefault('demoContextMenuTitle', local.demoContextMenuTitle);
+remote?.translateOrDefault('demoContextMenuTitle', local.demoContextMenuTitle) ?? local.demoContextMenuTitle;
 String get demoSectionedMenuTitle =>
-remote.translateOrDefault('demoSectionedMenuTitle', local.demoSectionedMenuTitle);
+remote?.translateOrDefault('demoSectionedMenuTitle', local.demoSectionedMenuTitle) ?? local.demoSectionedMenuTitle;
 String get demoSimpleMenuTitle =>
-remote.translateOrDefault('demoSimpleMenuTitle', local.demoSimpleMenuTitle);
+remote?.translateOrDefault('demoSimpleMenuTitle', local.demoSimpleMenuTitle) ?? local.demoSimpleMenuTitle;
 String get demoChecklistMenuTitle =>
-remote.translateOrDefault('demoChecklistMenuTitle', local.demoChecklistMenuTitle);
+remote?.translateOrDefault('demoChecklistMenuTitle', local.demoChecklistMenuTitle) ?? local.demoChecklistMenuTitle;
 String get demoMenuSubtitle =>
-remote.translateOrDefault('demoMenuSubtitle', local.demoMenuSubtitle);
+remote?.translateOrDefault('demoMenuSubtitle', local.demoMenuSubtitle) ?? local.demoMenuSubtitle;
 String get demoMenuDescription =>
-remote.translateOrDefault('demoMenuDescription', local.demoMenuDescription);
+remote?.translateOrDefault('demoMenuDescription', local.demoMenuDescription) ?? local.demoMenuDescription;
 String get demoMenuItemValueOne =>
-remote.translateOrDefault('demoMenuItemValueOne', local.demoMenuItemValueOne);
+remote?.translateOrDefault('demoMenuItemValueOne', local.demoMenuItemValueOne) ?? local.demoMenuItemValueOne;
 String get demoMenuItemValueTwo =>
-remote.translateOrDefault('demoMenuItemValueTwo', local.demoMenuItemValueTwo);
+remote?.translateOrDefault('demoMenuItemValueTwo', local.demoMenuItemValueTwo) ?? local.demoMenuItemValueTwo;
 String get demoMenuItemValueThree =>
-remote.translateOrDefault('demoMenuItemValueThree', local.demoMenuItemValueThree);
+remote?.translateOrDefault('demoMenuItemValueThree', local.demoMenuItemValueThree) ?? local.demoMenuItemValueThree;
 String get demoMenuOne =>
-remote.translateOrDefault('demoMenuOne', local.demoMenuOne);
+remote?.translateOrDefault('demoMenuOne', local.demoMenuOne) ?? local.demoMenuOne;
 String get demoMenuTwo =>
-remote.translateOrDefault('demoMenuTwo', local.demoMenuTwo);
+remote?.translateOrDefault('demoMenuTwo', local.demoMenuTwo) ?? local.demoMenuTwo;
 String get demoMenuThree =>
-remote.translateOrDefault('demoMenuThree', local.demoMenuThree);
+remote?.translateOrDefault('demoMenuThree', local.demoMenuThree) ?? local.demoMenuThree;
 String get demoMenuFour =>
-remote.translateOrDefault('demoMenuFour', local.demoMenuFour);
+remote?.translateOrDefault('demoMenuFour', local.demoMenuFour) ?? local.demoMenuFour;
 String get demoMenuAnItemWithAContextMenuButton =>
-remote.translateOrDefault('demoMenuAnItemWithAContextMenuButton', local.demoMenuAnItemWithAContextMenuButton);
+remote?.translateOrDefault('demoMenuAnItemWithAContextMenuButton', local.demoMenuAnItemWithAContextMenuButton) ?? local.demoMenuAnItemWithAContextMenuButton;
 String get demoMenuContextMenuItemOne =>
-remote.translateOrDefault('demoMenuContextMenuItemOne', local.demoMenuContextMenuItemOne);
+remote?.translateOrDefault('demoMenuContextMenuItemOne', local.demoMenuContextMenuItemOne) ?? local.demoMenuContextMenuItemOne;
 String get demoMenuADisabledMenuItem =>
-remote.translateOrDefault('demoMenuADisabledMenuItem', local.demoMenuADisabledMenuItem);
+remote?.translateOrDefault('demoMenuADisabledMenuItem', local.demoMenuADisabledMenuItem) ?? local.demoMenuADisabledMenuItem;
 String get demoMenuContextMenuItemThree =>
-remote.translateOrDefault('demoMenuContextMenuItemThree', local.demoMenuContextMenuItemThree);
+remote?.translateOrDefault('demoMenuContextMenuItemThree', local.demoMenuContextMenuItemThree) ?? local.demoMenuContextMenuItemThree;
 String get demoMenuAnItemWithASectionedMenu =>
-remote.translateOrDefault('demoMenuAnItemWithASectionedMenu', local.demoMenuAnItemWithASectionedMenu);
+remote?.translateOrDefault('demoMenuAnItemWithASectionedMenu', local.demoMenuAnItemWithASectionedMenu) ?? local.demoMenuAnItemWithASectionedMenu;
 String get demoMenuPreview =>
-remote.translateOrDefault('demoMenuPreview', local.demoMenuPreview);
+remote?.translateOrDefault('demoMenuPreview', local.demoMenuPreview) ?? local.demoMenuPreview;
 String get demoMenuShare =>
-remote.translateOrDefault('demoMenuShare', local.demoMenuShare);
+remote?.translateOrDefault('demoMenuShare', local.demoMenuShare) ?? local.demoMenuShare;
 String get demoMenuGetLink =>
-remote.translateOrDefault('demoMenuGetLink', local.demoMenuGetLink);
+remote?.translateOrDefault('demoMenuGetLink', local.demoMenuGetLink) ?? local.demoMenuGetLink;
 String get demoMenuRemove =>
-remote.translateOrDefault('demoMenuRemove', local.demoMenuRemove);
-String demoMenuSelected(int value){return remote.translateOrDefault('demoMenuSelected', local.demoMenuSelected(value));
+remote?.translateOrDefault('demoMenuRemove', local.demoMenuRemove) ?? local.demoMenuRemove;
+String demoMenuSelected(int value){return remote?.translateOrDefault('demoMenuSelected', local.demoMenuSelected(value)) ?? local.demoMenuSelected(value);
 }
-String demoMenuChecked(int value){return remote.translateOrDefault('demoMenuChecked', local.demoMenuChecked(value));
+String demoMenuChecked(int value){return remote?.translateOrDefault('demoMenuChecked', local.demoMenuChecked(value)) ?? local.demoMenuChecked(value);
 }
 String get demoNavigationDrawerTitle =>
-remote.translateOrDefault('demoNavigationDrawerTitle', local.demoNavigationDrawerTitle);
+remote?.translateOrDefault('demoNavigationDrawerTitle', local.demoNavigationDrawerTitle) ?? local.demoNavigationDrawerTitle;
 String get demoNavigationDrawerSubtitle =>
-remote.translateOrDefault('demoNavigationDrawerSubtitle', local.demoNavigationDrawerSubtitle);
+remote?.translateOrDefault('demoNavigationDrawerSubtitle', local.demoNavigationDrawerSubtitle) ?? local.demoNavigationDrawerSubtitle;
 String get demoNavigationDrawerDescription =>
-remote.translateOrDefault('demoNavigationDrawerDescription', local.demoNavigationDrawerDescription);
+remote?.translateOrDefault('demoNavigationDrawerDescription', local.demoNavigationDrawerDescription) ?? local.demoNavigationDrawerDescription;
 String get demoNavigationDrawerUserName =>
-remote.translateOrDefault('demoNavigationDrawerUserName', local.demoNavigationDrawerUserName);
+remote?.translateOrDefault('demoNavigationDrawerUserName', local.demoNavigationDrawerUserName) ?? local.demoNavigationDrawerUserName;
 String get demoNavigationDrawerUserEmail =>
-remote.translateOrDefault('demoNavigationDrawerUserEmail', local.demoNavigationDrawerUserEmail);
+remote?.translateOrDefault('demoNavigationDrawerUserEmail', local.demoNavigationDrawerUserEmail) ?? local.demoNavigationDrawerUserEmail;
 String get demoNavigationDrawerToPageOne =>
-remote.translateOrDefault('demoNavigationDrawerToPageOne', local.demoNavigationDrawerToPageOne);
+remote?.translateOrDefault('demoNavigationDrawerToPageOne', local.demoNavigationDrawerToPageOne) ?? local.demoNavigationDrawerToPageOne;
 String get demoNavigationDrawerToPageTwo =>
-remote.translateOrDefault('demoNavigationDrawerToPageTwo', local.demoNavigationDrawerToPageTwo);
+remote?.translateOrDefault('demoNavigationDrawerToPageTwo', local.demoNavigationDrawerToPageTwo) ?? local.demoNavigationDrawerToPageTwo;
 String get demoNavigationDrawerText =>
-remote.translateOrDefault('demoNavigationDrawerText', local.demoNavigationDrawerText);
+remote?.translateOrDefault('demoNavigationDrawerText', local.demoNavigationDrawerText) ?? local.demoNavigationDrawerText;
 String get demoNavigationRailTitle =>
-remote.translateOrDefault('demoNavigationRailTitle', local.demoNavigationRailTitle);
+remote?.translateOrDefault('demoNavigationRailTitle', local.demoNavigationRailTitle) ?? local.demoNavigationRailTitle;
 String get demoNavigationRailSubtitle =>
-remote.translateOrDefault('demoNavigationRailSubtitle', local.demoNavigationRailSubtitle);
+remote?.translateOrDefault('demoNavigationRailSubtitle', local.demoNavigationRailSubtitle) ?? local.demoNavigationRailSubtitle;
 String get demoNavigationRailDescription =>
-remote.translateOrDefault('demoNavigationRailDescription', local.demoNavigationRailDescription);
+remote?.translateOrDefault('demoNavigationRailDescription', local.demoNavigationRailDescription) ?? local.demoNavigationRailDescription;
 String get demoNavigationRailFirst =>
-remote.translateOrDefault('demoNavigationRailFirst', local.demoNavigationRailFirst);
+remote?.translateOrDefault('demoNavigationRailFirst', local.demoNavigationRailFirst) ?? local.demoNavigationRailFirst;
 String get demoNavigationRailSecond =>
-remote.translateOrDefault('demoNavigationRailSecond', local.demoNavigationRailSecond);
+remote?.translateOrDefault('demoNavigationRailSecond', local.demoNavigationRailSecond) ?? local.demoNavigationRailSecond;
 String get demoNavigationRailThird =>
-remote.translateOrDefault('demoNavigationRailThird', local.demoNavigationRailThird);
+remote?.translateOrDefault('demoNavigationRailThird', local.demoNavigationRailThird) ?? local.demoNavigationRailThird;
 String get demoMenuAnItemWithASimpleMenu =>
-remote.translateOrDefault('demoMenuAnItemWithASimpleMenu', local.demoMenuAnItemWithASimpleMenu);
+remote?.translateOrDefault('demoMenuAnItemWithASimpleMenu', local.demoMenuAnItemWithASimpleMenu) ?? local.demoMenuAnItemWithASimpleMenu;
 String get demoMenuAnItemWithAChecklistMenu =>
-remote.translateOrDefault('demoMenuAnItemWithAChecklistMenu', local.demoMenuAnItemWithAChecklistMenu);
+remote?.translateOrDefault('demoMenuAnItemWithAChecklistMenu', local.demoMenuAnItemWithAChecklistMenu) ?? local.demoMenuAnItemWithAChecklistMenu;
 String get demoFullscreenDialogTitle =>
-remote.translateOrDefault('demoFullscreenDialogTitle', local.demoFullscreenDialogTitle);
+remote?.translateOrDefault('demoFullscreenDialogTitle', local.demoFullscreenDialogTitle) ?? local.demoFullscreenDialogTitle;
 String get demoFullscreenDialogDescription =>
-remote.translateOrDefault('demoFullscreenDialogDescription', local.demoFullscreenDialogDescription);
+remote?.translateOrDefault('demoFullscreenDialogDescription', local.demoFullscreenDialogDescription) ?? local.demoFullscreenDialogDescription;
 String get demoCupertinoActivityIndicatorTitle =>
-remote.translateOrDefault('demoCupertinoActivityIndicatorTitle', local.demoCupertinoActivityIndicatorTitle);
+remote?.translateOrDefault('demoCupertinoActivityIndicatorTitle', local.demoCupertinoActivityIndicatorTitle) ?? local.demoCupertinoActivityIndicatorTitle;
 String get demoCupertinoActivityIndicatorSubtitle =>
-remote.translateOrDefault('demoCupertinoActivityIndicatorSubtitle', local.demoCupertinoActivityIndicatorSubtitle);
+remote?.translateOrDefault('demoCupertinoActivityIndicatorSubtitle', local.demoCupertinoActivityIndicatorSubtitle) ?? local.demoCupertinoActivityIndicatorSubtitle;
 String get demoCupertinoActivityIndicatorDescription =>
-remote.translateOrDefault('demoCupertinoActivityIndicatorDescription', local.demoCupertinoActivityIndicatorDescription);
+remote?.translateOrDefault('demoCupertinoActivityIndicatorDescription', local.demoCupertinoActivityIndicatorDescription) ?? local.demoCupertinoActivityIndicatorDescription;
 String get demoCupertinoButtonsTitle =>
-remote.translateOrDefault('demoCupertinoButtonsTitle', local.demoCupertinoButtonsTitle);
+remote?.translateOrDefault('demoCupertinoButtonsTitle', local.demoCupertinoButtonsTitle) ?? local.demoCupertinoButtonsTitle;
 String get demoCupertinoButtonsSubtitle =>
-remote.translateOrDefault('demoCupertinoButtonsSubtitle', local.demoCupertinoButtonsSubtitle);
+remote?.translateOrDefault('demoCupertinoButtonsSubtitle', local.demoCupertinoButtonsSubtitle) ?? local.demoCupertinoButtonsSubtitle;
 String get demoCupertinoButtonsDescription =>
-remote.translateOrDefault('demoCupertinoButtonsDescription', local.demoCupertinoButtonsDescription);
+remote?.translateOrDefault('demoCupertinoButtonsDescription', local.demoCupertinoButtonsDescription) ?? local.demoCupertinoButtonsDescription;
 String get demoCupertinoContextMenuTitle =>
-remote.translateOrDefault('demoCupertinoContextMenuTitle', local.demoCupertinoContextMenuTitle);
+remote?.translateOrDefault('demoCupertinoContextMenuTitle', local.demoCupertinoContextMenuTitle) ?? local.demoCupertinoContextMenuTitle;
 String get demoCupertinoContextMenuSubtitle =>
-remote.translateOrDefault('demoCupertinoContextMenuSubtitle', local.demoCupertinoContextMenuSubtitle);
+remote?.translateOrDefault('demoCupertinoContextMenuSubtitle', local.demoCupertinoContextMenuSubtitle) ?? local.demoCupertinoContextMenuSubtitle;
 String get demoCupertinoContextMenuDescription =>
-remote.translateOrDefault('demoCupertinoContextMenuDescription', local.demoCupertinoContextMenuDescription);
+remote?.translateOrDefault('demoCupertinoContextMenuDescription', local.demoCupertinoContextMenuDescription) ?? local.demoCupertinoContextMenuDescription;
 String get demoCupertinoContextMenuActionOne =>
-remote.translateOrDefault('demoCupertinoContextMenuActionOne', local.demoCupertinoContextMenuActionOne);
+remote?.translateOrDefault('demoCupertinoContextMenuActionOne', local.demoCupertinoContextMenuActionOne) ?? local.demoCupertinoContextMenuActionOne;
 String get demoCupertinoContextMenuActionTwo =>
-remote.translateOrDefault('demoCupertinoContextMenuActionTwo', local.demoCupertinoContextMenuActionTwo);
+remote?.translateOrDefault('demoCupertinoContextMenuActionTwo', local.demoCupertinoContextMenuActionTwo) ?? local.demoCupertinoContextMenuActionTwo;
 String get demoCupertinoContextMenuActionText =>
-remote.translateOrDefault('demoCupertinoContextMenuActionText', local.demoCupertinoContextMenuActionText);
+remote?.translateOrDefault('demoCupertinoContextMenuActionText', local.demoCupertinoContextMenuActionText) ?? local.demoCupertinoContextMenuActionText;
 String get demoCupertinoAlertsTitle =>
-remote.translateOrDefault('demoCupertinoAlertsTitle', local.demoCupertinoAlertsTitle);
+remote?.translateOrDefault('demoCupertinoAlertsTitle', local.demoCupertinoAlertsTitle) ?? local.demoCupertinoAlertsTitle;
 String get demoCupertinoAlertsSubtitle =>
-remote.translateOrDefault('demoCupertinoAlertsSubtitle', local.demoCupertinoAlertsSubtitle);
+remote?.translateOrDefault('demoCupertinoAlertsSubtitle', local.demoCupertinoAlertsSubtitle) ?? local.demoCupertinoAlertsSubtitle;
 String get demoCupertinoAlertTitle =>
-remote.translateOrDefault('demoCupertinoAlertTitle', local.demoCupertinoAlertTitle);
+remote?.translateOrDefault('demoCupertinoAlertTitle', local.demoCupertinoAlertTitle) ?? local.demoCupertinoAlertTitle;
 String get demoCupertinoAlertDescription =>
-remote.translateOrDefault('demoCupertinoAlertDescription', local.demoCupertinoAlertDescription);
+remote?.translateOrDefault('demoCupertinoAlertDescription', local.demoCupertinoAlertDescription) ?? local.demoCupertinoAlertDescription;
 String get demoCupertinoAlertWithTitleTitle =>
-remote.translateOrDefault('demoCupertinoAlertWithTitleTitle', local.demoCupertinoAlertWithTitleTitle);
+remote?.translateOrDefault('demoCupertinoAlertWithTitleTitle', local.demoCupertinoAlertWithTitleTitle) ?? local.demoCupertinoAlertWithTitleTitle;
 String get demoCupertinoAlertButtonsTitle =>
-remote.translateOrDefault('demoCupertinoAlertButtonsTitle', local.demoCupertinoAlertButtonsTitle);
+remote?.translateOrDefault('demoCupertinoAlertButtonsTitle', local.demoCupertinoAlertButtonsTitle) ?? local.demoCupertinoAlertButtonsTitle;
 String get demoCupertinoAlertButtonsOnlyTitle =>
-remote.translateOrDefault('demoCupertinoAlertButtonsOnlyTitle', local.demoCupertinoAlertButtonsOnlyTitle);
+remote?.translateOrDefault('demoCupertinoAlertButtonsOnlyTitle', local.demoCupertinoAlertButtonsOnlyTitle) ?? local.demoCupertinoAlertButtonsOnlyTitle;
 String get demoCupertinoActionSheetTitle =>
-remote.translateOrDefault('demoCupertinoActionSheetTitle', local.demoCupertinoActionSheetTitle);
+remote?.translateOrDefault('demoCupertinoActionSheetTitle', local.demoCupertinoActionSheetTitle) ?? local.demoCupertinoActionSheetTitle;
 String get demoCupertinoActionSheetDescription =>
-remote.translateOrDefault('demoCupertinoActionSheetDescription', local.demoCupertinoActionSheetDescription);
+remote?.translateOrDefault('demoCupertinoActionSheetDescription', local.demoCupertinoActionSheetDescription) ?? local.demoCupertinoActionSheetDescription;
 String get demoCupertinoNavigationBarTitle =>
-remote.translateOrDefault('demoCupertinoNavigationBarTitle', local.demoCupertinoNavigationBarTitle);
+remote?.translateOrDefault('demoCupertinoNavigationBarTitle', local.demoCupertinoNavigationBarTitle) ?? local.demoCupertinoNavigationBarTitle;
 String get demoCupertinoNavigationBarSubtitle =>
-remote.translateOrDefault('demoCupertinoNavigationBarSubtitle', local.demoCupertinoNavigationBarSubtitle);
+remote?.translateOrDefault('demoCupertinoNavigationBarSubtitle', local.demoCupertinoNavigationBarSubtitle) ?? local.demoCupertinoNavigationBarSubtitle;
 String get demoCupertinoNavigationBarDescription =>
-remote.translateOrDefault('demoCupertinoNavigationBarDescription', local.demoCupertinoNavigationBarDescription);
+remote?.translateOrDefault('demoCupertinoNavigationBarDescription', local.demoCupertinoNavigationBarDescription) ?? local.demoCupertinoNavigationBarDescription;
 String get demoCupertinoPickerTitle =>
-remote.translateOrDefault('demoCupertinoPickerTitle', local.demoCupertinoPickerTitle);
+remote?.translateOrDefault('demoCupertinoPickerTitle', local.demoCupertinoPickerTitle) ?? local.demoCupertinoPickerTitle;
 String get demoCupertinoPickerSubtitle =>
-remote.translateOrDefault('demoCupertinoPickerSubtitle', local.demoCupertinoPickerSubtitle);
+remote?.translateOrDefault('demoCupertinoPickerSubtitle', local.demoCupertinoPickerSubtitle) ?? local.demoCupertinoPickerSubtitle;
 String get demoCupertinoPickerDescription =>
-remote.translateOrDefault('demoCupertinoPickerDescription', local.demoCupertinoPickerDescription);
+remote?.translateOrDefault('demoCupertinoPickerDescription', local.demoCupertinoPickerDescription) ?? local.demoCupertinoPickerDescription;
 String get demoCupertinoPickerTimer =>
-remote.translateOrDefault('demoCupertinoPickerTimer', local.demoCupertinoPickerTimer);
+remote?.translateOrDefault('demoCupertinoPickerTimer', local.demoCupertinoPickerTimer) ?? local.demoCupertinoPickerTimer;
 String get demoCupertinoPickerDate =>
-remote.translateOrDefault('demoCupertinoPickerDate', local.demoCupertinoPickerDate);
+remote?.translateOrDefault('demoCupertinoPickerDate', local.demoCupertinoPickerDate) ?? local.demoCupertinoPickerDate;
 String get demoCupertinoPickerTime =>
-remote.translateOrDefault('demoCupertinoPickerTime', local.demoCupertinoPickerTime);
+remote?.translateOrDefault('demoCupertinoPickerTime', local.demoCupertinoPickerTime) ?? local.demoCupertinoPickerTime;
 String get demoCupertinoPickerDateTime =>
-remote.translateOrDefault('demoCupertinoPickerDateTime', local.demoCupertinoPickerDateTime);
+remote?.translateOrDefault('demoCupertinoPickerDateTime', local.demoCupertinoPickerDateTime) ?? local.demoCupertinoPickerDateTime;
 String get demoCupertinoPullToRefreshTitle =>
-remote.translateOrDefault('demoCupertinoPullToRefreshTitle', local.demoCupertinoPullToRefreshTitle);
+remote?.translateOrDefault('demoCupertinoPullToRefreshTitle', local.demoCupertinoPullToRefreshTitle) ?? local.demoCupertinoPullToRefreshTitle;
 String get demoCupertinoPullToRefreshSubtitle =>
-remote.translateOrDefault('demoCupertinoPullToRefreshSubtitle', local.demoCupertinoPullToRefreshSubtitle);
+remote?.translateOrDefault('demoCupertinoPullToRefreshSubtitle', local.demoCupertinoPullToRefreshSubtitle) ?? local.demoCupertinoPullToRefreshSubtitle;
 String get demoCupertinoPullToRefreshDescription =>
-remote.translateOrDefault('demoCupertinoPullToRefreshDescription', local.demoCupertinoPullToRefreshDescription);
+remote?.translateOrDefault('demoCupertinoPullToRefreshDescription', local.demoCupertinoPullToRefreshDescription) ?? local.demoCupertinoPullToRefreshDescription;
 String get demoCupertinoSegmentedControlTitle =>
-remote.translateOrDefault('demoCupertinoSegmentedControlTitle', local.demoCupertinoSegmentedControlTitle);
+remote?.translateOrDefault('demoCupertinoSegmentedControlTitle', local.demoCupertinoSegmentedControlTitle) ?? local.demoCupertinoSegmentedControlTitle;
 String get demoCupertinoSegmentedControlSubtitle =>
-remote.translateOrDefault('demoCupertinoSegmentedControlSubtitle', local.demoCupertinoSegmentedControlSubtitle);
+remote?.translateOrDefault('demoCupertinoSegmentedControlSubtitle', local.demoCupertinoSegmentedControlSubtitle) ?? local.demoCupertinoSegmentedControlSubtitle;
 String get demoCupertinoSegmentedControlDescription =>
-remote.translateOrDefault('demoCupertinoSegmentedControlDescription', local.demoCupertinoSegmentedControlDescription);
+remote?.translateOrDefault('demoCupertinoSegmentedControlDescription', local.demoCupertinoSegmentedControlDescription) ?? local.demoCupertinoSegmentedControlDescription;
 String get demoCupertinoSliderTitle =>
-remote.translateOrDefault('demoCupertinoSliderTitle', local.demoCupertinoSliderTitle);
+remote?.translateOrDefault('demoCupertinoSliderTitle', local.demoCupertinoSliderTitle) ?? local.demoCupertinoSliderTitle;
 String get demoCupertinoSliderSubtitle =>
-remote.translateOrDefault('demoCupertinoSliderSubtitle', local.demoCupertinoSliderSubtitle);
+remote?.translateOrDefault('demoCupertinoSliderSubtitle', local.demoCupertinoSliderSubtitle) ?? local.demoCupertinoSliderSubtitle;
 String get demoCupertinoSliderDescription =>
-remote.translateOrDefault('demoCupertinoSliderDescription', local.demoCupertinoSliderDescription);
-String demoCupertinoSliderContinuous(int value){return remote.translateOrDefault('demoCupertinoSliderContinuous', local.demoCupertinoSliderContinuous(value));
+remote?.translateOrDefault('demoCupertinoSliderDescription', local.demoCupertinoSliderDescription) ?? local.demoCupertinoSliderDescription;
+String demoCupertinoSliderContinuous(int value){return remote?.translateOrDefault('demoCupertinoSliderContinuous', local.demoCupertinoSliderContinuous(value)) ?? local.demoCupertinoSliderContinuous(value);
 }
-String demoCupertinoSliderDiscrete(int value){return remote.translateOrDefault('demoCupertinoSliderDiscrete', local.demoCupertinoSliderDiscrete(value));
+String demoCupertinoSliderDiscrete(int value){return remote?.translateOrDefault('demoCupertinoSliderDiscrete', local.demoCupertinoSliderDiscrete(value)) ?? local.demoCupertinoSliderDiscrete(value);
 }
 String get demoCupertinoSwitchSubtitle =>
-remote.translateOrDefault('demoCupertinoSwitchSubtitle', local.demoCupertinoSwitchSubtitle);
+remote?.translateOrDefault('demoCupertinoSwitchSubtitle', local.demoCupertinoSwitchSubtitle) ?? local.demoCupertinoSwitchSubtitle;
 String get demoCupertinoSwitchDescription =>
-remote.translateOrDefault('demoCupertinoSwitchDescription', local.demoCupertinoSwitchDescription);
+remote?.translateOrDefault('demoCupertinoSwitchDescription', local.demoCupertinoSwitchDescription) ?? local.demoCupertinoSwitchDescription;
 String get demoCupertinoTabBarTitle =>
-remote.translateOrDefault('demoCupertinoTabBarTitle', local.demoCupertinoTabBarTitle);
+remote?.translateOrDefault('demoCupertinoTabBarTitle', local.demoCupertinoTabBarTitle) ?? local.demoCupertinoTabBarTitle;
 String get demoCupertinoTabBarSubtitle =>
-remote.translateOrDefault('demoCupertinoTabBarSubtitle', local.demoCupertinoTabBarSubtitle);
+remote?.translateOrDefault('demoCupertinoTabBarSubtitle', local.demoCupertinoTabBarSubtitle) ?? local.demoCupertinoTabBarSubtitle;
 String get demoCupertinoTabBarDescription =>
-remote.translateOrDefault('demoCupertinoTabBarDescription', local.demoCupertinoTabBarDescription);
+remote?.translateOrDefault('demoCupertinoTabBarDescription', local.demoCupertinoTabBarDescription) ?? local.demoCupertinoTabBarDescription;
 String get cupertinoTabBarHomeTab =>
-remote.translateOrDefault('cupertinoTabBarHomeTab', local.cupertinoTabBarHomeTab);
+remote?.translateOrDefault('cupertinoTabBarHomeTab', local.cupertinoTabBarHomeTab) ?? local.cupertinoTabBarHomeTab;
 String get cupertinoTabBarChatTab =>
-remote.translateOrDefault('cupertinoTabBarChatTab', local.cupertinoTabBarChatTab);
+remote?.translateOrDefault('cupertinoTabBarChatTab', local.cupertinoTabBarChatTab) ?? local.cupertinoTabBarChatTab;
 String get cupertinoTabBarProfileTab =>
-remote.translateOrDefault('cupertinoTabBarProfileTab', local.cupertinoTabBarProfileTab);
+remote?.translateOrDefault('cupertinoTabBarProfileTab', local.cupertinoTabBarProfileTab) ?? local.cupertinoTabBarProfileTab;
 String get demoCupertinoTextFieldTitle =>
-remote.translateOrDefault('demoCupertinoTextFieldTitle', local.demoCupertinoTextFieldTitle);
+remote?.translateOrDefault('demoCupertinoTextFieldTitle', local.demoCupertinoTextFieldTitle) ?? local.demoCupertinoTextFieldTitle;
 String get demoCupertinoTextFieldSubtitle =>
-remote.translateOrDefault('demoCupertinoTextFieldSubtitle', local.demoCupertinoTextFieldSubtitle);
+remote?.translateOrDefault('demoCupertinoTextFieldSubtitle', local.demoCupertinoTextFieldSubtitle) ?? local.demoCupertinoTextFieldSubtitle;
 String get demoCupertinoTextFieldDescription =>
-remote.translateOrDefault('demoCupertinoTextFieldDescription', local.demoCupertinoTextFieldDescription);
+remote?.translateOrDefault('demoCupertinoTextFieldDescription', local.demoCupertinoTextFieldDescription) ?? local.demoCupertinoTextFieldDescription;
 String get demoCupertinoTextFieldPIN =>
-remote.translateOrDefault('demoCupertinoTextFieldPIN', local.demoCupertinoTextFieldPIN);
+remote?.translateOrDefault('demoCupertinoTextFieldPIN', local.demoCupertinoTextFieldPIN) ?? local.demoCupertinoTextFieldPIN;
 String get demoMotionTitle =>
-remote.translateOrDefault('demoMotionTitle', local.demoMotionTitle);
+remote?.translateOrDefault('demoMotionTitle', local.demoMotionTitle) ?? local.demoMotionTitle;
 String get demoMotionSubtitle =>
-remote.translateOrDefault('demoMotionSubtitle', local.demoMotionSubtitle);
+remote?.translateOrDefault('demoMotionSubtitle', local.demoMotionSubtitle) ?? local.demoMotionSubtitle;
 String get demoContainerTransformDemoInstructions =>
-remote.translateOrDefault('demoContainerTransformDemoInstructions', local.demoContainerTransformDemoInstructions);
+remote?.translateOrDefault('demoContainerTransformDemoInstructions', local.demoContainerTransformDemoInstructions) ?? local.demoContainerTransformDemoInstructions;
 String get demoSharedXAxisDemoInstructions =>
-remote.translateOrDefault('demoSharedXAxisDemoInstructions', local.demoSharedXAxisDemoInstructions);
+remote?.translateOrDefault('demoSharedXAxisDemoInstructions', local.demoSharedXAxisDemoInstructions) ?? local.demoSharedXAxisDemoInstructions;
 String get demoSharedYAxisDemoInstructions =>
-remote.translateOrDefault('demoSharedYAxisDemoInstructions', local.demoSharedYAxisDemoInstructions);
+remote?.translateOrDefault('demoSharedYAxisDemoInstructions', local.demoSharedYAxisDemoInstructions) ?? local.demoSharedYAxisDemoInstructions;
 String get demoSharedZAxisDemoInstructions =>
-remote.translateOrDefault('demoSharedZAxisDemoInstructions', local.demoSharedZAxisDemoInstructions);
+remote?.translateOrDefault('demoSharedZAxisDemoInstructions', local.demoSharedZAxisDemoInstructions) ?? local.demoSharedZAxisDemoInstructions;
 String get demoFadeThroughDemoInstructions =>
-remote.translateOrDefault('demoFadeThroughDemoInstructions', local.demoFadeThroughDemoInstructions);
+remote?.translateOrDefault('demoFadeThroughDemoInstructions', local.demoFadeThroughDemoInstructions) ?? local.demoFadeThroughDemoInstructions;
 String get demoFadeScaleDemoInstructions =>
-remote.translateOrDefault('demoFadeScaleDemoInstructions', local.demoFadeScaleDemoInstructions);
+remote?.translateOrDefault('demoFadeScaleDemoInstructions', local.demoFadeScaleDemoInstructions) ?? local.demoFadeScaleDemoInstructions;
 String get demoContainerTransformTitle =>
-remote.translateOrDefault('demoContainerTransformTitle', local.demoContainerTransformTitle);
+remote?.translateOrDefault('demoContainerTransformTitle', local.demoContainerTransformTitle) ?? local.demoContainerTransformTitle;
 String get demoContainerTransformDescription =>
-remote.translateOrDefault('demoContainerTransformDescription', local.demoContainerTransformDescription);
+remote?.translateOrDefault('demoContainerTransformDescription', local.demoContainerTransformDescription) ?? local.demoContainerTransformDescription;
 String get demoContainerTransformModalBottomSheetTitle =>
-remote.translateOrDefault('demoContainerTransformModalBottomSheetTitle', local.demoContainerTransformModalBottomSheetTitle);
+remote?.translateOrDefault('demoContainerTransformModalBottomSheetTitle', local.demoContainerTransformModalBottomSheetTitle) ?? local.demoContainerTransformModalBottomSheetTitle;
 String get demoContainerTransformTypeFade =>
-remote.translateOrDefault('demoContainerTransformTypeFade', local.demoContainerTransformTypeFade);
+remote?.translateOrDefault('demoContainerTransformTypeFade', local.demoContainerTransformTypeFade) ?? local.demoContainerTransformTypeFade;
 String get demoContainerTransformTypeFadeThrough =>
-remote.translateOrDefault('demoContainerTransformTypeFadeThrough', local.demoContainerTransformTypeFadeThrough);
+remote?.translateOrDefault('demoContainerTransformTypeFadeThrough', local.demoContainerTransformTypeFadeThrough) ?? local.demoContainerTransformTypeFadeThrough;
 String get demoMotionPlaceholderTitle =>
-remote.translateOrDefault('demoMotionPlaceholderTitle', local.demoMotionPlaceholderTitle);
+remote?.translateOrDefault('demoMotionPlaceholderTitle', local.demoMotionPlaceholderTitle) ?? local.demoMotionPlaceholderTitle;
 String get demoMotionPlaceholderSubtitle =>
-remote.translateOrDefault('demoMotionPlaceholderSubtitle', local.demoMotionPlaceholderSubtitle);
+remote?.translateOrDefault('demoMotionPlaceholderSubtitle', local.demoMotionPlaceholderSubtitle) ?? local.demoMotionPlaceholderSubtitle;
 String get demoMotionSmallPlaceholderSubtitle =>
-remote.translateOrDefault('demoMotionSmallPlaceholderSubtitle', local.demoMotionSmallPlaceholderSubtitle);
+remote?.translateOrDefault('demoMotionSmallPlaceholderSubtitle', local.demoMotionSmallPlaceholderSubtitle) ?? local.demoMotionSmallPlaceholderSubtitle;
 String get demoMotionDetailsPageTitle =>
-remote.translateOrDefault('demoMotionDetailsPageTitle', local.demoMotionDetailsPageTitle);
+remote?.translateOrDefault('demoMotionDetailsPageTitle', local.demoMotionDetailsPageTitle) ?? local.demoMotionDetailsPageTitle;
 String get demoMotionListTileTitle =>
-remote.translateOrDefault('demoMotionListTileTitle', local.demoMotionListTileTitle);
+remote?.translateOrDefault('demoMotionListTileTitle', local.demoMotionListTileTitle) ?? local.demoMotionListTileTitle;
 String get demoSharedAxisDescription =>
-remote.translateOrDefault('demoSharedAxisDescription', local.demoSharedAxisDescription);
+remote?.translateOrDefault('demoSharedAxisDescription', local.demoSharedAxisDescription) ?? local.demoSharedAxisDescription;
 String get demoSharedXAxisTitle =>
-remote.translateOrDefault('demoSharedXAxisTitle', local.demoSharedXAxisTitle);
+remote?.translateOrDefault('demoSharedXAxisTitle', local.demoSharedXAxisTitle) ?? local.demoSharedXAxisTitle;
 String get demoSharedXAxisBackButtonText =>
-remote.translateOrDefault('demoSharedXAxisBackButtonText', local.demoSharedXAxisBackButtonText);
+remote?.translateOrDefault('demoSharedXAxisBackButtonText', local.demoSharedXAxisBackButtonText) ?? local.demoSharedXAxisBackButtonText;
 String get demoSharedXAxisNextButtonText =>
-remote.translateOrDefault('demoSharedXAxisNextButtonText', local.demoSharedXAxisNextButtonText);
+remote?.translateOrDefault('demoSharedXAxisNextButtonText', local.demoSharedXAxisNextButtonText) ?? local.demoSharedXAxisNextButtonText;
 String get demoSharedXAxisCoursePageTitle =>
-remote.translateOrDefault('demoSharedXAxisCoursePageTitle', local.demoSharedXAxisCoursePageTitle);
+remote?.translateOrDefault('demoSharedXAxisCoursePageTitle', local.demoSharedXAxisCoursePageTitle) ?? local.demoSharedXAxisCoursePageTitle;
 String get demoSharedXAxisCoursePageSubtitle =>
-remote.translateOrDefault('demoSharedXAxisCoursePageSubtitle', local.demoSharedXAxisCoursePageSubtitle);
+remote?.translateOrDefault('demoSharedXAxisCoursePageSubtitle', local.demoSharedXAxisCoursePageSubtitle) ?? local.demoSharedXAxisCoursePageSubtitle;
 String get demoSharedXAxisArtsAndCraftsCourseTitle =>
-remote.translateOrDefault('demoSharedXAxisArtsAndCraftsCourseTitle', local.demoSharedXAxisArtsAndCraftsCourseTitle);
+remote?.translateOrDefault('demoSharedXAxisArtsAndCraftsCourseTitle', local.demoSharedXAxisArtsAndCraftsCourseTitle) ?? local.demoSharedXAxisArtsAndCraftsCourseTitle;
 String get demoSharedXAxisBusinessCourseTitle =>
-remote.translateOrDefault('demoSharedXAxisBusinessCourseTitle', local.demoSharedXAxisBusinessCourseTitle);
+remote?.translateOrDefault('demoSharedXAxisBusinessCourseTitle', local.demoSharedXAxisBusinessCourseTitle) ?? local.demoSharedXAxisBusinessCourseTitle;
 String get demoSharedXAxisIllustrationCourseTitle =>
-remote.translateOrDefault('demoSharedXAxisIllustrationCourseTitle', local.demoSharedXAxisIllustrationCourseTitle);
+remote?.translateOrDefault('demoSharedXAxisIllustrationCourseTitle', local.demoSharedXAxisIllustrationCourseTitle) ?? local.demoSharedXAxisIllustrationCourseTitle;
 String get demoSharedXAxisDesignCourseTitle =>
-remote.translateOrDefault('demoSharedXAxisDesignCourseTitle', local.demoSharedXAxisDesignCourseTitle);
+remote?.translateOrDefault('demoSharedXAxisDesignCourseTitle', local.demoSharedXAxisDesignCourseTitle) ?? local.demoSharedXAxisDesignCourseTitle;
 String get demoSharedXAxisCulinaryCourseTitle =>
-remote.translateOrDefault('demoSharedXAxisCulinaryCourseTitle', local.demoSharedXAxisCulinaryCourseTitle);
+remote?.translateOrDefault('demoSharedXAxisCulinaryCourseTitle', local.demoSharedXAxisCulinaryCourseTitle) ?? local.demoSharedXAxisCulinaryCourseTitle;
 String get demoSharedXAxisBundledCourseSubtitle =>
-remote.translateOrDefault('demoSharedXAxisBundledCourseSubtitle', local.demoSharedXAxisBundledCourseSubtitle);
+remote?.translateOrDefault('demoSharedXAxisBundledCourseSubtitle', local.demoSharedXAxisBundledCourseSubtitle) ?? local.demoSharedXAxisBundledCourseSubtitle;
 String get demoSharedXAxisIndividualCourseSubtitle =>
-remote.translateOrDefault('demoSharedXAxisIndividualCourseSubtitle', local.demoSharedXAxisIndividualCourseSubtitle);
+remote?.translateOrDefault('demoSharedXAxisIndividualCourseSubtitle', local.demoSharedXAxisIndividualCourseSubtitle) ?? local.demoSharedXAxisIndividualCourseSubtitle;
 String get demoSharedXAxisSignInWelcomeText =>
-remote.translateOrDefault('demoSharedXAxisSignInWelcomeText', local.demoSharedXAxisSignInWelcomeText);
+remote?.translateOrDefault('demoSharedXAxisSignInWelcomeText', local.demoSharedXAxisSignInWelcomeText) ?? local.demoSharedXAxisSignInWelcomeText;
 String get demoSharedXAxisSignInSubtitleText =>
-remote.translateOrDefault('demoSharedXAxisSignInSubtitleText', local.demoSharedXAxisSignInSubtitleText);
+remote?.translateOrDefault('demoSharedXAxisSignInSubtitleText', local.demoSharedXAxisSignInSubtitleText) ?? local.demoSharedXAxisSignInSubtitleText;
 String get demoSharedXAxisSignInTextFieldLabel =>
-remote.translateOrDefault('demoSharedXAxisSignInTextFieldLabel', local.demoSharedXAxisSignInTextFieldLabel);
+remote?.translateOrDefault('demoSharedXAxisSignInTextFieldLabel', local.demoSharedXAxisSignInTextFieldLabel) ?? local.demoSharedXAxisSignInTextFieldLabel;
 String get demoSharedXAxisForgotEmailButtonText =>
-remote.translateOrDefault('demoSharedXAxisForgotEmailButtonText', local.demoSharedXAxisForgotEmailButtonText);
+remote?.translateOrDefault('demoSharedXAxisForgotEmailButtonText', local.demoSharedXAxisForgotEmailButtonText) ?? local.demoSharedXAxisForgotEmailButtonText;
 String get demoSharedXAxisCreateAccountButtonText =>
-remote.translateOrDefault('demoSharedXAxisCreateAccountButtonText', local.demoSharedXAxisCreateAccountButtonText);
+remote?.translateOrDefault('demoSharedXAxisCreateAccountButtonText', local.demoSharedXAxisCreateAccountButtonText) ?? local.demoSharedXAxisCreateAccountButtonText;
 String get demoSharedYAxisTitle =>
-remote.translateOrDefault('demoSharedYAxisTitle', local.demoSharedYAxisTitle);
+remote?.translateOrDefault('demoSharedYAxisTitle', local.demoSharedYAxisTitle) ?? local.demoSharedYAxisTitle;
 String get demoSharedYAxisAlbumCount =>
-remote.translateOrDefault('demoSharedYAxisAlbumCount', local.demoSharedYAxisAlbumCount);
+remote?.translateOrDefault('demoSharedYAxisAlbumCount', local.demoSharedYAxisAlbumCount) ?? local.demoSharedYAxisAlbumCount;
 String get demoSharedYAxisAlphabeticalSortTitle =>
-remote.translateOrDefault('demoSharedYAxisAlphabeticalSortTitle', local.demoSharedYAxisAlphabeticalSortTitle);
+remote?.translateOrDefault('demoSharedYAxisAlphabeticalSortTitle', local.demoSharedYAxisAlphabeticalSortTitle) ?? local.demoSharedYAxisAlphabeticalSortTitle;
 String get demoSharedYAxisRecentSortTitle =>
-remote.translateOrDefault('demoSharedYAxisRecentSortTitle', local.demoSharedYAxisRecentSortTitle);
+remote?.translateOrDefault('demoSharedYAxisRecentSortTitle', local.demoSharedYAxisRecentSortTitle) ?? local.demoSharedYAxisRecentSortTitle;
 String get demoSharedYAxisAlbumTileTitle =>
-remote.translateOrDefault('demoSharedYAxisAlbumTileTitle', local.demoSharedYAxisAlbumTileTitle);
+remote?.translateOrDefault('demoSharedYAxisAlbumTileTitle', local.demoSharedYAxisAlbumTileTitle) ?? local.demoSharedYAxisAlbumTileTitle;
 String get demoSharedYAxisAlbumTileSubtitle =>
-remote.translateOrDefault('demoSharedYAxisAlbumTileSubtitle', local.demoSharedYAxisAlbumTileSubtitle);
+remote?.translateOrDefault('demoSharedYAxisAlbumTileSubtitle', local.demoSharedYAxisAlbumTileSubtitle) ?? local.demoSharedYAxisAlbumTileSubtitle;
 String get demoSharedYAxisAlbumTileDurationUnit =>
-remote.translateOrDefault('demoSharedYAxisAlbumTileDurationUnit', local.demoSharedYAxisAlbumTileDurationUnit);
+remote?.translateOrDefault('demoSharedYAxisAlbumTileDurationUnit', local.demoSharedYAxisAlbumTileDurationUnit) ?? local.demoSharedYAxisAlbumTileDurationUnit;
 String get demoSharedZAxisTitle =>
-remote.translateOrDefault('demoSharedZAxisTitle', local.demoSharedZAxisTitle);
+remote?.translateOrDefault('demoSharedZAxisTitle', local.demoSharedZAxisTitle) ?? local.demoSharedZAxisTitle;
 String get demoSharedZAxisSettingsPageTitle =>
-remote.translateOrDefault('demoSharedZAxisSettingsPageTitle', local.demoSharedZAxisSettingsPageTitle);
+remote?.translateOrDefault('demoSharedZAxisSettingsPageTitle', local.demoSharedZAxisSettingsPageTitle) ?? local.demoSharedZAxisSettingsPageTitle;
 String get demoSharedZAxisBurgerRecipeTitle =>
-remote.translateOrDefault('demoSharedZAxisBurgerRecipeTitle', local.demoSharedZAxisBurgerRecipeTitle);
+remote?.translateOrDefault('demoSharedZAxisBurgerRecipeTitle', local.demoSharedZAxisBurgerRecipeTitle) ?? local.demoSharedZAxisBurgerRecipeTitle;
 String get demoSharedZAxisBurgerRecipeDescription =>
-remote.translateOrDefault('demoSharedZAxisBurgerRecipeDescription', local.demoSharedZAxisBurgerRecipeDescription);
+remote?.translateOrDefault('demoSharedZAxisBurgerRecipeDescription', local.demoSharedZAxisBurgerRecipeDescription) ?? local.demoSharedZAxisBurgerRecipeDescription;
 String get demoSharedZAxisSandwichRecipeTitle =>
-remote.translateOrDefault('demoSharedZAxisSandwichRecipeTitle', local.demoSharedZAxisSandwichRecipeTitle);
+remote?.translateOrDefault('demoSharedZAxisSandwichRecipeTitle', local.demoSharedZAxisSandwichRecipeTitle) ?? local.demoSharedZAxisSandwichRecipeTitle;
 String get demoSharedZAxisSandwichRecipeDescription =>
-remote.translateOrDefault('demoSharedZAxisSandwichRecipeDescription', local.demoSharedZAxisSandwichRecipeDescription);
+remote?.translateOrDefault('demoSharedZAxisSandwichRecipeDescription', local.demoSharedZAxisSandwichRecipeDescription) ?? local.demoSharedZAxisSandwichRecipeDescription;
 String get demoSharedZAxisDessertRecipeTitle =>
-remote.translateOrDefault('demoSharedZAxisDessertRecipeTitle', local.demoSharedZAxisDessertRecipeTitle);
+remote?.translateOrDefault('demoSharedZAxisDessertRecipeTitle', local.demoSharedZAxisDessertRecipeTitle) ?? local.demoSharedZAxisDessertRecipeTitle;
 String get demoSharedZAxisDessertRecipeDescription =>
-remote.translateOrDefault('demoSharedZAxisDessertRecipeDescription', local.demoSharedZAxisDessertRecipeDescription);
+remote?.translateOrDefault('demoSharedZAxisDessertRecipeDescription', local.demoSharedZAxisDessertRecipeDescription) ?? local.demoSharedZAxisDessertRecipeDescription;
 String get demoSharedZAxisShrimpPlateRecipeTitle =>
-remote.translateOrDefault('demoSharedZAxisShrimpPlateRecipeTitle', local.demoSharedZAxisShrimpPlateRecipeTitle);
+remote?.translateOrDefault('demoSharedZAxisShrimpPlateRecipeTitle', local.demoSharedZAxisShrimpPlateRecipeTitle) ?? local.demoSharedZAxisShrimpPlateRecipeTitle;
 String get demoSharedZAxisShrimpPlateRecipeDescription =>
-remote.translateOrDefault('demoSharedZAxisShrimpPlateRecipeDescription', local.demoSharedZAxisShrimpPlateRecipeDescription);
+remote?.translateOrDefault('demoSharedZAxisShrimpPlateRecipeDescription', local.demoSharedZAxisShrimpPlateRecipeDescription) ?? local.demoSharedZAxisShrimpPlateRecipeDescription;
 String get demoSharedZAxisCrabPlateRecipeTitle =>
-remote.translateOrDefault('demoSharedZAxisCrabPlateRecipeTitle', local.demoSharedZAxisCrabPlateRecipeTitle);
+remote?.translateOrDefault('demoSharedZAxisCrabPlateRecipeTitle', local.demoSharedZAxisCrabPlateRecipeTitle) ?? local.demoSharedZAxisCrabPlateRecipeTitle;
 String get demoSharedZAxisCrabPlateRecipeDescription =>
-remote.translateOrDefault('demoSharedZAxisCrabPlateRecipeDescription', local.demoSharedZAxisCrabPlateRecipeDescription);
+remote?.translateOrDefault('demoSharedZAxisCrabPlateRecipeDescription', local.demoSharedZAxisCrabPlateRecipeDescription) ?? local.demoSharedZAxisCrabPlateRecipeDescription;
 String get demoSharedZAxisBeefSandwichRecipeTitle =>
-remote.translateOrDefault('demoSharedZAxisBeefSandwichRecipeTitle', local.demoSharedZAxisBeefSandwichRecipeTitle);
+remote?.translateOrDefault('demoSharedZAxisBeefSandwichRecipeTitle', local.demoSharedZAxisBeefSandwichRecipeTitle) ?? local.demoSharedZAxisBeefSandwichRecipeTitle;
 String get demoSharedZAxisBeefSandwichRecipeDescription =>
-remote.translateOrDefault('demoSharedZAxisBeefSandwichRecipeDescription', local.demoSharedZAxisBeefSandwichRecipeDescription);
+remote?.translateOrDefault('demoSharedZAxisBeefSandwichRecipeDescription', local.demoSharedZAxisBeefSandwichRecipeDescription) ?? local.demoSharedZAxisBeefSandwichRecipeDescription;
 String get demoSharedZAxisSavedRecipesListTitle =>
-remote.translateOrDefault('demoSharedZAxisSavedRecipesListTitle', local.demoSharedZAxisSavedRecipesListTitle);
+remote?.translateOrDefault('demoSharedZAxisSavedRecipesListTitle', local.demoSharedZAxisSavedRecipesListTitle) ?? local.demoSharedZAxisSavedRecipesListTitle;
 String get demoSharedZAxisProfileSettingLabel =>
-remote.translateOrDefault('demoSharedZAxisProfileSettingLabel', local.demoSharedZAxisProfileSettingLabel);
+remote?.translateOrDefault('demoSharedZAxisProfileSettingLabel', local.demoSharedZAxisProfileSettingLabel) ?? local.demoSharedZAxisProfileSettingLabel;
 String get demoSharedZAxisNotificationSettingLabel =>
-remote.translateOrDefault('demoSharedZAxisNotificationSettingLabel', local.demoSharedZAxisNotificationSettingLabel);
+remote?.translateOrDefault('demoSharedZAxisNotificationSettingLabel', local.demoSharedZAxisNotificationSettingLabel) ?? local.demoSharedZAxisNotificationSettingLabel;
 String get demoSharedZAxisPrivacySettingLabel =>
-remote.translateOrDefault('demoSharedZAxisPrivacySettingLabel', local.demoSharedZAxisPrivacySettingLabel);
+remote?.translateOrDefault('demoSharedZAxisPrivacySettingLabel', local.demoSharedZAxisPrivacySettingLabel) ?? local.demoSharedZAxisPrivacySettingLabel;
 String get demoSharedZAxisHelpSettingLabel =>
-remote.translateOrDefault('demoSharedZAxisHelpSettingLabel', local.demoSharedZAxisHelpSettingLabel);
+remote?.translateOrDefault('demoSharedZAxisHelpSettingLabel', local.demoSharedZAxisHelpSettingLabel) ?? local.demoSharedZAxisHelpSettingLabel;
 String get demoFadeThroughTitle =>
-remote.translateOrDefault('demoFadeThroughTitle', local.demoFadeThroughTitle);
+remote?.translateOrDefault('demoFadeThroughTitle', local.demoFadeThroughTitle) ?? local.demoFadeThroughTitle;
 String get demoFadeThroughDescription =>
-remote.translateOrDefault('demoFadeThroughDescription', local.demoFadeThroughDescription);
+remote?.translateOrDefault('demoFadeThroughDescription', local.demoFadeThroughDescription) ?? local.demoFadeThroughDescription;
 String get demoFadeThroughAlbumsDestination =>
-remote.translateOrDefault('demoFadeThroughAlbumsDestination', local.demoFadeThroughAlbumsDestination);
+remote?.translateOrDefault('demoFadeThroughAlbumsDestination', local.demoFadeThroughAlbumsDestination) ?? local.demoFadeThroughAlbumsDestination;
 String get demoFadeThroughPhotosDestination =>
-remote.translateOrDefault('demoFadeThroughPhotosDestination', local.demoFadeThroughPhotosDestination);
+remote?.translateOrDefault('demoFadeThroughPhotosDestination', local.demoFadeThroughPhotosDestination) ?? local.demoFadeThroughPhotosDestination;
 String get demoFadeThroughSearchDestination =>
-remote.translateOrDefault('demoFadeThroughSearchDestination', local.demoFadeThroughSearchDestination);
+remote?.translateOrDefault('demoFadeThroughSearchDestination', local.demoFadeThroughSearchDestination) ?? local.demoFadeThroughSearchDestination;
 String get demoFadeThroughTextPlaceholder =>
-remote.translateOrDefault('demoFadeThroughTextPlaceholder', local.demoFadeThroughTextPlaceholder);
+remote?.translateOrDefault('demoFadeThroughTextPlaceholder', local.demoFadeThroughTextPlaceholder) ?? local.demoFadeThroughTextPlaceholder;
 String get demoFadeScaleTitle =>
-remote.translateOrDefault('demoFadeScaleTitle', local.demoFadeScaleTitle);
+remote?.translateOrDefault('demoFadeScaleTitle', local.demoFadeScaleTitle) ?? local.demoFadeScaleTitle;
 String get demoFadeScaleDescription =>
-remote.translateOrDefault('demoFadeScaleDescription', local.demoFadeScaleDescription);
+remote?.translateOrDefault('demoFadeScaleDescription', local.demoFadeScaleDescription) ?? local.demoFadeScaleDescription;
 String get demoFadeScaleShowAlertDialogButton =>
-remote.translateOrDefault('demoFadeScaleShowAlertDialogButton', local.demoFadeScaleShowAlertDialogButton);
+remote?.translateOrDefault('demoFadeScaleShowAlertDialogButton', local.demoFadeScaleShowAlertDialogButton) ?? local.demoFadeScaleShowAlertDialogButton;
 String get demoFadeScaleShowFabButton =>
-remote.translateOrDefault('demoFadeScaleShowFabButton', local.demoFadeScaleShowFabButton);
+remote?.translateOrDefault('demoFadeScaleShowFabButton', local.demoFadeScaleShowFabButton) ?? local.demoFadeScaleShowFabButton;
 String get demoFadeScaleHideFabButton =>
-remote.translateOrDefault('demoFadeScaleHideFabButton', local.demoFadeScaleHideFabButton);
+remote?.translateOrDefault('demoFadeScaleHideFabButton', local.demoFadeScaleHideFabButton) ?? local.demoFadeScaleHideFabButton;
 String get demoFadeScaleAlertDialogHeader =>
-remote.translateOrDefault('demoFadeScaleAlertDialogHeader', local.demoFadeScaleAlertDialogHeader);
+remote?.translateOrDefault('demoFadeScaleAlertDialogHeader', local.demoFadeScaleAlertDialogHeader) ?? local.demoFadeScaleAlertDialogHeader;
 String get demoFadeScaleAlertDialogCancelButton =>
-remote.translateOrDefault('demoFadeScaleAlertDialogCancelButton', local.demoFadeScaleAlertDialogCancelButton);
+remote?.translateOrDefault('demoFadeScaleAlertDialogCancelButton', local.demoFadeScaleAlertDialogCancelButton) ?? local.demoFadeScaleAlertDialogCancelButton;
 String get demoFadeScaleAlertDialogDiscardButton =>
-remote.translateOrDefault('demoFadeScaleAlertDialogDiscardButton', local.demoFadeScaleAlertDialogDiscardButton);
+remote?.translateOrDefault('demoFadeScaleAlertDialogDiscardButton', local.demoFadeScaleAlertDialogDiscardButton) ?? local.demoFadeScaleAlertDialogDiscardButton;
 String get demoColorsTitle =>
-remote.translateOrDefault('demoColorsTitle', local.demoColorsTitle);
+remote?.translateOrDefault('demoColorsTitle', local.demoColorsTitle) ?? local.demoColorsTitle;
 String get demoColorsSubtitle =>
-remote.translateOrDefault('demoColorsSubtitle', local.demoColorsSubtitle);
+remote?.translateOrDefault('demoColorsSubtitle', local.demoColorsSubtitle) ?? local.demoColorsSubtitle;
 String get demoColorsDescription =>
-remote.translateOrDefault('demoColorsDescription', local.demoColorsDescription);
+remote?.translateOrDefault('demoColorsDescription', local.demoColorsDescription) ?? local.demoColorsDescription;
 String get demoTypographyTitle =>
-remote.translateOrDefault('demoTypographyTitle', local.demoTypographyTitle);
+remote?.translateOrDefault('demoTypographyTitle', local.demoTypographyTitle) ?? local.demoTypographyTitle;
 String get demoTypographySubtitle =>
-remote.translateOrDefault('demoTypographySubtitle', local.demoTypographySubtitle);
+remote?.translateOrDefault('demoTypographySubtitle', local.demoTypographySubtitle) ?? local.demoTypographySubtitle;
 String get demoTypographyDescription =>
-remote.translateOrDefault('demoTypographyDescription', local.demoTypographyDescription);
+remote?.translateOrDefault('demoTypographyDescription', local.demoTypographyDescription) ?? local.demoTypographyDescription;
 String get demo2dTransformationsTitle =>
-remote.translateOrDefault('demo2dTransformationsTitle', local.demo2dTransformationsTitle);
+remote?.translateOrDefault('demo2dTransformationsTitle', local.demo2dTransformationsTitle) ?? local.demo2dTransformationsTitle;
 String get demo2dTransformationsSubtitle =>
-remote.translateOrDefault('demo2dTransformationsSubtitle', local.demo2dTransformationsSubtitle);
+remote?.translateOrDefault('demo2dTransformationsSubtitle', local.demo2dTransformationsSubtitle) ?? local.demo2dTransformationsSubtitle;
 String get demo2dTransformationsDescription =>
-remote.translateOrDefault('demo2dTransformationsDescription', local.demo2dTransformationsDescription);
+remote?.translateOrDefault('demo2dTransformationsDescription', local.demo2dTransformationsDescription) ?? local.demo2dTransformationsDescription;
 String get demo2dTransformationsResetTooltip =>
-remote.translateOrDefault('demo2dTransformationsResetTooltip', local.demo2dTransformationsResetTooltip);
+remote?.translateOrDefault('demo2dTransformationsResetTooltip', local.demo2dTransformationsResetTooltip) ?? local.demo2dTransformationsResetTooltip;
 String get demo2dTransformationsEditTooltip =>
-remote.translateOrDefault('demo2dTransformationsEditTooltip', local.demo2dTransformationsEditTooltip);
+remote?.translateOrDefault('demo2dTransformationsEditTooltip', local.demo2dTransformationsEditTooltip) ?? local.demo2dTransformationsEditTooltip;
 String get buttonText =>
-remote.translateOrDefault('buttonText', local.buttonText);
+remote?.translateOrDefault('buttonText', local.buttonText) ?? local.buttonText;
 String get demoBottomSheetTitle =>
-remote.translateOrDefault('demoBottomSheetTitle', local.demoBottomSheetTitle);
+remote?.translateOrDefault('demoBottomSheetTitle', local.demoBottomSheetTitle) ?? local.demoBottomSheetTitle;
 String get demoBottomSheetSubtitle =>
-remote.translateOrDefault('demoBottomSheetSubtitle', local.demoBottomSheetSubtitle);
+remote?.translateOrDefault('demoBottomSheetSubtitle', local.demoBottomSheetSubtitle) ?? local.demoBottomSheetSubtitle;
 String get demoBottomSheetPersistentTitle =>
-remote.translateOrDefault('demoBottomSheetPersistentTitle', local.demoBottomSheetPersistentTitle);
+remote?.translateOrDefault('demoBottomSheetPersistentTitle', local.demoBottomSheetPersistentTitle) ?? local.demoBottomSheetPersistentTitle;
 String get demoBottomSheetPersistentDescription =>
-remote.translateOrDefault('demoBottomSheetPersistentDescription', local.demoBottomSheetPersistentDescription);
+remote?.translateOrDefault('demoBottomSheetPersistentDescription', local.demoBottomSheetPersistentDescription) ?? local.demoBottomSheetPersistentDescription;
 String get demoBottomSheetModalTitle =>
-remote.translateOrDefault('demoBottomSheetModalTitle', local.demoBottomSheetModalTitle);
+remote?.translateOrDefault('demoBottomSheetModalTitle', local.demoBottomSheetModalTitle) ?? local.demoBottomSheetModalTitle;
 String get demoBottomSheetModalDescription =>
-remote.translateOrDefault('demoBottomSheetModalDescription', local.demoBottomSheetModalDescription);
+remote?.translateOrDefault('demoBottomSheetModalDescription', local.demoBottomSheetModalDescription) ?? local.demoBottomSheetModalDescription;
 String get demoBottomSheetAddLabel =>
-remote.translateOrDefault('demoBottomSheetAddLabel', local.demoBottomSheetAddLabel);
+remote?.translateOrDefault('demoBottomSheetAddLabel', local.demoBottomSheetAddLabel) ?? local.demoBottomSheetAddLabel;
 String get demoBottomSheetButtonText =>
-remote.translateOrDefault('demoBottomSheetButtonText', local.demoBottomSheetButtonText);
+remote?.translateOrDefault('demoBottomSheetButtonText', local.demoBottomSheetButtonText) ?? local.demoBottomSheetButtonText;
 String get demoBottomSheetHeader =>
-remote.translateOrDefault('demoBottomSheetHeader', local.demoBottomSheetHeader);
-String demoBottomSheetItem(int value){return remote.translateOrDefault('demoBottomSheetItem', local.demoBottomSheetItem(value));
+remote?.translateOrDefault('demoBottomSheetHeader', local.demoBottomSheetHeader) ?? local.demoBottomSheetHeader;
+String demoBottomSheetItem(int value){return remote?.translateOrDefault('demoBottomSheetItem', local.demoBottomSheetItem(value)) ?? local.demoBottomSheetItem(value);
 }
 String get demoListsTitle =>
-remote.translateOrDefault('demoListsTitle', local.demoListsTitle);
+remote?.translateOrDefault('demoListsTitle', local.demoListsTitle) ?? local.demoListsTitle;
 String get demoListsSubtitle =>
-remote.translateOrDefault('demoListsSubtitle', local.demoListsSubtitle);
+remote?.translateOrDefault('demoListsSubtitle', local.demoListsSubtitle) ?? local.demoListsSubtitle;
 String get demoListsDescription =>
-remote.translateOrDefault('demoListsDescription', local.demoListsDescription);
+remote?.translateOrDefault('demoListsDescription', local.demoListsDescription) ?? local.demoListsDescription;
 String get demoOneLineListsTitle =>
-remote.translateOrDefault('demoOneLineListsTitle', local.demoOneLineListsTitle);
+remote?.translateOrDefault('demoOneLineListsTitle', local.demoOneLineListsTitle) ?? local.demoOneLineListsTitle;
 String get demoTwoLineListsTitle =>
-remote.translateOrDefault('demoTwoLineListsTitle', local.demoTwoLineListsTitle);
+remote?.translateOrDefault('demoTwoLineListsTitle', local.demoTwoLineListsTitle) ?? local.demoTwoLineListsTitle;
 String get demoListsSecondary =>
-remote.translateOrDefault('demoListsSecondary', local.demoListsSecondary);
+remote?.translateOrDefault('demoListsSecondary', local.demoListsSecondary) ?? local.demoListsSecondary;
 String get demoProgressIndicatorTitle =>
-remote.translateOrDefault('demoProgressIndicatorTitle', local.demoProgressIndicatorTitle);
+remote?.translateOrDefault('demoProgressIndicatorTitle', local.demoProgressIndicatorTitle) ?? local.demoProgressIndicatorTitle;
 String get demoProgressIndicatorSubtitle =>
-remote.translateOrDefault('demoProgressIndicatorSubtitle', local.demoProgressIndicatorSubtitle);
+remote?.translateOrDefault('demoProgressIndicatorSubtitle', local.demoProgressIndicatorSubtitle) ?? local.demoProgressIndicatorSubtitle;
 String get demoCircularProgressIndicatorTitle =>
-remote.translateOrDefault('demoCircularProgressIndicatorTitle', local.demoCircularProgressIndicatorTitle);
+remote?.translateOrDefault('demoCircularProgressIndicatorTitle', local.demoCircularProgressIndicatorTitle) ?? local.demoCircularProgressIndicatorTitle;
 String get demoCircularProgressIndicatorDescription =>
-remote.translateOrDefault('demoCircularProgressIndicatorDescription', local.demoCircularProgressIndicatorDescription);
+remote?.translateOrDefault('demoCircularProgressIndicatorDescription', local.demoCircularProgressIndicatorDescription) ?? local.demoCircularProgressIndicatorDescription;
 String get demoLinearProgressIndicatorTitle =>
-remote.translateOrDefault('demoLinearProgressIndicatorTitle', local.demoLinearProgressIndicatorTitle);
+remote?.translateOrDefault('demoLinearProgressIndicatorTitle', local.demoLinearProgressIndicatorTitle) ?? local.demoLinearProgressIndicatorTitle;
 String get demoLinearProgressIndicatorDescription =>
-remote.translateOrDefault('demoLinearProgressIndicatorDescription', local.demoLinearProgressIndicatorDescription);
+remote?.translateOrDefault('demoLinearProgressIndicatorDescription', local.demoLinearProgressIndicatorDescription) ?? local.demoLinearProgressIndicatorDescription;
 String get demoPickersTitle =>
-remote.translateOrDefault('demoPickersTitle', local.demoPickersTitle);
+remote?.translateOrDefault('demoPickersTitle', local.demoPickersTitle) ?? local.demoPickersTitle;
 String get demoPickersSubtitle =>
-remote.translateOrDefault('demoPickersSubtitle', local.demoPickersSubtitle);
+remote?.translateOrDefault('demoPickersSubtitle', local.demoPickersSubtitle) ?? local.demoPickersSubtitle;
 String get demoDatePickerTitle =>
-remote.translateOrDefault('demoDatePickerTitle', local.demoDatePickerTitle);
+remote?.translateOrDefault('demoDatePickerTitle', local.demoDatePickerTitle) ?? local.demoDatePickerTitle;
 String get demoDatePickerDescription =>
-remote.translateOrDefault('demoDatePickerDescription', local.demoDatePickerDescription);
+remote?.translateOrDefault('demoDatePickerDescription', local.demoDatePickerDescription) ?? local.demoDatePickerDescription;
 String get demoTimePickerTitle =>
-remote.translateOrDefault('demoTimePickerTitle', local.demoTimePickerTitle);
+remote?.translateOrDefault('demoTimePickerTitle', local.demoTimePickerTitle) ?? local.demoTimePickerTitle;
 String get demoTimePickerDescription =>
-remote.translateOrDefault('demoTimePickerDescription', local.demoTimePickerDescription);
+remote?.translateOrDefault('demoTimePickerDescription', local.demoTimePickerDescription) ?? local.demoTimePickerDescription;
 String get demoDateRangePickerTitle =>
-remote.translateOrDefault('demoDateRangePickerTitle', local.demoDateRangePickerTitle);
+remote?.translateOrDefault('demoDateRangePickerTitle', local.demoDateRangePickerTitle) ?? local.demoDateRangePickerTitle;
 String get demoDateRangePickerDescription =>
-remote.translateOrDefault('demoDateRangePickerDescription', local.demoDateRangePickerDescription);
+remote?.translateOrDefault('demoDateRangePickerDescription', local.demoDateRangePickerDescription) ?? local.demoDateRangePickerDescription;
 String get demoPickersShowPicker =>
-remote.translateOrDefault('demoPickersShowPicker', local.demoPickersShowPicker);
+remote?.translateOrDefault('demoPickersShowPicker', local.demoPickersShowPicker) ?? local.demoPickersShowPicker;
 String get demoTabsTitle =>
-remote.translateOrDefault('demoTabsTitle', local.demoTabsTitle);
+remote?.translateOrDefault('demoTabsTitle', local.demoTabsTitle) ?? local.demoTabsTitle;
 String get demoTabsScrollingTitle =>
-remote.translateOrDefault('demoTabsScrollingTitle', local.demoTabsScrollingTitle);
+remote?.translateOrDefault('demoTabsScrollingTitle', local.demoTabsScrollingTitle) ?? local.demoTabsScrollingTitle;
 String get demoTabsNonScrollingTitle =>
-remote.translateOrDefault('demoTabsNonScrollingTitle', local.demoTabsNonScrollingTitle);
+remote?.translateOrDefault('demoTabsNonScrollingTitle', local.demoTabsNonScrollingTitle) ?? local.demoTabsNonScrollingTitle;
 String get demoTabsSubtitle =>
-remote.translateOrDefault('demoTabsSubtitle', local.demoTabsSubtitle);
+remote?.translateOrDefault('demoTabsSubtitle', local.demoTabsSubtitle) ?? local.demoTabsSubtitle;
 String get demoTabsDescription =>
-remote.translateOrDefault('demoTabsDescription', local.demoTabsDescription);
+remote?.translateOrDefault('demoTabsDescription', local.demoTabsDescription) ?? local.demoTabsDescription;
 String get demoSnackbarsTitle =>
-remote.translateOrDefault('demoSnackbarsTitle', local.demoSnackbarsTitle);
+remote?.translateOrDefault('demoSnackbarsTitle', local.demoSnackbarsTitle) ?? local.demoSnackbarsTitle;
 String get demoSnackbarsSubtitle =>
-remote.translateOrDefault('demoSnackbarsSubtitle', local.demoSnackbarsSubtitle);
+remote?.translateOrDefault('demoSnackbarsSubtitle', local.demoSnackbarsSubtitle) ?? local.demoSnackbarsSubtitle;
 String get demoSnackbarsDescription =>
-remote.translateOrDefault('demoSnackbarsDescription', local.demoSnackbarsDescription);
+remote?.translateOrDefault('demoSnackbarsDescription', local.demoSnackbarsDescription) ?? local.demoSnackbarsDescription;
 String get demoSnackbarsButtonLabel =>
-remote.translateOrDefault('demoSnackbarsButtonLabel', local.demoSnackbarsButtonLabel);
+remote?.translateOrDefault('demoSnackbarsButtonLabel', local.demoSnackbarsButtonLabel) ?? local.demoSnackbarsButtonLabel;
 String get demoSnackbarsText =>
-remote.translateOrDefault('demoSnackbarsText', local.demoSnackbarsText);
+remote?.translateOrDefault('demoSnackbarsText', local.demoSnackbarsText) ?? local.demoSnackbarsText;
 String get demoSnackbarsActionButtonLabel =>
-remote.translateOrDefault('demoSnackbarsActionButtonLabel', local.demoSnackbarsActionButtonLabel);
+remote?.translateOrDefault('demoSnackbarsActionButtonLabel', local.demoSnackbarsActionButtonLabel) ?? local.demoSnackbarsActionButtonLabel;
 String get demoSnackbarsAction =>
-remote.translateOrDefault('demoSnackbarsAction', local.demoSnackbarsAction);
+remote?.translateOrDefault('demoSnackbarsAction', local.demoSnackbarsAction) ?? local.demoSnackbarsAction;
 String get demoSelectionControlsTitle =>
-remote.translateOrDefault('demoSelectionControlsTitle', local.demoSelectionControlsTitle);
+remote?.translateOrDefault('demoSelectionControlsTitle', local.demoSelectionControlsTitle) ?? local.demoSelectionControlsTitle;
 String get demoSelectionControlsSubtitle =>
-remote.translateOrDefault('demoSelectionControlsSubtitle', local.demoSelectionControlsSubtitle);
+remote?.translateOrDefault('demoSelectionControlsSubtitle', local.demoSelectionControlsSubtitle) ?? local.demoSelectionControlsSubtitle;
 String get demoSelectionControlsCheckboxTitle =>
-remote.translateOrDefault('demoSelectionControlsCheckboxTitle', local.demoSelectionControlsCheckboxTitle);
+remote?.translateOrDefault('demoSelectionControlsCheckboxTitle', local.demoSelectionControlsCheckboxTitle) ?? local.demoSelectionControlsCheckboxTitle;
 String get demoSelectionControlsCheckboxDescription =>
-remote.translateOrDefault('demoSelectionControlsCheckboxDescription', local.demoSelectionControlsCheckboxDescription);
+remote?.translateOrDefault('demoSelectionControlsCheckboxDescription', local.demoSelectionControlsCheckboxDescription) ?? local.demoSelectionControlsCheckboxDescription;
 String get demoSelectionControlsRadioTitle =>
-remote.translateOrDefault('demoSelectionControlsRadioTitle', local.demoSelectionControlsRadioTitle);
+remote?.translateOrDefault('demoSelectionControlsRadioTitle', local.demoSelectionControlsRadioTitle) ?? local.demoSelectionControlsRadioTitle;
 String get demoSelectionControlsRadioDescription =>
-remote.translateOrDefault('demoSelectionControlsRadioDescription', local.demoSelectionControlsRadioDescription);
+remote?.translateOrDefault('demoSelectionControlsRadioDescription', local.demoSelectionControlsRadioDescription) ?? local.demoSelectionControlsRadioDescription;
 String get demoSelectionControlsSwitchTitle =>
-remote.translateOrDefault('demoSelectionControlsSwitchTitle', local.demoSelectionControlsSwitchTitle);
+remote?.translateOrDefault('demoSelectionControlsSwitchTitle', local.demoSelectionControlsSwitchTitle) ?? local.demoSelectionControlsSwitchTitle;
 String get demoSelectionControlsSwitchDescription =>
-remote.translateOrDefault('demoSelectionControlsSwitchDescription', local.demoSelectionControlsSwitchDescription);
+remote?.translateOrDefault('demoSelectionControlsSwitchDescription', local.demoSelectionControlsSwitchDescription) ?? local.demoSelectionControlsSwitchDescription;
 String get demoBottomTextFieldsTitle =>
-remote.translateOrDefault('demoBottomTextFieldsTitle', local.demoBottomTextFieldsTitle);
+remote?.translateOrDefault('demoBottomTextFieldsTitle', local.demoBottomTextFieldsTitle) ?? local.demoBottomTextFieldsTitle;
 String get demoTextFieldTitle =>
-remote.translateOrDefault('demoTextFieldTitle', local.demoTextFieldTitle);
+remote?.translateOrDefault('demoTextFieldTitle', local.demoTextFieldTitle) ?? local.demoTextFieldTitle;
 String get demoTextFieldSubtitle =>
-remote.translateOrDefault('demoTextFieldSubtitle', local.demoTextFieldSubtitle);
+remote?.translateOrDefault('demoTextFieldSubtitle', local.demoTextFieldSubtitle) ?? local.demoTextFieldSubtitle;
 String get demoTextFieldDescription =>
-remote.translateOrDefault('demoTextFieldDescription', local.demoTextFieldDescription);
+remote?.translateOrDefault('demoTextFieldDescription', local.demoTextFieldDescription) ?? local.demoTextFieldDescription;
 String get demoTextFieldShowPasswordLabel =>
-remote.translateOrDefault('demoTextFieldShowPasswordLabel', local.demoTextFieldShowPasswordLabel);
+remote?.translateOrDefault('demoTextFieldShowPasswordLabel', local.demoTextFieldShowPasswordLabel) ?? local.demoTextFieldShowPasswordLabel;
 String get demoTextFieldHidePasswordLabel =>
-remote.translateOrDefault('demoTextFieldHidePasswordLabel', local.demoTextFieldHidePasswordLabel);
+remote?.translateOrDefault('demoTextFieldHidePasswordLabel', local.demoTextFieldHidePasswordLabel) ?? local.demoTextFieldHidePasswordLabel;
 String get demoTextFieldFormErrors =>
-remote.translateOrDefault('demoTextFieldFormErrors', local.demoTextFieldFormErrors);
+remote?.translateOrDefault('demoTextFieldFormErrors', local.demoTextFieldFormErrors) ?? local.demoTextFieldFormErrors;
 String get demoTextFieldNameRequired =>
-remote.translateOrDefault('demoTextFieldNameRequired', local.demoTextFieldNameRequired);
+remote?.translateOrDefault('demoTextFieldNameRequired', local.demoTextFieldNameRequired) ?? local.demoTextFieldNameRequired;
 String get demoTextFieldOnlyAlphabeticalChars =>
-remote.translateOrDefault('demoTextFieldOnlyAlphabeticalChars', local.demoTextFieldOnlyAlphabeticalChars);
+remote?.translateOrDefault('demoTextFieldOnlyAlphabeticalChars', local.demoTextFieldOnlyAlphabeticalChars) ?? local.demoTextFieldOnlyAlphabeticalChars;
 String get demoTextFieldEnterUSPhoneNumber =>
-remote.translateOrDefault('demoTextFieldEnterUSPhoneNumber', local.demoTextFieldEnterUSPhoneNumber);
+remote?.translateOrDefault('demoTextFieldEnterUSPhoneNumber', local.demoTextFieldEnterUSPhoneNumber) ?? local.demoTextFieldEnterUSPhoneNumber;
 String get demoTextFieldEnterPassword =>
-remote.translateOrDefault('demoTextFieldEnterPassword', local.demoTextFieldEnterPassword);
+remote?.translateOrDefault('demoTextFieldEnterPassword', local.demoTextFieldEnterPassword) ?? local.demoTextFieldEnterPassword;
 String get demoTextFieldPasswordsDoNotMatch =>
-remote.translateOrDefault('demoTextFieldPasswordsDoNotMatch', local.demoTextFieldPasswordsDoNotMatch);
+remote?.translateOrDefault('demoTextFieldPasswordsDoNotMatch', local.demoTextFieldPasswordsDoNotMatch) ?? local.demoTextFieldPasswordsDoNotMatch;
 String get demoTextFieldWhatDoPeopleCallYou =>
-remote.translateOrDefault('demoTextFieldWhatDoPeopleCallYou', local.demoTextFieldWhatDoPeopleCallYou);
+remote?.translateOrDefault('demoTextFieldWhatDoPeopleCallYou', local.demoTextFieldWhatDoPeopleCallYou) ?? local.demoTextFieldWhatDoPeopleCallYou;
 String get demoTextFieldNameField =>
-remote.translateOrDefault('demoTextFieldNameField', local.demoTextFieldNameField);
+remote?.translateOrDefault('demoTextFieldNameField', local.demoTextFieldNameField) ?? local.demoTextFieldNameField;
 String get demoTextFieldWhereCanWeReachYou =>
-remote.translateOrDefault('demoTextFieldWhereCanWeReachYou', local.demoTextFieldWhereCanWeReachYou);
+remote?.translateOrDefault('demoTextFieldWhereCanWeReachYou', local.demoTextFieldWhereCanWeReachYou) ?? local.demoTextFieldWhereCanWeReachYou;
 String get demoTextFieldPhoneNumber =>
-remote.translateOrDefault('demoTextFieldPhoneNumber', local.demoTextFieldPhoneNumber);
+remote?.translateOrDefault('demoTextFieldPhoneNumber', local.demoTextFieldPhoneNumber) ?? local.demoTextFieldPhoneNumber;
 String get demoTextFieldYourEmailAddress =>
-remote.translateOrDefault('demoTextFieldYourEmailAddress', local.demoTextFieldYourEmailAddress);
+remote?.translateOrDefault('demoTextFieldYourEmailAddress', local.demoTextFieldYourEmailAddress) ?? local.demoTextFieldYourEmailAddress;
 String get demoTextFieldEmail =>
-remote.translateOrDefault('demoTextFieldEmail', local.demoTextFieldEmail);
+remote?.translateOrDefault('demoTextFieldEmail', local.demoTextFieldEmail) ?? local.demoTextFieldEmail;
 String get demoTextFieldTellUsAboutYourself =>
-remote.translateOrDefault('demoTextFieldTellUsAboutYourself', local.demoTextFieldTellUsAboutYourself);
+remote?.translateOrDefault('demoTextFieldTellUsAboutYourself', local.demoTextFieldTellUsAboutYourself) ?? local.demoTextFieldTellUsAboutYourself;
 String get demoTextFieldKeepItShort =>
-remote.translateOrDefault('demoTextFieldKeepItShort', local.demoTextFieldKeepItShort);
+remote?.translateOrDefault('demoTextFieldKeepItShort', local.demoTextFieldKeepItShort) ?? local.demoTextFieldKeepItShort;
 String get demoTextFieldLifeStory =>
-remote.translateOrDefault('demoTextFieldLifeStory', local.demoTextFieldLifeStory);
+remote?.translateOrDefault('demoTextFieldLifeStory', local.demoTextFieldLifeStory) ?? local.demoTextFieldLifeStory;
 String get demoTextFieldSalary =>
-remote.translateOrDefault('demoTextFieldSalary', local.demoTextFieldSalary);
+remote?.translateOrDefault('demoTextFieldSalary', local.demoTextFieldSalary) ?? local.demoTextFieldSalary;
 String get demoTextFieldUSD =>
-remote.translateOrDefault('demoTextFieldUSD', local.demoTextFieldUSD);
+remote?.translateOrDefault('demoTextFieldUSD', local.demoTextFieldUSD) ?? local.demoTextFieldUSD;
 String get demoTextFieldNoMoreThan =>
-remote.translateOrDefault('demoTextFieldNoMoreThan', local.demoTextFieldNoMoreThan);
+remote?.translateOrDefault('demoTextFieldNoMoreThan', local.demoTextFieldNoMoreThan) ?? local.demoTextFieldNoMoreThan;
 String get demoTextFieldPassword =>
-remote.translateOrDefault('demoTextFieldPassword', local.demoTextFieldPassword);
+remote?.translateOrDefault('demoTextFieldPassword', local.demoTextFieldPassword) ?? local.demoTextFieldPassword;
 String get demoTextFieldRetypePassword =>
-remote.translateOrDefault('demoTextFieldRetypePassword', local.demoTextFieldRetypePassword);
+remote?.translateOrDefault('demoTextFieldRetypePassword', local.demoTextFieldRetypePassword) ?? local.demoTextFieldRetypePassword;
 String get demoTextFieldSubmit =>
-remote.translateOrDefault('demoTextFieldSubmit', local.demoTextFieldSubmit);
-String demoTextFieldNameHasPhoneNumber(Object name,Object phoneNumber){return remote.translateOrDefault('demoTextFieldNameHasPhoneNumber', local.demoTextFieldNameHasPhoneNumber(name,phoneNumber));
+remote?.translateOrDefault('demoTextFieldSubmit', local.demoTextFieldSubmit) ?? local.demoTextFieldSubmit;
+String demoTextFieldNameHasPhoneNumber(Object name,Object phoneNumber){return remote?.translateOrDefault('demoTextFieldNameHasPhoneNumber', local.demoTextFieldNameHasPhoneNumber(name,phoneNumber)) ?? local.demoTextFieldNameHasPhoneNumber(name,phoneNumber);
 }
 String get demoTextFieldRequiredField =>
-remote.translateOrDefault('demoTextFieldRequiredField', local.demoTextFieldRequiredField);
+remote?.translateOrDefault('demoTextFieldRequiredField', local.demoTextFieldRequiredField) ?? local.demoTextFieldRequiredField;
 String get demoTooltipTitle =>
-remote.translateOrDefault('demoTooltipTitle', local.demoTooltipTitle);
+remote?.translateOrDefault('demoTooltipTitle', local.demoTooltipTitle) ?? local.demoTooltipTitle;
 String get demoTooltipSubtitle =>
-remote.translateOrDefault('demoTooltipSubtitle', local.demoTooltipSubtitle);
+remote?.translateOrDefault('demoTooltipSubtitle', local.demoTooltipSubtitle) ?? local.demoTooltipSubtitle;
 String get demoTooltipDescription =>
-remote.translateOrDefault('demoTooltipDescription', local.demoTooltipDescription);
+remote?.translateOrDefault('demoTooltipDescription', local.demoTooltipDescription) ?? local.demoTooltipDescription;
 String get demoTooltipInstructions =>
-remote.translateOrDefault('demoTooltipInstructions', local.demoTooltipInstructions);
+remote?.translateOrDefault('demoTooltipInstructions', local.demoTooltipInstructions) ?? local.demoTooltipInstructions;
 String get bottomNavigationCommentsTab =>
-remote.translateOrDefault('bottomNavigationCommentsTab', local.bottomNavigationCommentsTab);
+remote?.translateOrDefault('bottomNavigationCommentsTab', local.bottomNavigationCommentsTab) ?? local.bottomNavigationCommentsTab;
 String get bottomNavigationCalendarTab =>
-remote.translateOrDefault('bottomNavigationCalendarTab', local.bottomNavigationCalendarTab);
+remote?.translateOrDefault('bottomNavigationCalendarTab', local.bottomNavigationCalendarTab) ?? local.bottomNavigationCalendarTab;
 String get bottomNavigationAccountTab =>
-remote.translateOrDefault('bottomNavigationAccountTab', local.bottomNavigationAccountTab);
+remote?.translateOrDefault('bottomNavigationAccountTab', local.bottomNavigationAccountTab) ?? local.bottomNavigationAccountTab;
 String get bottomNavigationAlarmTab =>
-remote.translateOrDefault('bottomNavigationAlarmTab', local.bottomNavigationAlarmTab);
+remote?.translateOrDefault('bottomNavigationAlarmTab', local.bottomNavigationAlarmTab) ?? local.bottomNavigationAlarmTab;
 String get bottomNavigationCameraTab =>
-remote.translateOrDefault('bottomNavigationCameraTab', local.bottomNavigationCameraTab);
-String bottomNavigationContentPlaceholder(Object title){return remote.translateOrDefault('bottomNavigationContentPlaceholder', local.bottomNavigationContentPlaceholder(title));
+remote?.translateOrDefault('bottomNavigationCameraTab', local.bottomNavigationCameraTab) ?? local.bottomNavigationCameraTab;
+String bottomNavigationContentPlaceholder(Object title){return remote?.translateOrDefault('bottomNavigationContentPlaceholder', local.bottomNavigationContentPlaceholder(title)) ?? local.bottomNavigationContentPlaceholder(title);
 }
 String get buttonTextCreate =>
-remote.translateOrDefault('buttonTextCreate', local.buttonTextCreate);
-String dialogSelectedOption(Object value){return remote.translateOrDefault('dialogSelectedOption', local.dialogSelectedOption(value));
+remote?.translateOrDefault('buttonTextCreate', local.buttonTextCreate) ?? local.buttonTextCreate;
+String dialogSelectedOption(Object value){return remote?.translateOrDefault('dialogSelectedOption', local.dialogSelectedOption(value)) ?? local.dialogSelectedOption(value);
 }
 String get chipTurnOnLights =>
-remote.translateOrDefault('chipTurnOnLights', local.chipTurnOnLights);
+remote?.translateOrDefault('chipTurnOnLights', local.chipTurnOnLights) ?? local.chipTurnOnLights;
 String get chipSmall =>
-remote.translateOrDefault('chipSmall', local.chipSmall);
+remote?.translateOrDefault('chipSmall', local.chipSmall) ?? local.chipSmall;
 String get chipMedium =>
-remote.translateOrDefault('chipMedium', local.chipMedium);
+remote?.translateOrDefault('chipMedium', local.chipMedium) ?? local.chipMedium;
 String get chipLarge =>
-remote.translateOrDefault('chipLarge', local.chipLarge);
+remote?.translateOrDefault('chipLarge', local.chipLarge) ?? local.chipLarge;
 String get chipElevator =>
-remote.translateOrDefault('chipElevator', local.chipElevator);
+remote?.translateOrDefault('chipElevator', local.chipElevator) ?? local.chipElevator;
 String get chipWasher =>
-remote.translateOrDefault('chipWasher', local.chipWasher);
+remote?.translateOrDefault('chipWasher', local.chipWasher) ?? local.chipWasher;
 String get chipFireplace =>
-remote.translateOrDefault('chipFireplace', local.chipFireplace);
+remote?.translateOrDefault('chipFireplace', local.chipFireplace) ?? local.chipFireplace;
 String get chipBiking =>
-remote.translateOrDefault('chipBiking', local.chipBiking);
+remote?.translateOrDefault('chipBiking', local.chipBiking) ?? local.chipBiking;
 String get dialogDiscardTitle =>
-remote.translateOrDefault('dialogDiscardTitle', local.dialogDiscardTitle);
+remote?.translateOrDefault('dialogDiscardTitle', local.dialogDiscardTitle) ?? local.dialogDiscardTitle;
 String get dialogLocationTitle =>
-remote.translateOrDefault('dialogLocationTitle', local.dialogLocationTitle);
+remote?.translateOrDefault('dialogLocationTitle', local.dialogLocationTitle) ?? local.dialogLocationTitle;
 String get dialogLocationDescription =>
-remote.translateOrDefault('dialogLocationDescription', local.dialogLocationDescription);
+remote?.translateOrDefault('dialogLocationDescription', local.dialogLocationDescription) ?? local.dialogLocationDescription;
 String get dialogCancel =>
-remote.translateOrDefault('dialogCancel', local.dialogCancel);
+remote?.translateOrDefault('dialogCancel', local.dialogCancel) ?? local.dialogCancel;
 String get dialogDiscard =>
-remote.translateOrDefault('dialogDiscard', local.dialogDiscard);
+remote?.translateOrDefault('dialogDiscard', local.dialogDiscard) ?? local.dialogDiscard;
 String get dialogDisagree =>
-remote.translateOrDefault('dialogDisagree', local.dialogDisagree);
+remote?.translateOrDefault('dialogDisagree', local.dialogDisagree) ?? local.dialogDisagree;
 String get dialogAgree =>
-remote.translateOrDefault('dialogAgree', local.dialogAgree);
+remote?.translateOrDefault('dialogAgree', local.dialogAgree) ?? local.dialogAgree;
 String get dialogSetBackup =>
-remote.translateOrDefault('dialogSetBackup', local.dialogSetBackup);
+remote?.translateOrDefault('dialogSetBackup', local.dialogSetBackup) ?? local.dialogSetBackup;
 String get dialogAddAccount =>
-remote.translateOrDefault('dialogAddAccount', local.dialogAddAccount);
+remote?.translateOrDefault('dialogAddAccount', local.dialogAddAccount) ?? local.dialogAddAccount;
 String get dialogShow =>
-remote.translateOrDefault('dialogShow', local.dialogShow);
+remote?.translateOrDefault('dialogShow', local.dialogShow) ?? local.dialogShow;
 String get dialogFullscreenTitle =>
-remote.translateOrDefault('dialogFullscreenTitle', local.dialogFullscreenTitle);
+remote?.translateOrDefault('dialogFullscreenTitle', local.dialogFullscreenTitle) ?? local.dialogFullscreenTitle;
 String get dialogFullscreenSave =>
-remote.translateOrDefault('dialogFullscreenSave', local.dialogFullscreenSave);
+remote?.translateOrDefault('dialogFullscreenSave', local.dialogFullscreenSave) ?? local.dialogFullscreenSave;
 String get dialogFullscreenDescription =>
-remote.translateOrDefault('dialogFullscreenDescription', local.dialogFullscreenDescription);
+remote?.translateOrDefault('dialogFullscreenDescription', local.dialogFullscreenDescription) ?? local.dialogFullscreenDescription;
 String get cupertinoButton =>
-remote.translateOrDefault('cupertinoButton', local.cupertinoButton);
+remote?.translateOrDefault('cupertinoButton', local.cupertinoButton) ?? local.cupertinoButton;
 String get cupertinoButtonWithBackground =>
-remote.translateOrDefault('cupertinoButtonWithBackground', local.cupertinoButtonWithBackground);
+remote?.translateOrDefault('cupertinoButtonWithBackground', local.cupertinoButtonWithBackground) ?? local.cupertinoButtonWithBackground;
 String get cupertinoAlertCancel =>
-remote.translateOrDefault('cupertinoAlertCancel', local.cupertinoAlertCancel);
+remote?.translateOrDefault('cupertinoAlertCancel', local.cupertinoAlertCancel) ?? local.cupertinoAlertCancel;
 String get cupertinoAlertDiscard =>
-remote.translateOrDefault('cupertinoAlertDiscard', local.cupertinoAlertDiscard);
+remote?.translateOrDefault('cupertinoAlertDiscard', local.cupertinoAlertDiscard) ?? local.cupertinoAlertDiscard;
 String get cupertinoAlertLocationTitle =>
-remote.translateOrDefault('cupertinoAlertLocationTitle', local.cupertinoAlertLocationTitle);
+remote?.translateOrDefault('cupertinoAlertLocationTitle', local.cupertinoAlertLocationTitle) ?? local.cupertinoAlertLocationTitle;
 String get cupertinoAlertLocationDescription =>
-remote.translateOrDefault('cupertinoAlertLocationDescription', local.cupertinoAlertLocationDescription);
+remote?.translateOrDefault('cupertinoAlertLocationDescription', local.cupertinoAlertLocationDescription) ?? local.cupertinoAlertLocationDescription;
 String get cupertinoAlertAllow =>
-remote.translateOrDefault('cupertinoAlertAllow', local.cupertinoAlertAllow);
+remote?.translateOrDefault('cupertinoAlertAllow', local.cupertinoAlertAllow) ?? local.cupertinoAlertAllow;
 String get cupertinoAlertDontAllow =>
-remote.translateOrDefault('cupertinoAlertDontAllow', local.cupertinoAlertDontAllow);
+remote?.translateOrDefault('cupertinoAlertDontAllow', local.cupertinoAlertDontAllow) ?? local.cupertinoAlertDontAllow;
 String get cupertinoAlertFavoriteDessert =>
-remote.translateOrDefault('cupertinoAlertFavoriteDessert', local.cupertinoAlertFavoriteDessert);
+remote?.translateOrDefault('cupertinoAlertFavoriteDessert', local.cupertinoAlertFavoriteDessert) ?? local.cupertinoAlertFavoriteDessert;
 String get cupertinoAlertDessertDescription =>
-remote.translateOrDefault('cupertinoAlertDessertDescription', local.cupertinoAlertDessertDescription);
+remote?.translateOrDefault('cupertinoAlertDessertDescription', local.cupertinoAlertDessertDescription) ?? local.cupertinoAlertDessertDescription;
 String get cupertinoAlertCheesecake =>
-remote.translateOrDefault('cupertinoAlertCheesecake', local.cupertinoAlertCheesecake);
+remote?.translateOrDefault('cupertinoAlertCheesecake', local.cupertinoAlertCheesecake) ?? local.cupertinoAlertCheesecake;
 String get cupertinoAlertTiramisu =>
-remote.translateOrDefault('cupertinoAlertTiramisu', local.cupertinoAlertTiramisu);
+remote?.translateOrDefault('cupertinoAlertTiramisu', local.cupertinoAlertTiramisu) ?? local.cupertinoAlertTiramisu;
 String get cupertinoAlertApplePie =>
-remote.translateOrDefault('cupertinoAlertApplePie', local.cupertinoAlertApplePie);
+remote?.translateOrDefault('cupertinoAlertApplePie', local.cupertinoAlertApplePie) ?? local.cupertinoAlertApplePie;
 String get cupertinoAlertChocolateBrownie =>
-remote.translateOrDefault('cupertinoAlertChocolateBrownie', local.cupertinoAlertChocolateBrownie);
+remote?.translateOrDefault('cupertinoAlertChocolateBrownie', local.cupertinoAlertChocolateBrownie) ?? local.cupertinoAlertChocolateBrownie;
 String get cupertinoShowAlert =>
-remote.translateOrDefault('cupertinoShowAlert', local.cupertinoShowAlert);
+remote?.translateOrDefault('cupertinoShowAlert', local.cupertinoShowAlert) ?? local.cupertinoShowAlert;
 String get colorsRed =>
-remote.translateOrDefault('colorsRed', local.colorsRed);
+remote?.translateOrDefault('colorsRed', local.colorsRed) ?? local.colorsRed;
 String get colorsPink =>
-remote.translateOrDefault('colorsPink', local.colorsPink);
+remote?.translateOrDefault('colorsPink', local.colorsPink) ?? local.colorsPink;
 String get colorsPurple =>
-remote.translateOrDefault('colorsPurple', local.colorsPurple);
+remote?.translateOrDefault('colorsPurple', local.colorsPurple) ?? local.colorsPurple;
 String get colorsDeepPurple =>
-remote.translateOrDefault('colorsDeepPurple', local.colorsDeepPurple);
+remote?.translateOrDefault('colorsDeepPurple', local.colorsDeepPurple) ?? local.colorsDeepPurple;
 String get colorsIndigo =>
-remote.translateOrDefault('colorsIndigo', local.colorsIndigo);
+remote?.translateOrDefault('colorsIndigo', local.colorsIndigo) ?? local.colorsIndigo;
 String get colorsBlue =>
-remote.translateOrDefault('colorsBlue', local.colorsBlue);
+remote?.translateOrDefault('colorsBlue', local.colorsBlue) ?? local.colorsBlue;
 String get colorsLightBlue =>
-remote.translateOrDefault('colorsLightBlue', local.colorsLightBlue);
+remote?.translateOrDefault('colorsLightBlue', local.colorsLightBlue) ?? local.colorsLightBlue;
 String get colorsCyan =>
-remote.translateOrDefault('colorsCyan', local.colorsCyan);
+remote?.translateOrDefault('colorsCyan', local.colorsCyan) ?? local.colorsCyan;
 String get colorsTeal =>
-remote.translateOrDefault('colorsTeal', local.colorsTeal);
+remote?.translateOrDefault('colorsTeal', local.colorsTeal) ?? local.colorsTeal;
 String get colorsGreen =>
-remote.translateOrDefault('colorsGreen', local.colorsGreen);
+remote?.translateOrDefault('colorsGreen', local.colorsGreen) ?? local.colorsGreen;
 String get colorsLightGreen =>
-remote.translateOrDefault('colorsLightGreen', local.colorsLightGreen);
+remote?.translateOrDefault('colorsLightGreen', local.colorsLightGreen) ?? local.colorsLightGreen;
 String get colorsLime =>
-remote.translateOrDefault('colorsLime', local.colorsLime);
+remote?.translateOrDefault('colorsLime', local.colorsLime) ?? local.colorsLime;
 String get colorsYellow =>
-remote.translateOrDefault('colorsYellow', local.colorsYellow);
+remote?.translateOrDefault('colorsYellow', local.colorsYellow) ?? local.colorsYellow;
 String get colorsAmber =>
-remote.translateOrDefault('colorsAmber', local.colorsAmber);
+remote?.translateOrDefault('colorsAmber', local.colorsAmber) ?? local.colorsAmber;
 String get colorsOrange =>
-remote.translateOrDefault('colorsOrange', local.colorsOrange);
+remote?.translateOrDefault('colorsOrange', local.colorsOrange) ?? local.colorsOrange;
 String get colorsDeepOrange =>
-remote.translateOrDefault('colorsDeepOrange', local.colorsDeepOrange);
+remote?.translateOrDefault('colorsDeepOrange', local.colorsDeepOrange) ?? local.colorsDeepOrange;
 String get colorsBrown =>
-remote.translateOrDefault('colorsBrown', local.colorsBrown);
+remote?.translateOrDefault('colorsBrown', local.colorsBrown) ?? local.colorsBrown;
 String get colorsGrey =>
-remote.translateOrDefault('colorsGrey', local.colorsGrey);
+remote?.translateOrDefault('colorsGrey', local.colorsGrey) ?? local.colorsGrey;
 String get colorsBlueGrey =>
-remote.translateOrDefault('colorsBlueGrey', local.colorsBlueGrey);
+remote?.translateOrDefault('colorsBlueGrey', local.colorsBlueGrey) ?? local.colorsBlueGrey;
 String get placeChennai =>
-remote.translateOrDefault('placeChennai', local.placeChennai);
+remote?.translateOrDefault('placeChennai', local.placeChennai) ?? local.placeChennai;
 String get placeTanjore =>
-remote.translateOrDefault('placeTanjore', local.placeTanjore);
+remote?.translateOrDefault('placeTanjore', local.placeTanjore) ?? local.placeTanjore;
 String get placeChettinad =>
-remote.translateOrDefault('placeChettinad', local.placeChettinad);
+remote?.translateOrDefault('placeChettinad', local.placeChettinad) ?? local.placeChettinad;
 String get placePondicherry =>
-remote.translateOrDefault('placePondicherry', local.placePondicherry);
+remote?.translateOrDefault('placePondicherry', local.placePondicherry) ?? local.placePondicherry;
 String get placeFlowerMarket =>
-remote.translateOrDefault('placeFlowerMarket', local.placeFlowerMarket);
+remote?.translateOrDefault('placeFlowerMarket', local.placeFlowerMarket) ?? local.placeFlowerMarket;
 String get placeBronzeWorks =>
-remote.translateOrDefault('placeBronzeWorks', local.placeBronzeWorks);
+remote?.translateOrDefault('placeBronzeWorks', local.placeBronzeWorks) ?? local.placeBronzeWorks;
 String get placeMarket =>
-remote.translateOrDefault('placeMarket', local.placeMarket);
+remote?.translateOrDefault('placeMarket', local.placeMarket) ?? local.placeMarket;
 String get placeThanjavurTemple =>
-remote.translateOrDefault('placeThanjavurTemple', local.placeThanjavurTemple);
+remote?.translateOrDefault('placeThanjavurTemple', local.placeThanjavurTemple) ?? local.placeThanjavurTemple;
 String get placeSaltFarm =>
-remote.translateOrDefault('placeSaltFarm', local.placeSaltFarm);
+remote?.translateOrDefault('placeSaltFarm', local.placeSaltFarm) ?? local.placeSaltFarm;
 String get placeScooters =>
-remote.translateOrDefault('placeScooters', local.placeScooters);
+remote?.translateOrDefault('placeScooters', local.placeScooters) ?? local.placeScooters;
 String get placeSilkMaker =>
-remote.translateOrDefault('placeSilkMaker', local.placeSilkMaker);
+remote?.translateOrDefault('placeSilkMaker', local.placeSilkMaker) ?? local.placeSilkMaker;
 String get placeLunchPrep =>
-remote.translateOrDefault('placeLunchPrep', local.placeLunchPrep);
+remote?.translateOrDefault('placeLunchPrep', local.placeLunchPrep) ?? local.placeLunchPrep;
 String get placeBeach =>
-remote.translateOrDefault('placeBeach', local.placeBeach);
+remote?.translateOrDefault('placeBeach', local.placeBeach) ?? local.placeBeach;
 String get placeFisherman =>
-remote.translateOrDefault('placeFisherman', local.placeFisherman);
+remote?.translateOrDefault('placeFisherman', local.placeFisherman) ?? local.placeFisherman;
 String get starterAppTitle =>
-remote.translateOrDefault('starterAppTitle', local.starterAppTitle);
+remote?.translateOrDefault('starterAppTitle', local.starterAppTitle) ?? local.starterAppTitle;
 String get starterAppDescription =>
-remote.translateOrDefault('starterAppDescription', local.starterAppDescription);
+remote?.translateOrDefault('starterAppDescription', local.starterAppDescription) ?? local.starterAppDescription;
 String get starterAppGenericButton =>
-remote.translateOrDefault('starterAppGenericButton', local.starterAppGenericButton);
+remote?.translateOrDefault('starterAppGenericButton', local.starterAppGenericButton) ?? local.starterAppGenericButton;
 String get starterAppTooltipAdd =>
-remote.translateOrDefault('starterAppTooltipAdd', local.starterAppTooltipAdd);
+remote?.translateOrDefault('starterAppTooltipAdd', local.starterAppTooltipAdd) ?? local.starterAppTooltipAdd;
 String get starterAppTooltipFavorite =>
-remote.translateOrDefault('starterAppTooltipFavorite', local.starterAppTooltipFavorite);
+remote?.translateOrDefault('starterAppTooltipFavorite', local.starterAppTooltipFavorite) ?? local.starterAppTooltipFavorite;
 String get starterAppTooltipShare =>
-remote.translateOrDefault('starterAppTooltipShare', local.starterAppTooltipShare);
+remote?.translateOrDefault('starterAppTooltipShare', local.starterAppTooltipShare) ?? local.starterAppTooltipShare;
 String get starterAppTooltipSearch =>
-remote.translateOrDefault('starterAppTooltipSearch', local.starterAppTooltipSearch);
+remote?.translateOrDefault('starterAppTooltipSearch', local.starterAppTooltipSearch) ?? local.starterAppTooltipSearch;
 String get starterAppGenericTitle =>
-remote.translateOrDefault('starterAppGenericTitle', local.starterAppGenericTitle);
+remote?.translateOrDefault('starterAppGenericTitle', local.starterAppGenericTitle) ?? local.starterAppGenericTitle;
 String get starterAppGenericSubtitle =>
-remote.translateOrDefault('starterAppGenericSubtitle', local.starterAppGenericSubtitle);
+remote?.translateOrDefault('starterAppGenericSubtitle', local.starterAppGenericSubtitle) ?? local.starterAppGenericSubtitle;
 String get starterAppGenericHeadline =>
-remote.translateOrDefault('starterAppGenericHeadline', local.starterAppGenericHeadline);
+remote?.translateOrDefault('starterAppGenericHeadline', local.starterAppGenericHeadline) ?? local.starterAppGenericHeadline;
 String get starterAppGenericBody =>
-remote.translateOrDefault('starterAppGenericBody', local.starterAppGenericBody);
-String starterAppDrawerItem(int value){return remote.translateOrDefault('starterAppDrawerItem', local.starterAppDrawerItem(value));
+remote?.translateOrDefault('starterAppGenericBody', local.starterAppGenericBody) ?? local.starterAppGenericBody;
+String starterAppDrawerItem(int value){return remote?.translateOrDefault('starterAppDrawerItem', local.starterAppDrawerItem(value)) ?? local.starterAppDrawerItem(value);
 }
 String get shrineMenuCaption =>
-remote.translateOrDefault('shrineMenuCaption', local.shrineMenuCaption);
+remote?.translateOrDefault('shrineMenuCaption', local.shrineMenuCaption) ?? local.shrineMenuCaption;
 String get shrineCategoryNameAll =>
-remote.translateOrDefault('shrineCategoryNameAll', local.shrineCategoryNameAll);
+remote?.translateOrDefault('shrineCategoryNameAll', local.shrineCategoryNameAll) ?? local.shrineCategoryNameAll;
 String get shrineCategoryNameAccessories =>
-remote.translateOrDefault('shrineCategoryNameAccessories', local.shrineCategoryNameAccessories);
+remote?.translateOrDefault('shrineCategoryNameAccessories', local.shrineCategoryNameAccessories) ?? local.shrineCategoryNameAccessories;
 String get shrineCategoryNameClothing =>
-remote.translateOrDefault('shrineCategoryNameClothing', local.shrineCategoryNameClothing);
+remote?.translateOrDefault('shrineCategoryNameClothing', local.shrineCategoryNameClothing) ?? local.shrineCategoryNameClothing;
 String get shrineCategoryNameHome =>
-remote.translateOrDefault('shrineCategoryNameHome', local.shrineCategoryNameHome);
+remote?.translateOrDefault('shrineCategoryNameHome', local.shrineCategoryNameHome) ?? local.shrineCategoryNameHome;
 String get shrineLogoutButtonCaption =>
-remote.translateOrDefault('shrineLogoutButtonCaption', local.shrineLogoutButtonCaption);
+remote?.translateOrDefault('shrineLogoutButtonCaption', local.shrineLogoutButtonCaption) ?? local.shrineLogoutButtonCaption;
 String get shrineLoginUsernameLabel =>
-remote.translateOrDefault('shrineLoginUsernameLabel', local.shrineLoginUsernameLabel);
+remote?.translateOrDefault('shrineLoginUsernameLabel', local.shrineLoginUsernameLabel) ?? local.shrineLoginUsernameLabel;
 String get shrineLoginPasswordLabel =>
-remote.translateOrDefault('shrineLoginPasswordLabel', local.shrineLoginPasswordLabel);
+remote?.translateOrDefault('shrineLoginPasswordLabel', local.shrineLoginPasswordLabel) ?? local.shrineLoginPasswordLabel;
 String get shrineCancelButtonCaption =>
-remote.translateOrDefault('shrineCancelButtonCaption', local.shrineCancelButtonCaption);
+remote?.translateOrDefault('shrineCancelButtonCaption', local.shrineCancelButtonCaption) ?? local.shrineCancelButtonCaption;
 String get shrineNextButtonCaption =>
-remote.translateOrDefault('shrineNextButtonCaption', local.shrineNextButtonCaption);
+remote?.translateOrDefault('shrineNextButtonCaption', local.shrineNextButtonCaption) ?? local.shrineNextButtonCaption;
 String get shrineCartPageCaption =>
-remote.translateOrDefault('shrineCartPageCaption', local.shrineCartPageCaption);
-String shrineProductQuantity(int quantity){return remote.translateOrDefault('shrineProductQuantity', local.shrineProductQuantity(quantity));
+remote?.translateOrDefault('shrineCartPageCaption', local.shrineCartPageCaption) ?? local.shrineCartPageCaption;
+String shrineProductQuantity(int quantity){return remote?.translateOrDefault('shrineProductQuantity', local.shrineProductQuantity(quantity)) ?? local.shrineProductQuantity(quantity);
 }
-String shrineProductPrice(Object price){return remote.translateOrDefault('shrineProductPrice', local.shrineProductPrice(price));
+String shrineProductPrice(Object price){return remote?.translateOrDefault('shrineProductPrice', local.shrineProductPrice(price)) ?? local.shrineProductPrice(price);
 }
-String shrineCartItemCount(int quantity){return remote.translateOrDefault('shrineCartItemCount', local.shrineCartItemCount(quantity));
+String shrineCartItemCount(int quantity){return remote?.translateOrDefault('shrineCartItemCount', local.shrineCartItemCount(quantity)) ?? local.shrineCartItemCount(quantity);
 }
 String get shrineCartClearButtonCaption =>
-remote.translateOrDefault('shrineCartClearButtonCaption', local.shrineCartClearButtonCaption);
+remote?.translateOrDefault('shrineCartClearButtonCaption', local.shrineCartClearButtonCaption) ?? local.shrineCartClearButtonCaption;
 String get shrineCartTotalCaption =>
-remote.translateOrDefault('shrineCartTotalCaption', local.shrineCartTotalCaption);
+remote?.translateOrDefault('shrineCartTotalCaption', local.shrineCartTotalCaption) ?? local.shrineCartTotalCaption;
 String get shrineCartSubtotalCaption =>
-remote.translateOrDefault('shrineCartSubtotalCaption', local.shrineCartSubtotalCaption);
+remote?.translateOrDefault('shrineCartSubtotalCaption', local.shrineCartSubtotalCaption) ?? local.shrineCartSubtotalCaption;
 String get shrineCartShippingCaption =>
-remote.translateOrDefault('shrineCartShippingCaption', local.shrineCartShippingCaption);
+remote?.translateOrDefault('shrineCartShippingCaption', local.shrineCartShippingCaption) ?? local.shrineCartShippingCaption;
 String get shrineCartTaxCaption =>
-remote.translateOrDefault('shrineCartTaxCaption', local.shrineCartTaxCaption);
+remote?.translateOrDefault('shrineCartTaxCaption', local.shrineCartTaxCaption) ?? local.shrineCartTaxCaption;
 String get shrineProductVagabondSack =>
-remote.translateOrDefault('shrineProductVagabondSack', local.shrineProductVagabondSack);
+remote?.translateOrDefault('shrineProductVagabondSack', local.shrineProductVagabondSack) ?? local.shrineProductVagabondSack;
 String get shrineProductStellaSunglasses =>
-remote.translateOrDefault('shrineProductStellaSunglasses', local.shrineProductStellaSunglasses);
+remote?.translateOrDefault('shrineProductStellaSunglasses', local.shrineProductStellaSunglasses) ?? local.shrineProductStellaSunglasses;
 String get shrineProductWhitneyBelt =>
-remote.translateOrDefault('shrineProductWhitneyBelt', local.shrineProductWhitneyBelt);
+remote?.translateOrDefault('shrineProductWhitneyBelt', local.shrineProductWhitneyBelt) ?? local.shrineProductWhitneyBelt;
 String get shrineProductGardenStrand =>
-remote.translateOrDefault('shrineProductGardenStrand', local.shrineProductGardenStrand);
+remote?.translateOrDefault('shrineProductGardenStrand', local.shrineProductGardenStrand) ?? local.shrineProductGardenStrand;
 String get shrineProductStrutEarrings =>
-remote.translateOrDefault('shrineProductStrutEarrings', local.shrineProductStrutEarrings);
+remote?.translateOrDefault('shrineProductStrutEarrings', local.shrineProductStrutEarrings) ?? local.shrineProductStrutEarrings;
 String get shrineProductVarsitySocks =>
-remote.translateOrDefault('shrineProductVarsitySocks', local.shrineProductVarsitySocks);
+remote?.translateOrDefault('shrineProductVarsitySocks', local.shrineProductVarsitySocks) ?? local.shrineProductVarsitySocks;
 String get shrineProductWeaveKeyring =>
-remote.translateOrDefault('shrineProductWeaveKeyring', local.shrineProductWeaveKeyring);
+remote?.translateOrDefault('shrineProductWeaveKeyring', local.shrineProductWeaveKeyring) ?? local.shrineProductWeaveKeyring;
 String get shrineProductGatsbyHat =>
-remote.translateOrDefault('shrineProductGatsbyHat', local.shrineProductGatsbyHat);
+remote?.translateOrDefault('shrineProductGatsbyHat', local.shrineProductGatsbyHat) ?? local.shrineProductGatsbyHat;
 String get shrineProductShrugBag =>
-remote.translateOrDefault('shrineProductShrugBag', local.shrineProductShrugBag);
+remote?.translateOrDefault('shrineProductShrugBag', local.shrineProductShrugBag) ?? local.shrineProductShrugBag;
 String get shrineProductGiltDeskTrio =>
-remote.translateOrDefault('shrineProductGiltDeskTrio', local.shrineProductGiltDeskTrio);
+remote?.translateOrDefault('shrineProductGiltDeskTrio', local.shrineProductGiltDeskTrio) ?? local.shrineProductGiltDeskTrio;
 String get shrineProductCopperWireRack =>
-remote.translateOrDefault('shrineProductCopperWireRack', local.shrineProductCopperWireRack);
+remote?.translateOrDefault('shrineProductCopperWireRack', local.shrineProductCopperWireRack) ?? local.shrineProductCopperWireRack;
 String get shrineProductSootheCeramicSet =>
-remote.translateOrDefault('shrineProductSootheCeramicSet', local.shrineProductSootheCeramicSet);
+remote?.translateOrDefault('shrineProductSootheCeramicSet', local.shrineProductSootheCeramicSet) ?? local.shrineProductSootheCeramicSet;
 String get shrineProductHurrahsTeaSet =>
-remote.translateOrDefault('shrineProductHurrahsTeaSet', local.shrineProductHurrahsTeaSet);
+remote?.translateOrDefault('shrineProductHurrahsTeaSet', local.shrineProductHurrahsTeaSet) ?? local.shrineProductHurrahsTeaSet;
 String get shrineProductBlueStoneMug =>
-remote.translateOrDefault('shrineProductBlueStoneMug', local.shrineProductBlueStoneMug);
+remote?.translateOrDefault('shrineProductBlueStoneMug', local.shrineProductBlueStoneMug) ?? local.shrineProductBlueStoneMug;
 String get shrineProductRainwaterTray =>
-remote.translateOrDefault('shrineProductRainwaterTray', local.shrineProductRainwaterTray);
+remote?.translateOrDefault('shrineProductRainwaterTray', local.shrineProductRainwaterTray) ?? local.shrineProductRainwaterTray;
 String get shrineProductChambrayNapkins =>
-remote.translateOrDefault('shrineProductChambrayNapkins', local.shrineProductChambrayNapkins);
+remote?.translateOrDefault('shrineProductChambrayNapkins', local.shrineProductChambrayNapkins) ?? local.shrineProductChambrayNapkins;
 String get shrineProductSucculentPlanters =>
-remote.translateOrDefault('shrineProductSucculentPlanters', local.shrineProductSucculentPlanters);
+remote?.translateOrDefault('shrineProductSucculentPlanters', local.shrineProductSucculentPlanters) ?? local.shrineProductSucculentPlanters;
 String get shrineProductQuartetTable =>
-remote.translateOrDefault('shrineProductQuartetTable', local.shrineProductQuartetTable);
+remote?.translateOrDefault('shrineProductQuartetTable', local.shrineProductQuartetTable) ?? local.shrineProductQuartetTable;
 String get shrineProductKitchenQuattro =>
-remote.translateOrDefault('shrineProductKitchenQuattro', local.shrineProductKitchenQuattro);
+remote?.translateOrDefault('shrineProductKitchenQuattro', local.shrineProductKitchenQuattro) ?? local.shrineProductKitchenQuattro;
 String get shrineProductClaySweater =>
-remote.translateOrDefault('shrineProductClaySweater', local.shrineProductClaySweater);
+remote?.translateOrDefault('shrineProductClaySweater', local.shrineProductClaySweater) ?? local.shrineProductClaySweater;
 String get shrineProductSeaTunic =>
-remote.translateOrDefault('shrineProductSeaTunic', local.shrineProductSeaTunic);
+remote?.translateOrDefault('shrineProductSeaTunic', local.shrineProductSeaTunic) ?? local.shrineProductSeaTunic;
 String get shrineProductPlasterTunic =>
-remote.translateOrDefault('shrineProductPlasterTunic', local.shrineProductPlasterTunic);
+remote?.translateOrDefault('shrineProductPlasterTunic', local.shrineProductPlasterTunic) ?? local.shrineProductPlasterTunic;
 String get shrineProductWhitePinstripeShirt =>
-remote.translateOrDefault('shrineProductWhitePinstripeShirt', local.shrineProductWhitePinstripeShirt);
+remote?.translateOrDefault('shrineProductWhitePinstripeShirt', local.shrineProductWhitePinstripeShirt) ?? local.shrineProductWhitePinstripeShirt;
 String get shrineProductChambrayShirt =>
-remote.translateOrDefault('shrineProductChambrayShirt', local.shrineProductChambrayShirt);
+remote?.translateOrDefault('shrineProductChambrayShirt', local.shrineProductChambrayShirt) ?? local.shrineProductChambrayShirt;
 String get shrineProductSeabreezeSweater =>
-remote.translateOrDefault('shrineProductSeabreezeSweater', local.shrineProductSeabreezeSweater);
+remote?.translateOrDefault('shrineProductSeabreezeSweater', local.shrineProductSeabreezeSweater) ?? local.shrineProductSeabreezeSweater;
 String get shrineProductGentryJacket =>
-remote.translateOrDefault('shrineProductGentryJacket', local.shrineProductGentryJacket);
+remote?.translateOrDefault('shrineProductGentryJacket', local.shrineProductGentryJacket) ?? local.shrineProductGentryJacket;
 String get shrineProductNavyTrousers =>
-remote.translateOrDefault('shrineProductNavyTrousers', local.shrineProductNavyTrousers);
+remote?.translateOrDefault('shrineProductNavyTrousers', local.shrineProductNavyTrousers) ?? local.shrineProductNavyTrousers;
 String get shrineProductWalterHenleyWhite =>
-remote.translateOrDefault('shrineProductWalterHenleyWhite', local.shrineProductWalterHenleyWhite);
+remote?.translateOrDefault('shrineProductWalterHenleyWhite', local.shrineProductWalterHenleyWhite) ?? local.shrineProductWalterHenleyWhite;
 String get shrineProductSurfAndPerfShirt =>
-remote.translateOrDefault('shrineProductSurfAndPerfShirt', local.shrineProductSurfAndPerfShirt);
+remote?.translateOrDefault('shrineProductSurfAndPerfShirt', local.shrineProductSurfAndPerfShirt) ?? local.shrineProductSurfAndPerfShirt;
 String get shrineProductGingerScarf =>
-remote.translateOrDefault('shrineProductGingerScarf', local.shrineProductGingerScarf);
+remote?.translateOrDefault('shrineProductGingerScarf', local.shrineProductGingerScarf) ?? local.shrineProductGingerScarf;
 String get shrineProductRamonaCrossover =>
-remote.translateOrDefault('shrineProductRamonaCrossover', local.shrineProductRamonaCrossover);
+remote?.translateOrDefault('shrineProductRamonaCrossover', local.shrineProductRamonaCrossover) ?? local.shrineProductRamonaCrossover;
 String get shrineProductClassicWhiteCollar =>
-remote.translateOrDefault('shrineProductClassicWhiteCollar', local.shrineProductClassicWhiteCollar);
+remote?.translateOrDefault('shrineProductClassicWhiteCollar', local.shrineProductClassicWhiteCollar) ?? local.shrineProductClassicWhiteCollar;
 String get shrineProductCeriseScallopTee =>
-remote.translateOrDefault('shrineProductCeriseScallopTee', local.shrineProductCeriseScallopTee);
+remote?.translateOrDefault('shrineProductCeriseScallopTee', local.shrineProductCeriseScallopTee) ?? local.shrineProductCeriseScallopTee;
 String get shrineProductShoulderRollsTee =>
-remote.translateOrDefault('shrineProductShoulderRollsTee', local.shrineProductShoulderRollsTee);
+remote?.translateOrDefault('shrineProductShoulderRollsTee', local.shrineProductShoulderRollsTee) ?? local.shrineProductShoulderRollsTee;
 String get shrineProductGreySlouchTank =>
-remote.translateOrDefault('shrineProductGreySlouchTank', local.shrineProductGreySlouchTank);
+remote?.translateOrDefault('shrineProductGreySlouchTank', local.shrineProductGreySlouchTank) ?? local.shrineProductGreySlouchTank;
 String get shrineProductSunshirtDress =>
-remote.translateOrDefault('shrineProductSunshirtDress', local.shrineProductSunshirtDress);
+remote?.translateOrDefault('shrineProductSunshirtDress', local.shrineProductSunshirtDress) ?? local.shrineProductSunshirtDress;
 String get shrineProductFineLinesTee =>
-remote.translateOrDefault('shrineProductFineLinesTee', local.shrineProductFineLinesTee);
+remote?.translateOrDefault('shrineProductFineLinesTee', local.shrineProductFineLinesTee) ?? local.shrineProductFineLinesTee;
 String get shrineTooltipSearch =>
-remote.translateOrDefault('shrineTooltipSearch', local.shrineTooltipSearch);
+remote?.translateOrDefault('shrineTooltipSearch', local.shrineTooltipSearch) ?? local.shrineTooltipSearch;
 String get shrineTooltipSettings =>
-remote.translateOrDefault('shrineTooltipSettings', local.shrineTooltipSettings);
+remote?.translateOrDefault('shrineTooltipSettings', local.shrineTooltipSettings) ?? local.shrineTooltipSettings;
 String get shrineTooltipOpenMenu =>
-remote.translateOrDefault('shrineTooltipOpenMenu', local.shrineTooltipOpenMenu);
+remote?.translateOrDefault('shrineTooltipOpenMenu', local.shrineTooltipOpenMenu) ?? local.shrineTooltipOpenMenu;
 String get shrineTooltipCloseMenu =>
-remote.translateOrDefault('shrineTooltipCloseMenu', local.shrineTooltipCloseMenu);
+remote?.translateOrDefault('shrineTooltipCloseMenu', local.shrineTooltipCloseMenu) ?? local.shrineTooltipCloseMenu;
 String get shrineTooltipCloseCart =>
-remote.translateOrDefault('shrineTooltipCloseCart', local.shrineTooltipCloseCart);
-String shrineScreenReaderCart(int quantity){return remote.translateOrDefault('shrineScreenReaderCart', local.shrineScreenReaderCart(quantity));
+remote?.translateOrDefault('shrineTooltipCloseCart', local.shrineTooltipCloseCart) ?? local.shrineTooltipCloseCart;
+String shrineScreenReaderCart(int quantity){return remote?.translateOrDefault('shrineScreenReaderCart', local.shrineScreenReaderCart(quantity)) ?? local.shrineScreenReaderCart(quantity);
 }
 String get shrineScreenReaderProductAddToCart =>
-remote.translateOrDefault('shrineScreenReaderProductAddToCart', local.shrineScreenReaderProductAddToCart);
-String shrineScreenReaderRemoveProductButton(Object product){return remote.translateOrDefault('shrineScreenReaderRemoveProductButton', local.shrineScreenReaderRemoveProductButton(product));
+remote?.translateOrDefault('shrineScreenReaderProductAddToCart', local.shrineScreenReaderProductAddToCart) ?? local.shrineScreenReaderProductAddToCart;
+String shrineScreenReaderRemoveProductButton(Object product){return remote?.translateOrDefault('shrineScreenReaderRemoveProductButton', local.shrineScreenReaderRemoveProductButton(product)) ?? local.shrineScreenReaderRemoveProductButton(product);
 }
 String get shrineTooltipRemoveItem =>
-remote.translateOrDefault('shrineTooltipRemoveItem', local.shrineTooltipRemoveItem);
+remote?.translateOrDefault('shrineTooltipRemoveItem', local.shrineTooltipRemoveItem) ?? local.shrineTooltipRemoveItem;
 String get craneFormDiners =>
-remote.translateOrDefault('craneFormDiners', local.craneFormDiners);
+remote?.translateOrDefault('craneFormDiners', local.craneFormDiners) ?? local.craneFormDiners;
 String get craneFormDate =>
-remote.translateOrDefault('craneFormDate', local.craneFormDate);
+remote?.translateOrDefault('craneFormDate', local.craneFormDate) ?? local.craneFormDate;
 String get craneFormTime =>
-remote.translateOrDefault('craneFormTime', local.craneFormTime);
+remote?.translateOrDefault('craneFormTime', local.craneFormTime) ?? local.craneFormTime;
 String get craneFormLocation =>
-remote.translateOrDefault('craneFormLocation', local.craneFormLocation);
+remote?.translateOrDefault('craneFormLocation', local.craneFormLocation) ?? local.craneFormLocation;
 String get craneFormTravelers =>
-remote.translateOrDefault('craneFormTravelers', local.craneFormTravelers);
+remote?.translateOrDefault('craneFormTravelers', local.craneFormTravelers) ?? local.craneFormTravelers;
 String get craneFormOrigin =>
-remote.translateOrDefault('craneFormOrigin', local.craneFormOrigin);
+remote?.translateOrDefault('craneFormOrigin', local.craneFormOrigin) ?? local.craneFormOrigin;
 String get craneFormDestination =>
-remote.translateOrDefault('craneFormDestination', local.craneFormDestination);
+remote?.translateOrDefault('craneFormDestination', local.craneFormDestination) ?? local.craneFormDestination;
 String get craneFormDates =>
-remote.translateOrDefault('craneFormDates', local.craneFormDates);
-String craneHours(int hours){return remote.translateOrDefault('craneHours', local.craneHours(hours));
+remote?.translateOrDefault('craneFormDates', local.craneFormDates) ?? local.craneFormDates;
+String craneHours(int hours){return remote?.translateOrDefault('craneHours', local.craneHours(hours)) ?? local.craneHours(hours);
 }
-String craneMinutes(int minutes){return remote.translateOrDefault('craneMinutes', local.craneMinutes(minutes));
+String craneMinutes(int minutes){return remote?.translateOrDefault('craneMinutes', local.craneMinutes(minutes)) ?? local.craneMinutes(minutes);
 }
-String craneFlightDuration(Object hoursShortForm,Object minutesShortForm){return remote.translateOrDefault('craneFlightDuration', local.craneFlightDuration(hoursShortForm,minutesShortForm));
+String craneFlightDuration(Object hoursShortForm,Object minutesShortForm){return remote?.translateOrDefault('craneFlightDuration', local.craneFlightDuration(hoursShortForm,minutesShortForm)) ?? local.craneFlightDuration(hoursShortForm,minutesShortForm);
 }
 String get craneFly =>
-remote.translateOrDefault('craneFly', local.craneFly);
+remote?.translateOrDefault('craneFly', local.craneFly) ?? local.craneFly;
 String get craneSleep =>
-remote.translateOrDefault('craneSleep', local.craneSleep);
+remote?.translateOrDefault('craneSleep', local.craneSleep) ?? local.craneSleep;
 String get craneEat =>
-remote.translateOrDefault('craneEat', local.craneEat);
+remote?.translateOrDefault('craneEat', local.craneEat) ?? local.craneEat;
 String get craneFlySubhead =>
-remote.translateOrDefault('craneFlySubhead', local.craneFlySubhead);
+remote?.translateOrDefault('craneFlySubhead', local.craneFlySubhead) ?? local.craneFlySubhead;
 String get craneSleepSubhead =>
-remote.translateOrDefault('craneSleepSubhead', local.craneSleepSubhead);
+remote?.translateOrDefault('craneSleepSubhead', local.craneSleepSubhead) ?? local.craneSleepSubhead;
 String get craneEatSubhead =>
-remote.translateOrDefault('craneEatSubhead', local.craneEatSubhead);
-String craneFlyStops(int numberOfStops){return remote.translateOrDefault('craneFlyStops', local.craneFlyStops(numberOfStops));
+remote?.translateOrDefault('craneEatSubhead', local.craneEatSubhead) ?? local.craneEatSubhead;
+String craneFlyStops(int numberOfStops){return remote?.translateOrDefault('craneFlyStops', local.craneFlyStops(numberOfStops)) ?? local.craneFlyStops(numberOfStops);
 }
-String craneSleepProperties(int totalProperties){return remote.translateOrDefault('craneSleepProperties', local.craneSleepProperties(totalProperties));
+String craneSleepProperties(int totalProperties){return remote?.translateOrDefault('craneSleepProperties', local.craneSleepProperties(totalProperties)) ?? local.craneSleepProperties(totalProperties);
 }
-String craneEatRestaurants(int totalRestaurants){return remote.translateOrDefault('craneEatRestaurants', local.craneEatRestaurants(totalRestaurants));
+String craneEatRestaurants(int totalRestaurants){return remote?.translateOrDefault('craneEatRestaurants', local.craneEatRestaurants(totalRestaurants)) ?? local.craneEatRestaurants(totalRestaurants);
 }
 String get craneFly0 =>
-remote.translateOrDefault('craneFly0', local.craneFly0);
+remote?.translateOrDefault('craneFly0', local.craneFly0) ?? local.craneFly0;
 String get craneFly1 =>
-remote.translateOrDefault('craneFly1', local.craneFly1);
+remote?.translateOrDefault('craneFly1', local.craneFly1) ?? local.craneFly1;
 String get craneFly2 =>
-remote.translateOrDefault('craneFly2', local.craneFly2);
+remote?.translateOrDefault('craneFly2', local.craneFly2) ?? local.craneFly2;
 String get craneFly3 =>
-remote.translateOrDefault('craneFly3', local.craneFly3);
+remote?.translateOrDefault('craneFly3', local.craneFly3) ?? local.craneFly3;
 String get craneFly4 =>
-remote.translateOrDefault('craneFly4', local.craneFly4);
+remote?.translateOrDefault('craneFly4', local.craneFly4) ?? local.craneFly4;
 String get craneFly5 =>
-remote.translateOrDefault('craneFly5', local.craneFly5);
+remote?.translateOrDefault('craneFly5', local.craneFly5) ?? local.craneFly5;
 String get craneFly6 =>
-remote.translateOrDefault('craneFly6', local.craneFly6);
+remote?.translateOrDefault('craneFly6', local.craneFly6) ?? local.craneFly6;
 String get craneFly7 =>
-remote.translateOrDefault('craneFly7', local.craneFly7);
+remote?.translateOrDefault('craneFly7', local.craneFly7) ?? local.craneFly7;
 String get craneFly8 =>
-remote.translateOrDefault('craneFly8', local.craneFly8);
+remote?.translateOrDefault('craneFly8', local.craneFly8) ?? local.craneFly8;
 String get craneFly9 =>
-remote.translateOrDefault('craneFly9', local.craneFly9);
+remote?.translateOrDefault('craneFly9', local.craneFly9) ?? local.craneFly9;
 String get craneFly10 =>
-remote.translateOrDefault('craneFly10', local.craneFly10);
+remote?.translateOrDefault('craneFly10', local.craneFly10) ?? local.craneFly10;
 String get craneFly11 =>
-remote.translateOrDefault('craneFly11', local.craneFly11);
+remote?.translateOrDefault('craneFly11', local.craneFly11) ?? local.craneFly11;
 String get craneFly12 =>
-remote.translateOrDefault('craneFly12', local.craneFly12);
+remote?.translateOrDefault('craneFly12', local.craneFly12) ?? local.craneFly12;
 String get craneFly13 =>
-remote.translateOrDefault('craneFly13', local.craneFly13);
+remote?.translateOrDefault('craneFly13', local.craneFly13) ?? local.craneFly13;
 String get craneSleep0 =>
-remote.translateOrDefault('craneSleep0', local.craneSleep0);
+remote?.translateOrDefault('craneSleep0', local.craneSleep0) ?? local.craneSleep0;
 String get craneSleep1 =>
-remote.translateOrDefault('craneSleep1', local.craneSleep1);
+remote?.translateOrDefault('craneSleep1', local.craneSleep1) ?? local.craneSleep1;
 String get craneSleep2 =>
-remote.translateOrDefault('craneSleep2', local.craneSleep2);
+remote?.translateOrDefault('craneSleep2', local.craneSleep2) ?? local.craneSleep2;
 String get craneSleep3 =>
-remote.translateOrDefault('craneSleep3', local.craneSleep3);
+remote?.translateOrDefault('craneSleep3', local.craneSleep3) ?? local.craneSleep3;
 String get craneSleep4 =>
-remote.translateOrDefault('craneSleep4', local.craneSleep4);
+remote?.translateOrDefault('craneSleep4', local.craneSleep4) ?? local.craneSleep4;
 String get craneSleep5 =>
-remote.translateOrDefault('craneSleep5', local.craneSleep5);
+remote?.translateOrDefault('craneSleep5', local.craneSleep5) ?? local.craneSleep5;
 String get craneSleep6 =>
-remote.translateOrDefault('craneSleep6', local.craneSleep6);
+remote?.translateOrDefault('craneSleep6', local.craneSleep6) ?? local.craneSleep6;
 String get craneSleep7 =>
-remote.translateOrDefault('craneSleep7', local.craneSleep7);
+remote?.translateOrDefault('craneSleep7', local.craneSleep7) ?? local.craneSleep7;
 String get craneSleep8 =>
-remote.translateOrDefault('craneSleep8', local.craneSleep8);
+remote?.translateOrDefault('craneSleep8', local.craneSleep8) ?? local.craneSleep8;
 String get craneSleep9 =>
-remote.translateOrDefault('craneSleep9', local.craneSleep9);
+remote?.translateOrDefault('craneSleep9', local.craneSleep9) ?? local.craneSleep9;
 String get craneSleep10 =>
-remote.translateOrDefault('craneSleep10', local.craneSleep10);
+remote?.translateOrDefault('craneSleep10', local.craneSleep10) ?? local.craneSleep10;
 String get craneSleep11 =>
-remote.translateOrDefault('craneSleep11', local.craneSleep11);
+remote?.translateOrDefault('craneSleep11', local.craneSleep11) ?? local.craneSleep11;
 String get craneEat0 =>
-remote.translateOrDefault('craneEat0', local.craneEat0);
+remote?.translateOrDefault('craneEat0', local.craneEat0) ?? local.craneEat0;
 String get craneEat1 =>
-remote.translateOrDefault('craneEat1', local.craneEat1);
+remote?.translateOrDefault('craneEat1', local.craneEat1) ?? local.craneEat1;
 String get craneEat2 =>
-remote.translateOrDefault('craneEat2', local.craneEat2);
+remote?.translateOrDefault('craneEat2', local.craneEat2) ?? local.craneEat2;
 String get craneEat3 =>
-remote.translateOrDefault('craneEat3', local.craneEat3);
+remote?.translateOrDefault('craneEat3', local.craneEat3) ?? local.craneEat3;
 String get craneEat4 =>
-remote.translateOrDefault('craneEat4', local.craneEat4);
+remote?.translateOrDefault('craneEat4', local.craneEat4) ?? local.craneEat4;
 String get craneEat5 =>
-remote.translateOrDefault('craneEat5', local.craneEat5);
+remote?.translateOrDefault('craneEat5', local.craneEat5) ?? local.craneEat5;
 String get craneEat6 =>
-remote.translateOrDefault('craneEat6', local.craneEat6);
+remote?.translateOrDefault('craneEat6', local.craneEat6) ?? local.craneEat6;
 String get craneEat7 =>
-remote.translateOrDefault('craneEat7', local.craneEat7);
+remote?.translateOrDefault('craneEat7', local.craneEat7) ?? local.craneEat7;
 String get craneEat8 =>
-remote.translateOrDefault('craneEat8', local.craneEat8);
+remote?.translateOrDefault('craneEat8', local.craneEat8) ?? local.craneEat8;
 String get craneEat9 =>
-remote.translateOrDefault('craneEat9', local.craneEat9);
+remote?.translateOrDefault('craneEat9', local.craneEat9) ?? local.craneEat9;
 String get craneEat10 =>
-remote.translateOrDefault('craneEat10', local.craneEat10);
+remote?.translateOrDefault('craneEat10', local.craneEat10) ?? local.craneEat10;
 String get craneFly0SemanticLabel =>
-remote.translateOrDefault('craneFly0SemanticLabel', local.craneFly0SemanticLabel);
+remote?.translateOrDefault('craneFly0SemanticLabel', local.craneFly0SemanticLabel) ?? local.craneFly0SemanticLabel;
 String get craneFly1SemanticLabel =>
-remote.translateOrDefault('craneFly1SemanticLabel', local.craneFly1SemanticLabel);
+remote?.translateOrDefault('craneFly1SemanticLabel', local.craneFly1SemanticLabel) ?? local.craneFly1SemanticLabel;
 String get craneFly2SemanticLabel =>
-remote.translateOrDefault('craneFly2SemanticLabel', local.craneFly2SemanticLabel);
+remote?.translateOrDefault('craneFly2SemanticLabel', local.craneFly2SemanticLabel) ?? local.craneFly2SemanticLabel;
 String get craneFly3SemanticLabel =>
-remote.translateOrDefault('craneFly3SemanticLabel', local.craneFly3SemanticLabel);
+remote?.translateOrDefault('craneFly3SemanticLabel', local.craneFly3SemanticLabel) ?? local.craneFly3SemanticLabel;
 String get craneFly4SemanticLabel =>
-remote.translateOrDefault('craneFly4SemanticLabel', local.craneFly4SemanticLabel);
+remote?.translateOrDefault('craneFly4SemanticLabel', local.craneFly4SemanticLabel) ?? local.craneFly4SemanticLabel;
 String get craneFly5SemanticLabel =>
-remote.translateOrDefault('craneFly5SemanticLabel', local.craneFly5SemanticLabel);
+remote?.translateOrDefault('craneFly5SemanticLabel', local.craneFly5SemanticLabel) ?? local.craneFly5SemanticLabel;
 String get craneFly6SemanticLabel =>
-remote.translateOrDefault('craneFly6SemanticLabel', local.craneFly6SemanticLabel);
+remote?.translateOrDefault('craneFly6SemanticLabel', local.craneFly6SemanticLabel) ?? local.craneFly6SemanticLabel;
 String get craneFly7SemanticLabel =>
-remote.translateOrDefault('craneFly7SemanticLabel', local.craneFly7SemanticLabel);
+remote?.translateOrDefault('craneFly7SemanticLabel', local.craneFly7SemanticLabel) ?? local.craneFly7SemanticLabel;
 String get craneFly8SemanticLabel =>
-remote.translateOrDefault('craneFly8SemanticLabel', local.craneFly8SemanticLabel);
+remote?.translateOrDefault('craneFly8SemanticLabel', local.craneFly8SemanticLabel) ?? local.craneFly8SemanticLabel;
 String get craneFly9SemanticLabel =>
-remote.translateOrDefault('craneFly9SemanticLabel', local.craneFly9SemanticLabel);
+remote?.translateOrDefault('craneFly9SemanticLabel', local.craneFly9SemanticLabel) ?? local.craneFly9SemanticLabel;
 String get craneFly10SemanticLabel =>
-remote.translateOrDefault('craneFly10SemanticLabel', local.craneFly10SemanticLabel);
+remote?.translateOrDefault('craneFly10SemanticLabel', local.craneFly10SemanticLabel) ?? local.craneFly10SemanticLabel;
 String get craneFly11SemanticLabel =>
-remote.translateOrDefault('craneFly11SemanticLabel', local.craneFly11SemanticLabel);
+remote?.translateOrDefault('craneFly11SemanticLabel', local.craneFly11SemanticLabel) ?? local.craneFly11SemanticLabel;
 String get craneFly12SemanticLabel =>
-remote.translateOrDefault('craneFly12SemanticLabel', local.craneFly12SemanticLabel);
+remote?.translateOrDefault('craneFly12SemanticLabel', local.craneFly12SemanticLabel) ?? local.craneFly12SemanticLabel;
 String get craneFly13SemanticLabel =>
-remote.translateOrDefault('craneFly13SemanticLabel', local.craneFly13SemanticLabel);
+remote?.translateOrDefault('craneFly13SemanticLabel', local.craneFly13SemanticLabel) ?? local.craneFly13SemanticLabel;
 String get craneSleep0SemanticLabel =>
-remote.translateOrDefault('craneSleep0SemanticLabel', local.craneSleep0SemanticLabel);
+remote?.translateOrDefault('craneSleep0SemanticLabel', local.craneSleep0SemanticLabel) ?? local.craneSleep0SemanticLabel;
 String get craneSleep1SemanticLabel =>
-remote.translateOrDefault('craneSleep1SemanticLabel', local.craneSleep1SemanticLabel);
+remote?.translateOrDefault('craneSleep1SemanticLabel', local.craneSleep1SemanticLabel) ?? local.craneSleep1SemanticLabel;
 String get craneSleep2SemanticLabel =>
-remote.translateOrDefault('craneSleep2SemanticLabel', local.craneSleep2SemanticLabel);
+remote?.translateOrDefault('craneSleep2SemanticLabel', local.craneSleep2SemanticLabel) ?? local.craneSleep2SemanticLabel;
 String get craneSleep3SemanticLabel =>
-remote.translateOrDefault('craneSleep3SemanticLabel', local.craneSleep3SemanticLabel);
+remote?.translateOrDefault('craneSleep3SemanticLabel', local.craneSleep3SemanticLabel) ?? local.craneSleep3SemanticLabel;
 String get craneSleep4SemanticLabel =>
-remote.translateOrDefault('craneSleep4SemanticLabel', local.craneSleep4SemanticLabel);
+remote?.translateOrDefault('craneSleep4SemanticLabel', local.craneSleep4SemanticLabel) ?? local.craneSleep4SemanticLabel;
 String get craneSleep5SemanticLabel =>
-remote.translateOrDefault('craneSleep5SemanticLabel', local.craneSleep5SemanticLabel);
+remote?.translateOrDefault('craneSleep5SemanticLabel', local.craneSleep5SemanticLabel) ?? local.craneSleep5SemanticLabel;
 String get craneSleep6SemanticLabel =>
-remote.translateOrDefault('craneSleep6SemanticLabel', local.craneSleep6SemanticLabel);
+remote?.translateOrDefault('craneSleep6SemanticLabel', local.craneSleep6SemanticLabel) ?? local.craneSleep6SemanticLabel;
 String get craneSleep7SemanticLabel =>
-remote.translateOrDefault('craneSleep7SemanticLabel', local.craneSleep7SemanticLabel);
+remote?.translateOrDefault('craneSleep7SemanticLabel', local.craneSleep7SemanticLabel) ?? local.craneSleep7SemanticLabel;
 String get craneSleep8SemanticLabel =>
-remote.translateOrDefault('craneSleep8SemanticLabel', local.craneSleep8SemanticLabel);
+remote?.translateOrDefault('craneSleep8SemanticLabel', local.craneSleep8SemanticLabel) ?? local.craneSleep8SemanticLabel;
 String get craneSleep9SemanticLabel =>
-remote.translateOrDefault('craneSleep9SemanticLabel', local.craneSleep9SemanticLabel);
+remote?.translateOrDefault('craneSleep9SemanticLabel', local.craneSleep9SemanticLabel) ?? local.craneSleep9SemanticLabel;
 String get craneSleep10SemanticLabel =>
-remote.translateOrDefault('craneSleep10SemanticLabel', local.craneSleep10SemanticLabel);
+remote?.translateOrDefault('craneSleep10SemanticLabel', local.craneSleep10SemanticLabel) ?? local.craneSleep10SemanticLabel;
 String get craneSleep11SemanticLabel =>
-remote.translateOrDefault('craneSleep11SemanticLabel', local.craneSleep11SemanticLabel);
+remote?.translateOrDefault('craneSleep11SemanticLabel', local.craneSleep11SemanticLabel) ?? local.craneSleep11SemanticLabel;
 String get craneEat0SemanticLabel =>
-remote.translateOrDefault('craneEat0SemanticLabel', local.craneEat0SemanticLabel);
+remote?.translateOrDefault('craneEat0SemanticLabel', local.craneEat0SemanticLabel) ?? local.craneEat0SemanticLabel;
 String get craneEat1SemanticLabel =>
-remote.translateOrDefault('craneEat1SemanticLabel', local.craneEat1SemanticLabel);
+remote?.translateOrDefault('craneEat1SemanticLabel', local.craneEat1SemanticLabel) ?? local.craneEat1SemanticLabel;
 String get craneEat2SemanticLabel =>
-remote.translateOrDefault('craneEat2SemanticLabel', local.craneEat2SemanticLabel);
+remote?.translateOrDefault('craneEat2SemanticLabel', local.craneEat2SemanticLabel) ?? local.craneEat2SemanticLabel;
 String get craneEat3SemanticLabel =>
-remote.translateOrDefault('craneEat3SemanticLabel', local.craneEat3SemanticLabel);
+remote?.translateOrDefault('craneEat3SemanticLabel', local.craneEat3SemanticLabel) ?? local.craneEat3SemanticLabel;
 String get craneEat4SemanticLabel =>
-remote.translateOrDefault('craneEat4SemanticLabel', local.craneEat4SemanticLabel);
+remote?.translateOrDefault('craneEat4SemanticLabel', local.craneEat4SemanticLabel) ?? local.craneEat4SemanticLabel;
 String get craneEat5SemanticLabel =>
-remote.translateOrDefault('craneEat5SemanticLabel', local.craneEat5SemanticLabel);
+remote?.translateOrDefault('craneEat5SemanticLabel', local.craneEat5SemanticLabel) ?? local.craneEat5SemanticLabel;
 String get craneEat6SemanticLabel =>
-remote.translateOrDefault('craneEat6SemanticLabel', local.craneEat6SemanticLabel);
+remote?.translateOrDefault('craneEat6SemanticLabel', local.craneEat6SemanticLabel) ?? local.craneEat6SemanticLabel;
 String get craneEat7SemanticLabel =>
-remote.translateOrDefault('craneEat7SemanticLabel', local.craneEat7SemanticLabel);
+remote?.translateOrDefault('craneEat7SemanticLabel', local.craneEat7SemanticLabel) ?? local.craneEat7SemanticLabel;
 String get craneEat8SemanticLabel =>
-remote.translateOrDefault('craneEat8SemanticLabel', local.craneEat8SemanticLabel);
+remote?.translateOrDefault('craneEat8SemanticLabel', local.craneEat8SemanticLabel) ?? local.craneEat8SemanticLabel;
 String get craneEat9SemanticLabel =>
-remote.translateOrDefault('craneEat9SemanticLabel', local.craneEat9SemanticLabel);
+remote?.translateOrDefault('craneEat9SemanticLabel', local.craneEat9SemanticLabel) ?? local.craneEat9SemanticLabel;
 String get craneEat10SemanticLabel =>
-remote.translateOrDefault('craneEat10SemanticLabel', local.craneEat10SemanticLabel);
+remote?.translateOrDefault('craneEat10SemanticLabel', local.craneEat10SemanticLabel) ?? local.craneEat10SemanticLabel;
 String get fortnightlyMenuFrontPage =>
-remote.translateOrDefault('fortnightlyMenuFrontPage', local.fortnightlyMenuFrontPage);
+remote?.translateOrDefault('fortnightlyMenuFrontPage', local.fortnightlyMenuFrontPage) ?? local.fortnightlyMenuFrontPage;
 String get fortnightlyMenuWorld =>
-remote.translateOrDefault('fortnightlyMenuWorld', local.fortnightlyMenuWorld);
+remote?.translateOrDefault('fortnightlyMenuWorld', local.fortnightlyMenuWorld) ?? local.fortnightlyMenuWorld;
 String get fortnightlyMenuUS =>
-remote.translateOrDefault('fortnightlyMenuUS', local.fortnightlyMenuUS);
+remote?.translateOrDefault('fortnightlyMenuUS', local.fortnightlyMenuUS) ?? local.fortnightlyMenuUS;
 String get fortnightlyMenuPolitics =>
-remote.translateOrDefault('fortnightlyMenuPolitics', local.fortnightlyMenuPolitics);
+remote?.translateOrDefault('fortnightlyMenuPolitics', local.fortnightlyMenuPolitics) ?? local.fortnightlyMenuPolitics;
 String get fortnightlyMenuBusiness =>
-remote.translateOrDefault('fortnightlyMenuBusiness', local.fortnightlyMenuBusiness);
+remote?.translateOrDefault('fortnightlyMenuBusiness', local.fortnightlyMenuBusiness) ?? local.fortnightlyMenuBusiness;
 String get fortnightlyMenuTech =>
-remote.translateOrDefault('fortnightlyMenuTech', local.fortnightlyMenuTech);
+remote?.translateOrDefault('fortnightlyMenuTech', local.fortnightlyMenuTech) ?? local.fortnightlyMenuTech;
 String get fortnightlyMenuScience =>
-remote.translateOrDefault('fortnightlyMenuScience', local.fortnightlyMenuScience);
+remote?.translateOrDefault('fortnightlyMenuScience', local.fortnightlyMenuScience) ?? local.fortnightlyMenuScience;
 String get fortnightlyMenuSports =>
-remote.translateOrDefault('fortnightlyMenuSports', local.fortnightlyMenuSports);
+remote?.translateOrDefault('fortnightlyMenuSports', local.fortnightlyMenuSports) ?? local.fortnightlyMenuSports;
 String get fortnightlyMenuTravel =>
-remote.translateOrDefault('fortnightlyMenuTravel', local.fortnightlyMenuTravel);
+remote?.translateOrDefault('fortnightlyMenuTravel', local.fortnightlyMenuTravel) ?? local.fortnightlyMenuTravel;
 String get fortnightlyMenuCulture =>
-remote.translateOrDefault('fortnightlyMenuCulture', local.fortnightlyMenuCulture);
+remote?.translateOrDefault('fortnightlyMenuCulture', local.fortnightlyMenuCulture) ?? local.fortnightlyMenuCulture;
 String get fortnightlyTrendingTechDesign =>
-remote.translateOrDefault('fortnightlyTrendingTechDesign', local.fortnightlyTrendingTechDesign);
+remote?.translateOrDefault('fortnightlyTrendingTechDesign', local.fortnightlyTrendingTechDesign) ?? local.fortnightlyTrendingTechDesign;
 String get fortnightlyTrendingReform =>
-remote.translateOrDefault('fortnightlyTrendingReform', local.fortnightlyTrendingReform);
+remote?.translateOrDefault('fortnightlyTrendingReform', local.fortnightlyTrendingReform) ?? local.fortnightlyTrendingReform;
 String get fortnightlyTrendingHealthcareRevolution =>
-remote.translateOrDefault('fortnightlyTrendingHealthcareRevolution', local.fortnightlyTrendingHealthcareRevolution);
+remote?.translateOrDefault('fortnightlyTrendingHealthcareRevolution', local.fortnightlyTrendingHealthcareRevolution) ?? local.fortnightlyTrendingHealthcareRevolution;
 String get fortnightlyTrendingGreenArmy =>
-remote.translateOrDefault('fortnightlyTrendingGreenArmy', local.fortnightlyTrendingGreenArmy);
+remote?.translateOrDefault('fortnightlyTrendingGreenArmy', local.fortnightlyTrendingGreenArmy) ?? local.fortnightlyTrendingGreenArmy;
 String get fortnightlyTrendingStocks =>
-remote.translateOrDefault('fortnightlyTrendingStocks', local.fortnightlyTrendingStocks);
+remote?.translateOrDefault('fortnightlyTrendingStocks', local.fortnightlyTrendingStocks) ?? local.fortnightlyTrendingStocks;
 String get fortnightlyLatestUpdates =>
-remote.translateOrDefault('fortnightlyLatestUpdates', local.fortnightlyLatestUpdates);
+remote?.translateOrDefault('fortnightlyLatestUpdates', local.fortnightlyLatestUpdates) ?? local.fortnightlyLatestUpdates;
 String get fortnightlyHeadlineHealthcare =>
-remote.translateOrDefault('fortnightlyHeadlineHealthcare', local.fortnightlyHeadlineHealthcare);
+remote?.translateOrDefault('fortnightlyHeadlineHealthcare', local.fortnightlyHeadlineHealthcare) ?? local.fortnightlyHeadlineHealthcare;
 String get fortnightlyHeadlineWar =>
-remote.translateOrDefault('fortnightlyHeadlineWar', local.fortnightlyHeadlineWar);
+remote?.translateOrDefault('fortnightlyHeadlineWar', local.fortnightlyHeadlineWar) ?? local.fortnightlyHeadlineWar;
 String get fortnightlyHeadlineGasoline =>
-remote.translateOrDefault('fortnightlyHeadlineGasoline', local.fortnightlyHeadlineGasoline);
+remote?.translateOrDefault('fortnightlyHeadlineGasoline', local.fortnightlyHeadlineGasoline) ?? local.fortnightlyHeadlineGasoline;
 String get fortnightlyHeadlineArmy =>
-remote.translateOrDefault('fortnightlyHeadlineArmy', local.fortnightlyHeadlineArmy);
+remote?.translateOrDefault('fortnightlyHeadlineArmy', local.fortnightlyHeadlineArmy) ?? local.fortnightlyHeadlineArmy;
 String get fortnightlyHeadlineStocks =>
-remote.translateOrDefault('fortnightlyHeadlineStocks', local.fortnightlyHeadlineStocks);
+remote?.translateOrDefault('fortnightlyHeadlineStocks', local.fortnightlyHeadlineStocks) ?? local.fortnightlyHeadlineStocks;
 String get fortnightlyHeadlineFabrics =>
-remote.translateOrDefault('fortnightlyHeadlineFabrics', local.fortnightlyHeadlineFabrics);
+remote?.translateOrDefault('fortnightlyHeadlineFabrics', local.fortnightlyHeadlineFabrics) ?? local.fortnightlyHeadlineFabrics;
 String get fortnightlyHeadlineFeminists =>
-remote.translateOrDefault('fortnightlyHeadlineFeminists', local.fortnightlyHeadlineFeminists);
+remote?.translateOrDefault('fortnightlyHeadlineFeminists', local.fortnightlyHeadlineFeminists) ?? local.fortnightlyHeadlineFeminists;
 String get fortnightlyHeadlineBees =>
-remote.translateOrDefault('fortnightlyHeadlineBees', local.fortnightlyHeadlineBees);
+remote?.translateOrDefault('fortnightlyHeadlineBees', local.fortnightlyHeadlineBees) ?? local.fortnightlyHeadlineBees;
 String get replyInboxLabel =>
-remote.translateOrDefault('replyInboxLabel', local.replyInboxLabel);
+remote?.translateOrDefault('replyInboxLabel', local.replyInboxLabel) ?? local.replyInboxLabel;
 String get replyStarredLabel =>
-remote.translateOrDefault('replyStarredLabel', local.replyStarredLabel);
+remote?.translateOrDefault('replyStarredLabel', local.replyStarredLabel) ?? local.replyStarredLabel;
 String get replySentLabel =>
-remote.translateOrDefault('replySentLabel', local.replySentLabel);
+remote?.translateOrDefault('replySentLabel', local.replySentLabel) ?? local.replySentLabel;
 String get replyTrashLabel =>
-remote.translateOrDefault('replyTrashLabel', local.replyTrashLabel);
+remote?.translateOrDefault('replyTrashLabel', local.replyTrashLabel) ?? local.replyTrashLabel;
 String get replySpamLabel =>
-remote.translateOrDefault('replySpamLabel', local.replySpamLabel);
+remote?.translateOrDefault('replySpamLabel', local.replySpamLabel) ?? local.replySpamLabel;
 String get replyDraftsLabel =>
-remote.translateOrDefault('replyDraftsLabel', local.replyDraftsLabel);
+remote?.translateOrDefault('replyDraftsLabel', local.replyDraftsLabel) ?? local.replyDraftsLabel;
 }
