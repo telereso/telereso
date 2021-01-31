@@ -9,7 +9,7 @@ packages:
     source: hosted
     version: "14.0.0"
   analyzer:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
@@ -400,7 +400,7 @@ packages:
       path: "../flutter_telereso"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.1-alpha"
   term_glyph:
     dependency: transitive
     description:

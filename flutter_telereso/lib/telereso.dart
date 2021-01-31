@@ -1,5 +1,7 @@
 library telereso;
 
+import 'dart:convert';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
@@ -13,6 +15,7 @@ class Telereso {
   static Telereso get instance => _instance;
 
   List<String> supportedLocals = [];
+  Map<String, Map<String, dynamic>> drawableMap = {DRAWABLE: {}};
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   RemoteConfig _remoteConfig;
@@ -20,14 +23,15 @@ class Telereso {
   String defaultLocal = "en";
 
   bool stringLogEnabled = true;
+  bool drawableLogEnabled = true;
 
   init() async {
     print("$TAG: Initializing....");
     supportedLocals = [defaultLocal];
     _remoteConfig = await _setupRemoteConfig();
 
+    _initMaps();
     _fetchResources();
-    await _initMaps();
     print("$TAG: Initialized!");
   }
 
@@ -64,18 +68,22 @@ class Telereso {
     return false;
   }
 
+  String getRemoteImage(String key) {
+    var url = drawableMap[DRAWABLE][key];
+
+    if (url == null || url.isEmpty) {
+      return null;
+    }
+    return url;
+  }
+
   Future<RemoteConfig> _setupRemoteConfig() async {
     final RemoteConfig remoteConfig = await RemoteConfig.instance;
-    // Allow a fetch every millisecond. Default is 12 hours.
     remoteConfig.setConfigSettings(RemoteConfigSettings());
-    // remoteConfig.setDefaults(<String, String>{
-    //   'strings': '',
-    //   'drawable': '',
-    // });
     return remoteConfig;
   }
 
-  Future<void> _initMaps() async {
+  _initMaps() {
     if (_remoteConfig == null) return;
     supportedLocals = [defaultLocal];
     _remoteConfig.getAll().forEach((key, value) {
@@ -83,6 +91,20 @@ class Telereso {
         supportedLocals.add(key.split("_")[1]);
       }
     });
+
+    String defaultDrawableJson = _remoteConfig.getString(DRAWABLE);
+    if (defaultDrawableJson.isEmpty) {
+      logDrawable("$TAG_DRAWABLE: default $DRAWABLE was empty");
+      defaultDrawableJson = "{}";
+    } else {
+      logDrawable("$TAG_DRAWABLE: default $DRAWABLE initialized");
+    }
+    drawableMap[DRAWABLE] =
+        json.decode(defaultDrawableJson);
+  }
+
+  Future<void> _asyncInitMaps() {
+    _initMaps();
   }
 
   void _fetchResources() async {
@@ -91,11 +113,17 @@ class Telereso {
 
     if (await _remoteConfig.activateFetched()) {
       print("$TAG: Remote has changes");
-      _initMaps();
+      await _asyncInitMaps();
 
       [..._remoteChangeListeners].forEach((l) {
         l();
       });
     }
+  }
+}
+
+logDrawable(String log) {
+  if (Telereso.instance.drawableLogEnabled) {
+    print(log);
   }
 }

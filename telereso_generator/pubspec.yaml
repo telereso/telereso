@@ -1,10 +1,12 @@
 name: telereso_generator
-version: 0.0.1
-author: Ahmed Alnaami
-repository: 
+description: Genrate wrapper for your Intl implemntation .
+version: 0.0.1-alpha
+homepage: https://telereso.io
+repository: https://github.com/telereso/telereso
 environment: 
   sdk: '>=2.0.0 <3.0.0'
 dependencies:
+  analyzer: ^0.41.2
   build: ^1.6.1
   source_gen: ^0.9.10+1
   telereso:

@@ -20,10 +20,7 @@ import 'package:telereso/telereso.dart';
 
 
 void main() {
-  // GalleryLocalizationsAf();
-  //  GalleryLocalizations(new L).homeCategoryReference.getRemote()
   GoogleFonts.config.allowRuntimeFetching = false;
-  Telereso.instance.init();
   runApp(const GalleryApp());
 }
 
@@ -39,6 +36,7 @@ class GalleryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Telereso.instance.init();
     return ModelBinding(
       initialModel: GalleryOptions(
         themeMode: ThemeMode.system,

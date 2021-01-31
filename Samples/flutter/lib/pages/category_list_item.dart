@@ -8,6 +8,7 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/pages/demo.dart';
+import 'package:telereso/remote_image.dart';
 
 typedef CategoryHeaderTapCallback = Function(bool shouldOpenList);
 
@@ -206,7 +207,7 @@ class _CategoryHeader extends StatelessWidget {
                       Padding(
                         padding: imagePadding,
                         child: ExcludeSemantics(
-                          child: Image.asset(
+                          child: RemoteImage.asset(
                             imageString,
                             width: 64,
                             height: 64,

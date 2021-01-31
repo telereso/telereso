@@ -7,7 +7,7 @@ targets:
 builders:
   telereso:
       target: ":telereso_generator"
-      import: "package:telereso_generator/builder.dart"
+      import: "package:telereso_generator/telereso_generator.dart"
       builder_factories: ["remoteLocalizationBuilder"]
       build_extensions: {"intl_en.arb":["remote_localization.telereso.dart"]}
       auto_apply: dependents
