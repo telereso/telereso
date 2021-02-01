@@ -1,4 +1,4 @@
-## [0.0.4-alpha]
+## [${version}]
 
 * sync with versions with telereso
 

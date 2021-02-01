@@ -31,7 +31,7 @@ task clean(type: Delete) {
 }
 
 task prepareReadMe(type: Copy) {
-    println("prepareReadMe Android version : "+ props.getProperty("versionName_"))
+    println("Android version : "+ props.getProperty("versionName_"))
     from 'README-template.md'
     into "./"
     rename { file -> 'README.md' }
@@ -39,9 +39,51 @@ task prepareReadMe(type: Copy) {
 }
 
 task prepareConfigFile(type: Copy) {
-    println("prepareConfigFile Android version : "+ props.getProperty("versionName_"))
     from '_config-template.yml'
     into "./"
     rename { file -> '_config.yml' }
     expand(project: project, version: props.getProperty("versionName_"))
+}
+
+task prepareFlutterPubSpec(type: Copy) {
+    println("Flutter version : "+ props.getProperty("flutterVersionName"))
+    from './templates/flutter_telereso/pubspec.template.yaml'
+    into "./flutter_telereso/"
+    rename { file -> 'pubspec.yaml' }
+    expand(project: project, version: props.getProperty("flutterVersionName"))
+}
+
+task prepareFlutterReadMe(type: Copy) {
+    from './templates/flutter_telereso/README.template.md'
+    into "./flutter_telereso/"
+    rename { file -> 'README.md' }
+    expand(project: project, version: props.getProperty("flutterVersionName"),skipDef: '$default')
+}
+
+task prepareFlutterChangeLog(type: Copy) {
+    from './templates/flutter_telereso/CHANGELOG.template.md'
+    into "./flutter_telereso/"
+    rename { file -> 'CHANGELOG.md' }
+    expand(project: project, version: props.getProperty("flutterVersionName"))
+}
+
+task prepareFlutterGeneratroPubSpec(type: Copy) {
+    from './templates/telereso_generator/pubspec.template.yaml'
+    into "./telereso_generator/"
+    rename { file -> 'pubspec.yaml' }
+    expand(project: project, version: props.getProperty("flutterVersionName"))
+}
+
+task prepareFlutterGeneratroReadMe(type: Copy) {
+    from './templates/telereso_generator/README.template.md'
+    into "./telereso_generator/"
+    rename { file -> 'README.md' }
+    expand(project: project, version: props.getProperty("flutterVersionName"),skipDef: '$default')
+}
+
+task prepareFlutterGeneratroChangeLog(type: Copy) {
+    from './templates/telereso_generator/CHANGELOG.template.md'
+    into "./telereso_generator/"
+    rename { file -> 'CHANGELOG.md' }
+    expand(project: project, version: props.getProperty("flutterVersionName"))
 }
