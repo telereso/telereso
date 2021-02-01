@@ -4,8 +4,9 @@ destination: ../docs
 github:
     repository_url: https://github.com/telereso/telereso.git
 
-build_revision: ${version}
+build_revision: ${version}-${flutterVersion}
 google_analytics: G-V8S2X6JQZM
+port: 4001
 plugins:
   - jekyll-feed
   - jekyll-sitemap

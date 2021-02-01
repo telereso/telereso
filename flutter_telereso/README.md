@@ -17,7 +17,7 @@ then just add `Telereso` dependency to your project
 
 ```yaml
 dependencies:
-  telereso: ^0.0.3-alpha
+  telereso: ^0.0.4-alpha
 ```
 
 Run `pub get`.
@@ -147,8 +147,8 @@ All you need to do is apply the following changes :
 1. add [telereso_generator](https://pub.dev/packages/telereso_generator) to your `dev_dependencies`
     ```yaml
     dev_dependencies:
-        build_runner: ^<latest-version>
-        telereso_generator: ^<latest-version>
+        build_runner: ^1.0.0
+        telereso_generator: ^0.0.4-alpha
     ```
    check [telerso_generator usage](https://pub.dev/packages/telereso_generator#usage)
 
@@ -167,8 +167,8 @@ All you need to do is apply the following changes :
               output-class: AppLocalizations
               output-class-remote: RemoteLocalizations
     ```
-    - Notice that first 3 options are the same as your l10n.yaml file, these flags has to be the same and required
-    - `output-class-remote` is the name of your new wrapper class, if not set it will be `RemoteLocalizationsDefault`
+  - Notice that first 3 options are the same as your l10n.yaml file, these flags has to be the same and required
+  - `output-class-remote` is the name of your new wrapper class, if not set it will be `RemoteLocalizationsDefault`
 3. Build
    ```shell
     flutter pub run build_runner build --delete-conflicting-outputs
@@ -187,10 +187,10 @@ All you need to do is apply the following changes :
       home: ...
     )
     ```
-5. Start using your knew wrapper `RemoteLocalizations` instead of `AppLocalizations` 
+5. Start using your knew wrapper `RemoteLocalizations` instead of `AppLocalizations`
 
    **Example:**
-   
+
    _BEFORE_
    ```dart
     // In your Material/Widget/CupertinoApp:

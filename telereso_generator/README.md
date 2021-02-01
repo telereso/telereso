@@ -6,11 +6,11 @@ Builder for [Telereso](https://pub.dev/packages/telereso) to support l10n locali
 
 ## Usage
 
-1. Add `telereso_generator` to your `pubspec.yaml` as dev_dependency. Make sure [build_runner](https://pub.dev/packages/build_runner) is also listed as development dependency. 
+1. Add `telereso_generator` to your `pubspec.yaml` as dev_dependency. Make sure [build_runner](https://pub.dev/packages/build_runner) is also listed as development dependency.
     ```yaml
      dev_dependencies:
        build_runner: ^1.0.0
-       telereso_generator: ^0.0.2-alpha
+       telereso_generator: ^0.0.4-alpha
     ```
 
 2. Run flutter `pub get`.
@@ -27,8 +27,8 @@ Builder for [Telereso](https://pub.dev/packages/telereso) to support l10n locali
               output-class: AppLocalizations
               output-class-remote: RemoteLocalizations
     ```
-   - Notice that first 3 options are the same as your l10n.yaml file, these flags has to be the same and required
-   - `output-class-remote` is the name of your new wrapper class, if not set it will be `RemoteLocalizationsDefault`
+  - Notice that first 3 options are the same as your l10n.yaml file, these flags has to be the same and required
+  - `output-class-remote` is the name of your new wrapper class, if not set it will be `RemoteLocalizationsDefault`
 
 
 

@@ -1,9 +1,12 @@
 #!/bin/bash
 
 
+echo "Cleaning old files..."
+rm -rf website/_config.yml
+rm -rf README.md
+
 ./gradlew prepareReadMe prepareConfigFile
 
-mv _config.yml website/_config.yml
 cp README.md website/temp-index.md
 
 rm -rf website/doc

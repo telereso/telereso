@@ -35,14 +35,14 @@ task prepareReadMe(type: Copy) {
     from 'README-template.md'
     into "./"
     rename { file -> 'README.md' }
-    expand(project: project, version: props.getProperty("versionName_"))
+    expand(project: project, version: props.getProperty("versionName_"),flutterVersion: props.getProperty("flutterVersionName"))
 }
 
 task prepareConfigFile(type: Copy) {
-    from '_config-template.yml'
-    into "./"
+    from './templates/website/_config-template.yml'
+    into "./website"
     rename { file -> '_config.yml' }
-    expand(project: project, version: props.getProperty("versionName_"))
+    expand(project: project, version: props.getProperty("versionName_"),flutterVersion: props.getProperty("flutterVersionName"))
 }
 
 task prepareFlutterPubSpec(type: Copy) {

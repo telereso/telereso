@@ -2,12 +2,11 @@
 
 [![jitpack](https://jitpack.io/v/telereso/telereso.svg)](https://jitpack.io/#telereso/telereso)
 
-
 Table of contents:
 
 * auto-gen TOC:
-{:toc}
- 
+  {:toc}
+
 ## Installation
 
 `Telereso` depends on Firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource
@@ -18,7 +17,7 @@ All you need to get started is make sure your project has setup
 firebase ([check docs](https://firebase.google.com/docs/guides)) <br>
 then just add `Telereso` dependency to your project
 
-### Gradle/maven dependency
+### Dependencies
 
 <table>
 <thead><tr><th>Approach</th><th>Instruction</th></tr></thead>
@@ -34,25 +33,39 @@ then just add `Telereso` dependency to your project
     <pre>implementation("io.telereso:telereso:${version}")</pre>
     </td>
 </tr>
+<tr>
+<td><img src="doc/flutter.png" alt="Flutter"/></td>
+<td>
+    <pre>
+dependencies:
+  telereso: ^${flutterVersion}
+</pre>
+    </td>
+</tr>
 </table>
 
 ## Firebase
+
 This section will show how to set up firebase remote config to be used with `Telereso`
 
 ### Strings
 
 #### Steps
+
 * Open [Firebase console](https://console.firebase.google.com/) then select Remote Config Dashboard
 * Add new param called `strings` <br><br>
   ![img.png](doc/add_strings.png)<br><br>
-  
-* Add a json containing key/value params representing your strings resource's key name (same key name found in the strings.xml), and it's value <br><br>![img.png](doc/param_value.png)<br><br>
+
+* Add a json containing key/value params representing your strings resource's key name (same key name found in the
+  strings.xml), and it's value <br><br>![img.png](doc/param_value.png)<br><br>
 * Add to `Strings` group  (this is optional but good practice) <br><br>![img.png](doc/add_group.png) <br><br>
-* Save and publish 
+* Save and publish
 
 #### Localization
+
 `Telereso` supports localization using local after the strings prefix `strings_<local>`<br>
-To support other languages just add more params each containing a json with same keys (as in the strings version) but with a translated value <br>
+To support other languages just add more params each containing a json with same keys (as in the strings version) but
+with a translated value <br>
 ex: `strings_fr,strings_ar...etc`
 
 _Android developers_ it will be the same local you add to your values dir `values-fr,values-ar...etc`
@@ -65,43 +78,48 @@ _Notice we are using `_` instead of `-` due to remote config limitations_
 
 * Open [Firebase console](https://console.firebase.google.com/) then select Remote Config Dashboard
 * Add new param called `drawable`
-* Add a json containing key/value params representing your drawable resource's key name (same key name found in the drawable dir), and it's value will be a url of your remote image <br><br>![img.png](doc/add_drawable.png)<br><br>
+* Add a json containing key/value params representing your drawable resource's key name (same key name found in the
+  drawable dir), and it's value will be a url of your remote image <br><br>![img.png](doc/add_drawable.png)<br><br>
 * Add to `Drawable` group  (this is optional but good practice) <br><br>![add_group](doc/add_group.png)<br><br>
 * Save and publish
 
 #### Android Screens support
+
 To support multiple screens sizes for android add the same sizes used with drawable dirs <br>
 ex: `drawable_hdpi,drawable_xhdpi`
 
 _Notice we are using `_` instead of `-` due to remote config limitations_
-
 
 ### Final Result
 
 ![final_result](doc/final_result.png)
 
 ### Conditional Resources
+
 Remote Config provide conditions to be applied to your params (strings,drawables),<br>
-This will add another layer of dynamic delivery,
-so if you would like new versions to have specific resources,<br> or segment of users that clicked a button,<br>
+This will add another layer of dynamic delivery, so if you would like new versions to have specific resources,<br> or
+segment of users that clicked a button,<br>
 Or strings and icons to be shown on specific days (Holidays 🎊🥳🎉!)...etc <br><br>
 You can see how `Telereso` will help avoid multiple app releases.
 <br><br>
 ![img.png](doc/conditions_res.png)
 
-
 ### A/B Testing
-One of the great feature about Remote config is the out of the box [A/B testing](https://firebase.google.com/docs/ab-testing) <br>
+
+One of the great feature about Remote config is the out of the
+box [A/B testing](https://firebase.google.com/docs/ab-testing) <br>
 Since all our resources are indexed as params we could easily create experiments. <br>
 The following example show how we can test Drawer titles and see which one achieve higher conversion <br><br>
 ![img.png](doc/ab_testing.png)
 _This can be used for icons as well_
 
-## Samples & Examples 
+## Samples & Examples
+
 Nothing feels better than a snippet of code ready to be copied!
 Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Samples)
 
 * [Android](https://github.com/telereso/telereso/tree/master/Samples/android)
+* [Flutter](https://github.com/telereso/telereso/tree/master/Samples/flutter)
 
 ## Usage
 
@@ -271,7 +289,6 @@ That will take care of the changes for you without any code changes.
 manually,<br>
 Later versions of `Telereso` will address this issue
 
-
 Add the following to all your activities or your `BaseActivity`
 
 _Kotlin_
@@ -283,7 +300,9 @@ class MainActivity : Activity {
     }
 }
 ```
+
 _Java_
+
 ```java
 public class MainActivity extends Activity {
     @Override
@@ -292,10 +311,14 @@ public class MainActivity extends Activity {
     }
 }
 ```
-#### Realtime Changes 
+
+#### Realtime Changes
 
 Who does love to see his changes happing in real time ?<br>
 `Telereso` support this optional implantation with some extra steps.
+
+### Flutter
+[Check package docs](https://pub.dev/packages/telereso#telereso)  
 
 ## Telereso API
 

@@ -19,7 +19,8 @@ temp-index.md
 _config.yml
 index.md
 website/.sass-cache/*
-website/doc
-docs/CNAME
+website/_site/*
+website/doc/*
+website/CNAME
 docs/_config.yml
 
