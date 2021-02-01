@@ -6,7 +6,7 @@
 Table of contents:
 
 * auto-gen TOC:
-  {:toc}
+{:toc}
 
 ## Installation
 
