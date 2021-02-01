@@ -4,9 +4,39 @@ import 'dart:convert';
 import 'package:build/build.dart';
 
 class RemoteLocalizationBuilder extends Builder {
+  final BuilderOptions _options;
+  String _template;
+  String _localizationFile;
+  String _localizationClass;
+  String _newLocalizationClass;
+
+  RemoteLocalizationBuilder(this._options) {
+    this._template = _options.config["template-arb-file"];
+    this._localizationFile = _options.config["output-localization-file"];
+    this._localizationClass = _options.config["output-class"];
+    this._newLocalizationClass = _options.config["output-class-remote"];
+
+    validate('template-arb-file', _template);
+    validate('output-localization-file', _localizationFile);
+    validate('output-class', _localizationClass);
+  }
+
+  validate(String name, String attr) {
+    if (attr == null)
+      throw Exception(
+          "$name was not found in build.yaml, please follow steps in : https://pub.dev/packages/telereso_generator/install");
+
+    if (attr.isEmpty)
+      throw Exception(
+          "$name was not found in build.yaml, please follow steps in : https://pub.dev/packages/telereso_generator/install");
+  }
+
   @override
-  Map<String, List<String>> get buildExtensions => {
-        'intl_en.arb': ['remote_localization.telereso.dart']
+  Map<String, List<String>> get buildExtensions =>
+      {
+        _template: [
+          'remote_localization.telereso.dart'
+        ]
       };
 
   @override
@@ -20,11 +50,14 @@ class RemoteLocalizationBuilder extends Builder {
     var contents = await buildStep.readAsString(inputId);
 
     // Write out the new asset
-    await buildStep.writeAsString(AssetId(inputId.package, list.join("/")),
-        _generateClass('RemoteLocalizationsDefault', json.decode(contents)));
+    await buildStep.writeAsString(
+        AssetId(inputId.package, list.join("/")),
+        _generateClass(_localizationClass, _localizationFile,
+            _newLocalizationClass, json.decode(contents)));
   }
 
-  String _generateClass(String className, Map<String, dynamic> json) {
+  String _generateClass(String oldClassName, String oldFile, String className,
+      Map<String, dynamic> json) {
     final sourceBuilder = StringBuffer();
 
     //imports
@@ -33,38 +66,36 @@ class RemoteLocalizationBuilder extends Builder {
     sourceBuilder
         .writeln("import 'package:telereso/remote_localization.dart';");
 
-    sourceBuilder.writeln(
-        "import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';");
+    sourceBuilder.writeln("import 'package:flutter_gen/gen_l10n/$oldFile';");
 
     // Class
     sourceBuilder.writeln("class $className {");
 
     // finals
     sourceBuilder.writeln("final BasicRemoteLocalizations remote;");
-    sourceBuilder.writeln("final GalleryLocalizations local;");
+    sourceBuilder.writeln("final $oldClassName local;");
 
     // constructor
     sourceBuilder.writeln("$className(this.remote, this.local);");
 
     // Static member to have a simple access to the delegate from the MaterialApp
-    sourceBuilder.writeln("static const delegate = BasicRemoteLocalizationsDelegate();");
+    sourceBuilder
+        .writeln("static const delegate = BasicRemoteLocalizationsDelegate();");
 
     // factory from
 
-    sourceBuilder.writeln("static $className from(GalleryLocalizations local) {");
+    sourceBuilder.writeln("static $className from($oldClassName local) {");
 
-    sourceBuilder
-        .writeln("return RemoteLocalizationsDefault(BasicRemoteLocalizations(localeName: local.localeName), local);");
+    sourceBuilder.writeln(
+        "return $className(BasicRemoteLocalizations(localeName: local.localeName), local);");
 
     sourceBuilder.writeln("}");
-
 
     //factory
     sourceBuilder.writeln("static $className of(BuildContext context) {");
 
-
     sourceBuilder.writeln(
-        "return $className(BasicRemoteLocalizations.of(context), GalleryLocalizations.of(context));");
+        "return $className(BasicRemoteLocalizations.of(context), $oldClassName.of(context));");
 
     sourceBuilder.writeln("}");
 
@@ -74,11 +105,12 @@ class RemoteLocalizationBuilder extends Builder {
 
         sourceBuilder.write("String $propertyName(");
         var jsonPlaceholders =
-            json["@$propertyName"]['placeholders'] as Map<String, dynamic>;
+        json["@$propertyName"]['placeholders'] as Map<String, dynamic>;
         sourceBuilder.write(jsonPlaceholders.keys
-            .map((param) => isNumeric(jsonPlaceholders[param]['example'])
-                ? 'int $param'
-                : 'Object $param')
+            .map((param) =>
+        isNumeric(jsonPlaceholders[param]['example'])
+            ? 'int $param'
+            : 'Object $param')
             .join(","));
 
         sourceBuilder.write("){");
@@ -109,8 +141,8 @@ class RemoteLocalizationBuilder extends Builder {
     return double.tryParse(s) != null;
   }
 
-  String _generateExtension(Map<String, dynamic> json) {
-    String className = "RemoteLocalizationsDefault";
+  String _generateExtension(String oldClassName, String oldFile,
+      String className, Map<String, dynamic> json) {
     final sourceBuilder = StringBuffer();
 
     //imports
@@ -118,20 +150,18 @@ class RemoteLocalizationBuilder extends Builder {
     sourceBuilder
         .writeln("import 'package:telereso/remote_localization.dart';");
 
-    sourceBuilder.writeln(
-        "import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';");
+    sourceBuilder.writeln("import 'package:flutter_gen/gen_l10n/$oldFile';");
 
     // extension
 
     sourceBuilder.writeln(
-        "extension $className(GalleryLocalizations default)  on RemoteLocalizations{");
+        "extension $className($oldClassName default)  on RemoteLocalizations{");
 
     // factory of
 
     sourceBuilder.writeln("static $className on of(BuildContext context) {");
 
-    sourceBuilder
-        .writeln("return $className(GalleryLocalizations.of(context));");
+    sourceBuilder.writeln("return $className($oldClassName.of(context));");
 
     sourceBuilder.writeln("}");
 
@@ -139,7 +169,7 @@ class RemoteLocalizationBuilder extends Builder {
 
     json.keys.where((key) => !key.startsWith("@")).forEach((propertyName) {
       sourceBuilder.writeln(
-          "String get $propertyName => translateOrDefault('$propertyName', GalleryLocalizations.of(context).$propertyName);");
+          "String get $propertyName => translateOrDefault('$propertyName', $oldClassName.of(context).$propertyName);");
     });
 
     sourceBuilder.writeln("}");

@@ -9,10 +9,15 @@ builders:
       target: ":telereso_generator"
       import: "package:telereso_generator/telereso_generator.dart"
       builder_factories: ["remoteLocalizationBuilder"]
-      build_extensions: {"intl_en.arb":["remote_localization.telereso.dart"]}
+      build_extensions: {".arb":["remote_localization.telereso.dart"]}
       auto_apply: dependents
       build_to: source
       applies_builders: ["source_gen|combining_builder"]
+      defaults:
+          options:
+              template-arb-file: intl_en.arb
+              output-class-remote: RemoteLocalizationsDefault
+
 
 #  telereso:
 #      target: ":telereso_generator"

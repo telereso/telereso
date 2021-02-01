@@ -8,4 +8,4 @@ import 'src/generator.dart';
 Builder remoteLocalization(BuilderOptions options) => SharedPartBuilder([RemoteLocalizationGenerator()],'remote_localization');
 
 
-Builder remoteLocalizationBuilder(BuilderOptions options) => RemoteLocalizationBuilder();
+Builder remoteLocalizationBuilder(BuilderOptions options) => RemoteLocalizationBuilder(options);
