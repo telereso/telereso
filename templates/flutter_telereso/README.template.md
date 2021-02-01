@@ -5,6 +5,8 @@ Flutter package to use [Telereso](telerso.io),
 [Telereso](telerso.io) will allow you to control your app resources (strings,images) remotely and out of the box ,
 without the need to add extra logic ,
 
+[![Pub](https://img.shields.io/pub/v/telereso.svg)](https://pub.dartlang.org/packages/telereso)
+
 ## Installation
 
 [Telereso](telerso.io) depends on Firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for
