@@ -1,5 +1,4 @@
-## [0.0.1-alpha] 
+## [0.0.2] 
 
-* Remote Strings support
-* Minimal localization support
-* Int localization support
+* support l10n.yaml in build.yaml
+

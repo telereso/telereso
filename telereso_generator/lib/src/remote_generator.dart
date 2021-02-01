@@ -24,11 +24,11 @@ class RemoteLocalizationBuilder extends Builder {
   validate(String name, String attr) {
     if (attr == null)
       throw Exception(
-          "$name was not found in build.yaml, please follow steps in : https://pub.dev/packages/telereso_generator/install");
+          "$name was not found in build.yaml, please follow steps in : https://pub.dev/packages/telereso_generator#usage");
 
     if (attr.isEmpty)
       throw Exception(
-          "$name was not found in build.yaml, please follow steps in : https://pub.dev/packages/telereso_generator/install");
+          "$name was not found in build.yaml, please follow steps in : https://pub.dev/packages/telereso_generator#usage");
   }
 
   @override
