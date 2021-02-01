@@ -1,6 +1,10 @@
 ## [$version]
 
 * enhance README
+
+## [0.0.4-alpha]
+
+* enhance README
 * sync with generator
 
 ## [0.0.3-alpha]

@@ -1,4 +1,8 @@
-## [${version}]
+## [$version]
+
+* enhance README
+
+## [0.0.4-alpha]
 
 * sync with versions with telereso
 

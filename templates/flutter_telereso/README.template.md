@@ -1,15 +1,15 @@
 # Telereso
 
-Flutter package to use [Telereso](telerso.io),
+Flutter package to use [Telereso](https://telereso.io?utm_source=pub-dev&utm_medium=readme&utm_campaign=normal),
 
-[Telereso](telerso.io) will allow you to control your app resources (strings,images) remotely and out of the box ,
+[Telereso](https://telereso.io?utm_source=pub-dev&utm_medium=readme&utm_campaign=normal) will allow you to control your app resources (strings,images) remotely and out of the box ,
 without the need to add extra logic ,
 
 [![Pub](https://img.shields.io/pub/v/telereso.svg)](https://pub.dartlang.org/packages/telereso)
 
 ## Installation
 
-[Telereso](telerso.io) depends on Firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for
+[Telereso](https://telereso.io?utm_source=pub-dev&utm_medium=readme&utm_campaign=normal) depends on Firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for
 resource management<br>
 And [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) for realtime changes (_optional_)
 
@@ -55,13 +55,12 @@ resources, So it is a way to disable remote functionality.
 
 ### Firebase
 
-Please follow the steps found [here](https://telereso.io/#firebase
-) to set up your [Remote Config](https://firebase.google.com/docs/remote-config/) correctly.
+Please follow the steps found [here](https://telereso.io/#firebase) to set up your [Remote Config](https://firebase.google.com/docs/remote-config/) correctly.
 
 ### Localization
 
 According to [Flutter Docs](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
-there is 2 ways to implement localization, [Telereso](telerso.io) support both
+there is 2 ways to implement localization, [Telereso](https://telereso.io?utm_source=pub-dev&utm_medium=readme&utm_campaign=normal) support both
 
 #### Minimal internationalization
 

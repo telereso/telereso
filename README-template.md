@@ -10,13 +10,13 @@ Table of contents:
 
 ## Installation
 
-`Telereso` depends on Firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource
+[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) depends on Firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource
 management<br>
 And [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) for realtime changes (_optional_)
 
 All you need to get started is make sure your project has setup
 firebase ([check docs](https://firebase.google.com/docs/guides)) <br>
-then just add `Telereso` dependency to your project
+then just add [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) dependency to your project
 
 ### Dependencies
 
@@ -47,7 +47,7 @@ dependencies:
 
 ## Firebase
 
-This section will show how to set up firebase remote config to be used with `Telereso`
+This section will show how to set up firebase remote config to be used with [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal)
 
 ### Strings
 
@@ -64,7 +64,7 @@ This section will show how to set up firebase remote config to be used with `Tel
 
 #### Localization
 
-`Telereso` supports localization using local after the strings prefix `strings_<local>`<br>
+[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) supports localization using local after the strings prefix `strings_<local>`<br>
 To support other languages just add more params each containing a json with same keys (as in the strings version) but
 with a translated value <br>
 ex: `strings_fr,strings_ar...etc`
@@ -101,7 +101,7 @@ Remote Config provide conditions to be applied to your params (strings,drawables
 This will add another layer of dynamic delivery, so if you would like new versions to have specific resources,<br> or
 segment of users that clicked a button,<br>
 Or strings and icons to be shown on specific days (Holidays 🎊🥳🎉!)...etc <br><br>
-You can see how `Telereso` will help avoid multiple app releases.
+You can see how [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) will help avoid multiple app releases.
 <br><br>
 ![img.png](doc/conditions_res.png)
 
@@ -124,7 +124,7 @@ Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Sa
 
 ## Usage
 
-There are different scenarios to work with `Telereso` ,<br>
+There are different scenarios to work with [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) ,<br>
 Wither you are starting a fresh new application, or an already in production application with large code base
 
 ### Android
@@ -288,7 +288,7 @@ That will take care of the changes for you without any code changes.
 
 **Important note** if your app supports both portrait and land scape you need to handle the configuration changes
 manually,<br>
-Later versions of `Telereso` will address this issue
+Later versions of [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) will address this issue
 
 Add the following to all your activities or your `BaseActivity`
 
@@ -316,7 +316,7 @@ public class MainActivity extends Activity {
 #### Realtime Changes
 
 Who does love to see his changes happing in real time ?<br>
-`Telereso` support this optional implantation with some extra steps.
+[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) support this optional implantation with some extra steps.
 
 ### Flutter
 [Check package docs](https://pub.dev/packages/telereso#telereso)  

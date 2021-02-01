@@ -1,7 +1,7 @@
 name: telereso
 description: Controle your application's resrouces remotely .
 version: ${version}
-homepage: https://telereso.io
+homepage: https://telereso.io?utm_source=pub-dev&utm_medium=package-home&utm_campaign=normal
 repository: https://github.com/telereso/telereso
 
 environment:

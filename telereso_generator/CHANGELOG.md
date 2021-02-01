@@ -1,3 +1,7 @@
+## [0.0.6-alpha]
+
+* enhance README
+
 ## [0.0.4-alpha]
 
 * sync with versions with telereso
