@@ -1,6 +1,7 @@
 ![Banner](doc/banner.svg)
 
 [![jitpack](https://jitpack.io/v/telereso/telereso.svg)](https://jitpack.io/#telereso/telereso)
+[![Pub](https://img.shields.io/pub/v/telereso.svg)](https://pub.dartlang.org/packages/telereso)
 
 Table of contents:
 
