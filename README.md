@@ -315,9 +315,83 @@ public class MainActivity extends Activity {
 
 #### Realtime Changes
 
-Who does love to see his changes happing in real time ?<br>
-[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) support this optional implantation with some extra steps.
+Who doesn't love to see changes happening in real time ?<br>
+[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) support this optional implantation with some extra steps.<br>
 
+_We recommend enabling this while in development mode only_  
+1. Create a cloud function to be triggered when updating remote config, you can follow [this setup doc](https://firebase.google.com/docs/remote-config/propagate-updates-realtime) to do so,<br>
+   _PS: only follow the cloud function part_ <br><br>
+   package.json<br><br>
+    ```json
+    {
+      "name": "sample-firebase-remoteconfig",
+      "version": "0.0.1",
+      "dependencies": {
+        "firebase-admin": "^9.4.2",
+        "firebase-functions": "^3.13.1"
+      }
+    }
+    ```
+   <br>
+   
+   index.js
+    ```
+    const functions = require('firebase-functions');
+    const admin = require('firebase-admin');
+    admin.initializeApp();
+    
+    
+    exports.pushConfig = functions.remoteConfig.onUpdate(versionMetadata => {
+      // Create FCM payload to send data message to PUSH_RC topic.
+      const payload = {
+        topic: "TELERESO_PUSH_RC",
+        data: {
+          "TELERESO_CONFIG_STATE": "STALE"
+        }
+      };
+      // Use the Admin SDK to send the ping via FCM.
+      return admin.messaging().send(payload).then(resp => {
+        console.log(resp);
+        return null;
+      });
+    });
+    ```
+   **Notice the topic : TELERESO_PUSH_RC and data TELERESO_CONFIG_STATE has to the same**
+
+2. In your android project add th following code in your `MyFirebaseMessagingService`:<br><br>
+   _Java_<br>
+    ```java
+    public class MyFirebaseMessagingService extends FirebaseMessagingService {
+        @Override
+        public void onNewToken(String token) {
+            if (BuildConfig.DEBUG)
+                Telereso.subscriptToChanges();
+        }
+        @Override
+        public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
+            if (BuildConfig.DEBUG && Telereso.handleRemoteMessage(getApplicationContext(), remoteMessage))
+                return;
+            // your logic
+        }
+    
+    }
+    ``` 
+   
+     _Kotlin_
+    ```kotlin
+     class MyFirebaseMessagingService: FirebaseMessagingService() {
+        override fun onNewToken(token: String) {
+            if (BuildConfig.DEBUG)
+                Telereso.subscriptToChanges()
+        }
+   
+        override fun onMessageReceived(remoteMessage:RemoteMessage) {
+            if (BuildConfig.DEBUG && Telereso.handleRemoteMessage(getApplicationContext(), remoteMessage)) return
+            // your logic
+        }
+    
+    }
+    ```
 ### Flutter
 [Check package docs](https://pub.dev/packages/telereso#telereso)  
 

@@ -549,11 +549,84 @@ Later versions of <a href="https://telereso.io?utm_source=github&amp;utm_medium=
 
 <h4 id="realtime-changes">Realtime Changes</h4>
 
-<p>Who does love to see his changes happing in real time ?<br />
-<a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> support this optional implantation with some extra steps.</p>
+<p>Who doesn’t love to see changes happening in real time ?<br />
+<a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> support this optional implantation with some extra steps.<br /></p>
 
-<h3 id="flutter">Flutter</h3>
-<p><a href="https://pub.dev/packages/telereso#telereso">Check package docs</a></p>
+<p><em>We recommend enabling this while in development mode only</em></p>
+<ol>
+  <li>Create a cloud function to be triggered when updating remote config, you can follow <a href="https://firebase.google.com/docs/remote-config/propagate-updates-realtime">this setup doc</a> to do so,<br />
+<em>PS: only follow the cloud function part</em> <br /><br />
+package.json<br /><br />
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample-firebase-remoteconfig"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="nl">"firebase-admin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^9.4.2"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"firebase-functions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.13.1"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+    <p><br /></p>
+
+    <p>index.js</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> const functions = require('firebase-functions');
+ const admin = require('firebase-admin');
+ admin.initializeApp();
+    
+    
+ exports.pushConfig = functions.remoteConfig.onUpdate(versionMetadata =&gt; {
+   // Create FCM payload to send data message to PUSH_RC topic.
+   const payload = {
+     topic: "TELERESO_PUSH_RC",
+     data: {
+       "TELERESO_CONFIG_STATE": "STALE"
+     }
+   };
+   // Use the Admin SDK to send the ping via FCM.
+   return admin.messaging().send(payload).then(resp =&gt; {
+     console.log(resp);
+     return null;
+   });
+ });
+</code></pre></div>    </div>
+    <p><strong>Notice the topic : TELERESO_PUSH_RC and data TELERESO_CONFIG_STATE has to the same</strong></p>
+  </li>
+  <li>In your android project add th following code in your <code class="language-plaintext highlighter-rouge">MyFirebaseMessagingService</code>:<br /><br />
+<em>Java</em><br />
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFirebaseMessagingService</span> <span class="kd">extends</span> <span class="nc">FirebaseMessagingService</span> <span class="o">{</span>
+     <span class="nd">@Override</span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onNewToken</span><span class="o">(</span><span class="nc">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">if</span> <span class="o">(</span><span class="nc">BuildConfig</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">)</span>
+             <span class="nc">Telereso</span><span class="o">.</span><span class="na">subscriptToChanges</span><span class="o">();</span>
+     <span class="o">}</span>
+     <span class="nd">@Override</span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessageReceived</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="nc">RemoteMessage</span> <span class="n">remoteMessage</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">if</span> <span class="o">(</span><span class="nc">BuildConfig</span><span class="o">.</span><span class="na">DEBUG</span> <span class="o">&amp;&amp;</span> <span class="nc">Telereso</span><span class="o">.</span><span class="na">handleRemoteMessage</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">remoteMessage</span><span class="o">))</span>
+             <span class="k">return</span><span class="o">;</span>
+         <span class="c1">// your logic</span>
+     <span class="o">}</span>
+    
+ <span class="o">}</span>
+</code></pre></div>    </div>
+
+    <p><em>Kotlin</em></p>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="nc">MyFirebaseMessagingService</span><span class="p">:</span> <span class="nc">FirebaseMessagingService</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onNewToken</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">DEBUG</span><span class="p">)</span>
+             <span class="nc">Telereso</span><span class="p">.</span><span class="nf">subscriptToChanges</span><span class="p">()</span>
+     <span class="p">}</span>
+   
+     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onMessageReceived</span><span class="p">(</span><span class="n">remoteMessage</span><span class="p">:</span><span class="nc">RemoteMessage</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">DEBUG</span> <span class="p">&amp;&amp;</span> <span class="nc">Telereso</span><span class="p">.</span><span class="nf">handleRemoteMessage</span><span class="p">(</span><span class="nf">getApplicationContext</span><span class="p">(),</span> <span class="n">remoteMessage</span><span class="p">))</span> <span class="k">return</span>
+         <span class="c1">// your logic</span>
+     <span class="p">}</span>
+    
+ <span class="p">}</span>
+</code></pre></div>    </div>
+    <h3 id="flutter">Flutter</h3>
+    <p><a href="https://pub.dev/packages/telereso#telereso">Check package docs</a></p>
+  </li>
+</ol>
 
 <h2 id="telereso-api">Telereso API</h2>
 
