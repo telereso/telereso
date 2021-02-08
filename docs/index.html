@@ -15,7 +15,8 @@
 <!-- End Jekyll SEO tag -->
 
     <title>Telereso | Control your application resources</title>
-    <meta name="description" content=""/>
+    <meta name="description"
+          content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f38b1c">
     <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.4-0.0.6-alpha">
@@ -175,6 +176,8 @@
             font-weight: 100;
         }
 
+
+
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8S2X6JQZM"></script>
@@ -185,13 +188,16 @@
 
   gtag('config', 'G-V8S2X6JQZM');
 </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <section class="page-header">
     <h1 class="project-name"><a href="/">Telereso</a></h1>
     <h2 class="project-tagline">Control your application resources</h2>
     
-    <a href="https://github.com/telereso/telereso.git" class="btn"><span style="vertical-align: middle">View on GitHub</span></a> </br>
+    <a href="https://github.com/telereso/telereso.git" class="btn"><span
+            style="vertical-align: middle">View on GitHub</span></a> </br>
     
 </section>
 
@@ -247,13 +253,14 @@
 
 <h2 id="installation">Installation</h2>
 
-<p><a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> depends on Firebase to use <a href="https://firebase.google.com/docs/remote-config/">Remote Config</a> for resource
-management<br />
+<p><a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> depends on Firebase to
+use <a href="https://firebase.google.com/docs/remote-config/">Remote Config</a> for resource management<br />
 And <a href="https://firebase.google.com/docs/cloud-messaging">Cloud Messaging</a> for realtime changes (<em>optional</em>)</p>
 
 <p>All you need to get started is make sure your project has setup
 firebase (<a href="https://firebase.google.com/docs/guides">check docs</a>) <br />
-then just add <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> dependency to your project</p>
+then just add <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> dependency to your
+project</p>
 
 <h3 id="dependencies">Dependencies</h3>
 
@@ -284,7 +291,8 @@ dependencies:
 
 <h2 id="firebase">Firebase</h2>
 
-<p>This section will show how to set up firebase remote config to be used with <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a></p>
+<p>This section will show how to set up firebase remote config to be used
+with <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a></p>
 
 <h3 id="strings">Strings</h3>
 
@@ -304,7 +312,8 @@ strings.xml), and it’s value <br /><br /><img src="doc/param_value.png" alt="i
 
 <h4 id="localization">Localization</h4>
 
-<p><a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> supports localization using local after the strings prefix <code class="language-plaintext highlighter-rouge">strings_&lt;local&gt;</code><br />
+<p><a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> supports localization using
+local after the strings prefix <code class="language-plaintext highlighter-rouge">strings_&lt;local&gt;</code><br />
 To support other languages just add more params each containing a json with same keys (as in the strings version) but
 with a translated value <br />
 ex: <code class="language-plaintext highlighter-rouge">strings_fr,strings_ar...etc</code></p>
@@ -343,7 +352,8 @@ ex: <code class="language-plaintext highlighter-rouge">drawable_hdpi,drawable_xh
 This will add another layer of dynamic delivery, so if you would like new versions to have specific resources,<br /> or
 segment of users that clicked a button,<br />
 Or strings and icons to be shown on specific days (Holidays 🎊🥳🎉!)…etc <br /><br />
-You can see how <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> will help avoid multiple app releases.
+You can see how <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> will help avoid
+multiple app releases.
 <br /><br />
 <img src="doc/conditions_res.png" alt="img.png" /></p>
 
@@ -368,7 +378,8 @@ Check samples in this <a href="https://github.com/telereso/telereso/tree/master/
 
 <h2 id="usage">Usage</h2>
 
-<p>There are different scenarios to work with <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> ,<br />
+<p>There are different scenarios to work
+with <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> ,<br />
 Wither you are starting a fresh new application, or an already in production application with large code base</p>
 
 <h3 id="android">Android</h3>
@@ -384,55 +395,109 @@ Or you could use the suspended version <code class="language-plaintext highlight
 resources,<br />
 So it is a way to disable remote functionality.</p>
 
-<p><em>Kotlin</em></p>
+<p><strong>Application Start</strong></p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//application</span>
+<div class="code-block kotlin java dart">
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+</div>
+
+<div class="tabcontent kotlin active">
+
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
 <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="p">:</span> <span class="nc">Application</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">()</span>
-        <span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
-    <span class="p">}</span>
+   <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">()</span>
+      <span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></div>
+<span class="err">```</span></code></pre></figure>
 
-<p>or</p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">SplashActivity</span> <span class="p">:</span> <span class="nc">Activity</span> <span class="p">{</span>
-    <span class="k">private</span> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
-        <span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// start MainActivity and finish()</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
+</div>
 
-<p><em>Java</em></p>
+<div class="tabcontent java">
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//application</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="kd">extends</span> <span class="nc">Application</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
-        <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-    <span class="o">}</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+      <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>
+<span class="err">```</span></code></pre></figure>
 
-<p>or</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SplashActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="c1">// start MainActivity and finish()</span>
-            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
+</div>
+
+<div class="tabcontent dart">
+
+<figure class="highlight"><pre><code class="language-dart" data-lang="dart"><span class="err">```</span><span class="n">dart</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">runApp</span><span class="o">(</span><span class="kd">const</span> <span class="n">MyApp</span><span class="o">());</span>
 <span class="o">}</span>
-</code></pre></div></div>
 
+<span class="kd">class</span> <span class="nc">MyApp</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="o">{</span>
+  <span class="kd">const</span> <span class="n">MyApp</span><span class="o">({</span>
+    <span class="n">Key</span> <span class="n">key</span><span class="o">,</span>
+  <span class="o">})</span> <span class="o">:</span> <span class="k">super</span><span class="o">(</span><span class="nl">key:</span> <span class="n">key</span><span class="o">);</span>
+
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Telereso</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">MaterialApp</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+
+</div>
+
+</div>
+<p><strong>Splash Screen</strong></p>
+
+<div class="code-block kotlin java">
+
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+</div>
+
+<div class="tabcontent kotlin active">
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="kd">class</span> <span class="nc">SplashActivity</span> <span class="p">:</span> <span class="nc">Activity</span> <span class="p">{</span>
+   <span class="k">private</span> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+      <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+      <span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// start MainActivity and finish()</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+<div class="tabcontent java">
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SplashActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
+   <span class="nd">@Override</span>
+   <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+      <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+         <span class="c1">// start MainActivity and finish()</span>
+         <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+      <span class="o">});</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+</div>
 <h4 id="add-remoteviewinflater">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code></h4>
 
 <p>This inflater will make sure all the android application views that display strings or images have the remote
@@ -491,29 +556,80 @@ which is
 <code class="language-plaintext highlighter-rouge">getRemoteString()</code><br />
 This will make sure to use the remote version of the resource if found or default it to the original value</p>
 
-<p><em>Strings</em></p>
+<p><strong>Strings</strong></p>
+<div class="code-block kotlin java dart">
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+</div>
 
-<p><em>Kotlin</em></p>
+<div class="tabcontent kotlin active">
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titleTextView</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="nf">getRemoteString</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">strings</span><span class="p">.</span><span class="n">title_home</span><span class="p">)</span>
-</code></pre></div></div>
 
-<p><em>Java</em></p>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="n">titleTextView</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="nf">getRemoteString</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">strings</span><span class="p">.</span><span class="n">title_home</span><span class="p">)</span>
+<span class="err">```</span></code></pre></figure>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titleTextView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="nc">Telereso</span><span class="o">.</span><span class="na">getRemoteString</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">strings</span><span class="o">.</span><span class="na">title_home</span><span class="o">));</span>
-</code></pre></div></div>
 
-<p><em>Drawables</em></p>
+</div>
 
-<p><em>kotlin</em></p>
+<div class="tabcontent java">
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">imageView</span><span class="p">.</span><span class="nf">setRemoteImageResource</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">icon</span><span class="p">)</span>
-</code></pre></div></div>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
+<span class="n">titleTextView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="nc">Telereso</span><span class="o">.</span><span class="na">getRemoteString</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">strings</span><span class="o">.</span><span class="na">title_home</span><span class="o">));</span>
+<span class="err">```</span></code></pre></figure>
 
-<p><em>java</em></p>
+</div>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Telereso</span><span class="o">.</span><span class="na">setRemoteImageResource</span><span class="o">(</span><span class="n">imageView</span><span class="o">,</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">icon</span><span class="o">);</span>
-</code></pre></div></div>
+<div class="tabcontent dart">
+
+<figure class="highlight"><pre><code class="language-dart" data-lang="dart"><span class="err">```</span><span class="n">dart</span>
+<span class="n">Widget</span> <span class="nf">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">Text</span><span class="o">(</span>
+    <span class="n">RemoteLocalizations</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">).</span><span class="na">appTitle</span><span class="o">,</span>
+  <span class="o">);</span>
+<span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+</div>
+
+<p><strong>Drawables</strong></p>
+<div class="code-block kotlin java dart">
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+</div>
+
+<div class="tabcontent kotlin active">
+
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="n">imageView</span><span class="p">.</span><span class="nf">setRemoteImageResource</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">icon</span><span class="p">)</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent java">
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
+<span class="nc">Telereso</span><span class="o">.</span><span class="na">setRemoteImageResource</span><span class="o">(</span><span class="n">imageView</span><span class="o">,</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">icon</span><span class="o">);</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent dart">
+
+<figure class="highlight"><pre><code class="language-dart" data-lang="dart"><span class="err">```</span><span class="n">dart</span>
+<span class="n">Widget</span> <span class="nf">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">RemoteImage</span><span class="o">.</span><span class="na">asset</span><span class="o">(</span><span class="s">"assets/icons/image.png"</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+</div>
 
 <h4 id="dynamic-resources--out-of-the-box">Dynamic Resources || (out of the box)</h4>
 
@@ -524,40 +640,58 @@ That will take care of the changes for you without any code changes.</p>
 
 <p><strong>Important note</strong> if your app supports both portrait and land scape you need to handle the configuration changes
 manually,<br />
-Later versions of <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> will address this issue</p>
+Later versions of <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> will address
+this issue</p>
 
 <p>Add the following to all your activities or your <code class="language-plaintext highlighter-rouge">BaseActivity</code></p>
 
-<p><em>Kotlin</em></p>
+<div class="code-block kotlin java">
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+</div>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="nc">Activity</span> <span class="p">{</span>
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">attachBaseContext</span><span class="p">(</span><span class="n">newBase</span><span class="p">:</span> <span class="nc">Context</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nf">attachBaseContext</span><span class="p">(</span><span class="nc">RemoteContextWrapper</span><span class="p">(</span><span class="n">newBase</span><span class="p">));</span>
-    <span class="p">}</span>
+<div class="tabcontent kotlin active">
+
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="nc">Activity</span> <span class="p">{</span>
+   <span class="k">override</span> <span class="k">fun</span> <span class="nf">attachBaseContext</span><span class="p">(</span><span class="n">newBase</span><span class="p">:</span> <span class="nc">Context</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">super</span><span class="p">.</span><span class="nf">attachBaseContext</span><span class="p">(</span><span class="nc">RemoteContextWrapper</span><span class="p">(</span><span class="n">newBase</span><span class="p">));</span>
+   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></div>
+<span class="err">```</span></code></pre></figure>
 
-<p><em>Java</em></p>
+</div>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">attachBaseContext</span><span class="o">(</span><span class="nc">Context</span> <span class="n">newBase</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">attachBaseContext</span><span class="o">(</span><span class="k">new</span> <span class="nc">RemoteContextWrapper</span><span class="o">(</span><span class="n">newBase</span><span class="o">));</span>
-    <span class="o">}</span>
+<div class="tabcontent java">
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="nc">Activity</span> <span class="o">{</span>
+   <span class="nd">@Override</span>
+   <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">attachBaseContext</span><span class="o">(</span><span class="nc">Context</span> <span class="n">newBase</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">attachBaseContext</span><span class="o">(</span><span class="k">new</span> <span class="nc">RemoteContextWrapper</span><span class="o">(</span><span class="n">newBase</span><span class="o">));</span>
+   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+</div>
 
 <h4 id="realtime-changes">Realtime Changes</h4>
 
 <p>Who doesn’t love to see changes happening in real time ?<br />
-<a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> support this optional implantation with some extra steps.<br /></p>
+<a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> support this optional
+implantation with some extra steps.<br /></p>
 
 <p><em>We recommend enabling this while in development mode only</em></p>
-<ol>
-  <li>Create a cloud function to be triggered when updating remote config, you can follow <a href="https://firebase.google.com/docs/remote-config/propagate-updates-realtime">this setup doc</a> to do so,<br />
+
+<p><strong>Cloud function</strong>
+Create a cloud function to be triggered when updating remote config, you can follow <a href="https://firebase.google.com/docs/remote-config/propagate-updates-realtime">this setup doc</a> to do so,<br />
 <em>PS: only follow the cloud function part</em> <br /><br />
-package.json<br /><br />
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
+package.json<br /></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample-firebase-remoteconfig"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -565,68 +699,109 @@ package.json<br /><br />
      </span><span class="nl">"firebase-functions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.13.1"</span><span class="w">
    </span><span class="p">}</span><span class="w">
  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-    <p><br /></p>
+</span></code></pre></div></div>
+<p><br />
+index.js</p>
 
-    <p>index.js</p>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> const functions = require('firebase-functions');
- const admin = require('firebase-admin');
- admin.initializeApp();
-    
-    
- exports.pushConfig = functions.remoteConfig.onUpdate(versionMetadata =&gt; {
-   // Create FCM payload to send data message to PUSH_RC topic.
-   const payload = {
-     topic: "TELERESO_PUSH_RC",
-     data: {
-       "TELERESO_CONFIG_STATE": "STALE"
-     }
-   };
-   // Use the Admin SDK to send the ping via FCM.
-   return admin.messaging().send(payload).then(resp =&gt; {
-     console.log(resp);
-     return null;
-   });
- });
-</code></pre></div>    </div>
-    <p><strong>Notice the topic : TELERESO_PUSH_RC and data TELERESO_CONFIG_STATE has to the same</strong></p>
-  </li>
-  <li>In your android project add th following code in your <code class="language-plaintext highlighter-rouge">MyFirebaseMessagingService</code>:<br /><br />
-<em>Java</em><br />
-    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFirebaseMessagingService</span> <span class="kd">extends</span> <span class="nc">FirebaseMessagingService</span> <span class="o">{</span>
-     <span class="nd">@Override</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onNewToken</span><span class="o">(</span><span class="nc">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
-         <span class="k">if</span> <span class="o">(</span><span class="nc">BuildConfig</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">)</span>
-             <span class="nc">Telereso</span><span class="o">.</span><span class="na">subscriptToChanges</span><span class="o">();</span>
-     <span class="o">}</span>
-     <span class="nd">@Override</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessageReceived</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="nc">RemoteMessage</span> <span class="n">remoteMessage</span><span class="o">)</span> <span class="o">{</span>
-         <span class="k">if</span> <span class="o">(</span><span class="nc">BuildConfig</span><span class="o">.</span><span class="na">DEBUG</span> <span class="o">&amp;&amp;</span> <span class="nc">Telereso</span><span class="o">.</span><span class="na">handleRemoteMessage</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">remoteMessage</span><span class="o">))</span>
-             <span class="k">return</span><span class="o">;</span>
-         <span class="c1">// your logic</span>
-     <span class="o">}</span>
-    
- <span class="o">}</span>
-</code></pre></div>    </div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">functions</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">firebase-functions</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">admin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">firebase-admin</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">admin</span><span class="p">.</span><span class="nx">initializeApp</span><span class="p">();</span>
 
-    <p><em>Kotlin</em></p>
-    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="nc">MyFirebaseMessagingService</span><span class="p">:</span> <span class="nc">FirebaseMessagingService</span><span class="p">()</span> <span class="p">{</span>
-     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onNewToken</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
-         <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">DEBUG</span><span class="p">)</span>
-             <span class="nc">Telereso</span><span class="p">.</span><span class="nf">subscriptToChanges</span><span class="p">()</span>
-     <span class="p">}</span>
-   
-     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onMessageReceived</span><span class="p">(</span><span class="n">remoteMessage</span><span class="p">:</span><span class="nc">RemoteMessage</span><span class="p">)</span> <span class="p">{</span>
-         <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">DEBUG</span> <span class="p">&amp;&amp;</span> <span class="nc">Telereso</span><span class="p">.</span><span class="nf">handleRemoteMessage</span><span class="p">(</span><span class="nf">getApplicationContext</span><span class="p">(),</span> <span class="n">remoteMessage</span><span class="p">))</span> <span class="k">return</span>
-         <span class="c1">// your logic</span>
-     <span class="p">}</span>
-    
- <span class="p">}</span>
-</code></pre></div>    </div>
-    <h3 id="flutter">Flutter</h3>
-    <p><a href="https://pub.dev/packages/telereso#telereso">Check package docs</a></p>
-  </li>
-</ol>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">pushConfig</span> <span class="o">=</span> <span class="nx">functions</span><span class="p">.</span><span class="nx">remoteConfig</span><span class="p">.</span><span class="nx">onUpdate</span><span class="p">(</span><span class="nx">versionMetadata</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="c1">// Create FCM payload to send data message to PUSH_RC topic.</span>
+<span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">topic</span><span class="p">:</span> <span class="dl">"</span><span class="s2">TELERESO_PUSH_RC</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">TELERESO_CONFIG_STATE</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">STALE</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// Use the Admin SDK to send the ping via FCM.</span>
+<span class="k">return</span> <span class="nx">admin</span><span class="p">.</span><span class="nx">messaging</span><span class="p">().</span><span class="nx">send</span><span class="p">(</span><span class="nx">payload</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">resp</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
+  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><em>Notice the topic : <strong>TELERESO_PUSH_RC</strong> and data <strong>TELERESO_CONFIG_STATE</strong> has to the same</em></p>
+
+<p><strong>Client</strong></p>
+
+<p>In your android project add th following code in your <code class="language-plaintext highlighter-rouge">MyFirebaseMessagingService</code>:<br /><br /></p>
+<div class="code-block kotlin java dart">
+<div class="tab">  
+<button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>  
+<button class="tablinks java" onclick="openTab(event, 'java')">Java</button>  
+<button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>  
+</div>  
+<div class="tabcontent kotlin active">
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="kd">class</span> <span class="nc">MyFirebaseMessagingService</span><span class="p">:</span> <span class="nc">FirebaseMessagingService</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">override</span> <span class="k">fun</span> <span class="nf">onNewToken</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">DEBUG</span><span class="p">)</span>
+          <span class="nc">Telereso</span><span class="p">.</span><span class="nf">subscriptToChanges</span><span class="p">()</span>
+  <span class="p">}</span>   
+  <span class="k">override</span> <span class="k">fun</span> <span class="nf">onMessageReceived</span><span class="p">(</span><span class="n">remoteMessage</span><span class="p">:</span><span class="nc">RemoteMessage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">DEBUG</span> <span class="p">&amp;&amp;</span> <span class="nc">Telereso</span><span class="p">.</span><span class="nf">handleRemoteMessage</span><span class="p">(</span><span class="nf">getApplicationContext</span><span class="p">(),</span> <span class="n">remoteMessage</span><span class="p">))</span> <span class="k">return</span>
+      <span class="c1">// your logic</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+<div class="tabcontent java">
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFirebaseMessagingService</span> <span class="kd">extends</span> <span class="nc">FirebaseMessagingService</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onNewToken</span><span class="o">(</span><span class="nc">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="nc">BuildConfig</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">)</span>
+            <span class="nc">Telereso</span><span class="o">.</span><span class="na">subscriptToChanges</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessageReceived</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="nc">RemoteMessage</span> <span class="n">remoteMessage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="nc">BuildConfig</span><span class="o">.</span><span class="na">DEBUG</span> <span class="o">&amp;&amp;</span> <span class="nc">Telereso</span><span class="o">.</span><span class="na">handleRemoteMessage</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">remoteMessage</span><span class="o">))</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="c1">// your logic</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent dart">
+<figure class="highlight"><pre><code class="language-dart" data-lang="dart"><span class="err">```</span><span class="n">dart</span>
+<span class="kd">class</span> <span class="nc">_HomePageState</span> <span class="kd">extends</span> <span class="n">RemoteState</span><span class="o">&lt;</span><span class="n">_HomePage</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="kd">final</span> <span class="n">FirebaseMessaging</span> <span class="n">_firebaseMessaging</span> <span class="o">=</span> <span class="n">FirebaseMessaging</span><span class="o">();</span>
+
+  <span class="kd">static</span> <span class="n">Future</span><span class="o">&lt;</span><span class="kd">dynamic</span><span class="o">&gt;</span> <span class="n">myBackgroundMessageHandler</span><span class="o">(</span>
+          <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;</span> <span class="n">message</span><span class="o">)</span> <span class="n">async</span> <span class="o">{</span>
+    <span class="c1">// put your normal logic</span>
+  <span class="o">}</span>
+  
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">initState</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="na">initState</span><span class="o">();</span>
+    <span class="n">_firebaseMessaging</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span>
+      <span class="nl">onMessage:</span> <span class="o">(</span><span class="n">message</span><span class="o">)</span> <span class="n">async</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">await</span> <span class="n">Telereso</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">handleRemoteMessage</span><span class="o">(</span><span class="n">message</span><span class="o">))</span> <span class="k">return</span><span class="o">;</span>
+        <span class="c1">// put your normal logic</span>
+      <span class="o">},</span>
+      <span class="nl">onBackgroundMessage:</span> <span class="n">myBackgroundMessageHandler</span><span class="o">,</span>
+      <span class="nl">onLaunch:</span> <span class="o">(</span><span class="n">message</span><span class="o">)</span> <span class="n">async</span> <span class="o">{},</span>
+      <span class="nl">onResume:</span> <span class="o">(</span><span class="n">message</span><span class="o">)</span> <span class="n">async</span> <span class="o">{},</span>
+    <span class="o">);</span>
+    <span class="n">Telereso</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">subscribeToChanges</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+</div>
+
+<h3 id="flutter">Flutter</h3>
+
+<p><a href="https://pub.dev/packages/telereso#telereso">Check package docs</a></p>
 
 <h2 id="telereso-api">Telereso API</h2>
 
@@ -782,8 +957,24 @@ package.json<br /><br />
     /* Attach the event to all clicks in the document after page has loaded */
     _w.addEventListener ? _w.addEventListener("load", function() {document.body.addEventListener(_gaLtEvt, _gaLt, !1)}, !1)
         : _w.attachEvent && _w.attachEvent("onload", function() {document.body.attachEvent("on" + _gaLtEvt, _gaLt)});
-      </script>
 
 
+</script>
+
+
+
+<script>
+
+function openTab(evt, tabName) {
+
+  $("div.code-block." + tabName + " .tablinks").removeClass("active")
+  $("div.code-block." + tabName + " .tabcontent").removeClass("active");
+
+  $("div.code-block." + tabName + " button.tablinks." + tabName).addClass("active");
+  $("div.code-block." + tabName + " div.tabcontent." + tabName).addClass("active");
+}
+
+
+</script>
 </body>
 </html>

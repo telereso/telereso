@@ -10,13 +10,14 @@ Table of contents:
 
 ## Installation
 
-[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) depends on Firebase to use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource
-management<br>
+[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) depends on Firebase to
+use [Remote Config](https://firebase.google.com/docs/remote-config/) for resource management<br>
 And [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) for realtime changes (_optional_)
 
 All you need to get started is make sure your project has setup
 firebase ([check docs](https://firebase.google.com/docs/guides)) <br>
-then just add [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) dependency to your project
+then just add [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) dependency to your
+project
 
 ### Dependencies
 
@@ -47,7 +48,8 @@ dependencies:
 
 ## Firebase
 
-This section will show how to set up firebase remote config to be used with [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal)
+This section will show how to set up firebase remote config to be used
+with [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal)
 
 ### Strings
 
@@ -64,7 +66,8 @@ This section will show how to set up firebase remote config to be used with [Tel
 
 #### Localization
 
-[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) supports localization using local after the strings prefix `strings_<local>`<br>
+[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) supports localization using
+local after the strings prefix `strings_<local>`<br>
 To support other languages just add more params each containing a json with same keys (as in the strings version) but
 with a translated value <br>
 ex: `strings_fr,strings_ar...etc`
@@ -101,7 +104,8 @@ Remote Config provide conditions to be applied to your params (strings,drawables
 This will add another layer of dynamic delivery, so if you would like new versions to have specific resources,<br> or
 segment of users that clicked a button,<br>
 Or strings and icons to be shown on specific days (Holidays 🎊🥳🎉!)...etc <br><br>
-You can see how [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) will help avoid multiple app releases.
+You can see how [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) will help avoid
+multiple app releases.
 <br><br>
 ![img.png](doc/conditions_res.png)
 
@@ -124,7 +128,8 @@ Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Sa
 
 ## Usage
 
-There are different scenarios to work with [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) ,<br>
+There are different scenarios to work
+with [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) ,<br>
 Wither you are starting a fresh new application, or an already in production application with large code base
 
 ### Android
@@ -140,59 +145,119 @@ Skipping the Initialization will not cause crashes, but the app will not be able
 resources,<br>
 So it is a way to disable remote functionality.
 
-_Kotlin_
+**Application Start**
+
+<div class="code-block kotlin java dart">
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+</div>
+
+<div class="tabcontent kotlin active">
+
+{% highlight kotlin %}
 
 ```kotlin
-//application
 class MyApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        Telereso.init(this)
-    }
+   override fun onCreate() {
+      super.onCreate()
+      Telereso.init(this)
+   }
 }
 ```
 
-or
+{% endhighlight kotlin %}
+
+</div>
+
+<div class="tabcontent java">
+{% highlight java %}
+
+```java
+public class MyApplication extends Application {
+   @Override
+   public void onCreate() {
+      super.onCreate();
+      Telereso.init(this);
+   }
+}
+```
+
+{% endhighlight java %}
+
+</div>
+
+<div class="tabcontent dart">
+{% highlight dart %}
+
+```dart
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Telereso.instance.init();
+    return MaterialApp();
+  }
+}
+```
+
+{% endhighlight dart %}
+
+</div>
+
+</div>
+**Splash Screen**
+
+<div class="code-block kotlin java">
+
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+</div>
+
+<div class="tabcontent kotlin active">{% highlight kotlin %}
 
 ```kotlin
 class SplashActivity : Activity {
-    private override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState);
-        Telereso.init(this) {
-            // start MainActivity and finish()
-        }
-    }
+   private override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState);
+      Telereso.init(this) {
+         // start MainActivity and finish()
+      }
+   }
 }
 ```
 
-_Java_
-
-```java
-//application
-public class MyApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Telereso.init(this);
-    }
-}
-```
-
-or
+{% endhighlight kotlin %}
+</div>
+<div class="tabcontent java">
+{% highlight java %}
 
 ```java
 public class SplashActivity extends Activity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Telereso.init(this, () -> {
-            // start MainActivity and finish()
-            return null;
-        });
-    }
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      Telereso.init(this, () -> {
+         // start MainActivity and finish()
+         return null;
+      });
+   }
 }
 ```
 
+{% endhighlight java %}
+</div>
+
+</div>
 #### Add `RemoteViewInflater`
 
 This inflater will make sure all the android application views that display strings or images have the remote
@@ -251,33 +316,92 @@ which is
 `getRemoteString()`<br>
 This will make sure to use the remote version of the resource if found or default it to the original value
 
-*Strings*
+**Strings**
+<div class="code-block kotlin java dart">
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+</div>
 
-_Kotlin_
+<div class="tabcontent kotlin active">
+
+{% highlight kotlin %}
 
 ```kotlin
 titleTextView.text = getRemoteString(R.strings.title_home)
 ```
 
-_Java_
+{% endhighlight kotlin %}
+
+</div>
+
+<div class="tabcontent java">
+{% highlight java %}
 
 ```java
 titleTextView.setText(Telereso.getRemoteString(R.strings.title_home));
 ```
 
-*Drawables*
+{% endhighlight java %}
+</div>
 
-_kotlin_
+<div class="tabcontent dart">
+{% highlight dart %}
+
+```dart
+Widget build(BuildContext context) {
+  return Text(
+    RemoteLocalizations.of(context).appTitle,
+  );
+}
+```
+
+{% endhighlight java %}
+</div>
+</div>
+
+**Drawables**
+<div class="code-block kotlin java dart">
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+</div>
+
+<div class="tabcontent kotlin active">
+
+{% highlight kotlin %}
 
 ```kotlin
 imageView.setRemoteImageResource(R.id.icon)
 ```
 
-_java_
+{% endhighlight kotlin %}
+</div>
+
+<div class="tabcontent java">
+{% highlight java %}
 
 ```java
 Telereso.setRemoteImageResource(imageView,R.id.icon);
 ```
+
+{% endhighlight java %}
+</div>
+
+<div class="tabcontent dart">
+{% highlight dart %}
+
+```dart
+Widget build(BuildContext context) {
+  return RemoteImage.asset("assets/icons/image.png");
+}
+```
+
+{% endhighlight dart %}
+</div>
+</div>
 
 #### Dynamic Resources || (out of the box)
 
@@ -288,112 +412,177 @@ That will take care of the changes for you without any code changes.
 
 **Important note** if your app supports both portrait and land scape you need to handle the configuration changes
 manually,<br>
-Later versions of [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) will address this issue
+Later versions of [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) will address
+this issue
 
 Add the following to all your activities or your `BaseActivity`
 
-_Kotlin_
+<div class="code-block kotlin java">
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+</div>
+
+<div class="tabcontent kotlin active">
+
+{% highlight kotlin %}
 
 ```kotlin
 class MainActivity : Activity {
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(RemoteContextWrapper(newBase));
-    }
+   override fun attachBaseContext(newBase: Context) {
+      super.attachBaseContext(RemoteContextWrapper(newBase));
+   }
 }
 ```
 
-_Java_
+{% endhighlight kotlin %}
+</div>
+
+<div class="tabcontent java">
+{% highlight java %}
 
 ```java
 public class MainActivity extends Activity {
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(new RemoteContextWrapper(newBase));
-    }
+   @Override
+   protected void attachBaseContext(Context newBase) {
+      super.attachBaseContext(new RemoteContextWrapper(newBase));
+   }
 }
 ```
+
+{% endhighlight java %}
+</div>
+</div>
 
 #### Realtime Changes
 
 Who doesn't love to see changes happening in real time ?<br>
-[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) support this optional implantation with some extra steps.<br>
+[Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) support this optional
+implantation with some extra steps.<br>
 
-_We recommend enabling this while in development mode only_  
-1. Create a cloud function to be triggered when updating remote config, you can follow [this setup doc](https://firebase.google.com/docs/remote-config/propagate-updates-realtime) to do so,<br>
-   _PS: only follow the cloud function part_ <br><br>
-   package.json<br><br>
-    ```json
-    {
-      "name": "sample-firebase-remoteconfig",
-      "version": "0.0.1",
-      "dependencies": {
-        "firebase-admin": "^9.4.2",
-        "firebase-functions": "^3.13.1"
-      }
-    }
-    ```
-   <br>
-   
-   index.js
-    ```
-    const functions = require('firebase-functions');
-    const admin = require('firebase-admin');
-    admin.initializeApp();
-    
-    
-    exports.pushConfig = functions.remoteConfig.onUpdate(versionMetadata => {
-      // Create FCM payload to send data message to PUSH_RC topic.
-      const payload = {
-        topic: "TELERESO_PUSH_RC",
-        data: {
-          "TELERESO_CONFIG_STATE": "STALE"
-        }
-      };
-      // Use the Admin SDK to send the ping via FCM.
-      return admin.messaging().send(payload).then(resp => {
-        console.log(resp);
-        return null;
-      });
-    });
-    ```
-   **Notice the topic : TELERESO_PUSH_RC and data TELERESO_CONFIG_STATE has to the same**
+_We recommend enabling this while in development mode only_
 
-2. In your android project add th following code in your `MyFirebaseMessagingService`:<br><br>
-   _Java_<br>
-    ```java
-    public class MyFirebaseMessagingService extends FirebaseMessagingService {
-        @Override
-        public void onNewToken(String token) {
-            if (BuildConfig.DEBUG)
-                Telereso.subscriptToChanges();
-        }
-        @Override
-        public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
-            if (BuildConfig.DEBUG && Telereso.handleRemoteMessage(getApplicationContext(), remoteMessage))
-                return;
-            // your logic
-        }
-    
+**Cloud function**
+Create a cloud function to be triggered when updating remote config, you can follow [this setup doc](https://firebase.google.com/docs/remote-config/propagate-updates-realtime) to do so,<br>
+_PS: only follow the cloud function part_ <br><br>
+package.json<br>
+
+ ```json
+ {
+   "name": "sample-firebase-remoteconfig",
+   "version": "0.0.1",
+   "dependencies": {
+     "firebase-admin": "^9.4.2",
+     "firebase-functions": "^3.13.1"
+   }
+ }
+ ```
+<br>
+index.js
+
+```javascript
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp();
+
+
+exports.pushConfig = functions.remoteConfig.onUpdate(versionMetadata => {
+// Create FCM payload to send data message to PUSH_RC topic.
+const payload = {
+  topic: "TELERESO_PUSH_RC",
+  data: {
+    "TELERESO_CONFIG_STATE": "STALE"
+  }
+};
+// Use the Admin SDK to send the ping via FCM.
+return admin.messaging().send(payload).then(resp => {
+  console.log(resp);
+  return null;
+});
+});
+```
+
+_Notice the topic : **TELERESO_PUSH_RC** and data **TELERESO_CONFIG_STATE** has to the same_
+
+**Client**
+
+In your android project add th following code in your `MyFirebaseMessagingService`:<br><br>
+<div class="code-block kotlin java dart">
+<div class="tab">  
+<button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>  
+<button class="tablinks java" onclick="openTab(event, 'java')">Java</button>  
+<button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>  
+</div>  
+<div class="tabcontent kotlin active">{% highlight kotlin %}
+
+```kotlin
+class MyFirebaseMessagingService: FirebaseMessagingService() {
+  override fun onNewToken(token: String) {
+      if (BuildConfig.DEBUG)
+          Telereso.subscriptToChanges()
+  }   
+  override fun onMessageReceived(remoteMessage:RemoteMessage) {
+      if (BuildConfig.DEBUG && Telereso.handleRemoteMessage(getApplicationContext(), remoteMessage)) return
+      // your logic
+  }
+}
+```
+{% endhighlight kotlin %}
+</div>
+<div class="tabcontent java">{% highlight java %}
+
+```java
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
+    @Override
+    public void onNewToken(String token) {
+        if (BuildConfig.DEBUG)
+            Telereso.subscriptToChanges();
     }
-    ``` 
-   
-     _Kotlin_
-    ```kotlin
-     class MyFirebaseMessagingService: FirebaseMessagingService() {
-        override fun onNewToken(token: String) {
-            if (BuildConfig.DEBUG)
-                Telereso.subscriptToChanges()
-        }
-   
-        override fun onMessageReceived(remoteMessage:RemoteMessage) {
-            if (BuildConfig.DEBUG && Telereso.handleRemoteMessage(getApplicationContext(), remoteMessage)) return
-            // your logic
-        }
-    
+    @Override
+    public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
+        if (BuildConfig.DEBUG && Telereso.handleRemoteMessage(getApplicationContext(), remoteMessage))
+            return;
+        // your logic
     }
-    ```
+}
+```
+{% endhighlight java %}
+</div>
+
+<div class="tabcontent dart">{% highlight dart %}
+
+```dart
+class _HomePageState extends RemoteState<_HomePage> {
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+  static Future<dynamic> myBackgroundMessageHandler(
+          Map<String, dynamic> message) async {
+    // put your normal logic
+  }
+  
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (message) async {
+        if (await Telereso.instance.handleRemoteMessage(message)) return;
+        // put your normal logic
+      },
+      onBackgroundMessage: myBackgroundMessageHandler,
+      onLaunch: (message) async {},
+      onResume: (message) async {},
+    );
+    Telereso.instance.subscribeToChanges();
+  }
+}
+```
+{% endhighlight dart %}
+</div>
+</div>
+
 ### Flutter
-[Check package docs](https://pub.dev/packages/telereso#telereso)  
+
+[Check package docs](https://pub.dev/packages/telereso#telereso)
 
 ## Telereso API
 

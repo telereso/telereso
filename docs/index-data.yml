@@ -15,7 +15,8 @@
 <!-- End Jekyll SEO tag -->
 
     <title>Telereso | Control your application resources</title>
-    <meta name="description" content=""/>
+    <meta name="description"
+          content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f38b1c">
     <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.4-0.0.6-alpha">
@@ -175,6 +176,8 @@
             font-weight: 100;
         }
 
+
+
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8S2X6JQZM"></script>
@@ -185,13 +188,16 @@
 
   gtag('config', 'G-V8S2X6JQZM');
 </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <section class="page-header">
     <h1 class="project-name"><a href="/">Telereso</a></h1>
     <h2 class="project-tagline">Control your application resources</h2>
     
-    <a href="https://github.com/telereso/telereso.git" class="btn"><span style="vertical-align: middle">View on GitHub</span></a> </br>
+    <a href="https://github.com/telereso/telereso.git" class="btn"><span
+            style="vertical-align: middle">View on GitHub</span></a> </br>
     
 </section>
 
@@ -276,8 +282,24 @@
     /* Attach the event to all clicks in the document after page has loaded */
     _w.addEventListener ? _w.addEventListener("load", function() {document.body.addEventListener(_gaLtEvt, _gaLt, !1)}, !1)
         : _w.attachEvent && _w.attachEvent("onload", function() {document.body.attachEvent("on" + _gaLtEvt, _gaLt)});
-      </script>
 
 
+</script>
+
+
+
+<script>
+
+function openTab(evt, tabName) {
+
+  $("div.code-block." + tabName + " .tablinks").removeClass("active")
+  $("div.code-block." + tabName + " .tabcontent").removeClass("active");
+
+  $("div.code-block." + tabName + " button.tablinks." + tabName).addClass("active");
+  $("div.code-block." + tabName + " div.tabcontent." + tabName).addClass("active");
+}
+
+
+</script>
 </body>
 </html>
