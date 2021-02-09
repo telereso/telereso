@@ -1,6 +1,6 @@
 {
   "name": "telereso",
-  "version": "0.0.8",
+  "version": "0.0.2",
   "description": "Control your resources remotely",
   "main": "index.ts",
   "files": [
@@ -17,7 +17,8 @@
     "telereso",
     "remote"
   ],
-  "repository": "https://github.com/telereso/telreso",
+  "homepage": "https://telereso.io?utm_source=npm&utm_medium=telereso&utm_campaign=normal",
+  "repository": "https://github.com/telereso/telereso",
   "author": "Ahmed Alnaami",
   "license": "MIT",
   "dependencies": {
@@ -25,7 +26,6 @@
     "@react-native-firebase/messaging": "^10.6.4",
     "@react-native-firebase/remote-config": "^10.6.4",
     "expo-asset": "^8.2.2",
-    "expo-localization": "^10.0.0",
     "i18n-js": "^3.8.0"
   },
   "devDependencies": {
@@ -45,11 +45,11 @@
     "typescript": "~3.9.5"
   },
   "peerDependencies": {
-    "react": "~16.11.0",
-    "react-dom": "~16.11.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "@react-native-firebase/app": "^10.6.4",
     "@react-native-firebase/messaging": "^10.6.4",
-    "@react-native-firebase/remote-config": "^10.6.4"
+    "@react-native-firebase/remote-config": "^10.6.4",
+    "react": "~16.11.0",
+    "react-dom": "~16.11.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz"
   }
 }
