@@ -35,7 +35,8 @@ task prepareReadMe(type: Copy) {
     from 'README-template.md'
     into "./"
     rename { file -> 'README.md' }
-    expand(project: project, version: props.getProperty("versionName_"),flutterVersion: props.getProperty("flutterVersionName"))
+    expand(project: project, version: props.getProperty("versionName_"),flutterVersion: props.getProperty("flutterVersionName"),
+            RNVersion: props.getProperty("RNVersionName"))
 }
 
 task prepareConfigFile(type: Copy) {
@@ -86,4 +87,19 @@ task prepareFlutterGeneratroChangeLog(type: Copy) {
     into "./telereso_generator/"
     rename { file -> 'CHANGELOG.md' }
     expand(project: project, version: props.getProperty("flutterVersionName"))
+}
+
+task prepareRNPackage(type: Copy) {
+    println("ReactNative version : "+ props.getProperty("RNVersionName"))
+    from './templates/react-native/package.template.json'
+    into "./react-native/"
+    rename { file -> 'package.json' }
+    expand(project: project, version: props.getProperty("RNVersionName"))
+}
+
+task prepareRNChangeLog(type: Copy) {
+    from './templates/react-native/CHANGELOG.template.md'
+    into "./react-native/"
+    rename { file -> 'CHANGELOG.md' }
+    expand(project: project, version: props.getProperty("RNVersionName"))
 }

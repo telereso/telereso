@@ -1,5 +1,8 @@
 theme: jekyll-theme-cayman
 markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
 destination: ../docs
 github:
     repository_url: https://github.com/telereso/telereso.git

@@ -37,7 +37,7 @@
     "react-navigation-drawer": "^2.4.9",
     "react-navigation-stack": "^2.3.9",
     "react-redux": "^7.1.0",
-    "telereso": "../../react-native/telereso-0.0.8.tgz"
+    "telereso": "^0.0.3-alpha"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

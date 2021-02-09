@@ -205,7 +205,8 @@
     <p><img src="doc/banner.svg" alt="Banner" /></p>
 
 <p><a href="https://jitpack.io/#telereso/telereso"><img src="https://jitpack.io/v/telereso/telereso.svg" alt="jitpack" /></a>
-<a href="https://pub.dartlang.org/packages/telereso"><img src="https://img.shields.io/pub/v/telereso.svg" alt="Pub" /></a></p>
+<a href="https://pub.dartlang.org/packages/telereso"><img src="https://img.shields.io/pub/v/telereso.svg" alt="Pub" /></a>
+<a href="https://www.npmjs.com/package/telereso"><img src="https://img.shields.io/npm/v/telereso.svg" alt="npm" /></a></p>
 
 <p>Table of contents:</p>
 
@@ -284,6 +285,14 @@ project</p>
     <pre>
 dependencies:
   telereso: ^0.0.6-alpha
+</pre>
+    </td>
+</tr>
+<tr>
+<td><img src="doc/react-native.png" alt="React Native" /></td>
+<td>
+    <pre>
+npm install telereso
 </pre>
     </td>
 </tr>
@@ -374,6 +383,7 @@ Check samples in this <a href="https://github.com/telereso/telereso/tree/master/
 <ul>
   <li><a href="https://github.com/telereso/telereso/tree/master/Samples/android">Android</a></li>
   <li><a href="https://github.com/telereso/telereso/tree/master/Samples/flutter">Flutter</a></li>
+  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/react-native">React Native</a></li>
 </ul>
 
 <h2 id="usage">Usage</h2>
@@ -397,11 +407,12 @@ So it is a way to disable remote functionality.</p>
 
 <p><strong>Application Start</strong></p>
 
-<div class="code-block kotlin java dart">
+<div class="code-block kotlin java dart typescript">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -457,7 +468,23 @@ So it is a way to disable remote functionality.</p>
 
 </div>
 
+<div class="tabcontent typescript">
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">App</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="p">(&lt;</span><span class="nc">AppContainer</span><span class="p">/&gt;);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="n">i18n</span><span class="p">);</span>
+<span class="err">```</span></code></pre></figure>
+
+
 </div>
+
+</div>
+
 <p><strong>Splash Screen</strong></p>
 
 <div class="code-block kotlin java">
@@ -498,6 +525,7 @@ So it is a way to disable remote functionality.</p>
 </div>
 
 </div>
+
 <h4 id="add-remoteviewinflater">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code></h4>
 
 <p>This inflater will make sure all the android application views that display strings or images have the remote
@@ -557,11 +585,12 @@ which is
 This will make sure to use the remote version of the resource if found or default it to the original value</p>
 
 <p><strong>Strings</strong></p>
-<div class="code-block kotlin java dart">
+<div class="code-block kotlin java dart typescript">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -593,14 +622,31 @@ This will make sure to use the remote version of the resource if found or defaul
 <span class="err">```</span></code></pre></figure>
 
 </div>
+<div class="tabcontent typescript">
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nc">View</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">Text</span><span class="p">&gt;{</span><span class="n">i18n</span><span class="p">.</span><span class="nf">t</span><span class="p">(</span><span class="err">'</span><span class="n">title_home</span><span class="err">'</span><span class="p">)}&lt;/</span><span class="nc">Text</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">View</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+
+</div>
 </div>
 
 <p><strong>Drawables</strong></p>
-<div class="code-block kotlin java dart">
+<div class="code-block kotlin java dart typescript">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -627,6 +673,25 @@ This will make sure to use the remote version of the resource if found or defaul
   <span class="k">return</span> <span class="n">RemoteImage</span><span class="o">.</span><span class="na">asset</span><span class="o">(</span><span class="s">"assets/icons/image.png"</span><span class="o">);</span>
 <span class="o">}</span>
 <span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent typescript">
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="k">import</span> <span class="nn">RemoteImage</span> <span class="n">from</span> <span class="err">'</span><span class="n">telereso</span><span class="err">'</span><span class="p">;</span>
+
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nc">View</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">RemoteImage</span> <span class="n">source</span><span class="p">={</span><span class="nf">require</span><span class="p">(</span><span class="err">'</span><span class="o">..</span><span class="p">/</span><span class="n">assets</span><span class="p">/</span><span class="n">icons</span><span class="p">/</span><span class="n">image</span><span class="p">.</span><span class="n">png</span><span class="err">'</span><span class="p">)}</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">View</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
 
 </div>
 </div>
@@ -729,11 +794,12 @@ index.js</p>
 <p><strong>Client</strong></p>
 
 <p>In your android project add th following code in your <code class="language-plaintext highlighter-rouge">MyFirebaseMessagingService</code>:<br /><br /></p>
-<div class="code-block kotlin java dart">
+<div class="code-block kotlin java dart typescript">
 <div class="tab">  
 <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>  
 <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>  
 <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>  
+<button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>  
 </div>  
 <div class="tabcontent kotlin active">
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
@@ -795,6 +861,24 @@ index.js</p>
   <span class="o">}</span>
 <span class="o">}</span>
 <span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent typescript">
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="k">import</span> <span class="nn">RemoteComponent</span> <span class="n">from</span> <span class="err">'</span><span class="n">telereso</span><span class="err">'</span><span class="p">;</span>
+
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="n">extends</span> <span class="nc">RemoteComponent</span> <span class="p">{</span>
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nc">View</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">Text</span><span class="p">&gt;{</span><span class="n">i18n</span><span class="p">.</span><span class="nf">t</span><span class="p">(</span><span class="err">'</span><span class="n">title_home</span><span class="err">'</span><span class="p">)}&lt;/</span><span class="nc">Text</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">View</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
 
 </div>
 </div>

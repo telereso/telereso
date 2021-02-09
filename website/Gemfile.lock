@@ -73,7 +73,9 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jekyll-theme-cayman
+  kramdown
   kramdown-parser-gfm
+  rouge
 
 BUNDLED WITH
    2.2.6

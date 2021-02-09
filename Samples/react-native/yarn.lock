@@ -3727,13 +3727,6 @@ expo-linking@~2.0.1:
     qs "^6.5.0"
     url-parse "^1.4.4"
 
-expo-localization@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-10.0.0.tgz#e819fb2d999a6d6e57bd8e85f1abd70c8f925833"
-  integrity sha512-xCLEwJ0TCrlIzzE/udji3zXWAwRR9CKc75u02Umzj0t9MLm1ALlrote+Tb3lPN5IsoLBCK/F8n56lpWwE9U0Tg==
-  dependencies:
-    rtl-detect "^1.0.2"
-
 expo-localization@~9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-9.1.0.tgz#463381568082fdcb28ad4e4c533a6f9471a3f78a"
@@ -8140,15 +8133,15 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-telereso@../../react-native/telereso-0.0.8.tgz:
-  version "0.0.8"
-  resolved "../../react-native/telereso-0.0.8.tgz#12ef0a30fd15a006092734b4ecb3abcc22594c30"
+telereso@^0.0.3-alpha:
+  version "0.0.3-alpha"
+  resolved "https://registry.yarnpkg.com/telereso/-/telereso-0.0.3-alpha.tgz#0f2236097d5adc735bc8ec50cc5d600ebb91e64b"
+  integrity sha512-vF4AuVBTQZpbYWbVO4q6jAIfFatJ+BWpPo5T024mSsr+Z1h/yQOKHmMeffnjqBaCmVEKQutuViA3QTB+828Jnw==
   dependencies:
     "@react-native-firebase/app" "^10.6.4"
     "@react-native-firebase/messaging" "^10.6.4"
     "@react-native-firebase/remote-config" "^10.6.4"
     expo-asset "^8.2.2"
-    expo-localization "^10.0.0"
     i18n-js "^3.8.0"
 
 temp-dir@^1.0.0:

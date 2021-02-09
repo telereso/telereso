@@ -2,6 +2,7 @@
 
 [![jitpack](https://jitpack.io/v/telereso/telereso.svg)](https://jitpack.io/#telereso/telereso)
 [![Pub](https://img.shields.io/pub/v/telereso.svg)](https://pub.dartlang.org/packages/telereso)
+[![npm](https://img.shields.io/npm/v/telereso.svg)](https://www.npmjs.com/package/telereso)
 
 Table of contents:
 
@@ -41,6 +42,14 @@ project
     <pre>
 dependencies:
   telereso: ^0.0.6-alpha
+</pre>
+    </td>
+</tr>
+<tr>
+<td><img src="doc/react-native.png" alt="React Native"/></td>
+<td>
+    <pre>
+npm install telereso
 </pre>
     </td>
 </tr>
@@ -125,6 +134,7 @@ Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Sa
 
 * [Android](https://github.com/telereso/telereso/tree/master/Samples/android)
 * [Flutter](https://github.com/telereso/telereso/tree/master/Samples/flutter)
+* [React Native](https://github.com/telereso/telereso/tree/master/Samples/react-native)
 
 ## Usage
 
@@ -147,11 +157,12 @@ So it is a way to disable remote functionality.
 
 **Application Start**
 
-<div class="code-block kotlin java dart">
+<div class="code-block kotlin java dart typescript">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -213,7 +224,24 @@ class MyApp extends StatelessWidget {
 
 </div>
 
+<div class="tabcontent typescript">
+{% highlight kotlin %}
+
+```kotlin
+export default class App extends React.Component {
+  render() {
+     return (<AppContainer/>);
+  }
+}
+
+Telereso.init(i18n);
+```
+{% endhighlight kotlin %}
+
 </div>
+
+</div>
+
 **Splash Screen**
 
 <div class="code-block kotlin java">
@@ -258,6 +286,7 @@ public class SplashActivity extends Activity {
 </div>
 
 </div>
+
 #### Add `RemoteViewInflater`
 
 This inflater will make sure all the android application views that display strings or images have the remote
@@ -317,11 +346,12 @@ which is
 This will make sure to use the remote version of the resource if found or default it to the original value
 
 **Strings**
-<div class="code-block kotlin java dart">
+<div class="code-block kotlin java dart typescript">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -359,14 +389,33 @@ Widget build(BuildContext context) {
 
 {% endhighlight java %}
 </div>
+<div class="tabcontent typescript">
+{% highlight kotlin %}
+
+```kotlin
+export default class MyComponent extends React.Component {
+  render() {
+    return (
+      <View>
+          <Text>{i18n.t('title_home')}</Text>
+      </View>
+    );
+  }
+}
+```
+
+{% endhighlight kotlin %}
+
+</div>
 </div>
 
 **Drawables**
-<div class="code-block kotlin java dart">
+<div class="code-block kotlin java dart typescript">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
+  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -400,6 +449,27 @@ Widget build(BuildContext context) {
 ```
 
 {% endhighlight dart %}
+</div>
+
+<div class="tabcontent typescript">
+{% highlight kotlin %}
+
+```kotlin
+import RemoteImage from 'telereso';
+
+export default class MyComponent extends React.Component {
+  render() {
+    return (
+      <View>
+          <RemoteImage source={require('../assets/icons/image.png')} />
+      </View>
+    );
+  }
+}
+```
+
+{% endhighlight kotlin %}
+
 </div>
 </div>
 
@@ -507,11 +577,12 @@ _Notice the topic : **TELERESO_PUSH_RC** and data **TELERESO_CONFIG_STATE** has 
 **Client**
 
 In your android project add th following code in your `MyFirebaseMessagingService`:<br><br>
-<div class="code-block kotlin java dart">
+<div class="code-block kotlin java dart typescript">
 <div class="tab">  
 <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>  
 <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>  
 <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>  
+<button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>  
 </div>  
 <div class="tabcontent kotlin active">{% highlight kotlin %}
 
@@ -577,6 +648,25 @@ class _HomePageState extends RemoteState<_HomePage> {
 }
 ```
 {% endhighlight dart %}
+</div>
+
+<div class="tabcontent typescript">{% highlight kotlin %}
+
+```kotlin
+import RemoteComponent from 'telereso';
+
+export default class MyComponent extends RemoteComponent {
+  render() {
+    return (
+      <View>
+          <Text>{i18n.t('title_home')}</Text>
+      </View>
+    );
+  }
+}
+```
+{% endhighlight kotlin %}
+
 </div>
 </div>
 
