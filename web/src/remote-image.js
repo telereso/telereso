@@ -3,6 +3,23 @@ import {Telereso} from './telereso';
 
 
 export default class RemoteImage extends React.Component {
+    state = {
+        imageUri: null
+    }
+
+    remoteChangeListner = () => {
+        this.setState({
+            imageUri: Telereso.getRemoteImageOrDefault(this.props.source)
+        });
+    }
+
+    componentDidMount() {
+        Telereso.addRemoteChangeListner(this.remoteChangeListner);
+    }
+
+    componentWillUnmount() {
+        Telereso.removeRemoteChangeListner(this.remoteChangeListner);
+    }
 
     constructor(props) {
         super(props);
@@ -10,20 +27,6 @@ export default class RemoteImage extends React.Component {
             imageUri: Telereso.getRemoteImageOrDefault(this.props.src)
         }
     }
-
-    // remoteChangeListner = () => {
-    //     this.setState({
-    //         imageUri: Telereso.getRemoteImageOrDefault(this.props.source)
-    //     });
-    // }
-    //
-    // componentDidMount() {
-    //     Telereso.addRemoteChangeListner(this.remoteChangeListner);
-    // }
-    //
-    // componentWillUnmount() {
-    //     Telereso.removeRemoteChangeListner(this.remoteChangeListner);
-    // }
 
     render() {
         const {imageUri} = this.state
