@@ -5,11 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import Pricing from "./pricing";
 import firebase from "firebase/app";
 import 'firebase/remote-config';
-import {Telereso} from "telereso-web";
 // import {Telereso} from "./telereso-test";
 import i18n from "./i18n";
 import App from "./App";
-
 
 // Initialize Firebase
 const firebaseConfig = {
