@@ -1,7 +1,7 @@
-import firebase from 'firebase/app';
+import fb from 'firebase/app';
 import 'firebase/remote-config';
 import 'firebase/messaging';
-import i18n from 'i18n-js';
+import * as _ from "i18n-js";
 
 const TAG = 'TELERESO';
 const TAG_STRINGS = `${TAG}_STRINGS`;
@@ -42,19 +42,21 @@ function getStringsId(local: string) {
     return `${STRINGS}_${local}`;
 }
 
-function getDrawableId(size: string) {
-    return `${DRAWABLE}_${size}`;
-}
+// function getDrawableId(size: string) {
+//     return `${DRAWABLE}_${size}`;
+// }
 
 class TeleresosSingleton {
 
-    remoteConfig: firebase.remoteConfig.RemoteConfig | undefined;
+    remoteConfig: fb.remoteConfig.RemoteConfig | undefined;
+    i18n: any | undefined;
 
-    init(defaultLocal: any) {
+    init(i18n: any, firebase: any) {
         this.remoteConfig = firebase.remoteConfig();
+        this.i18n = i18n;
 
         log("Telereso initilaizing...");
-        currentLocal = defaultLocal.currentLocale();
+        currentLocal = i18n.currentLocale();
         currentLocal = currentLocal.split("-")[0];
 
         this.remoteConfig.activate().then(() => {
@@ -66,12 +68,13 @@ class TeleresosSingleton {
 
     }
 
-    async suspendedInit(defaultLocal: any) {
+    async suspendedInit(i18n: any, firebase: any) {
         this.remoteConfig = firebase.remoteConfig();
+        this.i18n = i18n;
 
         log("Telereso initilaizing...");
 
-        currentLocal = defaultLocal.currentLocale();
+        currentLocal = i18n.currentLocale();
         currentLocal = currentLocal.split("-")[0];
 
         this.remoteConfig!.settings.minimumFetchIntervalMillis = 1
@@ -83,7 +86,10 @@ class TeleresosSingleton {
     }
 
     initMap() {
-        console.log("initMap")
+        if (!this.i18n) {
+            log("please provide a proper i18n in init")
+            return
+        }
         // strings
         let json = this.remoteConfig?.getString(STRINGS)
         if (!json || json.length == 0) {
@@ -119,8 +125,8 @@ class TeleresosSingleton {
         }
 
         let remoteLocalization: { [locale: string]: any } = {};
-        for (let local in i18n.translations) {
-            remoteLocalization[local] = i18n.translations[local];
+        for (let local in this.i18n?.translations) {
+            remoteLocalization[local] = this.i18n?.translations[local];
         }
 
         for (let remoteId in stringsMap) {
@@ -135,7 +141,8 @@ class TeleresosSingleton {
             }
         }
 
-        i18n.translations = remoteLocalization;
+        console.log()
+        this.i18n.translations = remoteLocalization;
 
         // drawables
         json = this.remoteConfig?.getString(DRAWABLE);

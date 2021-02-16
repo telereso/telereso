@@ -1,4 +1,4 @@
-const path = require( 'path' );
+const path = require('path');
 const babelLoaderOptions = {
     presets: [
         '@babel/preset-typescript',
@@ -32,7 +32,6 @@ const babelLoaderOptions = {
         '@babel/plugin-proposal-export-default-from',
         '@babel/plugin-proposal-export-namespace-from',
         '@babel/plugin-syntax-dynamic-import',
-        'lodash',
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-transform-arrow-functions',
     ],
@@ -41,8 +40,13 @@ module.exports = {
     context: __dirname,
     entry: './src/index.ts',
     output: {
-        path: path.resolve( __dirname, 'dist' ),
+        path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js',
+        libraryTarget: 'umd',
+        library: "telereso-web",
+        umdNamedDefine: true,
+        libraryExport: 'default'
+
     },
     devServer: {
         port: 9898,
@@ -51,11 +55,14 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules(?!(\/|\\)vast-client)/,
                 loader: 'babel-loader',
                 options: babelLoaderOptions,
             }
         ]
-    }
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    },
 };

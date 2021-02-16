@@ -2,7 +2,9 @@ import React from 'react';
 import './App.css';
 import Pricing from "./pricing";
 import i18n from "./i18n";
-import * as Telereso from "telereso-web";
+import {Telereso} from "telereso-web";
+import firebase from "firebase/app";
+
 
 export default class App extends React.Component {
 
@@ -11,12 +13,11 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        // Telereso.suspendedInit(i18n).then(() => {
-        //     this.setState({
-        //         splashFinished: true
-        //     })
-        // });
-        console.log(Telereso)
+        Telereso.suspendedInit(i18n,firebase).then(() => {
+            this.setState({
+                splashFinished: true
+            })
+        });
     }
 
     render() {
