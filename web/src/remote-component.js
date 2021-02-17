@@ -4,15 +4,15 @@ import { Telereso } from './telereso';
 
 export default class RemoteComponent extends React.Component {
 
-    // remoteChangeListner = () => {
+    // remoteChangeListener = () => {
     //     this.setState();
     // }
     //
     // componentDidMount() {
-    //     Telereso.addRemoteChangeListner(this.remoteChangeListner);
+    //     Telereso.addRemoteChangeListener(this.remoteChangeListener);
     // }
     // componentWillUnmount() {
-    //     Telereso.removeRemoteChangeListner(this.remoteChangeListner);
+    //     Telereso.removeRemoteChangeListener(this.remoteChangeListener);
     // }
 
 }

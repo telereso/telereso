@@ -36,10 +36,10 @@ yarn add telerso
 Make sure your already set up your normal localization
 using [i18n](https://docs.expo.io/versions/latest/sdk/localization/)
 
-There is 2 option to initialization :
+There are 2 options to initialization :
 
 1. `init()`  
-   Will not make api calls it's just to set up resources, In your `App.dart` file, call `init()` and make sure to
+   Will not make api calls it's just to set up resources, In your `App.ts` file, call `init()` and make sure to
    pass `i18n` object:
 
    ```
@@ -116,7 +116,7 @@ export default class MyComponent extends React.Component {
   render() {
     return (
         <View>
-          <image source={../assets/icons/image.png} />
+          <image source={require('../assets/icons/image.png')} />
         </View>
     );
   }
@@ -128,7 +128,7 @@ export default class MyComponent extends React.Component {
   render() {
     return (
         <View>
-          <ImageView source={../assets/icons/image.png} />
+          <RemoteImage source={require('../assets/icons/image.png')} />
         </View>
     );
   }

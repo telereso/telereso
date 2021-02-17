@@ -206,7 +206,8 @@
 
 <p><a href="https://jitpack.io/#telereso/telereso"><img src="https://jitpack.io/v/telereso/telereso.svg" alt="jitpack" /></a>
 <a href="https://pub.dartlang.org/packages/telereso"><img src="https://img.shields.io/pub/v/telereso.svg" alt="Pub" /></a>
-<a href="https://www.npmjs.com/package/telereso"><img src="https://img.shields.io/npm/v/telereso.svg" alt="npm" /></a></p>
+<a href="https://www.npmjs.com/package/telereso"><img src="https://img.shields.io/npm/v/telereso.svg" alt="npm react native" /></a>
+<a href="https://www.npmjs.com/package/telereso-web"><img src="https://img.shields.io/npm/v/telereso-web.svg" alt="npm web" /></a></p>
 
 <p>Table of contents:</p>
 
@@ -293,6 +294,14 @@ dependencies:
 <td>
     <pre>
 npm install telereso
+</pre>
+    </td>
+</tr>
+<tr>
+<td><img src="doc/reactjs.png" alt="React" /></td>
+<td>
+    <pre>
+npm install telereso-web
 </pre>
     </td>
 </tr>
@@ -407,12 +416,13 @@ So it is a way to disable remote functionality.</p>
 
 <p><strong>Application Start</strong></p>
 
-<div class="code-block kotlin java dart typescript">
+<div class="code-block kotlin java dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
-  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -468,7 +478,7 @@ So it is a way to disable remote functionality.</p>
 
 </div>
 
-<div class="tabcontent typescript">
+<div class="tabcontent reactNative">
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
 <span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">App</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
@@ -482,16 +492,50 @@ So it is a way to disable remote functionality.</p>
 
 
 </div>
+<div class="tabcontent web">
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="k">import</span> <span class="nn">App</span> <span class="n">from</span> <span class="s">"./App"</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nn">i18n</span> <span class="n">from</span> <span class="s">"./i18n"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">{Telereso}</span> <span class="n">from</span> <span class="s">"telereso-web"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">firebase</span> <span class="n">from</span> <span class="s">"firebase/app"</span><span class="p">;</span>
+
+<span class="c1">// Initialize Firebase</span>
+<span class="k">const</span> <span class="n">firebaseConfig</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="n">apiKey</span><span class="p">:</span> <span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="nc">REACT_APP_FIREBASE_APIKEY</span><span class="p">,</span>
+    <span class="n">authDomain</span><span class="p">:</span> <span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="nc">REACT_APP_FIREBASE_AUTH_DOMAIN</span><span class="p">,</span>
+    <span class="n">projectId</span><span class="p">:</span> <span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="nc">REACT_APP_FIREBASE_PROJECT_ID</span><span class="p">,</span>
+    <span class="n">storageBucket</span><span class="p">:</span> <span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="nc">REACT_APP_FIREBASE_STORAGE_BUCKET</span><span class="p">,</span>
+    <span class="n">messagingSenderId</span><span class="p">:</span> <span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="nc">REACT_APP_FIREBASE_MESSAGING_SENDER_ID</span><span class="p">,</span>
+    <span class="n">appId</span><span class="p">:</span> <span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="nc">REACT_APP_FIREBASE_APP_ID</span><span class="p">,</span>
+    <span class="n">measurementId</span><span class="p">:</span> <span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="nc">REACT_APP_FIREBASE_MEASUREMENT_ID</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="n">firebase</span><span class="p">.</span><span class="nf">initializeApp</span><span class="p">(</span><span class="n">firebaseConfig</span><span class="p">);</span>
+<span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="n">i18n</span><span class="p">,</span><span class="n">firebase</span><span class="p">);</span>
+
+<span class="nc">ReactDOM</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span>
+  <span class="p">&lt;</span><span class="nc">React</span><span class="p">.</span><span class="nc">StrictMode</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nc">App</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nc">React</span><span class="p">.</span><span class="nc">StrictMode</span><span class="p">&gt;,</span>
+<span class="n">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="err">'</span><span class="n">root</span><span class="err">'</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="err">```</span></code></pre></figure>
+
+
+</div>
 
 </div>
 
 <p><strong>Splash Screen</strong></p>
 
-<div class="code-block kotlin java">
+<div class="code-block kotlin java reactNative web">
 
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -507,6 +551,7 @@ So it is a way to disable remote functionality.</p>
 <span class="err">```</span></code></pre></figure>
 
 </div>
+
 <div class="tabcontent java">
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
@@ -520,6 +565,61 @@ So it is a way to disable remote functionality.</p>
       <span class="o">});</span>
    <span class="o">}</span>
 <span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent reactNative">
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="k">import</span> <span class="nn">i18n</span> <span class="n">from</span> <span class="err">'</span><span class="p">./</span><span class="n">i18n</span><span class="err">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">{</span> <span class="nc">Telereso</span> <span class="p">}</span> <span class="n">from</span> <span class="err">'</span><span class="n">telereso</span><span class="err">'</span><span class="p">;</span>
+
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">App</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+  <span class="n">state</span> <span class="p">=</span> <span class="p">{</span>
+      <span class="n">splashFinished</span><span class="p">:</span> <span class="k">false</span>
+  <span class="p">}</span>
+  <span class="k">constructor</span><span class="p">(</span><span class="n">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="n">props</span><span class="p">);</span>
+    <span class="nc">Telereso</span><span class="p">.</span><span class="nf">suspendedInit</span><span class="p">(</span><span class="n">i18n</span><span class="p">).</span><span class="nf">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">setState</span><span class="p">({</span>
+          <span class="n">splashFinished</span><span class="p">:</span> <span class="k">true</span>
+      <span class="p">})</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">splashFinished</span> <span class="p">?</span> <span class="p">&lt;</span><span class="nc">AppContainer</span> <span class="p">/&gt;</span> <span class="p">:</span> <span class="p">&lt;</span><span class="nc">Text</span><span class="p">&gt;</span><span class="nc">Loading</span><span class="o">..</span><span class="p">.&lt;/</span><span class="nc">Text</span><span class="p">&gt;);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent web">
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="k">import</span> <span class="nn">i18n</span> <span class="n">from</span> <span class="s">"./i18n"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">{Telereso}</span> <span class="n">from</span> <span class="s">"telereso-web"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">firebase</span> <span class="n">from</span> <span class="s">"firebase/app"</span><span class="p">;</span>
+
+
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">App</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+
+  <span class="n">state</span> <span class="p">=</span> <span class="p">{</span>
+      <span class="n">splashFinished</span><span class="p">:</span> <span class="k">false</span>
+  <span class="p">}</span>
+
+  <span class="nf">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nc">Telereso</span><span class="p">.</span><span class="nf">suspendedInit</span><span class="p">(</span><span class="n">i18n</span><span class="p">,</span><span class="n">firebase</span><span class="p">).</span><span class="nf">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">setState</span><span class="p">({</span>
+          <span class="n">splashFinished</span><span class="p">:</span> <span class="k">true</span>
+      <span class="p">})</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">splashFinished</span> <span class="p">?</span> <span class="p">&lt;</span><span class="nc">Pricing</span><span class="p">/&gt;</span> <span class="p">:</span> <span class="p">&lt;</span><span class="n">label</span><span class="p">&gt;</span><span class="nc">Loading</span><span class="o">..</span><span class="p">.&lt;/</span><span class="n">label</span><span class="p">&gt;);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 <span class="err">```</span></code></pre></figure>
 
 </div>
@@ -585,12 +685,13 @@ which is
 This will make sure to use the remote version of the resource if found or default it to the original value</p>
 
 <p><strong>Strings</strong></p>
-<div class="code-block kotlin java dart typescript">
+<div class="code-block kotlin java dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
-  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -622,7 +723,8 @@ This will make sure to use the remote version of the resource if found or defaul
 <span class="err">```</span></code></pre></figure>
 
 </div>
-<div class="tabcontent typescript">
+
+<div class="tabcontent reactNative">
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
 <span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
@@ -638,15 +740,34 @@ This will make sure to use the remote version of the resource if found or defaul
 
 
 </div>
+
+<div class="tabcontent web">
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nc">View</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">Label</span><span class="p">&gt;{</span><span class="n">i18n</span><span class="p">.</span><span class="nf">t</span><span class="p">(</span><span class="err">'</span><span class="n">title_home</span><span class="err">'</span><span class="p">)}&lt;/</span><span class="nc">Lable</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">View</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+
+</div>
+
 </div>
 
 <p><strong>Drawables</strong></p>
-<div class="code-block kotlin java dart typescript">
+<div class="code-block kotlin java dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
-  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -676,7 +797,7 @@ This will make sure to use the remote version of the resource if found or defaul
 
 </div>
 
-<div class="tabcontent typescript">
+<div class="tabcontent reactNative">
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
 <span class="k">import</span> <span class="nn">RemoteImage</span> <span class="n">from</span> <span class="err">'</span><span class="n">telereso</span><span class="err">'</span><span class="p">;</span>
@@ -694,6 +815,25 @@ This will make sure to use the remote version of the resource if found or defaul
 
 
 </div>
+
+<div class="tabcontent web">
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="k">import</span> <span class="nn">RemoteImage</span> <span class="n">from</span> <span class="err">'</span><span class="n">telereso-web</span><span class="err">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">logo</span> <span class="n">from</span> <span class="s">"./assets/images/img.png"</span><span class="p">;</span>
+
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">RemoteImage</span> <span class="n">src</span><span class="p">={</span><span class="n">logo</span><span class="p">}</span> <span class="p">/&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+
+</div>
+
 </div>
 
 <h4 id="dynamic-resources--out-of-the-box">Dynamic Resources || (out of the box)</h4>
@@ -794,12 +934,12 @@ index.js</p>
 <p><strong>Client</strong></p>
 
 <p>In your android project add th following code in your <code class="language-plaintext highlighter-rouge">MyFirebaseMessagingService</code>:<br /><br /></p>
-<div class="code-block kotlin java dart typescript">
+<div class="code-block kotlin java dart reactNative">
 <div class="tab">  
 <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>  
 <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>  
 <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>  
-<button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>  
+<button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>  
 </div>  
 <div class="tabcontent kotlin active">
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
@@ -864,7 +1004,7 @@ index.js</p>
 
 </div>
 
-<div class="tabcontent typescript">
+<div class="tabcontent reactNative">
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
 <span class="k">import</span> <span class="nn">RemoteComponent</span> <span class="n">from</span> <span class="err">'</span><span class="n">telereso</span><span class="err">'</span><span class="p">;</span>
 

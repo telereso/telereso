@@ -103,3 +103,18 @@ task prepareRNChangeLog(type: Copy) {
     rename { file -> 'CHANGELOG.md' }
     expand(project: project, version: props.getProperty("RNVersionName"))
 }
+
+task prepareWebPackage(type: Copy) {
+    println("Web version : "+ props.getProperty("WebVersionName"))
+    from './templates/web/package.template.json'
+    into "./web/"
+    rename { file -> 'package.json' }
+    expand(project: project, version: props.getProperty("WebVersionName"))
+}
+
+task prepareWebChangeLog(type: Copy) {
+    from './templates/web/CHANGELOG.template.md'
+    into "./web/"
+    rename { file -> 'CHANGELOG.md' }
+    expand(project: project, version: props.getProperty("WebVersionName"))
+}

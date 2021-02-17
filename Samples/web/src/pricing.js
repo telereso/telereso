@@ -18,8 +18,6 @@ import i18n from './i18n';
 import logo from "./assets/images/img_1.png";
 import {RemoteImage} from "telereso-web";
 
-// import RemoteImage from "./remote-image";
-
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">

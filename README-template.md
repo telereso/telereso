@@ -2,7 +2,8 @@
 
 [![jitpack](https://jitpack.io/v/telereso/telereso.svg)](https://jitpack.io/#telereso/telereso)
 [![Pub](https://img.shields.io/pub/v/telereso.svg)](https://pub.dartlang.org/packages/telereso)
-[![npm](https://img.shields.io/npm/v/telereso.svg)](https://www.npmjs.com/package/telereso)
+[![npm react native](https://img.shields.io/npm/v/telereso.svg)](https://www.npmjs.com/package/telereso)
+[![npm web](https://img.shields.io/npm/v/telereso-web.svg)](https://www.npmjs.com/package/telereso-web)
 
 Table of contents:
 
@@ -50,6 +51,14 @@ dependencies:
 <td>
     <pre>
 npm install telereso
+</pre>
+    </td>
+</tr>
+<tr>
+<td><img src="doc/reactjs.png" alt="React"/></td>
+<td>
+    <pre>
+npm install telereso-web
 </pre>
     </td>
 </tr>
@@ -157,12 +166,13 @@ So it is a way to disable remote functionality.
 
 **Application Start**
 
-<div class="code-block kotlin java dart typescript">
+<div class="code-block kotlin java dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
-  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -224,7 +234,7 @@ class MyApp extends StatelessWidget {
 
 </div>
 
-<div class="tabcontent typescript">
+<div class="tabcontent reactNative">
 {% highlight kotlin %}
 
 ```kotlin
@@ -239,16 +249,51 @@ Telereso.init(i18n);
 {% endhighlight kotlin %}
 
 </div>
+<div class="tabcontent web">
+{% highlight kotlin %}
+
+```kotlin
+import App from "./App";
+
+import i18n from "./i18n";
+import {Telereso} from "telereso-web";
+import firebase from "firebase/app";
+
+// Initialize Firebase
+const firebaseConfig = {
+    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+};
+firebase.initializeApp(firebaseConfig);
+Telereso.init(i18n,firebase);
+
+ReactDOM.render(
+  <React.StrictMode>
+<App/>
+</React.StrictMode>,
+document.getElementById('root')
+);
+```
+{% endhighlight kotlin %}
+
+</div>
 
 </div>
 
 **Splash Screen**
 
-<div class="code-block kotlin java">
+<div class="code-block kotlin java reactNative web">
 
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
 
 <div class="tabcontent kotlin active">{% highlight kotlin %}
@@ -266,6 +311,7 @@ class SplashActivity : Activity {
 
 {% endhighlight kotlin %}
 </div>
+
 <div class="tabcontent java">
 {% highlight java %}
 
@@ -283,6 +329,65 @@ public class SplashActivity extends Activity {
 ```
 
 {% endhighlight java %}
+</div>
+
+<div class="tabcontent reactNative">{% highlight kotlin %}
+
+```kotlin
+import i18n from './i18n';
+import { Telereso } from 'telereso';
+
+export default class App extends React.Component {
+  state = {
+      splashFinished: false
+  }
+  constructor(props) {
+    super(props);
+    Telereso.suspendedInit(i18n).then(() => {
+      this.setState({
+          splashFinished: true
+      })
+    });
+  }
+
+  render() {
+    return (this.state.splashFinished ? <AppContainer /> : <Text>Loading...</Text>);
+  }
+}
+```
+
+{% endhighlight kotlin %}
+</div>
+
+<div class="tabcontent web">{% highlight kotlin %}
+
+```kotlin
+import i18n from "./i18n";
+import {Telereso} from "telereso-web";
+import firebase from "firebase/app";
+
+
+export default class App extends React.Component {
+
+  state = {
+      splashFinished: false
+  }
+
+  componentDidMount() {
+    Telereso.suspendedInit(i18n,firebase).then(() => {
+      this.setState({
+          splashFinished: true
+      })
+    });
+  }
+
+  render() {
+    return (this.state.splashFinished ? <Pricing/> : <label>Loading...</label>);
+  }
+}
+```
+
+{% endhighlight kotlin %}
 </div>
 
 </div>
@@ -346,12 +451,13 @@ which is
 This will make sure to use the remote version of the resource if found or default it to the original value
 
 **Strings**
-<div class="code-block kotlin java dart typescript">
+<div class="code-block kotlin java dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
-  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -389,7 +495,8 @@ Widget build(BuildContext context) {
 
 {% endhighlight java %}
 </div>
-<div class="tabcontent typescript">
+
+<div class="tabcontent reactNative">
 {% highlight kotlin %}
 
 ```kotlin
@@ -407,15 +514,36 @@ export default class MyComponent extends React.Component {
 {% endhighlight kotlin %}
 
 </div>
+
+<div class="tabcontent web">
+{% highlight kotlin %}
+
+```kotlin
+export default class MyComponent extends React.Component {
+  render() {
+    return (
+      <View>
+          <Label>{i18n.t('title_home')}</Lable>
+      </View>
+    );
+  }
+}
+```
+
+{% endhighlight kotlin %}
+
+</div>
+
 </div>
 
 **Drawables**
-<div class="code-block kotlin java dart typescript">
+<div class="code-block kotlin java dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
-  <button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
 
 <div class="tabcontent kotlin active">
@@ -451,7 +579,7 @@ Widget build(BuildContext context) {
 {% endhighlight dart %}
 </div>
 
-<div class="tabcontent typescript">
+<div class="tabcontent reactNative">
 {% highlight kotlin %}
 
 ```kotlin
@@ -471,6 +599,27 @@ export default class MyComponent extends React.Component {
 {% endhighlight kotlin %}
 
 </div>
+
+<div class="tabcontent web">
+{% highlight kotlin %}
+
+```kotlin
+import RemoteImage from 'telereso-web';
+import logo from "./assets/images/img.png";
+
+export default class MyComponent extends React.Component {
+  render() {
+    return (
+        <RemoteImage src={logo} />
+    );
+  }
+}
+```
+
+{% endhighlight kotlin %}
+
+</div>
+
 </div>
 
 #### Dynamic Resources || (out of the box)
@@ -577,12 +726,12 @@ _Notice the topic : **TELERESO_PUSH_RC** and data **TELERESO_CONFIG_STATE** has 
 **Client**
 
 In your android project add th following code in your `MyFirebaseMessagingService`:<br><br>
-<div class="code-block kotlin java dart typescript">
+<div class="code-block kotlin java dart reactNative">
 <div class="tab">  
 <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>  
 <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>  
 <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>  
-<button class="tablinks typescript" onclick="openTab(event, 'typescript')">TypeScript</button>  
+<button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>  
 </div>  
 <div class="tabcontent kotlin active">{% highlight kotlin %}
 
@@ -650,7 +799,7 @@ class _HomePageState extends RemoteState<_HomePage> {
 {% endhighlight dart %}
 </div>
 
-<div class="tabcontent typescript">{% highlight kotlin %}
+<div class="tabcontent reactNative">{% highlight kotlin %}
 
 ```kotlin
 import RemoteComponent from 'telereso';

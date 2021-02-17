@@ -1,7 +1,6 @@
 import fb from 'firebase/app';
 import 'firebase/remote-config';
 import 'firebase/messaging';
-import * as _ from "i18n-js";
 
 const TAG = 'TELERESO';
 const TAG_STRINGS = `${TAG}_STRINGS`;
@@ -20,7 +19,7 @@ let defaultLocal = "en";
 let stringsMap: { [locale: string]: { [key: string]: string } } = {};
 let drawableMap: { [key: string]: string } = {};
 
-let remoteChangesLisnters: { (): void; }[] = [];
+let remoteChangesListeners: { (): void; }[] = [];
 
 
 function log(log: string) {
@@ -46,7 +45,7 @@ function getStringsId(local: string) {
 //     return `${DRAWABLE}_${size}`;
 // }
 
-class TeleresosSingleton {
+class TeleresoSingleton {
 
     remoteConfig: fb.remoteConfig.RemoteConfig | undefined;
     i18n: any | undefined;
@@ -55,16 +54,16 @@ class TeleresosSingleton {
         this.remoteConfig = firebase.remoteConfig();
         this.i18n = i18n;
 
-        log("Telereso initilaizing...");
+        log("Telereso initializing...");
         currentLocal = i18n.currentLocale();
         currentLocal = currentLocal.split("-")[0];
 
         this.remoteConfig.activate().then(() => {
             this.initMap();
-            log("Telereso initilaized");
+            log("Telereso initialized");
         });
 
-        this.fetchResrouces();
+        this.fetchResources();
 
     }
 
@@ -72,7 +71,7 @@ class TeleresosSingleton {
         this.remoteConfig = firebase.remoteConfig();
         this.i18n = i18n;
 
-        log("Telereso initilaizing...");
+        log("Telereso initializing...");
 
         currentLocal = i18n.currentLocale();
         currentLocal = currentLocal.split("-")[0];
@@ -82,7 +81,7 @@ class TeleresosSingleton {
         await this.asyncInitMap();
 
 
-        log("Telereso initilaized");
+        log("Telereso initialized");
     }
 
     initMap() {
@@ -154,13 +153,13 @@ class TeleresosSingleton {
         // Image.prefetch("");
     }
 
-    async fetchResrouces() {
+    async fetchResources() {
         this.remoteConfig!.settings.minimumFetchIntervalMillis = 1
         let fetchedRemotely = await this.remoteConfig?.fetchAndActivate();
         if (fetchedRemotely) {
             log("Remote changed, updating...")
             await this.asyncInitMap();
-            remoteChangesLisnters.forEach(l => {
+            remoteChangesListeners.forEach(l => {
                 l()
             });
         }
@@ -192,19 +191,19 @@ class TeleresosSingleton {
 
     handleRemoteMessage(remoteMessage: any): boolean {
         if (remoteMessage['data'] && remoteMessage['data']['TELERESO_CONFIG_STATE']) {
-            this.fetchResrouces();
+            this.fetchResources();
             return true;
         }
         return false;
     }
 
-    addRemoteChangeListner(callback: { (): void; (): void; }) {
-        remoteChangesLisnters.push(callback);
+    addRemoteChangeListener(callback: { (): void; (): void; }) {
+        remoteChangesListeners.push(callback);
     }
 
-    removeRemoteChangeListner(callback: { (): void; (): void; }) {
-        remoteChangesLisnters = remoteChangesLisnters.filter(listener => listener !== callback);
+    removeRemoteChangeListener(callback: { (): void; (): void; }) {
+        remoteChangesListeners = remoteChangesListeners.filter(listener => listener !== callback);
     }
 }
 
-export const Telereso = new TeleresosSingleton();
+export const Telereso = new TeleresoSingleton();

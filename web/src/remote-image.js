@@ -7,18 +7,18 @@ export default class RemoteImage extends React.Component {
         imageUri: null
     }
 
-    remoteChangeListner = () => {
+    remoteChangeListener = () => {
         this.setState({
             imageUri: Telereso.getRemoteImageOrDefault(this.props.source)
         });
     }
 
     componentDidMount() {
-        Telereso.addRemoteChangeListner(this.remoteChangeListner);
+        Telereso.addRemoteChangeListener(this.remoteChangeListener);
     }
 
     componentWillUnmount() {
-        Telereso.removeRemoteChangeListner(this.remoteChangeListner);
+        Telereso.removeRemoteChangeListener(this.remoteChangeListener);
     }
 
     constructor(props) {
