@@ -144,6 +144,7 @@ Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Sa
 * [Android](https://github.com/telereso/telereso/tree/master/Samples/android)
 * [Flutter](https://github.com/telereso/telereso/tree/master/Samples/flutter)
 * [React Native](https://github.com/telereso/telereso/tree/master/Samples/react-native)
+* [Web](https://github.com/telereso/telereso/tree/master/Samples/web)
 
 ## Usage
 
