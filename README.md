@@ -28,13 +28,35 @@ project
 <tr>
 <td><img src="doc/gradle.png" alt="Gradle"/></td>
 <td>
-    <pre>implementation "io.telereso:telereso:0.0.4"</pre>
+    <pre>
+// At your root build.gradle
+allprojects {
+    repositories {
+        // add JitPack repository
+        maven { url 'https://jitpack.io' }
+        jcenter()
+        google()
+    }
+}</pre>
+    <pre>// At your app build.gradle
+implementation "io.telereso:telereso:0.0.5-alpha"</pre>
     </td>
 </tr>
 <tr>
 <td><img src="doc/gradle.png" alt="Gradle"/> (Kotlin DSL)</td>
 <td>
-    <pre>implementation("io.telereso:telereso:0.0.4")</pre>
+    <pre>
+// At your root build.gradle
+allprojects {
+    repositories {
+        // add JitPack repository
+        maven { url 'https://jitpack.io' } 
+        jcenter()
+        google()
+    }
+}</pre>
+    <pre>// At your app build.gradle
+implementation("io.telereso:telereso:0.0.5-alpha")</pre>
     </td>
 </tr>
 <tr>
@@ -63,6 +85,16 @@ npm install telereso-web
     </td>
 </tr>
 </table>
+
+## Samples & Examples
+
+Nothing feels better than a snippet of code ready to be copied!
+Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Samples)
+
+* [Android](https://github.com/telereso/telereso/tree/master/Samples/android)
+* [Flutter](https://github.com/telereso/telereso/tree/master/Samples/flutter)
+* [React Native](https://github.com/telereso/telereso/tree/master/Samples/react-native)
+* [Web](https://github.com/telereso/telereso/tree/master/Samples/web)
 
 ## Firebase
 
@@ -135,16 +167,6 @@ Since all our resources are indexed as params we could easily create experiments
 The following example show how we can test Drawer titles and see which one achieve higher conversion <br><br>
 ![img.png](doc/ab_testing.png)
 _This can be used for icons as well_
-
-## Samples & Examples
-
-Nothing feels better than a snippet of code ready to be copied!
-Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Samples)
-
-* [Android](https://github.com/telereso/telereso/tree/master/Samples/android)
-* [Flutter](https://github.com/telereso/telereso/tree/master/Samples/flutter)
-* [React Native](https://github.com/telereso/telereso/tree/master/Samples/react-native)
-* [Web](https://github.com/telereso/telereso/tree/master/Samples/web)
 
 ## Usage
 
@@ -304,7 +326,8 @@ class SplashActivity : Activity {
    private override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState);
       Telereso.init(this) {
-         // start MainActivity and finish()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
       }
    }
 }
@@ -322,8 +345,9 @@ public class SplashActivity extends Activity {
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       Telereso.init(this, () -> {
-         // start MainActivity and finish()
-         return null;
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+        return null;
       });
    }
 }

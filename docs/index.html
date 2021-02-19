@@ -19,9 +19,9 @@
           content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f38b1c">
-    <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.4-0.0.6-alpha">
+    <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.5-alpha-0.0.6-alpha">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assets/css/style.css?v=0.0.4-0.0.6-alpha">
+    <link rel="stylesheet" href="assets/css/style.css?v=0.0.5-alpha-0.0.6-alpha">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 
     <style>
@@ -216,6 +216,7 @@
       <li><a href="#dependencies" id="markdown-toc-dependencies">Dependencies</a></li>
     </ul>
   </li>
+  <li><a href="#samples--examples" id="markdown-toc-samples--examples">Samples &amp; Examples</a></li>
   <li><a href="#firebase" id="markdown-toc-firebase">Firebase</a>    <ul>
       <li><a href="#strings" id="markdown-toc-strings">Strings</a>        <ul>
           <li><a href="#steps" id="markdown-toc-steps">Steps</a></li>
@@ -232,7 +233,6 @@
       <li><a href="#ab-testing" id="markdown-toc-ab-testing">A/B Testing</a></li>
     </ul>
   </li>
-  <li><a href="#samples--examples" id="markdown-toc-samples--examples">Samples &amp; Examples</a></li>
   <li><a href="#usage" id="markdown-toc-usage">Usage</a>    <ul>
       <li><a href="#android" id="markdown-toc-android">Android</a>        <ul>
           <li><a href="#initialization" id="markdown-toc-initialization">Initialization</a></li>
@@ -271,13 +271,35 @@ project</p>
 <tr>
 <td><img src="doc/gradle.png" alt="Gradle" /></td>
 <td>
-    <pre>implementation "io.telereso:telereso:0.0.4"</pre>
+    <pre>
+// At your root build.gradle
+allprojects {
+    repositories {
+        // add JitPack repository
+        maven { url 'https://jitpack.io' }
+        jcenter()
+        google()
+    }
+}</pre>
+    <pre>// At your app build.gradle
+implementation "io.telereso:telereso:0.0.5-alpha"</pre>
     </td>
 </tr>
 <tr>
 <td><img src="doc/gradle.png" alt="Gradle" /> (Kotlin DSL)</td>
 <td>
-    <pre>implementation("io.telereso:telereso:0.0.4")</pre>
+    <pre>
+// At your root build.gradle
+allprojects {
+    repositories {
+        // add JitPack repository
+        maven { url 'https://jitpack.io' } 
+        jcenter()
+        google()
+    }
+}</pre>
+    <pre>// At your app build.gradle
+implementation("io.telereso:telereso:0.0.5-alpha")</pre>
     </td>
 </tr>
 <tr>
@@ -306,6 +328,18 @@ npm install telereso-web
     </td>
 </tr>
 </table>
+
+<h2 id="samples--examples">Samples &amp; Examples</h2>
+
+<p>Nothing feels better than a snippet of code ready to be copied!
+Check samples in this <a href="https://github.com/telereso/telereso/tree/master/Samples">repo</a></p>
+
+<ul>
+  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/android">Android</a></li>
+  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/flutter">Flutter</a></li>
+  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/react-native">React Native</a></li>
+  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/web">Web</a></li>
+</ul>
 
 <h2 id="firebase">Firebase</h2>
 
@@ -383,17 +417,6 @@ Since all our resources are indexed as params we could easily create experiments
 The following example show how we can test Drawer titles and see which one achieve higher conversion <br /><br />
 <img src="doc/ab_testing.png" alt="img.png" />
 <em>This can be used for icons as well</em></p>
-
-<h2 id="samples--examples">Samples &amp; Examples</h2>
-
-<p>Nothing feels better than a snippet of code ready to be copied!
-Check samples in this <a href="https://github.com/telereso/telereso/tree/master/Samples">repo</a></p>
-
-<ul>
-  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/android">Android</a></li>
-  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/flutter">Flutter</a></li>
-  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/react-native">React Native</a></li>
-</ul>
 
 <h2 id="usage">Usage</h2>
 
@@ -544,7 +567,8 @@ So it is a way to disable remote functionality.</p>
    <span class="k">private</span> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
       <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
       <span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
-         <span class="c1">// start MainActivity and finish()</span>
+        <span class="nf">startActivity</span><span class="p">(</span><span class="nc">Intent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nc">MainActivity</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">))</span>
+        <span class="nf">finish</span><span class="p">()</span>
       <span class="p">}</span>
    <span class="p">}</span>
 <span class="p">}</span>
@@ -560,8 +584,9 @@ So it is a way to disable remote functionality.</p>
    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
       <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
       <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span>
-         <span class="c1">// start MainActivity and finish()</span>
-         <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">startActivity</span><span class="o">(</span><span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="nc">MainActivity</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+        <span class="n">finish</span><span class="o">();</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
       <span class="o">});</span>
    <span class="o">}</span>
 <span class="o">}</span>
