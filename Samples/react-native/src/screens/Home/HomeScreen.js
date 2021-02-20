@@ -12,6 +12,7 @@ import { Telereso } from 'telereso';
 export default class HomeScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
+
     title: i18n.t('home'),
     headerLeft: (
       <MenuImage
@@ -28,16 +29,6 @@ export default class HomeScreen extends React.Component {
       if (Telereso.handleRemoteMessage(remoteMessage)) return;
       // your normal logic
     })
-  }
-
-  remoteChangeListner = () => {
-    this.setState();
-  }
-  componentDidMount() {
-    Telereso.addRemoteChangeListner(this.remoteChangeListner);
-  }
-  componentWillUnmount() {
-    Telereso.removeRemoteChangeListner(this.remoteChangeListner);
   }
 
   onPressRecipe = item => {

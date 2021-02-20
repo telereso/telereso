@@ -89,6 +89,16 @@ There are 2 options to initialization :
    ```
    For loading state you can choose your own splash.
 
+Full Initialization options
+```typescript
+Telereso
+    .disableLog() // disable general logs
+    .enableStringsLog() // enable logs for string setup for debuging locals and remote setup
+    .enableDrawableLog() // enable drabel logs for debuging keys and urls fetched from remote
+    .setRemoteConfigSettings({minimumFetchIntervalMillis: 36000}) // if you have custome remote config settings provide them here
+    .enableRealTimeChanges() // to enable real time changes 
+    .init(i18n)
+```
 Skipping the Initialization will not cause crashes, but the app will not be able to use the remote version of the
 resources, So it is a way to disable remote functionality.
 
@@ -140,5 +150,26 @@ In Remote config console make sure to use full path after the assets like `icons
 ```json
 {
   "icons/image.png": "<url>"
+}
+```
+
+### Realtime Change
+For Remote Config setup follow steps [found here](https://telereso.io/#realtime-changes)
+
+In your home component add the following :
+
+```typescript
+import messaging from '@react-native-firebase/messaging';
+import { Telereso } from 'telereso';
+
+export default class HomeScreen extends React.Component {
+
+  constructor(props) {
+    super(props);
+    messaging().onMessage(async remoteMessage => {
+      if (Telereso.handleRemoteMessage(remoteMessage)) return;
+      // your normal logic
+    })
+  }
 }
 ```

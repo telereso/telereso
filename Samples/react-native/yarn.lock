@@ -8133,10 +8133,10 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-telereso@^0.0.3-alpha:
-  version "0.0.3-alpha"
-  resolved "https://registry.yarnpkg.com/telereso/-/telereso-0.0.3-alpha.tgz#0f2236097d5adc735bc8ec50cc5d600ebb91e64b"
-  integrity sha512-vF4AuVBTQZpbYWbVO4q6jAIfFatJ+BWpPo5T024mSsr+Z1h/yQOKHmMeffnjqBaCmVEKQutuViA3QTB+828Jnw==
+telereso@^0.0.5-alpha:
+  version "0.0.5-alpha"
+  resolved "https://registry.yarnpkg.com/telereso/-/telereso-0.0.5-alpha.tgz#8de95e0d954625f904cfc4b6a5ece9c891239b50"
+  integrity sha512-coQcy1u5mpWGaTEGQ7gt1wLQK/3FDyX24AXNhJPXVnEbXvlAw8PddTnSE67P4EPnGDjJiq8QwqgyMF58IME8Sg==
   dependencies:
     "@react-native-firebase/app" "^10.6.4"
     "@react-native-firebase/messaging" "^10.6.4"

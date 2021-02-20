@@ -6,7 +6,7 @@ i18n.translations = {
      home: 'Home',
      categories:'CATEGORIES',
      drawer_categories:'CATEGORIES',
-     drawer_categories:'Search',
+     drawer_search:'Search',
  },
   fr: { home: 'Home' },
 };
@@ -15,4 +15,4 @@ i18n.locale = Localization.locale;
 i18n.fallbacks =true;
 
 
-export default i18n; 
+export default i18n;

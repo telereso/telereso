@@ -7,12 +7,12 @@ export default class RemoteComponent extends React.Component {
     remoteChangeListner = () => {
         this.setState();
     }
-    
+
     componentDidMount() {
-        Telereso.addRemoteChangeListner(this.remoteChangeListner);
+        Telereso.addRemoteChangeListener(this.remoteChangeListner);
     }
     componentWillUnmount() {
-        Telereso.removeRemoteChangeListner(this.remoteChangeListner);
+        Telereso.removeRemoteChangeListener(this.remoteChangeListner);
     }
 
 }

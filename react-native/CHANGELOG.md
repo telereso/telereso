@@ -1,3 +1,11 @@
+## [0.0.6-alpha]
+
+* enhance read me
+
+## [0.0.5-alpha]
+
+* add a builder to Telerso
+
 ## [0.0.4-alpha]
 
 * enhance README

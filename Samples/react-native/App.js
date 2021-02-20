@@ -11,7 +11,13 @@ export default class App extends React.Component {
   }
   constructor(props) {
     super(props);
-    Telereso.suspendedInit(i18n).then(() => {
+    Telereso
+        .disableLog()
+        .enableStringsLog()
+        .enableDrawableLog()
+        .setRemoteConfigSettings({minimumFetchIntervalMillis: 36000})
+        .enableRealTimeChanges()
+        .suspendedInit(i18n).then(() => {
       this.setState({
         splashFinished: true
       })
@@ -23,8 +29,5 @@ export default class App extends React.Component {
   }
 }
 
-console.log(Telereso);
 //Telereso.init(i18n);
-Telereso.subscriptToRemoteChanges();
-
 

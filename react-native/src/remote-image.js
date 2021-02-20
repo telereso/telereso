@@ -15,10 +15,10 @@ export default class RemoteImage extends React.Component {
     }
 
     componentDidMount() {
-        Telereso.addRemoteChangeListner(this.remoteChangeListner);
+        Telereso.addRemoteChangeListener(this.remoteChangeListner);
     }
     componentWillUnmount() {
-        Telereso.removeRemoteChangeListner(this.remoteChangeListner);
+        Telereso.removeRemoteChangeListener(this.remoteChangeListner);
     }
 
     constructor(props) {
