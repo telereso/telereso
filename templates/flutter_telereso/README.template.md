@@ -50,6 +50,34 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+Full initialization options :
+
+```dart
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Telereso.instance
+        .disableLog() // disable general and main logs
+        .enableDrawableLog() // allow drawable logs so you can debug your keys and fetched values
+        .enalbeStringsLog() // allow strings logs so you can debug your locals , keys and fetched values
+        .setRemoteConfigSettings(RemoteConfigSettings()) // if you have custom Remote Config settings pass them here
+        .setRemoteExpiration(const Duration(seconds: 1)) // provide your custom ducation , by defualt expiration will 12 hours, if reale time changes was enabled it will be 1 sec 
+        .enalbeRealTimeChanges() // enable real time changes while developing
+        .init();
+    return MaterialApp();
+  }
+}
+```
+
+
 Skipping the Initialization will not cause crashes, but the app will not be able to use the remote version of the
 resources, So it is a way to disable remote functionality.
 
@@ -240,4 +268,65 @@ In Remote config console make sure to use full path `assets/icons/image.png` as 
    "assets/icons/image.png": "<url>",
    "assets/icons/image2.png": "<url2>"
 }
+```
+
+### Realtime changes
+
+For Remote Config setup follow steps [found here](https://telereso.io/#realtime-changes)
+
+At your main app stateful widget (convert if needed) do the following changes :
+* replace `StatefulWidget` with `RemoteState`
+* add `firebaseMessaging` configurations
+
+_myBackgroundMessageHandler_ is not needed for `Telereso`
+
+```dart
+class HomePage extends StatefulWidget {
+  const HomePage({
+    Key key
+  }) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends RemoteState<HomePage>
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+  static Future<dynamic> myBackgroundMessageHandler(
+      Map<String, dynamic> message) async {
+    // put your normal logic
+    if (message.containsKey('data')) {
+      // Handle data message
+      final dynamic data = message['data'];
+    }
+
+    if (message.containsKey('notification')) {
+      // Handle notification message
+      final dynamic notification = message['notification'];
+    }
+
+    // Or do other work.
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (message) async {
+        if (await Telereso.instance.handleRemoteMessage(message)) return;
+        // put your normal logic
+      },
+      onBackgroundMessage: myBackgroundMessageHandler,
+      onLaunch: (message) async {},
+      onResume: (message) async {},
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(....);
+  }
+}
+
 ```

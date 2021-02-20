@@ -1,6 +1,6 @@
 name: telereso_generator
 description: Genrate wrapper for your Intl implemntation .
-version: 0.0.6-alpha
+version: 0.0.7-alpha
 homepage: https://telereso.io?utm_source=pub-dev&utm_medium=package-generator-home&utm_campaign=normal
 repository: https://github.com/telereso/telereso
 environment:
@@ -9,7 +9,7 @@ dependencies:
   analyzer: ^0.41.2
   build: ^1.6.1
   source_gen: ^0.9.10+1
-  telereso: ^0.0.6-alpha
+  telereso: ^0.0.7-alpha
 
 dev_dependencies:
   test: ^1.15.7

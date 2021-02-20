@@ -15,24 +15,36 @@ class Telereso {
   static Telereso get instance => _instance;
 
   List<String> supportedLocals = [];
-  Map<String, Map<String, dynamic>> drawableMap = {DRAWABLE: {}};
+  Map<String, Map<String, dynamic>> _drawableMap = {DRAWABLE: {}};
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   RemoteConfig _remoteConfig;
   Set<Function> _remoteChangeListeners = Set();
-  String defaultLocal = "en";
+  String _defaultLocal = "en";
 
-  bool stringLogEnabled = true;
-  bool drawableLogEnabled = true;
+  bool _isLogEnabled = true;
+  bool _isStringLogEnabled = false;
+
+  get isStringLogEnabled {
+    return _isStringLogEnabled;
+  }
+
+  bool _isDrawableLogEnabled = false;
+  bool _isRealTimeChangesEnalbed = false;
+
+  RemoteConfigSettings _remoteConfigSettings = null;
+  Duration _remoteExpiration = null;
 
   init() async {
-    print("$TAG: Initializing....");
-    supportedLocals = [defaultLocal];
+    _log("Initializing....");
+    supportedLocals = [_defaultLocal];
     _remoteConfig = await _setupRemoteConfig();
 
     _initMaps();
     _fetchResources();
-    print("$TAG: Initialized!");
+    if (_isRealTimeChangesEnalbed)
+      _subscribeToChanges();
+    _log("Initialized!");
   }
 
   Future<void> asyncInit() async {
@@ -52,7 +64,7 @@ class Telereso {
     _remoteChangeListeners.add(listener);
   }
 
-  void subscribeToChanges() {
+  void _subscribeToChanges() {
     _firebaseMessaging.subscribeToTopic('TELERESO_PUSH_RC');
   }
 
@@ -61,31 +73,67 @@ class Telereso {
         message.isNotEmpty &&
         message.containsKey('data') &&
         message['data']['TELERESO_CONFIG_STATE'] != null) {
-      print("$TAG: Remote updated!");
-      _fetchResources();
+      _log("Remote updated!");
+      if (_isRealTimeChangesEnalbed)
+        _fetchResources();
       return true;
     }
     return false;
   }
 
   String getRemoteImage(String key) {
-    var url = drawableMap[DRAWABLE][key];
+    _logDrawable("********************** $key **********************");
 
+    var url = _drawableMap[DRAWABLE][key];
+
+    _logDrawable("url:$url");
+    _logDrawable("***********************************************************");
     if (url == null || url.isEmpty) {
       return null;
     }
     return url;
   }
 
+  Telereso enalbeStringsLog() {
+    _isStringLogEnabled = true;
+    return this;
+  }
+
+  Telereso enableDrawableLog() {
+    _isDrawableLogEnabled = true;
+    return this;
+  }
+
+  Telereso disableLog() {
+    _isLogEnabled = false;
+    return this;
+  }
+
+  Telereso enalbeRealTimeChanges() {
+    _isRealTimeChangesEnalbed = true;
+    return this;
+  }
+
+  Telereso setRemoteConfigSettings(RemoteConfigSettings remoteConfigSettings) {
+    _remoteConfigSettings = remoteConfigSettings;
+    return this;
+  }
+
+  Telereso setRemoteExpiration(Duration duration) {
+    _remoteExpiration = duration;
+    return this;
+  }
+
   Future<RemoteConfig> _setupRemoteConfig() async {
     final RemoteConfig remoteConfig = await RemoteConfig.instance;
-    remoteConfig.setConfigSettings(RemoteConfigSettings());
+    remoteConfig.setConfigSettings(
+        _remoteConfigSettings ?? RemoteConfigSettings());
     return remoteConfig;
   }
 
   _initMaps() {
     if (_remoteConfig == null) return;
-    supportedLocals = [defaultLocal];
+    supportedLocals = [_defaultLocal];
     _remoteConfig.getAll().forEach((key, value) {
       if (key.startsWith("${STRINGS}_")) {
         supportedLocals.add(key.split("_")[1]);
@@ -94,12 +142,12 @@ class Telereso {
 
     String defaultDrawableJson = _remoteConfig.getString(DRAWABLE);
     if (defaultDrawableJson.isEmpty) {
-      logDrawable("$TAG_DRAWABLE: default $DRAWABLE was empty");
+      _logDrawable("Default $DRAWABLE was empty");
       defaultDrawableJson = "{}";
     } else {
-      logDrawable("$TAG_DRAWABLE: default $DRAWABLE initialized");
+      _logDrawable("Default $DRAWABLE initialized");
     }
-    drawableMap[DRAWABLE] =
+    _drawableMap[DRAWABLE] =
         json.decode(defaultDrawableJson);
   }
 
@@ -109,10 +157,12 @@ class Telereso {
 
   void _fetchResources() async {
     await _remoteConfig.fetch(
-        expiration: true ? Duration(seconds: 1) : Duration(hours: 12));
+        expiration: _isRealTimeChangesEnalbed
+            ? Duration(seconds: 1)
+            : _remoteExpiration ?? Duration(hours: 12));
 
     if (await _remoteConfig.activateFetched()) {
-      print("$TAG: Remote has changes");
+      _log("Remote has changes");
       await _asyncInitMaps();
 
       [..._remoteChangeListeners].forEach((l) {
@@ -122,8 +172,14 @@ class Telereso {
   }
 }
 
-logDrawable(String log) {
-  if (Telereso.instance.drawableLogEnabled) {
-    print(log);
+_log(String log) {
+  if (Telereso.instance._isLogEnabled) {
+    print("$TAG: $log");
+  }
+}
+
+_logDrawable(String log) {
+  if (Telereso.instance._isDrawableLogEnabled) {
+    print("$TAG_DRAWABLE: $log");
   }
 }

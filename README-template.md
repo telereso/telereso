@@ -707,6 +707,7 @@ implantation with some extra steps.<br>
 _We recommend enabling this while in development mode only_
 
 **Cloud function**
+
 Create a cloud function to be triggered when updating remote config, you can follow [this setup doc](https://firebase.google.com/docs/remote-config/propagate-updates-realtime) to do so,<br>
 _PS: only follow the cloud function part_ <br><br>
 package.json<br>

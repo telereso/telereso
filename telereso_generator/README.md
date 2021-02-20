@@ -10,7 +10,7 @@ Builder for [Telereso](https://pub.dev/packages/telereso) to support l10n locali
     ```yaml
      dev_dependencies:
        build_runner: ^1.0.0
-       telereso_generator: ^0.0.6-alpha
+       telereso_generator: ^0.0.7-alpha
     ```
 
 2. Run flutter `pub get`.

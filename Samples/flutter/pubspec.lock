@@ -743,17 +743,17 @@ packages:
   telereso:
     dependency: "direct main"
     description:
-      path: "../../flutter_telereso"
-      relative: true
-    source: path
-    version: "0.0.1-alpha"
+      name: telereso
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.7-alpha"
   telereso_generator:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
-      path: "../../telereso_generator"
-      relative: true
-    source: path
-    version: "0.0.1-alpha"
+      name: telereso_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.7-alpha"
   term_glyph:
     dependency: transitive
     description:

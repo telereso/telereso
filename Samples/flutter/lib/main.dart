@@ -36,7 +36,9 @@ class GalleryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Telereso.instance.init();
+    Telereso.instance
+        .enalbeRealTimeChanges()
+        .init();
     return ModelBinding(
       initialModel: GalleryOptions(
         themeMode: ThemeMode.system,

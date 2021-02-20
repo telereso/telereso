@@ -1,5 +1,9 @@
 ## [$version]
 
+* add a builder to `Telereso`
+
+## [0.0.5-alpha]
+
 * enhance README
 
 ## [0.0.4-alpha]

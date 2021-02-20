@@ -1,4 +1,8 @@
-## [0.0.6-alpha]
+## [0.0.7-alpha]
+
+* add a builder to `Telereso`
+
+## [0.0.5-alpha]
 
 * enhance README
 

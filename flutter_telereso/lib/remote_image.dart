@@ -30,7 +30,6 @@ class RemoteImage {
     int cacheWidth,
     int cacheHeight,
   }) {
-    print("$TAG_DRAWABLE: reqeust image $name");
     final defautImage = Image.asset(name,
         key: key,
         bundle: bundle,

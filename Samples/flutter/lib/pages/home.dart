@@ -406,7 +406,6 @@ class _AnimatedHomePageState extends RemoteState<_AnimatedHomePage>
       onLaunch: (message) async {},
       onResume: (message) async {},
     );
-    Telereso.instance.subscribeToChanges();
   }
 
   @override

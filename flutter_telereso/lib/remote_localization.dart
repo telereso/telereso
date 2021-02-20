@@ -36,7 +36,7 @@ class BasicRemoteLocalizations {
     final localId = _getStringsId(localeName);
 
     if (_remoteConfig == null) {
-      log("$TAG_STRINGS: remoteConfig was null");
+      _logStrings("RemoteConfig was null");
       _stringsMap[STRINGS] = {};
       _stringsMap[localId] = {};
     }
@@ -44,10 +44,10 @@ class BasicRemoteLocalizations {
     // Load the language JSON file from the "lang" folder
     String defaultJson = _remoteConfig.getString(STRINGS);
     if (defaultJson.isEmpty) {
-      log("$TAG_STRINGS: default $STRINGS was empty");
+      _logStrings("$TAG_STRINGS: default $STRINGS was empty");
       defaultJson = "{}";
     } else {
-      log("$TAG_STRINGS: default $STRINGS initialized");
+      _logStrings("Default $STRINGS initialized");
     }
 
     _stringsMap[STRINGS] = json.decode(defaultJson);
@@ -55,10 +55,10 @@ class BasicRemoteLocalizations {
     String localJson = _remoteConfig.getString(localId);
 
     if (localJson.isEmpty) {
-      log("$TAG_STRINGS: local $localId was empty");
+      _logStrings("local $localId was empty");
       localJson = "{}";
     } else {
-      log("$TAG_STRINGS: local $localId initialized");
+      _logStrings("local $localId initialized");
     }
     _stringsMap[localId] = json.decode(localJson);
 
@@ -70,13 +70,13 @@ class BasicRemoteLocalizations {
     var value = _stringsMap[localId][key];
 
     if (value == null || value.isEmpty) {
-      log("$TAG_STRINGS: $key not found in $localId");
+      _logStrings("Not found in $localId");
       //   recordException(
       //       Exception("no translation for $key in ${locale.languageCode}"));
       value = _stringsMap[STRINGS][key];
     }
     if (value == null || value.isEmpty) {
-      log("$TAG_STRINGS: $key not found in $STRINGS");
+      _logStrings("Not found in $STRINGS");
       // recordException(
       //     Exception("no translation for $key at defualt $defaultLocal}"));
       return null;
@@ -87,13 +87,15 @@ class BasicRemoteLocalizations {
 
   // This method will be called from every widget which needs a localized text
   String translate(String key, [List<String> args]) {
+    _logStrings("********************** $key **********************");
     var value = getRemoteValue(key);
 
     if (value == null || value.isEmpty) {
       return null;
     }
 
-    log("$TAG_STRINGS: key $key value: $value");
+    _logStrings("value:$value");
+    _logStrings("***********************************************************");
     if (args == null) {
       return value;
     }
@@ -101,13 +103,15 @@ class BasicRemoteLocalizations {
   }
 
   String translateOrDefault(String key, String def, {List<String> args}) {
+    _logStrings("********************** $key **********************");
     var value = getRemoteValue(key);
 
     if (value == null || value.isEmpty) {
       value = def;
     }
 
-    log("$TAG_STRINGS: key $key value: $value default: $def");
+    _logStrings("default:$def value:$value ");
+    _logStrings("***********************************************************");
     if (args == null) {
       return value;
     }
@@ -153,8 +157,8 @@ extension DefaultMap<K, V> on Map<K, V> {
 }
 
 
-log(String log) {
-  if (Telereso.instance.stringLogEnabled) {
-    print(log);
+_logStrings(String log) {
+  if (Telereso.instance.isStringLogEnabled) {
+    print("$TAG_STRINGS $log");
   }
 }
