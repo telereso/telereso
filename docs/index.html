@@ -234,15 +234,16 @@
     </ul>
   </li>
   <li><a href="#usage" id="markdown-toc-usage">Usage</a>    <ul>
-      <li><a href="#android" id="markdown-toc-android">Android</a>        <ul>
-          <li><a href="#initialization" id="markdown-toc-initialization">Initialization</a></li>
-          <li><a href="#add-remoteviewinflater" id="markdown-toc-add-remoteviewinflater">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code></a></li>
-          <li><a href="#dynamic-resources" id="markdown-toc-dynamic-resources">Dynamic Resources</a></li>
-          <li><a href="#dynamic-resources--out-of-the-box" id="markdown-toc-dynamic-resources--out-of-the-box">Dynamic Resources || (out of the box)</a></li>
-          <li><a href="#realtime-changes" id="markdown-toc-realtime-changes">Realtime Changes</a></li>
+      <li><a href="#platforms" id="markdown-toc-platforms">Platforms</a></li>
+      <li><a href="#initialization" id="markdown-toc-initialization">Initialization</a>        <ul>
+          <li><a href="#add-remoteviewinflater-android" id="markdown-toc-add-remoteviewinflater-android">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code> (Android)</a></li>
         </ul>
       </li>
-      <li><a href="#flutter" id="markdown-toc-flutter">Flutter</a></li>
+      <li><a href="#dynamic-resources" id="markdown-toc-dynamic-resources">Dynamic Resources</a>        <ul>
+          <li><a href="#dynamic-resources-out-of-the-box-only-android" id="markdown-toc-dynamic-resources-out-of-the-box-only-android">Dynamic Resources (out of the box, only android)</a></li>
+        </ul>
+      </li>
+      <li><a href="#realtime-changes" id="markdown-toc-realtime-changes">Realtime Changes</a></li>
     </ul>
   </li>
   <li><a href="#telereso-api" id="markdown-toc-telereso-api">Telereso API</a>    <ul>
@@ -424,14 +425,32 @@ The following example show how we can test Drawer titles and see which one achie
 with <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> ,<br />
 Wither you are starting a fresh new application, or an already in production application with large code base</p>
 
-<h3 id="android">Android</h3>
+<h3 id="platforms">Platforms</h3>
+<ul>
+  <li>
+    <p><strong>Android</strong><br />
+Follow docs <a href="https://telereso.io/#initialization">here in this page</a></p>
+  </li>
+  <li>
+    <p><strong>Flutter</strong><br />
+<a href="https://pub.dev/packages/telereso#telereso">Check package docs</a></p>
+  </li>
+  <li>
+    <p><strong>React Native</strong><br />
+<a href="https://www.npmjs.com/package/telereso">Check package docs</a></p>
+  </li>
+  <li>
+    <p><strong>Web</strong><br />
+<a href="https://www.npmjs.com/package/telereso-web">Check package docs</a></p>
+  </li>
+</ul>
 
-<h4 id="initialization">Initialization</h4>
+<h3 id="initialization">Initialization</h3>
 
-<p>Initialization will not make api calls it just to set up resources,<br />
+<p>Initialization By default will not make api calls it just to set up resources,<br />
 If your app has a splash screen it would be a perfect place to do this, or on your custom application class<br />
 The <code class="language-plaintext highlighter-rouge">init</code> function has a call back you can listen to,<br />
-Or you could use the suspended version <code class="language-plaintext highlighter-rouge">suspendedInit</code> if you’re a coroutines’ lover!.</p>
+Or you could use the suspended version <code class="language-plaintext highlighter-rouge">suspendedInit</code> to make sure your app fetch the latest remote changes.</p>
 
 <p>Skipping the Initialization will not cause crashes, but the app will not be able to use the remote version of the
 resources,<br />
@@ -651,7 +670,7 @@ So it is a way to disable remote functionality.</p>
 
 </div>
 
-<h4 id="add-remoteviewinflater">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code></h4>
+<h4 id="add-remoteviewinflater-android">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code> (Android)</h4>
 
 <p>This inflater will make sure all the android application views that display strings or images have the remote
 functionality,<br />
@@ -700,7 +719,7 @@ the <code class="language-plaintext highlighter-rouge">viewInflaterClass</code><
 <span class="nt">&lt;/style&gt;</span>
 </code></pre></div></div>
 
-<h4 id="dynamic-resources">Dynamic Resources</h4>
+<h3 id="dynamic-resources">Dynamic Resources</h3>
 
 <p>Sometimes we set the resrouces programmatically depending on a view state like so
 <code class="language-plaintext highlighter-rouge">title = getString(R.strings.title_home)</code>,<br />
@@ -861,7 +880,7 @@ This will make sure to use the remote version of the resource if found or defaul
 
 </div>
 
-<h4 id="dynamic-resources--out-of-the-box">Dynamic Resources || (out of the box)</h4>
+<h4 id="dynamic-resources-out-of-the-box-only-android">Dynamic Resources (out of the box, only android)</h4>
 
 <p>If you have a large code base and have a lot of <code class="language-plaintext highlighter-rouge">getString()</code> and <code class="language-plaintext highlighter-rouge">setImageResource</code>, <br />
 And replacing them with a remote version is not an option,<br />
@@ -908,7 +927,7 @@ this issue</p>
 </div>
 </div>
 
-<h4 id="realtime-changes">Realtime Changes</h4>
+<h3 id="realtime-changes">Realtime Changes</h3>
 
 <p>Who doesn’t love to see changes happening in real time ?<br />
 <a href="https://telereso.io?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=normal">Telereso</a> support this optional
@@ -1048,10 +1067,6 @@ index.js</p>
 
 </div>
 </div>
-
-<h3 id="flutter">Flutter</h3>
-
-<p><a href="https://pub.dev/packages/telereso#telereso">Check package docs</a></p>
 
 <h2 id="telereso-api">Telereso API</h2>
 

@@ -9,7 +9,7 @@ Table of contents:
 
 * auto-gen TOC:
 {:toc}
-
+  
 ## Installation
 
 [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) depends on Firebase to
@@ -174,14 +174,25 @@ There are different scenarios to work
 with [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) ,<br>
 Wither you are starting a fresh new application, or an already in production application with large code base
 
-### Android
+### Platforms
+* **Android**  
+  Follow docs [here in this page](https://telereso.io/#initialization)
 
-#### Initialization
+* **Flutter**  
+  [Check package docs](https://pub.dev/packages/telereso#telereso)
+  
+* **React Native**  
+  [Check package docs](https://www.npmjs.com/package/telereso)
 
-Initialization will not make api calls it just to set up resources,<br>
+* **Web**  
+  [Check package docs](https://www.npmjs.com/package/telereso-web)
+
+### Initialization
+
+Initialization By default will not make api calls it just to set up resources,<br>
 If your app has a splash screen it would be a perfect place to do this, or on your custom application class<br>
 The `init` function has a call back you can listen to,<br>
-Or you could use the suspended version `suspendedInit` if you're a coroutines' lover!.
+Or you could use the suspended version `suspendedInit` to make sure your app fetch the latest remote changes.
 
 Skipping the Initialization will not cause crashes, but the app will not be able to use the remote version of the
 resources,<br>
@@ -417,7 +428,7 @@ export default class App extends React.Component {
 
 </div>
 
-#### Add `RemoteViewInflater`
+#### Add `RemoteViewInflater` (Android)
 
 This inflater will make sure all the android application views that display strings or images have the remote
 functionality,<br>
@@ -466,7 +477,7 @@ if your activity uses a custom theme add `RemoteViewInflater` to that theme
 </style>
 ```
 
-#### Dynamic Resources
+### Dynamic Resources
 
 Sometimes we set the resrouces programmatically depending on a view state like so
 `title = getString(R.strings.title_home)`,<br>
@@ -647,7 +658,7 @@ export default class MyComponent extends React.Component {
 
 </div>
 
-#### Dynamic Resources || (out of the box)
+#### Dynamic Resources (out of the box, only android)
 
 If you have a large code base and have a lot of `getString()` and `setImageResource`, <br>
 And replacing them with a remote version is not an option,<br>
@@ -698,7 +709,7 @@ public class MainActivity extends Activity {
 </div>
 </div>
 
-#### Realtime Changes
+### Realtime Changes
 
 Who doesn't love to see changes happening in real time ?<br>
 [Telereso](https://telereso.io?utm_source=github&utm_medium=readme&utm_campaign=normal) support this optional
@@ -844,10 +855,6 @@ export default class MyComponent extends RemoteComponent {
 
 </div>
 </div>
-
-### Flutter
-
-[Check package docs](https://pub.dev/packages/telereso#telereso)
 
 ## Telereso API
 
