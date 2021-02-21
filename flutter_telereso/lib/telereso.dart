@@ -145,8 +145,7 @@ class Telereso {
         message.containsKey('data') &&
         message['data']['TELERESO_CONFIG_STATE'] != null) {
       _log("Remote updated!");
-      if (_isRealTimeChangesEnalbed)
-        _fetchResources();
+      if (_isRealTimeChangesEnalbed) _fetchResources();
       return true;
     }
     return false;
@@ -207,8 +206,8 @@ class Telereso {
 
   Future<RemoteConfig> _setupRemoteConfig() async {
     final RemoteConfig remoteConfig = await RemoteConfig.instance;
-    remoteConfig.setConfigSettings(
-        _remoteConfigSettings ?? RemoteConfigSettings());
+    remoteConfig
+        .setConfigSettings(_remoteConfigSettings ?? RemoteConfigSettings());
     return remoteConfig;
   }
 
@@ -228,8 +227,7 @@ class Telereso {
     } else {
       _logDrawable("Default $DRAWABLE initialized");
     }
-    _drawableMap[DRAWABLE] =
-        json.decode(defaultDrawableJson);
+    _drawableMap[DRAWABLE] = json.decode(defaultDrawableJson);
   }
 
   Future<void> _asyncInitMaps() {
