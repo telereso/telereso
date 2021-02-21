@@ -101,6 +101,15 @@ There are 2 options to initialization :
    ```
    For loading state you can choose your own splash.
 
+Full initialization options:
+```typescript
+Telereso
+   .disableLog() // disable genral and main logs
+   .enableStringsLog() // enalbe initialization strings logs to debug current local and remote fetch
+   .enableDrawableLog() // enable drawable logs
+   .enableRealTimeChanges() // enable real time changes , by default remote cache is 12 hours , once enalbed will be 1 sec
+   .init(i18n,firebase);
+```
 Skipping the Initialization will not cause crashes, but the app will not be able to use the remote version of the
 resources, So it is a way to disable remote functionality.
 

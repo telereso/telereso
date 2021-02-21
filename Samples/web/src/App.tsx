@@ -13,7 +13,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        Telereso.suspendedInit(i18n,firebase).then(() => {
+        Telereso.enableRealTimeChanges().suspendedInit(i18n,firebase).then(() => {
             this.setState({
                 splashFinished: true
             })

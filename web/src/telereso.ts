@@ -9,8 +9,10 @@ const STRINGS = "strings";
 const DRAWABLE = "drawable";
 
 let isLogEnabled = true;
-let isStringLogEnabled = true;
-let isDrableLogEnabled = true;
+let isStringLogEnabled = false;
+let isDrawableLogEnabled = false;
+let isRealTimeChangesEnabled = false;
+let remoteExpiration = undefined;
 
 
 let currentLocal = "en";
@@ -33,7 +35,7 @@ function logStrings(log: string) {
 }
 
 function logDrawable(log: string) {
-    if (isDrableLogEnabled)
+    if (isDrawableLogEnabled)
         console.log(`${TAG_DRAWABLE}: ` + log);
 }
 
@@ -76,7 +78,10 @@ class TeleresoSingleton {
         currentLocal = i18n.currentLocale();
         currentLocal = currentLocal.split("-")[0];
 
-        this.remoteConfig!.settings.minimumFetchIntervalMillis = 1
+        if (isRealTimeChangesEnabled)
+            this.remoteConfig!.settings.minimumFetchIntervalMillis = 1
+        else if (remoteExpiration)
+            this.remoteConfig!.settings.minimumFetchIntervalMillis = remoteExpiration
         await this.remoteConfig!.fetchAndActivate();
         await this.asyncInitMap();
 
@@ -154,7 +159,10 @@ class TeleresoSingleton {
     }
 
     async fetchResources() {
-        this.remoteConfig!.settings.minimumFetchIntervalMillis = 1
+        if (isRealTimeChangesEnabled)
+            this.remoteConfig!.settings.minimumFetchIntervalMillis = 1
+        else if (remoteExpiration)
+            this.remoteConfig!.settings.minimumFetchIntervalMillis = remoteExpiration
         let fetchedRemotely = await this.remoteConfig?.fetchAndActivate();
         if (fetchedRemotely) {
             log("Remote changed, updating...")
@@ -203,6 +211,31 @@ class TeleresoSingleton {
 
     removeRemoteChangeListener(callback: { (): void; (): void; }) {
         remoteChangesListeners = remoteChangesListeners.filter(listener => listener !== callback);
+    }
+
+    disableLog() {
+        isLogEnabled = false
+        return Telereso
+    }
+
+    enableStringsLog() {
+        isStringLogEnabled = true
+        return Telereso
+    }
+
+    enableDrawableLog() {
+        isDrawableLogEnabled = true
+        return Telereso
+    }
+
+    enableRealTimeChanges() {
+        isRealTimeChangesEnabled = true
+        return Telereso
+    }
+
+    setRemoteExpiration(milliseconds) {
+        remoteExpiration = milliseconds;
+        return Telereso;
     }
 }
 

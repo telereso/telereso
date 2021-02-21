@@ -1,6 +1,6 @@
 {
   "name": "telereso-web",
-  "version": "0.0.6-alpha",
+  "version": "0.0.7-alpha",
   "description": "Control your resources remotely",
   "homepage": "https://telereso.io?utm_source=npm&utm_medium=telereso-web&utm_campaign=normal",
   "repository": "https://github.com/telereso/telereso",
