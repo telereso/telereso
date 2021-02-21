@@ -1,6 +1,6 @@
-## [0.0.7-alpha]
+## [0.0.9-alpha]
 
-* enhance README
+* remove annotation builder
 
 ## [0.0.4-alpha]
 

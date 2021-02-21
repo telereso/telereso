@@ -746,14 +746,14 @@ packages:
       name: telereso
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.7-alpha"
+    version: "0.0.9-alpha"
   telereso_generator:
     dependency: "direct dev"
     description:
       name: telereso_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.7-alpha"
+    version: "0.0.9-alpha"
   term_glyph:
     dependency: transitive
     description:

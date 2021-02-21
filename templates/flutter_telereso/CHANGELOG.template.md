@@ -1,5 +1,9 @@
 ## [$version]
 
+* add example
+
+## [0.0.7-alpha]
+
 * add a builder to `Telereso`
 
 ## [0.0.5-alpha]

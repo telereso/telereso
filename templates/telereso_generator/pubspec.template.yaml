@@ -1,5 +1,5 @@
 name: telereso_generator
-description: Genrate wrapper for your Intl implemntation .
+description: Telereso implemntation to generate wrapper for your Intl implemntation .
 version: ${version}
 homepage: https://telereso.io?utm_source=pub-dev&utm_medium=package-generator-home&utm_campaign=normal
 repository: https://github.com/telereso/telereso

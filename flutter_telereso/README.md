@@ -19,7 +19,7 @@ then just add `Telereso` dependency to your project
 
 ```yaml
 dependencies:
-  telereso: ^0.0.7-alpha
+  telereso: ^0.0.9-alpha
 ```
 
 Run `pub get`.
@@ -67,10 +67,10 @@ class MyApp extends StatelessWidget {
     Telereso.instance
         .disableLog() // disable general and main logs
         .enableDrawableLog() // allow drawable logs so you can debug your keys and fetched values
-        .enalbeStringsLog() // allow strings logs so you can debug your locals , keys and fetched values
+        .enableStringsLog() // allow strings logs so you can debug your locals , keys and fetched values
         .setRemoteConfigSettings(RemoteConfigSettings()) // if you have custom Remote Config settings pass them here
         .setRemoteExpiration(const Duration(seconds: 1)) // provide your custom ducation , by defualt expiration will 12 hours, if reale time changes was enabled it will be 1 sec 
-        .enalbeRealTimeChanges() // enable real time changes while developing
+        .enableRealTimeChanges() // enable real time changes while developing
         .init();
     return MaterialApp();
   }
@@ -177,7 +177,7 @@ All you need to do is apply the following changes :
     ```yaml
     dev_dependencies:
         build_runner: ^1.0.0
-        telereso_generator: ^0.0.7-alpha
+        telereso_generator: ^0.0.9-alpha
     ```
    check [telerso_generator usage](https://pub.dev/packages/telereso_generator#usage)
 
@@ -211,12 +211,12 @@ All you need to do is apply the following changes :
         AppLocalizations.delegate, //<---- keep this
       ],
       supportedLocales: [
-        const Locale('nn')
+        const Locale('en')
       ],
       home: ...
     )
     ```
-5. Start using your knew wrapper `RemoteLocalizations` instead of `AppLocalizations`
+5. Start using your new wrapper `RemoteLocalizations` instead of `AppLocalizations`
 
    **Example:**
 
@@ -290,7 +290,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends RemoteState<HomePage>
+class _HomePageState extends RemoteState<HomePage>{
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   static Future<dynamic> myBackgroundMessageHandler(

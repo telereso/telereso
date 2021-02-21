@@ -8,6 +8,7 @@ import 'package:telereso/telereso.dart';
 
 import 'src/constants.dart';
 
+/// Basic implementation for Remote Localizations , extend this class in your own Localizations , or use [telereso_generator](https://pub.dev/packages/telereso_generator) and it will be used internally
 class BasicRemoteLocalizations {
   RemoteConfig _remoteConfig;
   final Locale locale;
@@ -85,7 +86,6 @@ class BasicRemoteLocalizations {
     return value;
   }
 
-  // This method will be called from every widget which needs a localized text
   String translate(String key, [List<String> args]) {
     _logStrings("********************** $key **********************");
     var value = getRemoteValue(key);
@@ -102,6 +102,12 @@ class BasicRemoteLocalizations {
     return sprintf(value, args);
   }
 
+  /// Translate your key and if not found will fall back to default provided value
+  /// args are a list of filling used with sprintf
+  ///
+  /// ```dart
+  /// translateOrDefault("welcome_header","hi, welcome back %s",args: ["User"]))
+  /// ```
   String translateOrDefault(String key, String def, {List<String> args}) {
     _logStrings("********************** $key **********************");
     var value = getRemoteValue(key);

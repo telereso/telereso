@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:telereso/remote_state.dart';
 import 'package:telereso/telereso.dart';
-import 'src/constants.dart';
 
+/// A wrapper to `Image.asset` , will show remote image from a url or default back to assets image
 class RemoteImage {
   static Widget asset(String name, {
     Key key,

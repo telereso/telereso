@@ -1,6 +1,6 @@
 ## [$version]
 
-* enhance README
+* remove annotation builder
 
 ## [0.0.4-alpha]
 

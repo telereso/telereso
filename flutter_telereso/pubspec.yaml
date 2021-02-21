@@ -1,6 +1,6 @@
 name: telereso
-description: Controle your application's resrouces remotely .
-version: 0.0.7-alpha
+description: Controle your application's resrouces (strings ,images) remotely using firebase and out of the box by extending your current implementation.
+version: 0.0.9-alpha
 homepage: https://telereso.io?utm_source=pub-dev&utm_medium=package-home&utm_campaign=normal
 repository: https://github.com/telereso/telereso
 
