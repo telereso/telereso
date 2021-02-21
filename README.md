@@ -64,7 +64,7 @@ implementation("io.telereso:telereso:0.0.5-alpha")</pre>
 <td>
     <pre>
 dependencies:
-  telereso: ^0.0.9-alpha
+  telereso: ^0.0.10-alpha
 </pre>
     </td>
 </tr>

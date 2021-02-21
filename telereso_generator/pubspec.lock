@@ -537,10 +537,10 @@ packages:
   telereso:
     dependency: "direct main"
     description:
-      path: "../flutter_telereso"
-      relative: true
-    source: path
-    version: "0.0.8-alpha"
+      name: telereso
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.10-alpha"
   term_glyph:
     dependency: transitive
     description:

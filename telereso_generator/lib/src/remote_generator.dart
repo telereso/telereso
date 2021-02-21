@@ -64,7 +64,7 @@ class RemoteLocalizationBuilder extends Builder {
     sourceBuilder.writeln("import 'package:flutter/widgets.dart';");
 
     sourceBuilder
-        .writeln("import 'package:telereso/remote_localization.dart';");
+        .writeln("import 'package:telereso/telereso.dart';");
 
     sourceBuilder.writeln("import 'package:flutter_gen/gen_l10n/$oldFile';");
 

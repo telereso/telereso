@@ -19,7 +19,7 @@ then just add `Telereso` dependency to your project
 
 ```yaml
 dependencies:
-  telereso: ^0.0.9-alpha
+  telereso: ^0.0.10-alpha
 ```
 
 Run `pub get`.
@@ -177,7 +177,7 @@ All you need to do is apply the following changes :
     ```yaml
     dev_dependencies:
         build_runner: ^1.0.0
-        telereso_generator: ^0.0.9-alpha
+        telereso_generator: ^0.0.10-alpha
     ```
    check [telerso_generator usage](https://pub.dev/packages/telereso_generator#usage)
 

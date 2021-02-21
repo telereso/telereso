@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:telereso/remote_localization.dart';
+import 'package:telereso/telereso.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 class RemoteLocalizationsDefault {
 final BasicRemoteLocalizations remote;

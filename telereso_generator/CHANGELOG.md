@@ -1,4 +1,4 @@
-## [0.0.9-alpha]
+## [0.0.10-alpha]
 
 * remove annotation builder
 

@@ -1,4 +1,8 @@
-## [0.0.9-alpha]
+## [0.0.10-alpha]
+
+* add docs
+
+## [0.0.9]
 
 * add example
 

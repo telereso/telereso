@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:telereso/remote_localization.dart';
+import 'package:telereso/telereso.dart';
 
 
 class DemoLocalizations extends BasicRemoteLocalizations {

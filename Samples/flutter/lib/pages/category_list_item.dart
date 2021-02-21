@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:gallery/l10n/remote_localization.telereso.dart';
 import 'package:gallery/layout/adaptive.dart';
 import 'package:gallery/pages/demo.dart';
-import 'package:telereso/remote_image.dart';
+import 'package:telereso/telereso.dart';
 
 typedef CategoryHeaderTapCallback = Function(bool shouldOpenList);
 

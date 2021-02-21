@@ -19,9 +19,9 @@
           content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f38b1c">
-    <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.5-alpha-0.0.9-alpha">
+    <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.5-alpha-0.0.10-alpha">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assets/css/style.css?v=0.0.5-alpha-0.0.9-alpha">
+    <link rel="stylesheet" href="assets/css/style.css?v=0.0.5-alpha-0.0.10-alpha">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 
     <style>

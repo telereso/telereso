@@ -29,7 +29,6 @@ import 'package:gallery/studies/shrine/app.dart';
 import 'package:gallery/studies/shrine/colors.dart';
 import 'package:gallery/studies/starter/app.dart';
 import 'package:telereso/telereso.dart';
-import 'package:telereso/remote_state.dart';
 
 import '../demo_localizations.dart';
 

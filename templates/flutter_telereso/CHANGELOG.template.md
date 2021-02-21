@@ -1,5 +1,9 @@
 ## [$version]
 
+* add docs
+
+## [0.0.9]
+
 * add example
 
 ## [0.0.7-alpha]
