@@ -670,6 +670,119 @@ So it is a way to disable remote functionality.</p>
 
 </div>
 
+<p><strong>Full Options</strong></p>
+
+<div class="code-block kotlin java reactNative web">
+
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
+</div>
+
+<div class="tabcontent kotlin active">
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="kd">class</span> <span class="nc">MyApplication</span> <span class="p">:</span> <span class="nc">Application</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">()</span>
+      <span class="nc">Telereso</span><span class="p">.</span><span class="nf">init</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">disableLog</span><span class="p">()</span> <span class="c1">// disable general and main logs </span>
+        <span class="p">.</span><span class="nf">enableStringLog</span><span class="p">()</span> <span class="c1">// enable strings logs to debug keys and fetched remote</span>
+        <span class="p">.</span><span class="nf">enableDrawableLog</span><span class="p">()</span> <span class="c1">// enable drawable logs to to debug keys and fetched remote</span>
+        <span class="p">.</span><span class="nf">enableRealTimeChanges</span><span class="p">()</span> <span class="c1">// enabled realtime changes , if realtime is disabled  remote is cached up to 12 horus</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent java">
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="kd">extends</span> <span class="nc">Application</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+     <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
+             <span class="o">.</span><span class="na">disableLog</span><span class="o">()</span> <span class="c1">// disable general and main logs </span>
+             <span class="o">.</span><span class="na">enableStringLog</span><span class="o">()</span> <span class="c1">// enable strings logs to debug keys and fetched remote</span>
+             <span class="o">.</span><span class="na">enableDrawableLog</span><span class="o">()</span> <span class="c1">// enable drawable logs to to debug keys and fetched remote</span>
+             <span class="o">.</span><span class="na">enableRealTimeChanges</span><span class="o">();</span> <span class="c1">// enabled realtime changes , if realtime is disabled  remote is cached up to 12 horus</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent reactNative">
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="k">import</span> <span class="nn">i18n</span> <span class="n">from</span> <span class="err">'</span><span class="p">./</span><span class="n">i18n</span><span class="err">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">{</span> <span class="nc">Telereso</span> <span class="p">}</span> <span class="n">from</span> <span class="err">'</span><span class="n">telereso</span><span class="err">'</span><span class="p">;</span>
+
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">App</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+  <span class="n">state</span> <span class="p">=</span> <span class="p">{</span>
+      <span class="n">splashFinished</span><span class="p">:</span> <span class="k">false</span>
+  <span class="p">}</span>
+  <span class="k">constructor</span><span class="p">(</span><span class="n">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="n">props</span><span class="p">);</span>
+    <span class="nc">Telereso</span>
+      <span class="p">.</span><span class="nf">disableLog</span><span class="p">()</span> <span class="c1">// disable general logs</span>
+      <span class="p">.</span><span class="nf">enableStringsLog</span><span class="p">()</span> <span class="c1">// enable logs for string setup for debuging locals and remote setup</span>
+      <span class="p">.</span><span class="nf">enableDrawableLog</span><span class="p">()</span> <span class="c1">// enable drabel logs for debuging keys and urls fetched from remote</span>
+      <span class="p">.</span><span class="nf">setRemoteConfigSettings</span><span class="p">({</span><span class="n">minimumFetchIntervalMillis</span><span class="p">:</span> <span class="mi">36000</span><span class="p">})</span> <span class="c1">// if you have custome remote config settings provide them here</span>
+      <span class="p">.</span><span class="nf">enableRealTimeChanges</span><span class="p">()</span> <span class="c1">// to enable real time changes </span>
+      <span class="p">.</span><span class="nf">suspendedInit</span><span class="p">(</span><span class="n">i18n</span><span class="p">).</span><span class="nf">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">setState</span><span class="p">({</span>
+          <span class="n">splashFinished</span><span class="p">:</span> <span class="k">true</span>
+      <span class="p">})</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">splashFinished</span> <span class="p">?</span> <span class="p">&lt;</span><span class="nc">AppContainer</span> <span class="p">/&gt;</span> <span class="p">:</span> <span class="p">&lt;</span><span class="nc">Text</span><span class="p">&gt;</span><span class="nc">Loading</span><span class="o">..</span><span class="p">.&lt;/</span><span class="nc">Text</span><span class="p">&gt;);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent web">
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="err">``</span><span class="n">`kotlin</span>
+<span class="k">import</span> <span class="nn">i18n</span> <span class="n">from</span> <span class="s">"./i18n"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">{Telereso}</span> <span class="n">from</span> <span class="s">"telereso-web"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nn">firebase</span> <span class="n">from</span> <span class="s">"firebase/app"</span><span class="p">;</span>
+
+
+<span class="n">export</span> <span class="n">default</span> <span class="kd">class</span> <span class="nc">App</span> <span class="n">extends</span> <span class="nc">React</span><span class="p">.</span><span class="nc">Component</span> <span class="p">{</span>
+
+  <span class="n">state</span> <span class="p">=</span> <span class="p">{</span>
+      <span class="n">splashFinished</span><span class="p">:</span> <span class="k">false</span>
+  <span class="p">}</span>
+
+  <span class="nf">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nc">Telereso</span>
+      <span class="p">.</span><span class="nf">disableLog</span><span class="p">()</span> <span class="c1">// disable genral and main logs</span>
+      <span class="p">.</span><span class="nf">enableStringsLog</span><span class="p">()</span> <span class="c1">// enalbe initialization strings logs to debug current local and remote fetch</span>
+      <span class="p">.</span><span class="nf">enableDrawableLog</span><span class="p">()</span> <span class="c1">// enable drawable logs</span>
+      <span class="p">.</span><span class="nf">enableRealTimeChanges</span><span class="p">()</span> <span class="c1">// enable real time changes , by default remote cache is 12 hours , once enalbed will be 1 sec</span>
+      <span class="p">.</span><span class="nf">suspendedInit</span><span class="p">(</span><span class="n">i18n</span><span class="p">,</span><span class="n">firebase</span><span class="p">).</span><span class="nf">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">setState</span><span class="p">({</span>
+          <span class="n">splashFinished</span><span class="p">:</span> <span class="k">true</span>
+      <span class="p">})</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">splashFinished</span> <span class="p">?</span> <span class="p">&lt;</span><span class="nc">Pricing</span><span class="p">/&gt;</span> <span class="p">:</span> <span class="p">&lt;</span><span class="n">label</span><span class="p">&gt;</span><span class="nc">Loading</span><span class="o">..</span><span class="p">.&lt;/</span><span class="n">label</span><span class="p">&gt;);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+</div>
+
 <h4 id="add-remoteviewinflater-android">Add <code class="language-plaintext highlighter-rouge">RemoteViewInflater</code> (Android)</h4>
 
 <p>This inflater will make sure all the android application views that display strings or images have the remote

@@ -428,6 +428,127 @@ export default class App extends React.Component {
 
 </div>
 
+**Full Options**
+
+<div class="code-block kotlin java reactNative web">
+
+<div class="tab">
+  <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
+  <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
+  <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
+</div>
+
+<div class="tabcontent kotlin active">{% highlight kotlin %}
+
+```kotlin
+class MyApplication : Application() {
+  override fun onCreate() {
+    super.onCreate()
+      Telereso.init(this)
+        .disableLog() // disable general and main logs 
+        .enableStringLog() // enable strings logs to debug keys and fetched remote
+        .enableDrawableLog() // enable drawable logs to to debug keys and fetched remote
+        .enableRealTimeChanges() // enabled realtime changes , if realtime is disabled  remote is cached up to 12 horus
+  }
+}
+```
+
+{% endhighlight kotlin %}
+</div>
+
+<div class="tabcontent java">
+{% highlight java %}
+
+```java
+public class MyApplication extends Application {
+  @Override
+  public void onCreate() {
+    super.onCreate();
+     Telereso.init(this)
+             .disableLog() // disable general and main logs 
+             .enableStringLog() // enable strings logs to debug keys and fetched remote
+             .enableDrawableLog() // enable drawable logs to to debug keys and fetched remote
+             .enableRealTimeChanges(); // enabled realtime changes , if realtime is disabled  remote is cached up to 12 horus
+   }
+}
+```
+
+{% endhighlight java %}
+</div>
+
+<div class="tabcontent reactNative">{% highlight kotlin %}
+
+```kotlin
+import i18n from './i18n';
+import { Telereso } from 'telereso';
+
+export default class App extends React.Component {
+  state = {
+      splashFinished: false
+  }
+  constructor(props) {
+    super(props);
+    Telereso
+      .disableLog() // disable general logs
+      .enableStringsLog() // enable logs for string setup for debuging locals and remote setup
+      .enableDrawableLog() // enable drabel logs for debuging keys and urls fetched from remote
+      .setRemoteConfigSettings({minimumFetchIntervalMillis: 36000}) // if you have custome remote config settings provide them here
+      .enableRealTimeChanges() // to enable real time changes 
+      .suspendedInit(i18n).then(() => {
+      this.setState({
+          splashFinished: true
+      })
+    });
+  }
+
+  render() {
+    return (this.state.splashFinished ? <AppContainer /> : <Text>Loading...</Text>);
+  }
+}
+```
+
+{% endhighlight kotlin %}
+</div>
+
+<div class="tabcontent web">{% highlight kotlin %}
+
+```kotlin
+import i18n from "./i18n";
+import {Telereso} from "telereso-web";
+import firebase from "firebase/app";
+
+
+export default class App extends React.Component {
+
+  state = {
+      splashFinished: false
+  }
+
+  componentDidMount() {
+    Telereso
+      .disableLog() // disable genral and main logs
+      .enableStringsLog() // enalbe initialization strings logs to debug current local and remote fetch
+      .enableDrawableLog() // enable drawable logs
+      .enableRealTimeChanges() // enable real time changes , by default remote cache is 12 hours , once enalbed will be 1 sec
+      .suspendedInit(i18n,firebase).then(() => {
+      this.setState({
+          splashFinished: true
+      })
+    });
+  }
+
+  render() {
+    return (this.state.splashFinished ? <Pricing/> : <label>Loading...</label>);
+  }
+}
+```
+
+{% endhighlight kotlin %}
+</div>
+
+</div>
+
 #### Add `RemoteViewInflater` (Android)
 
 This inflater will make sure all the android application views that display strings or images have the remote
