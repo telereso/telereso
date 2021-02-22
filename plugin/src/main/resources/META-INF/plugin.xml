@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.telereso.plugin</id>
     <name>Telereso</name>
-    <vendor>JetBrains</vendor>
+    <vendor>Telereso</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -23,11 +23,11 @@
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <action id="org.intellij.sdk.action.GroupPopDialogAction"
                     class="io.telereso.plugin.actions.ExportStringsAsJsonAction"
-                    text="Export Json Strings" description="Export all strings resource xml file into json format">
+                    text="Export strings as json" description="Export all strings resource xml file into json format">
             </action>
         </group>
         <action id="io.telereso.plugin.actions.ExportStringsXmlAsJsonAction"
-                class="io.telereso.plugin.actions.ExportStringsXmlAsJsonAction" text="Export Json">
+                class="io.telereso.plugin.actions.ExportStringsXmlAsJsonAction" text="Export as json">
             <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Paste"/>
             <keyboard-shortcut keymap="$default" first-keystroke="meta alt J"/>
         </action>
