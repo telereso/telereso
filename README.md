@@ -176,7 +176,8 @@ Wither you are starting a fresh new application, or an already in production app
 
 ### Platforms
 * **Android**  
-  Follow docs [here in this page](https://telereso.io/#initialization)
+  Follow docs [here in this page](https://telereso.io/#initialization) ,<br>
+  You can use <a href="https://plugins.jetbrains.com/plugin/16168-telereso" target="_blank">Telereso plugin</a> to help you with the localization migration. 
 
 * **Flutter**  
   [Check package docs](https://pub.dev/packages/telereso#telereso)

@@ -2,18 +2,16 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
-    <link type="application/atom+xml" rel="alternate" href="http://localhost:4001/feed.xml" />
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" />
     <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Telereso</title>
 <meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Telereso" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4001/index-data.yml" />
-<meta property="og:url" content="http://localhost:4001/index-data.yml" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Telereso" />
 <script type="application/ld+json">
-{"url":"http://localhost:4001/index-data.yml","headline":"Telereso","@type":"WebPage","@context":"https://schema.org"}</script>
+{"url":"/index-data.yml","headline":"Telereso","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>Telereso | Control your application resources</title>
