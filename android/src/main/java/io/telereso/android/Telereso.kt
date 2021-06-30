@@ -1,5 +1,6 @@
 package io.telereso.android
 
+import android.app.Application
 import android.content.Context
 import android.content.res.Resources
 import android.content.res.XmlResourceParser
@@ -20,6 +21,9 @@ import kotlinx.coroutines.*
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
+import java.util.*
+import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -38,6 +42,7 @@ object Telereso {
 
     private val listenersList = hashSetOf<RemoteChanges>()
     private val stringsMap = HashMap<String, JSONObject>()
+    private var currentLocal: String? = null
     private var drawableMap = HashMap<String, JSONObject>()
     private val densityList = listOf("ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
 
@@ -88,6 +93,10 @@ object Telereso {
 
         log("Initialized!")
 
+    }
+
+    fun reset() {
+        currentLocal = null
     }
 
     fun setRemoteConfigSettings(remoteConfigSettings: FirebaseRemoteConfigSettings): Telereso {
@@ -263,7 +272,9 @@ object Telereso {
             }
             stringsMap[defaultId] = JSONObject(default)
 
-            val deviceLocal = getLocal(context)
+            val deviceLocal =
+                if (context is Application) currentLocal ?: getLocal(context) else getLocal(context)
+            currentLocal = deviceLocal
             val deviceId = getStringKey(deviceLocal)
             var local = Firebase.remoteConfig.getString(deviceId)
             if (local.isBlank()) {
@@ -351,17 +362,17 @@ object Telereso {
 
     internal fun getLocal(context: Context): String {
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            context.resources.configuration.locales[0].language.toString()
+            context.resources.configuration.locales[0].toString().toLowerCase(Locale.ENGLISH)
         } else {
-            context.resources.configuration.locale.language.toString()
+            context.resources.configuration.locale.toString().toLowerCase(Locale.ENGLISH)
         }
     }
 
     internal fun getLocal(resources: Resources): String {
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            resources.configuration.locales[0].language.toString()
+            resources.configuration.locales[0].toString().toLowerCase(Locale.ENGLISH)
         } else {
-            resources.configuration.locale.language.toString()
+            resources.configuration.locale.toString().toLowerCase(Locale.ENGLISH)
         }
     }
 
