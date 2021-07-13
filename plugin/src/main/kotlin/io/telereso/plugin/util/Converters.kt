@@ -8,12 +8,18 @@ import com.intellij.util.xml.DomManager
 
 object Converters {
 
-    fun xmlToJson(xmlFile: XmlFile): String {
+    fun xmlToJson(xmlFile: XmlFile, keys: List<String>? = null): String {
         val map = HashMap<String, String>()
         xmlFile.document?.rootTag?.findSubTags("string")?.forEach {
-            map[it.getAttribute("name")?.value ?: ""] = it.value.trimmedText
+            val key = it.getAttribute("name")?.value ?: ""
+            if (keys == null || keys.contains(key))
+                map[key] = it.value.trimmedText
         }
         return Gson().toJson(map)
+    }
+
+    fun jsonToMap(txt: String): Map<String, String> {
+        return Gson().fromJson(txt, Map::class.java) as Map<String, String>
     }
 }
 

@@ -23,7 +23,11 @@
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <action id="org.intellij.sdk.action.GroupPopDialogAction"
                     class="io.telereso.plugin.actions.ExportStringsAsJsonAction"
-                    text="Export strings as json" description="Export all strings resource xml file into json format">
+                    text="Export strings as json" description="Export all strings resource in xml files into json format">
+            </action>
+            <action id="org.intellij.sdk.action.GroupPopDialogAction2"
+                    class="io.telereso.plugin.actions.ExportFilteredStringsAsJsonAction"
+                    text="Filter and export strings as json" description="Export provided strings keys from resource xml file into json format">
             </action>
         </group>
         <action id="io.telereso.plugin.actions.ExportStringsXmlAsJsonAction"

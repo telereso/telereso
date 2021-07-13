@@ -12,6 +12,13 @@
 ### Fixed
 
 ### Security
+## [0.0.2]
+### Added
+
+- Support projects with multiple modules 
+- Merge all strings into one json
+- Filter strings resources by key
+
 ## [0.0.1]
 ### Added
 

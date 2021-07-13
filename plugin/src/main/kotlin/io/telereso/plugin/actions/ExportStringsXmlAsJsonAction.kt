@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.PlatformDataKeys
+import com.intellij.openapi.module.ModuleUtil
 import io.telereso.plugin.util.TeleresoFiles
 
 class ExportStringsXmlAsJsonAction : AnAction() {
@@ -26,11 +27,16 @@ class ExportStringsXmlAsJsonAction : AnAction() {
         val editor = e.getRequiredData(CommonDataKeys.EDITOR)
         val file = e.getRequiredData(PlatformDataKeys.VIRTUAL_FILE)
 
-        val created = TeleresoFiles.exportDocument(e.project!!, file, editor.document.text)
-        val message = if (created) "File exported" else "Failed to export"
+        ModuleUtil.findModuleForFile(file, e.project!!)?.apply {
+            val created = TeleresoFiles.exportDocument(e.project!!,name.split(".")[1], file, editor.document.text,true) != null
+            val message = if (created) "File exported" else "Failed to export"
 
-        val noti = NotificationGroup("telereso_exported", NotificationDisplayType.BALLOON, true)
-        noti.createNotification("Telereso", message, NotificationType.INFORMATION, null).notify(e.project)
+            TeleresoFiles.getTeleresoDir(project)?.refresh(false, true)
+
+            val noti = NotificationGroup("telereso_exported", NotificationDisplayType.BALLOON, true)
+            noti.createNotification("Telereso", message, NotificationType.INFORMATION, null).notify(e.project)
+        }
+
 
     }
 }

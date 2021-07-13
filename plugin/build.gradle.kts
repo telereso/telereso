@@ -54,7 +54,7 @@ intellij {
     downloadSources = platformDownloadSources.toBoolean()
     updateSinceUntilBuild = true
 
-    alternativeIdePath = "/Applications/Android Studio.app"
+    alternativeIdePath = "/Applications/Android-Studio.app"
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     setPlugins(*platformPlugins.split(',').map(String::trim).filter(String::isNotEmpty).toTypedArray())
 }
