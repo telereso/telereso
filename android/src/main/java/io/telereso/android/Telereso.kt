@@ -167,11 +167,9 @@ object Telereso {
     }
 
     private fun onResourceNotFound(key: String) {
-        log("callllleeddd")
         GlobalScope.launch(Dispatchers.Default) {
             val iterator = listenersList.iterator()
             while (iterator.hasNext()) {
-                log("onResourceNotFound +${listenersList.size}")
                 iterator.next().onResourceNotFound(key)
             }
         }
