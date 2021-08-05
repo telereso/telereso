@@ -336,15 +336,15 @@ object Telereso {
     private fun getRemoteLocal(deviceLocal: String): String {
         var local = Firebase.remoteConfig.getString(getStringKey(deviceLocal))
         if (local.isBlank()) {
-            val localCountry = deviceLocal.split("_")[0]
-            log("The app local $deviceLocal was not found in remote config will try $localCountry")
+            val baseLocal = deviceLocal.split("_")[0]
+            log("The app local $deviceLocal was not found in remote config will try $baseLocal")
             val key =
-                Firebase.remoteConfig.getKeysByPrefix(getStringKey(localCountry)).firstOrNull()
+                Firebase.remoteConfig.getKeysByPrefix(getStringKey(baseLocal)).firstOrNull()
             if (key == null) {
-                log("$localCountry was not found as well")
+                log("$baseLocal was not found as well")
             } else {
                 if (key.contains("off"))
-                    log("$localCountry was found but it was turned off, remove _off suffix to enable it")
+                    log("$baseLocal was found but it was turned off, remove _off suffix to enable it")
                 else
                     local = Firebase.remoteConfig.getString(key)
             }
