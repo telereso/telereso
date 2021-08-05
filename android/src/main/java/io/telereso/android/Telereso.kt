@@ -182,7 +182,7 @@ object Telereso {
         default: String? = null
     ): String {
         logStrings("******************** $key ********************")
-        val value = ""
+        val value = getStringValue(local, key, default)
         logStrings("local:$local default:$default value:$value")
         if (value.isBlank()) {
             logStrings(
@@ -203,7 +203,7 @@ object Telereso {
             vararg formatArgs: Any?
     ): String {
         logStrings("******************** $key ********************")
-        var value = ""
+        var value = getStringValue(local, key, default)
         logStrings("local:$local default:$default value:$value")
         if (value.isBlank()) {
             logStrings(
