@@ -43,6 +43,16 @@ fun View.getRemoteString(@StringRes id: Int): String {
     return Telereso.getRemoteStringOrDefault(getLocal(), key, default)
 }
 
+internal fun View.addChangeListener(listener: RemoteChanges) {
+    if (Telereso.isRealTimeChangesEnabled())
+        Telereso.addChangeListener(listener)
+}
+
+internal fun View.removeChangeListener(listener: RemoteChanges) {
+    if (Telereso.isRealTimeChangesEnabled())
+        Telereso.removeChangeListener(listener)
+}
+
 fun MenuItem.setRemoteDrawable(context: Context, resId: Int) {
     if (resId == 0) return
     val key = context.getKeyName(resId)
@@ -51,12 +61,23 @@ fun MenuItem.setRemoteDrawable(context: Context, resId: Int) {
     icon = default
     if (!url.isNullOrBlank())
         Glide.with(context).load(url).addListener(object : RequestListener<Drawable> {
-            override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Drawable>?,
+                isFirstResource: Boolean
+            ): Boolean {
                 Log.e(TAG_DRAWABLES, "failed to load key:$key with url:$url")
                 return false
             }
 
-            override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+            override fun onResourceReady(
+                resource: Drawable?,
+                model: Any?,
+                target: Target<Drawable>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
                 resource?.let { icon = resource }
                 return false
             }

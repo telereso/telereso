@@ -49,12 +49,12 @@ open class RemoteImageButton @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        Telereso.addChangeListener(chaneListener)
+        addChangeListener(chaneListener)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        Telereso.removeChangeListener(chaneListener)
+        removeChangeListener(chaneListener)
     }
 
 

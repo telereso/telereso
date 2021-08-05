@@ -48,8 +48,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-analytics'
 
-    //implementation project(":android")
-    implementation 'io.telereso:telereso:0.0.5-alpha'
+    implementation project(":android")
+//    implementation 'io.telereso:telereso:1.0.0-alpha'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 

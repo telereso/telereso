@@ -23,7 +23,6 @@ import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 import java.util.*
 import kotlin.collections.HashMap
-import kotlin.collections.HashSet
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -140,7 +139,7 @@ object Telereso {
                 GlobalScope.launch {
                     if (fetchResource()) {
                         initMaps(context)
-                        HashSet(listenersList).forEach { l -> l.onRemoteUpdate() }
+                        onRemoteUpdate()
                     }
                 }
             true
@@ -149,29 +148,50 @@ object Telereso {
     }
 
     @JvmStatic
+    @Synchronized
     fun addChangeListener(listener: RemoteChanges) {
         listenersList.add(listener)
     }
 
     @JvmStatic
+    @Synchronized
     fun removeChangeListener(listener: RemoteChanges) {
         listenersList.remove(listener)
     }
 
+    private fun onRemoteUpdate() {
+        val iterator = listenersList.iterator()
+        while (iterator.hasNext()) {
+            iterator.next().onRemoteUpdate()
+        }
+    }
+
+    private fun onResourceNotFound(key: String) {
+        log("callllleeddd")
+        GlobalScope.launch(Dispatchers.Default) {
+            val iterator = listenersList.iterator()
+            while (iterator.hasNext()) {
+                log("onResourceNotFound +${listenersList.size}")
+                iterator.next().onResourceNotFound(key)
+            }
+        }
+    }
+
     @JvmStatic
     fun getRemoteStringOrDefault(
-            local: String,
-            key: String,
-            default: String? = null
+        local: String,
+        key: String,
+        default: String? = null
     ): String {
         logStrings("******************** $key ********************")
-        val value = getStringValue(local, key, default)
+        val value = ""
         logStrings("local:$local default:$default value:$value")
         if (value.isBlank()) {
-            logStrings("$key was empty in ${getStringKey(local)} and $STRINGS and local strings", true)
-            GlobalScope.launch(Dispatchers.Default) {
-                HashSet(listenersList).forEach { l -> l.onResourceNotFound(key) }
-            }
+            logStrings(
+                "$key was empty in ${getStringKey(local)} and $STRINGS and local strings",
+                true
+            )
+            onResourceNotFound(key)
         }
         logStrings("*************************************************")
         return value
@@ -185,13 +205,14 @@ object Telereso {
             vararg formatArgs: Any?
     ): String {
         logStrings("******************** $key ********************")
-        var value = getStringValue(local, key, default)
+        var value = ""
         logStrings("local:$local default:$default value:$value")
         if (value.isBlank()) {
-            logStrings("$key was empty in ${getStringKey(local)} and $STRINGS and local strings", true)
-            GlobalScope.launch(Dispatchers.Default) {
-                HashSet(listenersList).forEach { l -> l.onResourceNotFound(key) }
-            }
+            logStrings(
+                "$key was empty in ${getStringKey(local)} and $STRINGS and local strings",
+                true
+            )
+            onResourceNotFound(key)
         } else {
             value = value.format(formatArgs)
         }
@@ -374,6 +395,10 @@ object Telereso {
         } else {
             resources.configuration.locale.toString().toLowerCase(Locale.ENGLISH)
         }
+    }
+
+    internal fun isRealTimeChangesEnabled(): Boolean {
+        return isRealTimeChangesEnabled
     }
 
     private fun log(log: String, isWarning: Boolean = false) {

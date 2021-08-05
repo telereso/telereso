@@ -9,10 +9,7 @@ import android.view.Menu
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import io.telereso.android.RemoteChanges
-import io.telereso.android.Telereso
-import io.telereso.android.getRemoteString
-import io.telereso.android.parseMenu
+import io.telereso.android.*
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 
@@ -39,12 +36,12 @@ open class RemoteBottomNavigationView @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        Telereso.addChangeListener(chaneListener)
+        addChangeListener(chaneListener)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        Telereso.removeChangeListener(chaneListener)
+        removeChangeListener(chaneListener)
     }
 
 
