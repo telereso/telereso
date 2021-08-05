@@ -294,15 +294,9 @@ object Telereso {
             val deviceLocal =
                 if (context is Application) currentLocal ?: getLocal(context) else getLocal(context)
             currentLocal = deviceLocal
-            val deviceId = getStringKey(deviceLocal)
-            var local = Firebase.remoteConfig.getString(deviceId)
-            if (local.isBlank()) {
-                local = "{}"
-                log("The app local $deviceId was not found in remote config", true)
-            } else {
-                log("device local $deviceId was setup")
-            }
-            stringsMap[deviceId] = JSONObject(local)
+            val local = getRemoteLocal(deviceLocal)
+
+            stringsMap[getStringKey(deviceLocal)] = JSONObject(local)
 
 
             //drawables
@@ -337,6 +331,32 @@ object Telereso {
             }
 
         }
+    }
+
+    private fun getRemoteLocal(deviceLocal: String): String {
+        var local = Firebase.remoteConfig.getString(getStringKey(deviceLocal))
+        if (local.isBlank()) {
+            val localCountry = deviceLocal.split("_")[0]
+            log("The app local $deviceLocal was not found in remote config will try $localCountry")
+            val key =
+                Firebase.remoteConfig.getKeysByPrefix(getStringKey(localCountry)).firstOrNull()
+            if (key == null) {
+                log("$localCountry was not found as well")
+            } else {
+                if (key.contains("off"))
+                    log("$localCountry was found but it was turned off, remove _off suffix to enable it")
+                else
+                    local = Firebase.remoteConfig.getString(key)
+            }
+
+        }
+        if (local.isBlank()) {
+            local = "{}"
+            log("The app local $deviceLocal was not found in remote config", true)
+        } else {
+            log("device local $deviceLocal was setup")
+        }
+        return local
     }
 
     private suspend fun fetchResource(): Boolean {
@@ -374,6 +394,8 @@ object Telereso {
             if (value.isBlank()) {
                 logStrings("$key was not found in remote $defaultId", true)
                 value = default ?: ""
+            } else {
+                logStrings("$key was found in remote $defaultId")
             }
         }
         return value
