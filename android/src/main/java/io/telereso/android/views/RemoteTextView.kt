@@ -4,10 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatTextView
-import io.telereso.android.R
-import io.telereso.android.RemoteChanges
-import io.telereso.android.Telereso
-import io.telereso.android.getRemoteString
+import io.telereso.android.*
 
 open class RemoteTextView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textStyle
@@ -47,12 +44,12 @@ open class RemoteTextView @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        Telereso.addChangeListener(chaneListener)
+        addChangeListener(chaneListener)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        Telereso.removeChangeListener(chaneListener)
+        removeChangeListener(chaneListener)
     }
 
 
