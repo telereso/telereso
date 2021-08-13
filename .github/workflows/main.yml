@@ -27,4 +27,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Gradle
-        run: Samples/android/./gradlew build
+        run: Samples/android/./gradlew assembleDebug
+        with:
+          name: test-apk
+          path: Samples/android/app/build/output
+          retention-days: 2
