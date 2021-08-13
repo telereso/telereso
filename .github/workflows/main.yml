@@ -28,7 +28,9 @@ jobs:
           distribution: 'adopt'
       - name: Build with Gradle
         run: Samples/android/./gradlew assembleDebug
+      - name: Archive apk
+        uses: actions/upload-artifact@v2 
         with:
           name: test-apk
-          path: Samples/android/app/build/output
+          path: Samples/android/app/build/output/
           retention-days: 2
