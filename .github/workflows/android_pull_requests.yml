@@ -1,4 +1,4 @@
-name: CI_PULL_REQUEST
+name: Android pull requests
 
 # Controls when the workflow will run
 on: 
