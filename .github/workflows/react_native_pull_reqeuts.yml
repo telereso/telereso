@@ -49,7 +49,7 @@ jobs:
         run: echo "$GOOGLE_SERVICES" > Samples/react-native/android/app/google-services.json
       
       - name: Build with Gradle
-        run: cd Samples/react-native/ && yarn android-debug
+        run: cd Samples/react-native/ && yarn apk-debug
       
       - name: Archive apk
         uses: actions/upload-artifact@v2 
