@@ -44,7 +44,7 @@ jobs:
         run: echo "$WEB_ENV" > Samples/web/.env
       
       - name: Build with Gradle
-        run: cd Samples/web/ && yarn build
+        run: cd Samples/web/ && yarn add "file:../../web" && yarn build
       
       - name: Archive webstie
         uses: actions/upload-artifact@v2 
