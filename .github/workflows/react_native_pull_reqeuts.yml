@@ -41,7 +41,7 @@ jobs:
           key: ${{ runner.OS }}-react-native-install-cache   
       
       - name: Install node modules
-        run: Samples/react-native && yarn install --frozen-lockfile  
+        run: cd Samples/react-native && yarn install --frozen-lockfile  
       
       - name: Prepare Secrets
         env:
