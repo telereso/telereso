@@ -34,7 +34,9 @@ jobs:
           key: ${{ runner.OS }}-react-install-cache   
       
       - name: Install node modules
-        run: cd Samples/web && yarn install --frozen-lockfile  
+        run: |
+         cd web/ && yarn install --frozen-lockfile
+         cd Samples/web && yarn install --frozen-lockfile  
       
       - name: Prepare Secrets
         env:
