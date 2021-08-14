@@ -11142,10 +11142,8 @@ tar@^6.0.2:
     mkdirp "^1.0.3"
     yallist "^4.0.0"
 
-telereso-web@^0.0.7-alpha:
+"telereso-web@file:../../web":
   version "0.0.7-alpha"
-  resolved "https://registry.yarnpkg.com/telereso-web/-/telereso-web-0.0.7-alpha.tgz#f6eefe1a648429a5b310d8315739f315ca933105"
-  integrity sha512-lab5Z13/yKZHjMNWDmM1F+Ltoh1YQwwWg2cJJyXKPy4krE/qZOdoLSltixr9B+HfzueKkQvKQJiS1IJ3aiFYRQ==
   dependencies:
     firebase "^8.2.7"
     i18n-js "^3.8.0"
