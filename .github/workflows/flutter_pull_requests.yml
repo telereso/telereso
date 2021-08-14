@@ -24,7 +24,13 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      
+          
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v1
+        with:
+          path: /opt/hostedtoolcache/flutter
+          key: ${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}
+          
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.0.0'
