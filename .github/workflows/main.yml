@@ -37,7 +37,10 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-        
+      - name: Prepare Secrets
+        env:
+         GOOGLE_SERVICES: ${{ secrets.SAMPLES_ANDROID_GOOGLE_SERVICES }}
+        run: echo GOOGLE_SERVICES > Samples/android/app/google-services.json
       - name: Build with Gradle
         run: cd Samples/android/ && ./gradlew assembleDebug
       - name: Archive apk
