@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-artifact@v2 
         with:
           name: test-apk
-          path: Samples/flutter/android/app/build/outputs/
+          path: Samples/flutter/build/app/outputs/flutter-apk/
           retention-days: 2
       
       - name: Cleanup Gradle Cache
