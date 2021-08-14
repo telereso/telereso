@@ -24,31 +24,39 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+          
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.26.0'
-      - name: Cache Gradle
-        id: cache-gradle-flutter
+          flutter-version: '2.0.0'
+     
+      - name: Cache Flutter dependencies
         uses: actions/cache@v2
+        id: cache-flutter
         with:
           path: |
            ~/.gradle/caches
            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+           /opt/hostedtoolcache/flutter
+          key: ${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}     
+      
+      - name: Prepare Flutter
+        run: cd Samples/flutter/ && flutter pub get  
+      
       - name: Prepare Secrets
         env:
          GOOGLE_SERVICES: ${{ secrets.SAMPLES_ANDROID_GOOGLE_SERVICES }}
         run: echo "$GOOGLE_SERVICES" > Samples/flutter/android/app/google-services.json
+      
       - name: Build with Gradle
         run: cd Samples/flutter/ && flutter build apk --debug
+      
       - name: Archive apk
         uses: actions/upload-artifact@v2 
         with:
           name: test-apk
-          path: Samples/flutter/android/app/build/outputs/
+          path: Samples/flutter/build/app/outputs/flutter-apk/
           retention-days: 2
+      
       - name: Cleanup Gradle Cache
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
         # Restoring these files from a GitHub Actions cache might cause problems for future builds.
