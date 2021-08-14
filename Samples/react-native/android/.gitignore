@@ -1,1 +1,4 @@
 app/google-services.json
+
+app/src/main/res/**/node_module**
+app/src/main/assets/index.android.bundle
