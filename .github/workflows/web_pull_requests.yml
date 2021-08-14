@@ -36,7 +36,7 @@ jobs:
       - name: Install node modules
         run: |
          cd web/ && yarn install --frozen-lockfile
-         cd Samples/web && yarn install --frozen-lockfile  
+         cd ../Samples/web && yarn install --frozen-lockfile  
       
       - name: Prepare Secrets
         env:
