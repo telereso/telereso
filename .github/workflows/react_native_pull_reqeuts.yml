@@ -28,14 +28,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-          cache: 'npm'
-      - name: Cache Gradle dependencies
+      
+      - name: Cache dependencies
         uses: actions/cache@v2
         id: cache-gradle-react-native
         with:
           path: |
            ~/.gradle/caches
            ~/.gradle/wrapper
+           react-native/node_modules
+           Samples/react-native/node_modules
           key: ${{ runner.OS }}-react-native-install-cache   
       
       - name: Install node modules
