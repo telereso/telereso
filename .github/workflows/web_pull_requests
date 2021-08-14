@@ -1,4 +1,4 @@
-name: ReactNative pull requests
+name: Web pull requests
 
 # Controls when the workflow will run
 on: 
