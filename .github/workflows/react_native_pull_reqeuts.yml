@@ -1,0 +1,62 @@
+name: ReactNative pull requests
+
+# Controls when the workflow will run
+on: 
+  workflow_dispatch:
+  pull_request:
+   paths:
+     - 'react-native/**'
+     - 'Samples/react-native/**'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          
+      - uses: actions/setup-node@master
+      - uses: c-hive/gha-yarn-cache@v1
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        id: cache-gradle-react-native
+        with:
+          path: |
+           ~/.gradle/caches
+           ~/.gradle/wrapper
+          key: ${{ runner.OS }}-react-native-install-cache   
+      
+      - name: Install node modules
+        run: yarn install --frozen-lockfile  
+      
+      - name: Prepare Secrets
+        env:
+         GOOGLE_SERVICES: ${{ secrets.SAMPLES_ANDROID_GOOGLE_SERVICES }}
+        run: echo "$GOOGLE_SERVICES" > Samples/react-native/android/app/google-services.json
+      
+      - name: Build with Gradle
+        run: cd Samples/react-native/ && npm start
+      
+      - name: Archive apk
+        uses: actions/upload-artifact@v2 
+        with:
+          name: test-apk
+          path: Samples/react-native/android/app/build/outputs/
+          retention-days: 2
+      
+      - name: Cleanup Gradle Cache
+        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
+        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
+        run: |
+         rm -f ~/.gradle/caches/modules-2/modules-2.lock
+         rm -f ~/.gradle/caches/modules-2/gc.properties  
