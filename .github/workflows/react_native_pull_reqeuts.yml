@@ -25,19 +25,23 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           
-      - uses: actions/setup-node@master
-      - uses: c-hive/gha-yarn-cache@v1
-      - name: Cache Gradle dependencies
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      
+      - name: Cache dependencies
         uses: actions/cache@v2
         id: cache-gradle-react-native
         with:
           path: |
            ~/.gradle/caches
            ~/.gradle/wrapper
+           react-native/node_modules
+           Samples/react-native/node_modules
           key: ${{ runner.OS }}-react-native-install-cache   
       
       - name: Install node modules
-        run: yarn install --frozen-lockfile  
+        run: cd Samples/react-native && yarn install --frozen-lockfile  
       
       - name: Prepare Secrets
         env:
@@ -45,7 +49,7 @@ jobs:
         run: echo "$GOOGLE_SERVICES" > Samples/react-native/android/app/google-services.json
       
       - name: Build with Gradle
-        run: cd Samples/react-native/ && npm start
+        run: cd Samples/react-native/ && yarn apk-debug
       
       - name: Archive apk
         uses: actions/upload-artifact@v2 
