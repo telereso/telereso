@@ -1,6 +1,7 @@
 ![Banner](doc/banner.svg)
 
 [![jitpack](https://jitpack.io/v/telereso/telereso.svg)](https://jitpack.io/#telereso/telereso)
+[![Version](https://img.shields.io/cocoapods/v/Telereso.svg?style=flat)](https://cocoapods.org/pods/Telereso)
 [![Pub](https://img.shields.io/pub/v/telereso.svg)](https://pub.dartlang.org/packages/telereso)
 [![npm react native](https://img.shields.io/npm/v/telereso.svg)](https://www.npmjs.com/package/telereso)
 [![npm web](https://img.shields.io/npm/v/telereso-web.svg)](https://www.npmjs.com/package/telereso-web)
@@ -60,6 +61,14 @@ implementation("io.telereso:telereso:${version}")</pre>
     </td>
 </tr>
 <tr>
+<td><img src="doc/ios.png" alt="IOS"/></td>
+<td>
+    <pre>
+pod 'Telereso'
+</pre>
+    </td>
+</tr>
+<tr>
 <td><img src="doc/flutter.png" alt="Flutter"/></td>
 <td>
     <pre>
@@ -92,6 +101,7 @@ Nothing feels better than a snippet of code ready to be copied!
 Check samples in this [repo](https://github.com/telereso/telereso/tree/master/Samples)
 
 * [Android](https://github.com/telereso/telereso/tree/master/Samples/android)
+* [IOS](https://github.com/telereso/telereso/tree/master/Samples/ios)
 * [Flutter](https://github.com/telereso/telereso/tree/master/Samples/flutter)
 * [React Native](https://github.com/telereso/telereso/tree/master/Samples/react-native)
 * [Web](https://github.com/telereso/telereso/tree/master/Samples/web)
@@ -179,6 +189,9 @@ Wither you are starting a fresh new application, or an already in production app
   Follow docs [here in this page](https://telereso.io/#initialization) ,<br>
   You can use <a href="https://plugins.jetbrains.com/plugin/16168-telereso" target="_blank">Telereso plugin</a> to help you with the localization migration. 
 
+* **IOS**  
+  Follow docs [here in this page](https://telereso.io/#initialization)
+
 * **Flutter**  
   [Check package docs](https://pub.dev/packages/telereso#telereso)
   
@@ -201,10 +214,11 @@ So it is a way to disable remote functionality.
 
 **Application Start**
 
-<div class="code-block kotlin java dart reactNative web">
+<div class="code-block kotlin java swift dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks swift" onclick="openTab(event, 'swift')">Swift</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
   <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
   <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
@@ -241,6 +255,25 @@ public class MyApplication extends Application {
 ```
 
 {% endhighlight java %}
+</div>
+
+<div class="tabcontent swift">
+{% highlight swift %}
+
+```swift
+class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    func application(_ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions:
+          [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
+        Telereso.initialize()
+        return true
+      }
+}
+```
+
+{% endhighlight swift %}
 
 </div>
 
@@ -322,11 +355,12 @@ document.getElementById('root')
 
 **Splash Screen**
 
-<div class="code-block kotlin java reactNative web">
+<div class="code-block kotlin java swift reactNative web">
 
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks swift" onclick="openTab(event, 'swift')">Swift</button>
   <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
   <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
@@ -366,6 +400,36 @@ public class SplashActivity extends Activity {
 ```
 
 {% endhighlight java %}
+</div>
+
+<div class="tabcontent swift">
+{% highlight swift %}
+
+```swift
+struct ContentView: View {
+    @State private var result: Result<Bool, Error>?
+    
+    func initTelereso(){
+        Telereso.initialize(){() -> Void in
+            result = Result.success(true)
+        }
+    }
+    
+    var body: some View {
+        switch result {
+        case .success(_):
+            mainBody
+        case .failure(let error):
+            let _ = print(error)
+            mainBody
+        case nil:
+            ProgressView().onAppear(perform: initTelereso)
+        }
+    }
+}    
+```
+
+{% endhighlight swift %}
 </div>
 
 <div class="tabcontent reactNative">{% highlight kotlin %}
@@ -431,11 +495,12 @@ export default class App extends React.Component {
 
 **Full Options**
 
-<div class="code-block kotlin java reactNative web">
+<div class="code-block kotlin java swift reactNative web">
 
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks swift" onclick="openTab(event, 'swift')">Swift</button>
   <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
   <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
@@ -476,6 +541,25 @@ public class MyApplication extends Application {
 ```
 
 {% endhighlight java %}
+</div>
+
+<div class="tabcontent swift">
+{% highlight swift %}
+
+```swift
+class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    func application(_ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions:
+          [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
+        Telereso.enableRealTimeChanges().enableStringLog().initialize()
+        return true
+      }
+}
+```
+
+{% endhighlight swift %}
 </div>
 
 <div class="tabcontent reactNative">{% highlight kotlin %}
@@ -609,10 +693,11 @@ which is
 This will make sure to use the remote version of the resource if found or default it to the original value
 
 **Strings**
-<div class="code-block kotlin java dart reactNative web">
+<div class="code-block kotlin java swift dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks swift" onclick="openTab(event, 'swift')">Swift</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
   <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
   <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
@@ -638,6 +723,22 @@ titleTextView.setText(Telereso.getRemoteString(R.strings.title_home));
 ```
 
 {% endhighlight java %}
+</div>
+
+<div class="tabcontent swift">
+{% highlight swift %}
+
+```swift
+//UIKit
+label.text = Telereso.getRemoteString("title home")
+
+//SwiftUI
+VStack{
+    Text(Telereso.getRemoteString("title home"))
+}
+```
+
+{% endhighlight swift %}
 </div>
 
 <div class="tabcontent dart">

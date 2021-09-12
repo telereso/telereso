@@ -24,6 +24,8 @@ rm -rf index.md
 
 rm -rf temp-index.md
 
+bundle config set --local path 'vendor/bundle'
+bundle i --
 bundle exec jekyll clean
 
 if [[ "$1" == "prod" ]]; then

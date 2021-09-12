@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Telereso" />
 <script type="application/ld+json">
-{"url":"/","headline":"Telereso","@type":"WebSite","@context":"https://schema.org"}</script>
+{"headline":"Telereso","url":"/","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>Telereso | Control your application resources</title>
@@ -19,9 +19,9 @@
           content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f38b1c">
-    <link rel="shortcut icon" type="image/png" href="favicon.png?v=0.0.5-alpha-0.0.10-alpha">
+    <link rel="shortcut icon" type="image/png" href="favicon.png?v=1.0.0-alpha-0.0.10-alpha">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assets/css/style.css?v=0.0.5-alpha-0.0.10-alpha">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.0.0-alpha-0.0.10-alpha">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 
     <style>
@@ -205,6 +205,7 @@
     <p><img src="doc/banner.svg" alt="Banner" /></p>
 
 <p><a href="https://jitpack.io/#telereso/telereso"><img src="https://jitpack.io/v/telereso/telereso.svg" alt="jitpack" /></a>
+<a href="https://cocoapods.org/pods/Telereso"><img src="https://img.shields.io/cocoapods/v/Telereso.svg?style=flat" alt="Version" /></a>
 <a href="https://pub.dartlang.org/packages/telereso"><img src="https://img.shields.io/pub/v/telereso.svg" alt="Pub" /></a>
 <a href="https://www.npmjs.com/package/telereso"><img src="https://img.shields.io/npm/v/telereso.svg" alt="npm react native" /></a>
 <a href="https://www.npmjs.com/package/telereso-web"><img src="https://img.shields.io/npm/v/telereso-web.svg" alt="npm web" /></a></p>
@@ -283,7 +284,7 @@ allprojects {
     }
 }</pre>
     <pre>// At your app build.gradle
-implementation "io.telereso:telereso:0.0.5-alpha"</pre>
+implementation "io.telereso:telereso:1.0.0-alpha"</pre>
     </td>
 </tr>
 <tr>
@@ -300,7 +301,15 @@ allprojects {
     }
 }</pre>
     <pre>// At your app build.gradle
-implementation("io.telereso:telereso:0.0.5-alpha")</pre>
+implementation("io.telereso:telereso:1.0.0-alpha")</pre>
+    </td>
+</tr>
+<tr>
+<td><img src="doc/ios.png" alt="IOS" /></td>
+<td>
+    <pre>
+pod 'Telereso'
+</pre>
     </td>
 </tr>
 <tr>
@@ -337,6 +346,7 @@ Check samples in this <a href="https://github.com/telereso/telereso/tree/master/
 
 <ul>
   <li><a href="https://github.com/telereso/telereso/tree/master/Samples/android">Android</a></li>
+  <li><a href="https://github.com/telereso/telereso/tree/master/Samples/ios">IOS</a></li>
   <li><a href="https://github.com/telereso/telereso/tree/master/Samples/flutter">Flutter</a></li>
   <li><a href="https://github.com/telereso/telereso/tree/master/Samples/react-native">React Native</a></li>
   <li><a href="https://github.com/telereso/telereso/tree/master/Samples/web">Web</a></li>
@@ -433,6 +443,10 @@ Follow docs <a href="https://telereso.io/#initialization">here in this page</a> 
 You can use <a href="https://plugins.jetbrains.com/plugin/16168-telereso" target="_blank">Telereso plugin</a> to help you with the localization migration.</p>
   </li>
   <li>
+    <p><strong>IOS</strong><br />
+Follow docs <a href="https://telereso.io/#initialization">here in this page</a></p>
+  </li>
+  <li>
     <p><strong>Flutter</strong><br />
 <a href="https://pub.dev/packages/telereso#telereso">Check package docs</a></p>
   </li>
@@ -459,10 +473,11 @@ So it is a way to disable remote functionality.</p>
 
 <p><strong>Application Start</strong></p>
 
-<div class="code-block kotlin java dart reactNative web">
+<div class="code-block kotlin java swift dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks swift" onclick="openTab(event, 'swift')">Swift</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
   <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
   <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
@@ -493,6 +508,23 @@ So it is a way to disable remote functionality.</p>
       <span class="nc">Telereso</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
    <span class="o">}</span>
 <span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent swift">
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="err">```</span><span class="n">swift</span>
+<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
+    
+    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span>
+        <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span>
+          <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="kt">FirebaseApp</span><span class="o">.</span><span class="nf">configure</span><span class="p">()</span>
+        <span class="kt">Telereso</span><span class="o">.</span><span class="nf">initialize</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">true</span>
+      <span class="p">}</span>
+<span class="p">}</span>
 <span class="err">```</span></code></pre></figure>
 
 
@@ -572,11 +604,12 @@ So it is a way to disable remote functionality.</p>
 
 <p><strong>Splash Screen</strong></p>
 
-<div class="code-block kotlin java reactNative web">
+<div class="code-block kotlin java swift reactNative web">
 
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks swift" onclick="openTab(event, 'swift')">Swift</button>
   <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
   <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
@@ -610,6 +643,34 @@ So it is a way to disable remote functionality.</p>
       <span class="o">});</span>
    <span class="o">}</span>
 <span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent swift">
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="err">```</span><span class="n">swift</span>
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">?</span>
+    
+    <span class="kd">func</span> <span class="nf">initTelereso</span><span class="p">(){</span>
+        <span class="kt">Telereso</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(){()</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="kt">Result</span><span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+            <span class="n">mainBody</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+            <span class="k">let</span> <span class="nv">_</span> <span class="o">=</span> <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="n">mainBody</span>
+        <span class="k">case</span> <span class="nv">nil</span><span class="p">:</span>
+            <span class="kt">ProgressView</span><span class="p">()</span><span class="o">.</span><span class="nf">onAppear</span><span class="p">(</span><span class="nv">perform</span><span class="p">:</span> <span class="n">initTelereso</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>    
 <span class="err">```</span></code></pre></figure>
 
 </div>
@@ -673,11 +734,12 @@ So it is a way to disable remote functionality.</p>
 
 <p><strong>Full Options</strong></p>
 
-<div class="code-block kotlin java reactNative web">
+<div class="code-block kotlin java swift reactNative web">
 
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks swift" onclick="openTab(event, 'swift')">Swift</button>
   <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
   <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
 </div>
@@ -712,6 +774,23 @@ So it is a way to disable remote functionality.</p>
              <span class="o">.</span><span class="na">enableRealTimeChanges</span><span class="o">();</span> <span class="c1">// enabled realtime changes , if realtime is disabled  remote is cached up to 12 horus</span>
    <span class="o">}</span>
 <span class="o">}</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent swift">
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="err">```</span><span class="n">swift</span>
+<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
+    
+    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span>
+        <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span>
+          <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="kt">FirebaseApp</span><span class="o">.</span><span class="nf">configure</span><span class="p">()</span>
+        <span class="kt">Telereso</span><span class="o">.</span><span class="nf">enableRealTimeChanges</span><span class="p">()</span><span class="o">.</span><span class="nf">enableStringLog</span><span class="p">()</span><span class="o">.</span><span class="nf">initialize</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">true</span>
+      <span class="p">}</span>
+<span class="p">}</span>
 <span class="err">```</span></code></pre></figure>
 
 </div>
@@ -843,10 +922,11 @@ which is
 This will make sure to use the remote version of the resource if found or default it to the original value</p>
 
 <p><strong>Strings</strong></p>
-<div class="code-block kotlin java dart reactNative web">
+<div class="code-block kotlin java swift dart reactNative web">
 <div class="tab">
   <button class="tablinks kotlin active" onclick="openTab(event, 'kotlin')">Kotlin</button>
   <button class="tablinks java" onclick="openTab(event, 'java')">Java</button>
+  <button class="tablinks swift" onclick="openTab(event, 'swift')">Swift</button>
   <button class="tablinks dart" onclick="openTab(event, 'dart')">Dart</button>
   <button class="tablinks reactNative" onclick="openTab(event, 'reactNative')">React Native</button>
   <button class="tablinks web" onclick="openTab(event, 'web')">Web</button>
@@ -866,6 +946,20 @@ This will make sure to use the remote version of the resource if found or defaul
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">```</span><span class="n">java</span>
 <span class="n">titleTextView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="nc">Telereso</span><span class="o">.</span><span class="na">getRemoteString</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">strings</span><span class="o">.</span><span class="na">title_home</span><span class="o">));</span>
+<span class="err">```</span></code></pre></figure>
+
+</div>
+
+<div class="tabcontent swift">
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="err">```</span><span class="n">swift</span>
+<span class="c1">//UIKit</span>
+<span class="n">label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="kt">Telereso</span><span class="o">.</span><span class="nf">getRemoteString</span><span class="p">(</span><span class="s">"title home"</span><span class="p">)</span>
+
+<span class="c1">//SwiftUI</span>
+<span class="kt">VStack</span><span class="p">{</span>
+    <span class="kt">Text</span><span class="p">(</span><span class="kt">Telereso</span><span class="o">.</span><span class="nf">getRemoteString</span><span class="p">(</span><span class="s">"title home"</span><span class="p">))</span>
+<span class="p">}</span>
 <span class="err">```</span></code></pre></figure>
 
 </div>

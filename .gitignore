@@ -17,5 +17,7 @@ website/.sass-cache/*
 website/_site/*
 website/doc/*
 website/CNAME
+website/.bundle/
+website/vendor/
 docs/_config.yml
 
