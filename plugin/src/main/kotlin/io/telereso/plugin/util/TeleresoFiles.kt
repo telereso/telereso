@@ -107,10 +107,16 @@ object TeleresoFiles {
         val gson = Gson()
         val map = hashMapOf<String, HashMap<String, String>>()
         allFiles.forEach {
-            val local = it.name.split(".")[0].split("_")[1]
-            val m = map.getOrDefault(local, hashMapOf())
+            val local = it.name.split(".")[0].split("_").toMutableList()
+            local.removeAt(0)
+            if (local.isEmpty()) {
+                local.add("default")
+            }
+            var localName= "strings_${local.joinToString("_") { it.toLowerCase() }}.json"
+
+            val m = map.getOrDefault(localName, hashMapOf())
             m.putAll(Converters.jsonToMap(it.readText()))
-            map[local] = m
+            map[localName] = m
         }
         createStringsFolder(project)?.let { dir ->
             val mergedDir = File(dir, "merged")
