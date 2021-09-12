@@ -1,0 +1,11 @@
+framework module Telereso {
+  umbrella header "Telereso.h"
+
+  export *
+  module * { export * }
+}
+
+module Telereso.Swift {
+    header "Telereso-Swift.h"
+    requires objc
+}

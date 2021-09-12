@@ -1,0 +1,9 @@
+
+/* Class = "UITextField"; text = "test field"; ObjectID = "PZD-M3-8Xr"; */
+"PZD-M3-8Xr.text" = "test field";
+
+/* Class = "UIButton"; normalTitle = "test button"; ObjectID = "UaC-E7-jOW"; */
+"UaC-E7-jOW.normalTitle" = "test button";
+
+/* Class = "UILabel"; text = "test"; ObjectID = "YWb-y6-IQ5"; */
+"YWb-y6-IQ5.text" = "test";
