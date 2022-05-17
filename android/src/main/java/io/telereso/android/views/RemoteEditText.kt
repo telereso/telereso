@@ -15,7 +15,7 @@ open class RemoteEditText @JvmOverloads constructor(
     @StringRes
     private var hintId: Int? = null
 
-    private val chaneListener = object : RemoteChanges {
+    private val changeListener = object : RemoteChanges {
         override fun onRemoteUpdate() {
             post {
                 stringId?.let { setText(getRemoteString(it)) }
@@ -52,11 +52,11 @@ open class RemoteEditText @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        addChangeListener(chaneListener)
+        addChangeListener(changeListener)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        removeChangeListener(chaneListener)
+        removeChangeListener(changeListener)
     }
 }

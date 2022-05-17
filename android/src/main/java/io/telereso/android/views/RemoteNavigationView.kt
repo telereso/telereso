@@ -5,23 +5,18 @@ import android.content.res.XmlResourceParser
 import android.util.AttributeSet
 import android.util.Xml
 import android.view.InflateException
-import android.view.Menu
-import androidx.annotation.IdRes
-import androidx.annotation.StringRes
-import androidx.appcompat.R
 import com.google.android.material.navigation.NavigationView
 import io.telereso.android.*
-import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 
 open class RemoteNavigationView @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = com.google.android.material.R.attr.bottomNavigationStyle
-) : NavigationView(context, attrs, defStyleAttr) {
+        context: Context, attrs: AttributeSet? = null
+) : NavigationView(context, attrs) {
 
     private var menuId: Int? = null
 
-    private val chaneListener = object : RemoteChanges {
+    private val changeListener = object : RemoteChanges {
         override fun onRemoteUpdate() {
             post {
                 menuId?.let {
@@ -34,12 +29,12 @@ open class RemoteNavigationView @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        addChangeListener(chaneListener)
+        addChangeListener(changeListener)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        removeChangeListener(chaneListener)
+        removeChangeListener(changeListener)
     }
 
     override fun inflateMenu(resId: Int) {

@@ -12,9 +12,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
-import androidx.appcompat.R
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -137,6 +135,10 @@ fun Context.getDpiKey(): String {
     return resources.getDpiKey()
 }
 
+fun Context.getSizeKey(): String {
+    return resources.getSizeKey()
+}
+
 fun Resources.getDpiKey(): String {
     return when (displayMetrics.densityDpi) {
         DENSITY_LOW -> "ldpi"
@@ -146,6 +148,18 @@ fun Resources.getDpiKey(): String {
         DENSITY_340, DENSITY_360, DENSITY_400, DENSITY_420, DENSITY_440, DENSITY_XXHIGH -> "xxhdpi"
         DENSITY_560, DENSITY_XXXHIGH -> "xxxhdpi"
         else -> "xhdpi"
+    }
+}
+
+fun Resources.getSizeKey(): String {
+    return when (displayMetrics.densityDpi) {
+        DENSITY_LOW -> "1x"
+        DENSITY_MEDIUM -> "1x"
+        DENSITY_TV, DENSITY_HIGH -> "2x"
+        DENSITY_260, DENSITY_280, DENSITY_300, DENSITY_XHIGH -> "2x"
+        DENSITY_340, DENSITY_360, DENSITY_400, DENSITY_420, DENSITY_440, DENSITY_XXHIGH -> "3x"
+        DENSITY_560, DENSITY_XXXHIGH -> "3x"
+        else -> "2x"
     }
 }
 

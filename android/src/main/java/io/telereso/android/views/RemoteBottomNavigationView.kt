@@ -5,9 +5,6 @@ import android.content.res.XmlResourceParser
 import android.util.AttributeSet
 import android.util.Xml
 import android.view.InflateException
-import android.view.Menu
-import androidx.annotation.IdRes
-import androidx.annotation.StringRes
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.telereso.android.*
 import org.xmlpull.v1.XmlPullParserException
@@ -15,13 +12,12 @@ import java.io.IOException
 
 open class RemoteBottomNavigationView @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = com.google.android.material.R.attr.bottomNavigationStyle
-) : BottomNavigationView(context, attrs, defStyleAttr) {
+    attrs: AttributeSet? = null
+) : BottomNavigationView(context, attrs) {
 
     private var menuId: Int? = null
 
-    private val chaneListener = object : RemoteChanges {
+    private val changeListener = object : RemoteChanges {
         override fun onRemoteUpdate() {
             post {
                 menuId?.let {
@@ -36,12 +32,12 @@ open class RemoteBottomNavigationView @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        addChangeListener(chaneListener)
+        addChangeListener(changeListener)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        removeChangeListener(chaneListener)
+        removeChangeListener(changeListener)
     }
 
 

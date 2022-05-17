@@ -13,7 +13,7 @@ open class RemoteTextView @JvmOverloads constructor(
     @StringRes
     private var stringId: Int? = null
 
-    private val chaneListener = object : RemoteChanges {
+    private val changeListener = object : RemoteChanges {
         override fun onRemoteUpdate() {
             post { stringId?.let { text = getRemoteString(it) } }
         }
@@ -44,12 +44,12 @@ open class RemoteTextView @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        addChangeListener(chaneListener)
+        addChangeListener(changeListener)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        removeChangeListener(chaneListener)
+        removeChangeListener(changeListener)
     }
 
 

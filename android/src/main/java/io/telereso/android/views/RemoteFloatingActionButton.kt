@@ -13,7 +13,7 @@ open class RemoteFloatingActionButton @JvmOverloads constructor(
     @IdRes
     private var resId: Int? = null
 
-    private val chaneListener = object : RemoteChanges {
+    private val changeListener = object : RemoteChanges {
         override fun onRemoteUpdate() {
             post { resId?.let { setImageResource(it) } }
         }
@@ -40,19 +40,19 @@ open class RemoteFloatingActionButton @JvmOverloads constructor(
         resId?.let { setImageResource(it) }
     }
 
-    override fun setImageResource(resId: Int) {
+    override fun setImageResource(@IdRes resId: Int) {
         this.resId = resId
         setRemoteImageResource(resId)
     }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        addChangeListener(chaneListener)
+        addChangeListener(changeListener)
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        removeChangeListener(chaneListener)
+        removeChangeListener(changeListener)
     }
 
 
