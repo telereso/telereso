@@ -61,4 +61,6 @@
     <string name="about">About</string>
     <string name="inbox">Inbox</string>
     <string name="default_notification_channel_id">general</string>
+    <string name="home_toolbar">test</string>
+    <string name="home_toolbar_subtitle">test sub title</string>
 </resources>

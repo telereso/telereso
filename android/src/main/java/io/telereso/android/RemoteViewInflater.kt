@@ -18,6 +18,7 @@ open class RemoteViewInflater : AppCompatViewInflater() {
             "androidx.appcompat.widget.AppCompatButton" -> createButton(context, attrs)
             "androidx.appcompat.widget.AppCompatImageView" -> createImageView(context, attrs)
             "androidx.appcompat.widget.AppCompatImageButton" -> createImageButton(context, attrs)
+            "androidx.appcompat.widget.Toolbar" -> createToolbar(context, attrs)
             "com.google.android.material.bottomnavigation.BottomNavigationView" -> createBottomNavigation(context, attrs)
             "com.google.android.material.navigation.NavigationView" -> createNavigation(context, attrs)
             "com.google.android.material.floatingactionbutton.FloatingActionButton" -> createFloatingActionButton(context, attrs)
@@ -43,6 +44,10 @@ open class RemoteViewInflater : AppCompatViewInflater() {
 
     override fun createImageButton(context: Context, attrs: AttributeSet?): AppCompatImageButton {
         return  RemoteImageButton(context, attrs)
+    }
+
+    protected fun createToolbar(context: Context, attrs: AttributeSet?): Toolbar {
+        return  RemoteToolbar(context, attrs)
     }
 
     protected open fun createBottomNavigation(context: Context, attrs: AttributeSet?): RemoteBottomNavigationView {

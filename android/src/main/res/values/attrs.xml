@@ -14,6 +14,12 @@
         <attr name="android:text" />
     </declare-styleable>
 
+    <declare-styleable name="RemoteToolbar">
+        <attr name="android:title" />
+        <attr name="title" />
+        <attr name="subtitle" />
+    </declare-styleable>
+
     <declare-styleable name="RemoteBottomNavigationView">
         <attr name="android:title" />
     </declare-styleable>

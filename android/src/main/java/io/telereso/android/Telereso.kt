@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.StringRes
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.RemoteMessage
 import com.google.firebase.messaging.ktx.messaging
@@ -21,18 +22,19 @@ import kotlinx.coroutines.*
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
-import java.util.*
 import kotlin.collections.HashMap
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 internal const val TAG = "Telereso"
 internal const val TAG_STRINGS = "${TAG}_strings"
-internal const val TAG_DRAWABLES = "${TAG}_drawable"
+internal const val TAG_DRAWABLES = "${TAG}_drawables"
 private const val STRINGS = "strings"
-private const val DRAWABLE = "drawable"
+private const val DRAWABLES = "drawables"
+private const val TIMEOUT = 8000L
 
 object Telereso {
+    private var timeout = TIMEOUT
     private var isLogEnabled = true
     private var isStringLogEnabled = false
     private var isDrawableLogEnabled = false
@@ -44,6 +46,8 @@ object Telereso {
     private var currentLocal: String? = null
     private var drawableMap = HashMap<String, JSONObject>()
     private val densityList = listOf("ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
+    private val sizesList = listOf("1x", "2x", "3x")
+    private var supportedSizes = listOf("1x")
 
     @JvmStatic
     fun getInstance() = this
@@ -51,26 +55,34 @@ object Telereso {
     @JvmStatic
     @JvmOverloads
     fun init(
-            context: Context,
-            finishSetup: () -> Unit = {}
+        context: Context,
+        finishSetup: () -> Unit = {}
     ): Telereso {
         GlobalScope.launch {
             log("Initializing...")
             if (isRealTimeChangesEnabled)
                 Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
-                        ?: remoteConfigSettings {
-                            minimumFetchIntervalInSeconds = 0
-                        })
+                    ?: remoteConfigSettings {
+                        minimumFetchIntervalInSeconds = 0
+                    })
 
-            val shouldUpdate = async { fetchResource() }
+            val init = withTimeoutOrNull(timeout) {
 
-            initMaps(context)
+                val shouldUpdate = async { fetchResource() }
 
-            log("Initialized!")
-
-            if (shouldUpdate.await()) {
-                log("Fetched new data")
                 initMaps(context)
+
+                log("Initialized!")
+
+                if (shouldUpdate.await()) {
+                    log("Fetched new data")
+                    initMaps(context)
+                }
+
+                return@withTimeoutOrNull true
+            }
+            if (init == null) {
+                log("Failed to initialize due to timeout, check network connectivity")
             }
 
             finishSetup()
@@ -82,16 +94,23 @@ object Telereso {
         log("Initializing...")
         if (isRealTimeChangesEnabled)
             Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
-                    ?: remoteConfigSettings {
-                        minimumFetchIntervalInSeconds = 0
-                    })
+                ?: remoteConfigSettings {
+                    minimumFetchIntervalInSeconds = 0
+                })
 
-        fetchResource()
+        val init = withTimeoutOrNull(timeout) {
 
-        initMaps(context)
+            fetchResource()
 
-        log("Initialized!")
+            initMaps(context)
 
+            log("Initialized!")
+            return@withTimeoutOrNull true
+        }
+
+        if (init == null) {
+            log("Failed to initialize due to timeout, check network connectivity")
+        }
     }
 
     fun reset() {
@@ -115,6 +134,11 @@ object Telereso {
 
     fun disableLog(): Telereso {
         isLogEnabled = false
+        return this
+    }
+
+    fun setInitTimeout(long: Long): Telereso {
+        timeout = long
         return this
     }
 
@@ -171,6 +195,15 @@ object Telereso {
             val iterator = listenersList.iterator()
             while (iterator.hasNext()) {
                 iterator.next().onResourceNotFound(key)
+            }
+        }
+    }
+
+    private fun onException(e: Exception) {
+        GlobalScope.launch(Dispatchers.Default) {
+            val iterator = listenersList.iterator()
+            while (iterator.hasNext()) {
+                iterator.next().onException(e)
             }
         }
     }
@@ -235,7 +268,7 @@ object Telereso {
         var url: String? = null
         var deviceDrawableId: String? = null
         run {
-            getSupportedDensities(context).forEach {
+            supportedSizes.forEach {
                 deviceDrawableId = getDrawableKey(it)
                 url = drawableMap[deviceDrawableId]?.optString(key)
                 if (!url.isNullOrBlank())
@@ -243,8 +276,8 @@ object Telereso {
             }
         }
         if (url.isNullOrBlank()) {
-            deviceDrawableId = DRAWABLE
-            url = drawableMap[DRAWABLE]?.optString(key)
+            deviceDrawableId = DRAWABLES
+            url = drawableMap[DRAWABLES]?.optString(key)
         }
         logDrawables("density:$deviceDrawableId remote:$url")
         logDrawables("*************************************************")
@@ -278,7 +311,7 @@ object Telereso {
     }
 
     private suspend fun initMaps(context: Context) {
-        withContext(context = Dispatchers.IO) {
+        withContext(context = Dispatchers.Default) {
 
             //  strings
             val defaultId = STRINGS
@@ -300,21 +333,22 @@ object Telereso {
 
 
             //drawables
-            var defaultDrawables = Firebase.remoteConfig.getString(DRAWABLE)
+            var defaultDrawables = Firebase.remoteConfig.getString(DRAWABLES)
             if (defaultDrawables.isBlank()) {
                 defaultDrawables = "{}"
             }
-            drawableMap[DRAWABLE] = JSONObject(defaultDrawables)
+            drawableMap[DRAWABLES] = JSONObject(defaultDrawables)
 
-            drawableMap[DRAWABLE]?.keys()?.forEach {
-                try {
-                    Glide.with(context).load(it).timeout(200).submit().get()
-                } catch (t: Throwable) {
+            drawableMap[DRAWABLES]?.apply {
+                keys().forEach {
+                    cacheImage(context, optString(it))
                 }
             }
 
 
-            getSupportedDensities(context).forEach { deviceDensity ->
+            supportedSizes = getSupportedSizes(context)
+
+            supportedSizes.forEach { deviceDensity ->
                 val deviceDrawableId = getDrawableKey(deviceDensity)
                 var deviceDrawables = Firebase.remoteConfig.getString(deviceDrawableId)
                 if (deviceDrawables.isBlank()) {
@@ -322,14 +356,26 @@ object Telereso {
                 }
                 drawableMap[deviceDrawableId] = JSONObject(deviceDrawables)
 
-                drawableMap[deviceDrawableId]?.keys()?.forEach {
-                    try {
-                        Glide.with(context).load(it).timeout(1000).submit()
-                    } catch (t: Throwable) {
+                drawableMap[deviceDrawableId]?.apply {
+                    keys().forEach {
+                        cacheImage(context, optString(it))
                     }
                 }
             }
 
+        }
+    }
+
+    private fun cacheImage(context: Context, url: String?) {
+        try {
+            if (!url.isNullOrBlank())
+                Glide.with(context).load(url)
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .timeout(1000)
+                    .submit()
+        } catch (e: Exception) {
+            onException(e)
         }
     }
 
@@ -371,9 +417,19 @@ object Telereso {
     }
 
     private fun getSupportedDensities(context: Context): List<String> {
-        val supportedDensityList = densityList.takeWhile { it != context.getDpiKey() }.toMutableList()
+        val supportedDensityList = densityList.takeWhile {
+            it != context.getDpiKey()
+        }.toMutableList()
         supportedDensityList.add(context.getDpiKey())
         return supportedDensityList.reversed()
+    }
+
+    private fun getSupportedSizes(context: Context): List<String> {
+        val supportedSizesList = sizesList.takeWhile {
+            it != context.getSizeKey()
+        }.toMutableList()
+        supportedSizesList.add(context.getSizeKey())
+        return supportedSizesList.reversed()
     }
 
     private fun getStringKey(id: String): String {
@@ -381,7 +437,7 @@ object Telereso {
     }
 
     private fun getDrawableKey(id: String): String {
-        return "${DRAWABLE}_$id"
+        return "${DRAWABLES}_$id"
     }
 
     private fun getStringValue(local: String, key: String, default: String?): String {
@@ -403,17 +459,17 @@ object Telereso {
 
     internal fun getLocal(context: Context): String {
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            context.resources.configuration.locales[0].toString().toLowerCase(Locale.ENGLISH)
+            context.resources.configuration.locales[0].toString().lowercase()
         } else {
-            context.resources.configuration.locale.toString().toLowerCase(Locale.ENGLISH)
+            context.resources.configuration.locale.toString().lowercase()
         }
     }
 
     internal fun getLocal(resources: Resources): String {
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            resources.configuration.locales[0].toString().toLowerCase(Locale.ENGLISH)
+            resources.configuration.locales[0].toString().lowercase()
         } else {
-            resources.configuration.locale.toString().toLowerCase(Locale.ENGLISH)
+            resources.configuration.locale.toString().lowercase()
         }
     }
 
