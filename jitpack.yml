@@ -1,0 +1,5 @@
+jdk:
+  - openjdk11
+install:
+  - git submodule update --init --recursive
+  - ./gradlew publishToMavenLocal
