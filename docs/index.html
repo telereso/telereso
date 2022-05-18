@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Telereso" />
 <script type="application/ld+json">
-{"headline":"Telereso","url":"/","@type":"WebSite","@context":"https://schema.org"}</script>
+{"url":"/","headline":"Telereso","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>Telereso | Control your application resources</title>
@@ -224,9 +224,9 @@
           <li><a href="#localization" id="markdown-toc-localization">Localization</a></li>
         </ul>
       </li>
-      <li><a href="#drawable" id="markdown-toc-drawable">Drawable</a>        <ul>
+      <li><a href="#drawables" id="markdown-toc-drawables">Drawables</a>        <ul>
           <li><a href="#steps-1" id="markdown-toc-steps-1">Steps</a></li>
-          <li><a href="#android-screens-support" id="markdown-toc-android-screens-support">Android Screens support</a></li>
+          <li><a href="#screens-support" id="markdown-toc-screens-support">Screens support</a></li>
         </ul>
       </li>
       <li><a href="#final-result" id="markdown-toc-final-result">Final Result</a></li>
@@ -385,25 +385,23 @@ ex: <code class="language-plaintext highlighter-rouge">strings_fr,strings_ar...e
 
 <p><em>Notice we are using <code class="language-plaintext highlighter-rouge">_</code> instead of <code class="language-plaintext highlighter-rouge">-</code> due to remote config limitations</em></p>
 
-<h3 id="drawable">Drawable</h3>
+<h3 id="drawables">Drawables</h3>
 
 <h4 id="steps-1">Steps</h4>
 
 <ul>
   <li>Open <a href="https://console.firebase.google.com/">Firebase console</a> then select Remote Config Dashboard</li>
-  <li>Add new param called <code class="language-plaintext highlighter-rouge">drawable</code></li>
+  <li>Add new param called <code class="language-plaintext highlighter-rouge">drawables</code></li>
   <li>Add a json containing key/value params representing your drawable resource’s key name (same key name found in the
 drawable dir), and it’s value will be a url of your remote image <br /><br /><img src="doc/add_drawable.png" alt="img.png" /><br /><br /></li>
-  <li>Add to <code class="language-plaintext highlighter-rouge">Drawable</code> group  (this is optional but good practice) <br /><br /><img src="doc/add_group.png" alt="add_group" /><br /><br /></li>
+  <li>Add to <code class="language-plaintext highlighter-rouge">Drawables</code> group  (this is optional but good practice) <br /><br /><img src="doc/add_group.png" alt="add_group" /><br /><br /></li>
   <li>Save and publish</li>
 </ul>
 
-<h4 id="android-screens-support">Android Screens support</h4>
+<h4 id="screens-support">Screens support</h4>
 
-<p>To support multiple screens sizes for android add the same sizes used with drawable dirs <br />
-ex: <code class="language-plaintext highlighter-rouge">drawable_hdpi,drawable_xhdpi</code></p>
-
-<p><em>Notice we are using <code class="language-plaintext highlighter-rouge">_</code> instead of <code class="language-plaintext highlighter-rouge">-</code> due to remote config limitations</em></p>
+<p>To support multiple screens sizes add parameters to different sizes <code class="language-plaintext highlighter-rouge">drawables_1x</code>, <code class="language-plaintext highlighter-rouge">drawables_2x</code>, <code class="language-plaintext highlighter-rouge">drawables_3x</code> <br />
+<code class="language-plaintext highlighter-rouge">1x</code> being the lowest resolution and <code class="language-plaintext highlighter-rouge">3x</code> the highest</p>
 
 <h3 id="final-result">Final Result</h3>
 

@@ -136,23 +136,21 @@ _Android developers_ it will be the same local you add to your values dir `value
 
 _Notice we are using `_` instead of `-` due to remote config limitations_
 
-### Drawable
+### Drawables
 
 #### Steps
 
 * Open [Firebase console](https://console.firebase.google.com/) then select Remote Config Dashboard
-* Add new param called `drawable`
+* Add new param called `drawables`
 * Add a json containing key/value params representing your drawable resource's key name (same key name found in the
   drawable dir), and it's value will be a url of your remote image <br><br>![img.png](doc/add_drawable.png)<br><br>
-* Add to `Drawable` group  (this is optional but good practice) <br><br>![add_group](doc/add_group.png)<br><br>
+* Add to `Drawables` group  (this is optional but good practice) <br><br>![add_group](doc/add_group.png)<br><br>
 * Save and publish
 
-#### Android Screens support
+#### Screens support
 
-To support multiple screens sizes for android add the same sizes used with drawable dirs <br>
-ex: `drawable_hdpi,drawable_xhdpi`
-
-_Notice we are using `_` instead of `-` due to remote config limitations_
+To support multiple screens sizes add parameters to different sizes `drawables_1x`, `drawables_2x`, `drawables_3x` <br>
+`1x` being the lowest resolution and `3x` the highest 
 
 ### Final Result
 

@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Telereso" />
 <script type="application/ld+json">
-{"headline":"Telereso","url":"/index-data.yml","@type":"WebPage","@context":"https://schema.org"}</script>
+{"url":"/index-data.yml","headline":"Telereso","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>Telereso | Control your application resources</title>
