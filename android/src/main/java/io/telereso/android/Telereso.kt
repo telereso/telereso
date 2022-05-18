@@ -60,7 +60,7 @@ object Telereso {
     ): Telereso {
         GlobalScope.launch {
             log("Initializing...")
-            if (isRealTimeChangesEnabled)
+            if (isRealTimeChangesEnabled || remoteConfigSettings != null)
                 Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
                     ?: remoteConfigSettings {
                         minimumFetchIntervalInSeconds = 0
@@ -92,7 +92,7 @@ object Telereso {
 
     suspend fun suspendInit(context: Context) {
         log("Initializing...")
-        if (isRealTimeChangesEnabled)
+        if (isRealTimeChangesEnabled || remoteConfigSettings != null)
             Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
                 ?: remoteConfigSettings {
                     minimumFetchIntervalInSeconds = 0
