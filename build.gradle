@@ -3,13 +3,13 @@ file("android/gradle.properties").withInputStream { props.load(it) }
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.20"
+    ext.kotlin_version = "1.6.20"
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.2.1"
+        classpath "com.android.tools.build:gradle:7.1.3"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 //        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
 //        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
