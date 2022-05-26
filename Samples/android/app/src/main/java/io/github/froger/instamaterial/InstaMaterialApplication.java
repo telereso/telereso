@@ -14,7 +14,7 @@ public class InstaMaterialApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         Timber.plant(new Timber.DebugTree());
-        Telereso.init(this);
+        //Telereso.init(this);
 
     }
 }

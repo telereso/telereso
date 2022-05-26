@@ -18,13 +18,15 @@ import com.google.firebase.messaging.ktx.messaging
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+import io.telereso.android.db.merge
+import io.telereso.android.resrouce.ResourceRepository
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
-import kotlin.collections.HashMap
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
+
 
 internal const val TAG = "Telereso"
 internal const val TAG_STRINGS = "${TAG}_strings"
@@ -48,6 +50,9 @@ object Telereso {
     private val densityList = listOf("ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
     private val sizesList = listOf("1x", "2x", "3x")
     private var supportedSizes = listOf("1x")
+    private var customEndpoints = arrayListOf<String>()
+
+    private var resourceRepository: ResourceRepository? = null
 
     @JvmStatic
     fun getInstance() = this
@@ -58,8 +63,11 @@ object Telereso {
         context: Context,
         finishSetup: () -> Unit = {}
     ): Telereso {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO) {
             log("Initializing...")
+
+            resourceRepository = ResourceRepository(context)
+
             if (isRealTimeChangesEnabled || remoteConfigSettings != null)
                 Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
                     ?: remoteConfigSettings {
@@ -67,6 +75,9 @@ object Telereso {
                     })
 
             val init = withTimeoutOrNull(timeout) {
+
+                if (customEndpoints.isNotEmpty())
+                    resourceRepository?.loadResources()
 
                 val shouldUpdate = async { fetchResource() }
 
@@ -92,6 +103,9 @@ object Telereso {
 
     suspend fun suspendInit(context: Context) {
         log("Initializing...")
+
+        resourceRepository = ResourceRepository(context)
+
         if (isRealTimeChangesEnabled || remoteConfigSettings != null)
             Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
                 ?: remoteConfigSettings {
@@ -99,6 +113,9 @@ object Telereso {
                 })
 
         val init = withTimeoutOrNull(timeout) {
+
+            if (customEndpoints.isNotEmpty())
+                resourceRepository?.loadResources()
 
             fetchResource()
 
@@ -115,6 +132,16 @@ object Telereso {
 
     fun reset() {
         currentLocal = null
+    }
+
+    fun addCustomEndpoint(url: String): Telereso {
+        customEndpoints.add(url)
+        return this
+    }
+
+    fun addCustomEndpoints(urls: List<String>): Telereso {
+        customEndpoints.addAll(urls)
+        return this
     }
 
     fun setRemoteConfigSettings(remoteConfigSettings: FirebaseRemoteConfigSettings): Telereso {
@@ -312,57 +339,88 @@ object Telereso {
 
     private suspend fun initMaps(context: Context) {
         withContext(context = Dispatchers.Default) {
+            val fireBaseRemote = object : Remote {
+                override fun getString(key: String): String {
+                    return Firebase.remoteConfig.getString(key)
+                }
 
-            //  strings
-            val defaultId = STRINGS
-            var default = Firebase.remoteConfig.getString(defaultId)
-            if (default.isBlank()) {
-                default = "{}"
-                log("Your default local $defaultId was not found in remote config", true)
-            } else {
-                log("Default local $defaultId was setup")
+                override fun getKeysByPrefix(prefix: String): Set<String> {
+                    return Firebase.remoteConfig.getKeysByPrefix(prefix)
+                }
+
             }
-            stringsMap[defaultId] = JSONObject(default)
 
-            val deviceLocal =
-                if (context is Application) currentLocal ?: getLocal(context) else getLocal(context)
-            currentLocal = deviceLocal
-            val local = getRemoteLocal(deviceLocal)
+            val customRemote = object : Remote {
+                override fun getString(key: String): String {
+                    return resourceRepository?.getString(key) ?: ""
+                }
 
-            stringsMap[getStringKey(deviceLocal)] = JSONObject(local)
+                override fun getKeysByPrefix(prefix: String): Set<String> {
+                    return resourceRepository?.getKeysByPrefix(prefix) ?: emptySet()
+                }
 
-
-            //drawables
-            var defaultDrawables = Firebase.remoteConfig.getString(DRAWABLES)
-            if (defaultDrawables.isBlank()) {
-                defaultDrawables = "{}"
             }
-            drawableMap[DRAWABLES] = JSONObject(defaultDrawables)
 
-            drawableMap[DRAWABLES]?.apply {
+            initStrings(context, customRemote)
+            initDrawables(context, customRemote)
+
+            initStrings(context, fireBaseRemote)
+            initDrawables(context, fireBaseRemote)
+        }
+    }
+
+    private fun initStrings(context: Context, remote: Remote) {
+        val defaultId = STRINGS
+        var default = remote.getString(defaultId)
+        if (default.isBlank()) {
+            default = "{}"
+            log("Your default local $defaultId was not found in remote config", true)
+        } else {
+            log("Default local $defaultId was setup")
+        }
+        stringsMap[defaultId] = stringsMap[defaultId].merge(JSONObject(default))
+
+        val deviceLocal =
+            if (context is Application) currentLocal ?: getLocal(context) else getLocal(context)
+        currentLocal = deviceLocal
+        val local = getRemoteLocal(deviceLocal, remote)
+
+        val deviceLocalKey = getStringKey(deviceLocal)
+        stringsMap[deviceLocalKey] =
+            stringsMap[deviceLocalKey].merge(JSONObject(local))
+    }
+
+    private fun initDrawables(context: Context, remote: Remote) {
+        //drawables
+        var defaultDrawables = remote.getString(DRAWABLES)
+        if (defaultDrawables.isBlank()) {
+            defaultDrawables = "{}"
+        }
+        drawableMap[DRAWABLES] = drawableMap[DRAWABLES].merge(JSONObject(defaultDrawables))
+
+        drawableMap[DRAWABLES]?.apply {
+            keys().forEach {
+                cacheImage(context, optString(it))
+            }
+        }
+
+
+        supportedSizes = getSupportedSizes(context)
+
+        supportedSizes.forEach { deviceDensity ->
+            val deviceDrawableId = getDrawableKey(deviceDensity)
+            var deviceDrawables = remote.getString(deviceDrawableId)
+            if (deviceDrawables.isBlank()) {
+                deviceDrawables = "{}"
+            }
+            drawableMap[deviceDrawableId] =
+                drawableMap[deviceDrawableId].merge(JSONObject(deviceDrawables))
+
+            drawableMap[deviceDrawableId]?.apply {
                 keys().forEach {
                     cacheImage(context, optString(it))
                 }
             }
-
-
-            supportedSizes = getSupportedSizes(context)
-
-            supportedSizes.forEach { deviceDensity ->
-                val deviceDrawableId = getDrawableKey(deviceDensity)
-                var deviceDrawables = Firebase.remoteConfig.getString(deviceDrawableId)
-                if (deviceDrawables.isBlank()) {
-                    deviceDrawables = "{}"
-                }
-                drawableMap[deviceDrawableId] = JSONObject(deviceDrawables)
-
-                drawableMap[deviceDrawableId]?.apply {
-                    keys().forEach {
-                        cacheImage(context, optString(it))
-                    }
-                }
-            }
-
         }
     }
 
@@ -379,20 +437,20 @@ object Telereso {
         }
     }
 
-    private fun getRemoteLocal(deviceLocal: String): String {
-        var local = Firebase.remoteConfig.getString(getStringKey(deviceLocal))
+    private fun getRemoteLocal(deviceLocal: String, remote: Remote): String {
+        var local = remote.getString(getStringKey(deviceLocal))
         if (local.isBlank()) {
             val baseLocal = deviceLocal.split("_")[0]
             log("The app local $deviceLocal was not found in remote config will try $baseLocal")
             val key =
-                Firebase.remoteConfig.getKeysByPrefix(getStringKey(baseLocal)).firstOrNull()
+                remote.getKeysByPrefix(getStringKey(baseLocal)).firstOrNull()
             if (key == null) {
                 log("$baseLocal was not found as well")
             } else {
                 if (key.contains("off"))
                     log("$baseLocal was found but it was turned off, remove _off suffix to enable it")
                 else
-                    local = Firebase.remoteConfig.getString(key)
+                    local = remote.getString(key)
             }
 
         }
@@ -406,8 +464,24 @@ object Telereso {
     }
 
     private suspend fun fetchResource(): Boolean {
+
+        return withContext(Dispatchers.IO) {
+            val res = async {
+                val updated = resourceRepository?.fetchEndpoints(customEndpoints) ?: false
+                if (updated) resourceRepository?.loadResources()
+                return@async updated
+            }
+            val res2 = async {
+                return@async fetchFireBase()
+            }
+            return@withContext res.await() || res2.await()
+        }
+    }
+
+    private suspend fun fetchFireBase(): Boolean {
         return suspendCoroutine { coroutine ->
-            Firebase.remoteConfig.fetchAndActivate().addOnCompleteListener { res -> coroutine.resume(if (res.isSuccessful) res.result else false) }
+            Firebase.remoteConfig.fetchAndActivate()
+                .addOnCompleteListener { res -> coroutine.resume(if (res.isSuccessful) res.result else false) }
         }
     }
 
@@ -477,7 +551,7 @@ object Telereso {
         return isRealTimeChangesEnabled
     }
 
-    private fun log(log: String, isWarning: Boolean = false) {
+    internal fun log(log: String, isWarning: Boolean = false) {
         if (isLogEnabled)
             if (isWarning) Log.w(TAG, log) else Log.d(TAG, log)
     }
