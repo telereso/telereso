@@ -40,27 +40,27 @@ interface InfoDao {
     }
 
     @Query("SELECT * FROM info where `key` = :key")
-    suspend fun get(key: String): Info?
+    fun get(key: String): Info?
 
     @Query("SELECT * FROM info")
-    suspend fun getAll(): List<Info>
+    fun getAll(): List<Info>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg resource: Info)
+    fun insertAll(vararg resource: Info)
 
-    suspend fun setLastFetched(milliSeconds: Long) {
+    fun setLastFetched(milliSeconds: Long) {
         insertAll(Info(INFO_LAST_FETCHED, milliSeconds.toString()))
     }
 
-    suspend fun getLastFetched(): Long {
+    fun getLastFetched(): Long {
         return get(INFO_LAST_FETCHED)?.value?.toLong() ?: 0L
     }
 
-    suspend fun setCurrentResourcesHash(hash: String) {
+    fun setCurrentResourcesHash(hash: String) {
         insertAll(Info(INFO_CURRENT_RESOURCES_HASH, hash))
     }
 
-    suspend fun getCurrentResourcesHash(): String {
+    fun getCurrentResourcesHash(): String {
         return get(INFO_CURRENT_RESOURCES_HASH)?.value ?: ""
     }
 }

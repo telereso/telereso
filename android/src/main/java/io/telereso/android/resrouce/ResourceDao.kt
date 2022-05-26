@@ -6,19 +6,19 @@ import io.telereso.android.db.InfoDao
 @Dao
 interface ResourceDao {
     @Query("SELECT * FROM resource")
-    suspend fun getAll(): List<Resource>
+    fun getAll(): List<Resource>
 
     @Query("SELECT COUNT(*) FROM resource")
-    suspend fun getCount(): Int
+    fun getCount(): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg resource: Resource)
+    fun insertAll(vararg resource: Resource)
 
     @Query("DELETE FROM resource")
-    suspend fun cleanTable()
+    fun cleanTable()
 
     @Transaction
-    suspend fun cleanThenInsert(
+    fun cleanThenInsert(
         dbInfoDao: InfoDao,
         newDataHash: String,
         vararg resource: Resource
