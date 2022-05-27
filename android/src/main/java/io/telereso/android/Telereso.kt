@@ -361,8 +361,11 @@ object Telereso {
 
             }
 
-            initStrings(context, customRemote)
-            initDrawables(context, customRemote)
+            if (customEndpoints.isNotEmpty()) {
+                initStrings(context, customRemote)
+                initDrawables(context, customRemote)
+            }
+
 
             initStrings(context, fireBaseRemote)
             initDrawables(context, fireBaseRemote)
@@ -466,15 +469,17 @@ object Telereso {
     private suspend fun fetchResource(): Boolean {
 
         return withContext(Dispatchers.IO) {
-            val res = async {
+            val customUpdatedRes = async {
                 val updated = resourceRepository?.fetchEndpoints(customEndpoints) ?: false
                 if (updated) resourceRepository?.loadResources()
                 return@async updated
             }
-            val res2 = async {
+            val firebaseUpdatedRes = async {
                 return@async fetchFireBase()
             }
-            return@withContext res.await() || res2.await()
+            val customUpdated = customUpdatedRes.await()
+            val firebaseUpdated = firebaseUpdatedRes.await()
+            return@withContext customUpdated || firebaseUpdated
         }
     }
 
