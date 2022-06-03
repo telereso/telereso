@@ -245,7 +245,7 @@ object Telereso {
             )
             onResourceNotFound(key)
         } else {
-            value = value.format(formatArgs)
+            value = value.format(*formatArgs)
         }
         logStrings("*************************************************")
         return value
