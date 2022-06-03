@@ -63,4 +63,6 @@
     <string name="default_notification_channel_id">general</string>
     <string name="home_toolbar">test</string>
     <string name="home_toolbar_subtitle">test sub title</string>
+    <string name="wallet_verify_otp_code_text_description" translatable="false">We have sent a OTP to your mobile phone \n +%s-%s for verification.</string>
+
 </resources>

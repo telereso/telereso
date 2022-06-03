@@ -6,7 +6,7 @@
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
     app:title="@string/home_toolbar"
-    app:subtitle="@string/home_toolbar_subtitle"
+    app:subtitle="@string/wallet_verify_otp_code_text_description"
     app:elevation="@dimen/default_elevation"
     app:layout_scrollFlags="scroll|enterAlways"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">

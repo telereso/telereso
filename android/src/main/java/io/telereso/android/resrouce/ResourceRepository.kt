@@ -1,9 +1,9 @@
 package io.telereso.android.resrouce
 
 import android.content.Context
+import android.net.Uri
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
-import com.google.gson.JsonObject
 import io.telereso.android.Telereso
 import io.telereso.android.db.Converters
 import io.telereso.android.db.InfoDao
@@ -13,12 +13,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ResourceRepository(
     context: Context,
+    var interceptors: List<Interceptor> = emptyList(),
 ) {
     private val dao: ResourceDao
     private val dbInfoDao: InfoDao
@@ -27,16 +30,26 @@ class ResourceRepository(
 
     init {
         if (retrofit == null) {
+            val builder = OkHttpClient.Builder()
+            interceptors.forEach {
+                builder.addInterceptor(it)
+            }
+
             retrofit = Retrofit.Builder().baseUrl("https://www.google.com/")
+                .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+
             resourceService = retrofit!!.create(ResourceService::class.java)
         }
         dao = TeleresoDatabase.getInstance(context).resourceDao()
         dbInfoDao = TeleresoDatabase.getInstance(context).infoDao()
     }
 
-    suspend fun fetchEndpoints(endPoints: List<String>): Boolean {
+    suspend fun fetchEndpoints(
+        endPoints: HashMap<String, Map<String, String>?>,
+        isRealtimeChange: Boolean = false
+    ): Boolean {
         if (endPoints.isEmpty()) return false
         return withContext(Dispatchers.IO) {
             val count = dao.getCount()
@@ -48,7 +61,14 @@ class ResourceRepository(
             Telereso.log("Need to fetch and update cache, last fetched $lastFetched")
             val res = endPoints.map {
                 async {
-                    resourceService.fetchEndpoint(it)
+                    var url = it.key
+                    if (isRealtimeChange) {
+                        url = Uri.parse(url).buildUpon().appendQueryParameter(
+                            "t",
+                            "${System.currentTimeMillis() / 1000}"
+                        ).build().toString()
+                    }
+                    resourceService.fetchEndpoint(url, it.value ?: emptyMap())
                 }
             }
             val responses = res.awaitAll()
@@ -87,10 +107,12 @@ class ResourceRepository(
     }
 
     suspend fun loadResources() {
-        val resourceMap = dao.getAll().associate {
-            it.key to it.value
+        withContext(Dispatchers.IO) {
+            val resourceMap = dao.getAll().associate {
+                it.key to it.value
+            }
+            resourceMapJson = Converters.toJson(resourceMap)
         }
-        resourceMapJson = Converters.toJson(resourceMap)
     }
 
     fun getString(key: String): String {

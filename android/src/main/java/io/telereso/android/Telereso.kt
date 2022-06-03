@@ -21,6 +21,7 @@ import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import io.telereso.android.db.merge
 import io.telereso.android.resrouce.ResourceRepository
 import kotlinx.coroutines.*
+import okhttp3.Interceptor
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
@@ -50,7 +51,8 @@ object Telereso {
     private val densityList = listOf("ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
     private val sizesList = listOf("1x", "2x", "3x")
     private var supportedSizes = listOf("1x")
-    private var customEndpoints = arrayListOf<String>()
+    private var customEndpoints = HashMap<String, Map<String,String>?>()
+    private var interceptors = arrayListOf<Interceptor>()
 
     private var resourceRepository: ResourceRepository? = null
 
@@ -61,12 +63,16 @@ object Telereso {
     @JvmOverloads
     fun init(
         context: Context,
+        suspended: Boolean = false,
         finishSetup: () -> Unit = {}
     ): Telereso {
-        GlobalScope.launch(Dispatchers.IO) {
+        val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+            onException(Exception(exception))
+        }
+        GlobalScope.launch(Dispatchers.IO + exceptionHandler) {
             log("Initializing...")
 
-            resourceRepository = ResourceRepository(context)
+            resourceRepository = ResourceRepository(context, interceptors)
 
             if (isRealTimeChangesEnabled || remoteConfigSettings != null)
                 Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
@@ -74,26 +80,17 @@ object Telereso {
                         minimumFetchIntervalInSeconds = 0
                     })
 
-            val init = withTimeoutOrNull(timeout) {
 
-                if (customEndpoints.isNotEmpty())
-                    resourceRepository?.loadResources()
+            val shouldUpdate = async { fetchResource() }
 
-                val shouldUpdate = async { fetchResource() }
+            if (suspended) shouldUpdate.await()
 
+            initMaps(context)
+
+            log("Initialized!")
+
+            if (!suspended && shouldUpdate.await()) {
                 initMaps(context)
-
-                log("Initialized!")
-
-                if (shouldUpdate.await()) {
-                    log("Fetched new data")
-                    initMaps(context)
-                }
-
-                return@withTimeoutOrNull true
-            }
-            if (init == null) {
-                log("Failed to initialize due to timeout, check network connectivity")
             }
 
             finishSetup()
@@ -101,32 +98,11 @@ object Telereso {
         return this
     }
 
-    suspend fun suspendInit(context: Context) {
-        log("Initializing...")
-
-        resourceRepository = ResourceRepository(context)
-
-        if (isRealTimeChangesEnabled || remoteConfigSettings != null)
-            Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
-                ?: remoteConfigSettings {
-                    minimumFetchIntervalInSeconds = 0
-                })
-
-        val init = withTimeoutOrNull(timeout) {
-
-            if (customEndpoints.isNotEmpty())
-                resourceRepository?.loadResources()
-
-            fetchResource()
-
-            initMaps(context)
-
-            log("Initialized!")
-            return@withTimeoutOrNull true
-        }
-
-        if (init == null) {
-            log("Failed to initialize due to timeout, check network connectivity")
+    suspend fun init(context: Context): Telereso {
+        return suspendCoroutine { coroutine ->
+            init(context, true) {
+                coroutine.resume(this)
+            }
         }
     }
 
@@ -134,14 +110,17 @@ object Telereso {
         currentLocal = null
     }
 
-    fun addCustomEndpoint(url: String): Telereso {
-        customEndpoints.add(url)
+    fun addCustomEndpoint(url: String, headers: Map<String, String>? = null): Telereso {
+        customEndpoints[url] = headers
         return this
     }
 
-    fun addCustomEndpoints(urls: List<String>): Telereso {
-        customEndpoints.addAll(urls)
-        return this
+    fun addInterceptors(vararg interceptors: Interceptor){
+        this.interceptors.addAll(interceptors)
+    }
+
+    fun addInterceptor(interceptor: Interceptor){
+        this.interceptors.add(interceptor)
     }
 
     fun setRemoteConfigSettings(remoteConfigSettings: FirebaseRemoteConfigSettings): Telereso {
@@ -185,14 +164,20 @@ object Telereso {
     @JvmStatic
     fun handleRemoteMessage(context: Context, remoteMessage: RemoteMessage): Boolean {
         return if (remoteMessage.data.containsKey("TELERESO_CONFIG_STATE")) {
-            log("remote changed, refreshing...")
-            if (isRealTimeChangesEnabled)
-                GlobalScope.launch {
-                    if (fetchResource()) {
+            if (isRealTimeChangesEnabled) {
+                log("remote updated, refreshing...")
+                val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+                    onException(Exception(exception))
+                }
+                GlobalScope.launch(Dispatchers.IO + exceptionHandler) {
+                    if (fetchResource(true)) {
                         initMaps(context)
                         onRemoteUpdate()
                     }
                 }
+            } else {
+                log("remote updated")
+            }
             true
         } else
             false
@@ -257,10 +242,10 @@ object Telereso {
 
     @JvmStatic
     fun getRemoteStringOrDefaultFormat(
-            local: String,
-            key: String,
-            default: String? = null,
-            vararg formatArgs: Any?
+        local: String,
+        key: String,
+        default: String? = null,
+        vararg formatArgs: Any?
     ): String {
         logStrings("******************** $key ********************")
         var value = getStringValue(local, key, default)
@@ -337,39 +322,47 @@ object Telereso {
         return LayoutInflater.from(context).inflate(resId, LinearLayout(context), false)
     }
 
-    private suspend fun initMaps(context: Context) {
-        withContext(context = Dispatchers.Default) {
-            val fireBaseRemote = object : Remote {
-                override fun getString(key: String): String {
-                    return Firebase.remoteConfig.getString(key)
-                }
+    private fun initMaps(context: Context) {
+        log("initMaps")
 
-                override fun getKeysByPrefix(prefix: String): Set<String> {
-                    return Firebase.remoteConfig.getKeysByPrefix(prefix)
-                }
-
+        val fireBaseRemote = object : Remote {
+            override fun getName(): String {
+                return "Firebase"
             }
 
-            val customRemote = object : Remote {
-                override fun getString(key: String): String {
-                    return resourceRepository?.getString(key) ?: ""
-                }
-
-                override fun getKeysByPrefix(prefix: String): Set<String> {
-                    return resourceRepository?.getKeysByPrefix(prefix) ?: emptySet()
-                }
-
+            override fun getString(key: String): String {
+                return Firebase.remoteConfig.getString(key)
             }
 
-            if (customEndpoints.isNotEmpty()) {
-                initStrings(context, customRemote)
-                initDrawables(context, customRemote)
+            override fun getKeysByPrefix(prefix: String): Set<String> {
+                return Firebase.remoteConfig.getKeysByPrefix(prefix)
             }
 
-
-            initStrings(context, fireBaseRemote)
-            initDrawables(context, fireBaseRemote)
         }
+
+        val customRemote = object : Remote {
+            override fun getName(): String {
+                return "Custom"
+            }
+
+            override fun getString(key: String): String {
+                return resourceRepository?.getString(key) ?: ""
+            }
+
+            override fun getKeysByPrefix(prefix: String): Set<String> {
+                return resourceRepository?.getKeysByPrefix(prefix) ?: emptySet()
+            }
+
+        }
+
+        if (customEndpoints.isNotEmpty()) {
+            initStrings(context, customRemote)
+            initDrawables(context, customRemote)
+        }
+
+
+        initStrings(context, fireBaseRemote)
+        initDrawables(context, fireBaseRemote)
     }
 
     private fun initStrings(context: Context, remote: Remote) {
@@ -377,7 +370,10 @@ object Telereso {
         var default = remote.getString(defaultId)
         if (default.isBlank()) {
             default = "{}"
-            log("Your default local $defaultId was not found in remote config", true)
+            log(
+                "Your default local $defaultId was not found in ${remote.getName()} remote config",
+                true
+            )
         } else {
             log("Default local $defaultId was setup")
         }
@@ -444,7 +440,7 @@ object Telereso {
         var local = remote.getString(getStringKey(deviceLocal))
         if (local.isBlank()) {
             val baseLocal = deviceLocal.split("_")[0]
-            log("The app local $deviceLocal was not found in remote config will try $baseLocal")
+            log("The app local $deviceLocal was not found in ${remote.getName()} remote config will try $baseLocal")
             val key =
                 remote.getKeysByPrefix(getStringKey(baseLocal)).firstOrNull()
             if (key == null) {
@@ -459,28 +455,44 @@ object Telereso {
         }
         if (local.isBlank()) {
             local = "{}"
-            log("The app local $deviceLocal was not found in remote config", true)
+            log(
+                "The app local $deviceLocal was not found in ${remote.getName()} remote config",
+                true
+            )
         } else {
             log("device local $deviceLocal was setup")
         }
         return local
     }
 
-    private suspend fun fetchResource(): Boolean {
-
-        return withContext(Dispatchers.IO) {
-            val customUpdatedRes = async {
-                val updated = resourceRepository?.fetchEndpoints(customEndpoints) ?: false
-                if (updated) resourceRepository?.loadResources()
-                return@async updated
+    private suspend fun fetchResource(isRealtimeChange: Boolean = false): Boolean {
+        val updated = withTimeoutOrNull(timeout) {
+            return@withTimeoutOrNull withContext(Dispatchers.IO) {
+                val customUpdatedRes = async {
+                    return@async resourceRepository?.fetchEndpoints(
+                        customEndpoints,
+                        isRealtimeChange
+                    ) ?: false
+                }
+                val firebaseUpdatedRes = async {
+                    return@async fetchFireBase()
+                }
+                val customUpdated = customUpdatedRes.await()
+                val firebaseUpdated = firebaseUpdatedRes.await()
+                log("fetched resources: customUpdated $customUpdated - firebaseUpdated $firebaseUpdated")
+                return@withContext customUpdated || firebaseUpdated
             }
-            val firebaseUpdatedRes = async {
-                return@async fetchFireBase()
-            }
-            val customUpdated = customUpdatedRes.await()
-            val firebaseUpdated = firebaseUpdatedRes.await()
-            return@withContext customUpdated || firebaseUpdated
         }
+
+        if (customEndpoints.isNotEmpty())
+            resourceRepository?.loadResources()
+
+        when (updated) {
+            null -> log("Failed to fetch due to timeout, check network connectivity")
+            true -> log("Fetched new data")
+            else -> {}
+        }
+        return updated ?: false
     }
 
     private suspend fun fetchFireBase(): Boolean {
