@@ -259,6 +259,13 @@ object Telereso {
     }
 
     @JvmStatic
+    fun getRemoteString(context: Context, @StringRes id: Int, vararg formatArgs: Any?): String {
+        val key = context.resources.getResourceEntryName(id)
+        val default = context.getString(id)
+        return getRemoteStringOrDefaultFormat(getLocal(context), key, default, *formatArgs)
+    }
+
+    @JvmStatic
     fun setRemoteImageResource(imageView: ImageView, resId: Int) {
         imageView.setRemoteImageResource(resId)
     }
