@@ -70,10 +70,6 @@ object Telereso {
 
                 val shouldUpdate = async { fetchResource() }
 
-                initMaps(context)
-
-                log("Initialized!")
-
                 if (shouldUpdate.await()) {
                     log("Fetched new data")
                     initMaps(context)
@@ -81,9 +77,16 @@ object Telereso {
 
                 return@withTimeoutOrNull true
             }
+
             if (init == null) {
-                log("Failed to initialize due to timeout, check network connectivity")
+                log("Failed to fetch due to timeout, check network connectivity, init with cache")
+                fetchResourceAsync()
+                activateResource()
             }
+
+            initMaps(context)
+
+            log("Initialized!")
 
             finishSetup()
         }
@@ -102,15 +105,18 @@ object Telereso {
 
             fetchResource()
 
-            initMaps(context)
-
-            log("Initialized!")
             return@withTimeoutOrNull true
         }
 
         if (init == null) {
-            log("Failed to initialize due to timeout, check network connectivity")
+            log("Failed to fetch due to timeout, check network connectivity, init with cache")
+            fetchResourceAsync()
+            activateResource()
         }
+
+        initMaps(context)
+
+        log("Initialized!")
     }
 
     fun reset() {
@@ -415,6 +421,20 @@ object Telereso {
     private suspend fun fetchResource(): Boolean {
         return suspendCoroutine { coroutine ->
             Firebase.remoteConfig.fetchAndActivate().addOnCompleteListener { res -> coroutine.resume(if (res.isSuccessful) res.result else false) }
+        }
+    }
+
+    private fun fetchResourceAsync() {
+        Firebase.remoteConfig.fetchAndActivate().addOnCompleteListener { res ->
+            if (res.isSuccessful)  {
+                log("Fetched resources async and will be ready on next init", true)
+            }
+        }
+    }
+
+    private suspend fun activateResource(): Boolean {
+        return suspendCoroutine { coroutine ->
+            Firebase.remoteConfig.activate().addOnCompleteListener { res -> coroutine.resume(if (res.isSuccessful) res.result else false) }
         }
     }
 
