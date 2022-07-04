@@ -66,29 +66,19 @@ object Telereso {
                         minimumFetchIntervalInSeconds = 0
                     })
 
-            val init = withTimeoutOrNull(timeout) {
-
-                val shouldUpdate = async { fetchResource() }
-
-                if (shouldUpdate.await()) {
-                    log("Fetched new data")
-                    initMaps(context)
-                }
-
-                return@withTimeoutOrNull true
-            }
-
-            if (init == null) {
-                log("Failed to fetch due to timeout, check network connectivity, init with cache")
-                fetchResourceAsync()
-                activateResource()
-            }
+            activateResource()
 
             initMaps(context)
 
             log("Initialized!")
 
             finishSetup()
+
+            if (fetchResource()) {
+                log("Fetched new data")
+                initMaps(context)
+            }
+
         }
         return this
     }
@@ -101,22 +91,18 @@ object Telereso {
                     minimumFetchIntervalInSeconds = 0
                 })
 
-        val init = withTimeoutOrNull(timeout) {
-
-            fetchResource()
-
-            return@withTimeoutOrNull true
-        }
-
-        if (init == null) {
-            log("Failed to fetch due to timeout, check network connectivity, init with cache")
-            fetchResourceAsync()
-            activateResource()
-        }
+        activateResource()
 
         initMaps(context)
 
         log("Initialized!")
+
+        GlobalScope.launch {
+            if (fetchResource()) {
+                log("Fetched new data")
+                initMaps(context)
+            }
+        }
     }
 
     fun reset() {
