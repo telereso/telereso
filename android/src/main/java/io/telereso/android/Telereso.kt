@@ -56,6 +56,7 @@ object Telereso {
     @JvmOverloads
     fun init(
         context: Context,
+        waitFetch: Boolean = false,
         finishSetup: () -> Unit = {}
     ): Telereso {
         GlobalScope.launch {
@@ -66,41 +67,33 @@ object Telereso {
                         minimumFetchIntervalInSeconds = 0
                     })
 
+            val fetch = async {
+                if (fetchResource()) {
+                    log("Fetched new data")
+                    initMaps(context)
+                }
+            }
+
             activateResource()
 
             initMaps(context)
 
             log("Initialized!")
 
-            finishSetup()
-
-            if (fetchResource()) {
-                log("Fetched new data")
-                initMaps(context)
+            if (waitFetch) {
+                fetch.await()
             }
+
+            finishSetup()
 
         }
         return this
     }
 
-    suspend fun suspendInit(context: Context) {
-        log("Initializing...")
-        if (isRealTimeChangesEnabled || remoteConfigSettings != null)
-            Firebase.remoteConfig.setConfigSettingsAsync(remoteConfigSettings
-                ?: remoteConfigSettings {
-                    minimumFetchIntervalInSeconds = 0
-                })
-
-        activateResource()
-
-        initMaps(context)
-
-        log("Initialized!")
-
-        GlobalScope.launch {
-            if (fetchResource()) {
-                log("Fetched new data")
-                initMaps(context)
+    suspend fun suspendInit(context: Context, waitFetch: Boolean = false) {
+        suspendCoroutine<Unit> { coroutine ->
+            init(context, waitFetch) {
+                coroutine.resume(Unit)
             }
         }
     }
@@ -222,10 +215,10 @@ object Telereso {
 
     @JvmStatic
     fun getRemoteStringOrDefaultFormat(
-            local: String,
-            key: String,
-            default: String? = null,
-            vararg formatArgs: Any?
+        local: String,
+        key: String,
+        default: String? = null,
+        vararg formatArgs: Any?
     ): String {
         logStrings("******************** $key ********************")
         var value = getStringValue(local, key, default)
@@ -406,13 +399,14 @@ object Telereso {
 
     private suspend fun fetchResource(): Boolean {
         return suspendCoroutine { coroutine ->
-            Firebase.remoteConfig.fetchAndActivate().addOnCompleteListener { res -> coroutine.resume(if (res.isSuccessful) res.result else false) }
+            Firebase.remoteConfig.fetchAndActivate()
+                .addOnCompleteListener { res -> coroutine.resume(if (res.isSuccessful) res.result else false) }
         }
     }
 
     private fun fetchResourceAsync() {
         Firebase.remoteConfig.fetchAndActivate().addOnCompleteListener { res ->
-            if (res.isSuccessful)  {
+            if (res.isSuccessful) {
                 log("Fetched resources async and will be ready on next init", true)
             }
         }
@@ -420,7 +414,8 @@ object Telereso {
 
     private suspend fun activateResource(): Boolean {
         return suspendCoroutine { coroutine ->
-            Firebase.remoteConfig.activate().addOnCompleteListener { res -> coroutine.resume(if (res.isSuccessful) res.result else false) }
+            Firebase.remoteConfig.activate()
+                .addOnCompleteListener { res -> coroutine.resume(if (res.isSuccessful) res.result else false) }
         }
     }
 
