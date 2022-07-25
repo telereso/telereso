@@ -169,26 +169,35 @@ object Telereso {
     }
 
     private fun onRemoteUpdate() {
-        val iterator = listenersList.iterator()
-        while (iterator.hasNext()) {
-            iterator.next().onRemoteUpdate()
+        try {
+            val iterator = listenersList.toList().iterator()
+            while (iterator.hasNext()) {
+                iterator.next().onRemoteUpdate()
+            }
+        } catch (e: Exception) {
         }
     }
 
     private fun onResourceNotFound(key: String) {
         GlobalScope.launch(Dispatchers.Default) {
-            val iterator = listenersList.iterator()
-            while (iterator.hasNext()) {
-                iterator.next().onResourceNotFound(key)
+            try {
+                val iterator = listenersList.toList().iterator()
+                while (iterator.hasNext()) {
+                    iterator.next().onResourceNotFound(key)
+                }
+            } catch (e: Exception) {
             }
         }
     }
 
     private fun onException(e: Exception) {
         GlobalScope.launch(Dispatchers.Default) {
-            val iterator = listenersList.iterator()
-            while (iterator.hasNext()) {
-                iterator.next().onException(e)
+            try {
+                val iterator = listenersList.toList().iterator()
+                while (iterator.hasNext()) {
+                    iterator.next().onException(e)
+                }
+            } catch (e: Exception) {
             }
         }
     }
