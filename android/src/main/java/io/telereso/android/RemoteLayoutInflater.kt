@@ -22,6 +22,7 @@ internal class RemoteLayoutInflater(original: LayoutInflater, newContext: Contex
             "com.google.android.material.bottomnavigation.BottomNavigationView" -> RemoteBottomNavigationView(context, attrs)
             "com.google.android.material.navigation.NavigationView" -> RemoteNavigationView(context, attrs)
             "com.google.android.material.floatingactionbutton.FloatingActionButton" -> RemoteFloatingActionButton(context, attrs)
+            "com.google.android.material.imageview.ShapeableImageView" -> RemoteShapeableImageView(context, attrs)
             else -> super.onCreateView(viewContext, parent, name, attrs)
         }
     }
