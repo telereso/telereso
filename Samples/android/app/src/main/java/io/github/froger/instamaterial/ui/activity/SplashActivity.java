@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Telereso.init(this, () -> {
+        Telereso.init(this, true, () -> {
             startActivity(new Intent(this, MainActivity.class));
             finish();
             return null;
