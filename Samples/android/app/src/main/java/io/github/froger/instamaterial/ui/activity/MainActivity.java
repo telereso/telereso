@@ -31,7 +31,7 @@ import io.github.froger.instamaterial.ui.adapter.FeedAdapter;
 import io.github.froger.instamaterial.ui.adapter.FeedItemAnimator;
 import io.github.froger.instamaterial.ui.view.FeedContextMenu;
 import io.github.froger.instamaterial.ui.view.FeedContextMenuManager;
-import io.telereso.android.RemoteContextWrapper;
+import io.telereso.android.RemoteContextThemeWrapper;
 
 
 public class MainActivity extends BaseDrawerActivity implements FeedAdapter.OnFeedItemClickListener,
@@ -230,6 +230,6 @@ public class MainActivity extends BaseDrawerActivity implements FeedAdapter.OnFe
 
 //    @Override
 //    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(new RemoteContextWrapper(newBase));
+//        super.attachBaseContext(new RemoteContextThemeWrapper(newBase));
 //    }
 }
