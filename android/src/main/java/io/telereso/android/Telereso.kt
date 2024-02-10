@@ -78,7 +78,15 @@ object Telereso {
 
             activateResource()
 
-            applyCustom(context, customStringsJson)
+            runCatching {
+                customStringsJson?.let { json ->
+                    JSONObject(json).apply {
+                        keys().forEach { key ->
+                            customStringsMap[key] = getJSONObject(key)
+                        }
+                    }
+                }
+            }
 
             initMaps(context)
 
@@ -166,18 +174,36 @@ object Telereso {
             false
     }
 
-    suspend fun applyCustom(context: Context, json: String?) {
+    suspend fun applyCustom(context: Context, json: String?, ignoreEmptyKeys: Boolean = false) {
         if (json == null) return
         withContext(Dispatchers.Default) {
             runCatching {
                 customStringsMap.clear()
                 JSONObject(json).apply {
                     keys().forEach {
-                        customStringsMap[it] = getJSONObject(it)
+                        val strings = getJSONObject(it)
+                        val final: JSONObject
+                        if (ignoreEmptyKeys) {
+                            final = JSONObject()
+                            strings
+                                .keys()
+                                .forEach { key ->
+                                    val value = strings.optString(key)
+                                    if (!value.isNullOrEmpty())
+                                        final.put(key, value)
+                                }
+                        } else {
+                            final = strings
+                        }
+                        customStringsMap[it] = final
                     }
                 }
 
                 initMaps(context)
+
+                onRemoteUpdate()
+
+                onCustomApplied()
             }.getOrElse {
                 onException(Exception(it))
             }
