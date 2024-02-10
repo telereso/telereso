@@ -40,9 +40,11 @@ object Telereso {
     private var isDrawableLogEnabled = false
     private var isRealTimeChangesEnabled = false
     private var remoteConfigSettings: FirebaseRemoteConfigSettings? = null
+    private var customStringsJson: String? = null
 
     private val listenersList = hashSetOf<RemoteChanges>()
     private val stringsMap = HashMap<String, JSONObject>()
+    private val customStringsMap = HashMap<String, JSONObject>()
     private var currentLocal: String? = null
     private var drawableMap = HashMap<String, JSONObject>()
     private val densityList = listOf("ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi")
@@ -76,6 +78,8 @@ object Telereso {
 
             activateResource()
 
+            applyCustom(context, customStringsJson)
+
             initMaps(context)
 
             log("Initialized!")
@@ -100,6 +104,7 @@ object Telereso {
 
     fun reset() {
         currentLocal = null
+        customStringsMap.clear()
     }
 
     fun setRemoteConfigSettings(remoteConfigSettings: FirebaseRemoteConfigSettings): Telereso {
@@ -140,6 +145,11 @@ object Telereso {
         return this
     }
 
+    fun withCustomStrings(json: String): Telereso {
+        this.customStringsJson = json
+        return this
+    }
+
     @JvmStatic
     fun handleRemoteMessage(context: Context, remoteMessage: RemoteMessage): Boolean {
         return if (remoteMessage.data.containsKey("TELERESO_CONFIG_STATE")) {
@@ -154,6 +164,24 @@ object Telereso {
             true
         } else
             false
+    }
+
+    suspend fun applyCustom(context: Context, json: String?) {
+        if (json == null) return
+        withContext(Dispatchers.Default) {
+            runCatching {
+                customStringsMap.clear()
+                JSONObject(json).apply {
+                    keys().forEach {
+                        customStringsMap[it] = getJSONObject(it)
+                    }
+                }
+
+                initMaps(context)
+            }.getOrElse {
+                onException(Exception(it))
+            }
+        }
     }
 
     @JvmStatic
@@ -173,6 +201,16 @@ object Telereso {
             val iterator = listenersList.toList().iterator()
             while (iterator.hasNext()) {
                 iterator.next().onRemoteUpdate()
+            }
+        } catch (e: Exception) {
+        }
+    }
+
+    private fun onCustomApplied() {
+        try {
+            val iterator = listenersList.toList().iterator()
+            while (iterator.hasNext()) {
+                iterator.next().onCustomApplied()
             }
         } catch (e: Exception) {
         }
@@ -323,14 +361,15 @@ object Telereso {
             } else {
                 log("Default local $defaultId was setup")
             }
-            stringsMap[defaultId] = JSONObject(default)
+            stringsMap[defaultId] = customStringsMap[defaultId] ?: JSONObject(default)
 
             val deviceLocal =
                 if (context is Application) currentLocal ?: getLocal(context) else getLocal(context)
             currentLocal = deviceLocal
             val local = getRemoteLocal(deviceLocal)
 
-            stringsMap[getStringKey(deviceLocal)] = JSONObject(local)
+            val localStringKey = getStringKey(deviceLocal)
+            stringsMap[localStringKey] = customStringsMap[localStringKey] ?: JSONObject(local)
 
 
             //drawables
